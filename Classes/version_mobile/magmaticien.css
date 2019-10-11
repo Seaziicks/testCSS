@@ -1,0 +1,234 @@
+body{
+	background-color : rgba(127,0,0,0.8);
+	
+}
+/* @media only screen and (max-width: 750px){ */
+.personnagebis table,.personnagebis tbody{
+	width: 100%;
+	text-align : center;
+}
+
+.personnagebis td{
+	width: 49%;
+	margin : 0;
+	padding : 0;
+	text-align : center;
+}
+
+.personnagebis,.personnagebis table{
+	/* background: linear-gradient(#2B2B2B, #3F3F3F); */
+	background: radial-gradient(#2B2B2B, #3F3F3F);
+	color: white;
+	padding : 0 20px;
+	overflow : hidden;
+	display : block;
+}
+.container{
+	margin : 0;
+}
+span{
+	width : 100%
+}
+.libelle{
+	width : 100%;
+}
+
+.personnagebis,.hamburger-inner{
+	transition : all 1.5s;
+}
+
+.repliement_statistiques{
+	margin-top : 15px;
+	margin-bottom : 25px;
+}
+
+
+.hamburger-inner {
+  display: block; /* On dit à la span de se comporter comme un bloc */
+  margin-top: -1px; /* Règle d'affichage */
+  margin : auto;
+}
+
+.hamburger-inner { /* On sélectionne la ligne du code, <br>puis avec .hamburger::before et .hamburger::after, on dit que cette règle s'applique juste après la ligne <br>du code html */
+    width: 20px; /* longueur de la ligne */
+    height: 5px; /* épaisseur de la ligne */
+    background-color: white; /* Couleur du hamburger */
+    border-radius: 2px; /* arrondie (pas obligatoire) */
+    /* position: absolute; */
+}
+
+.cache{
+	max-height : 0;
+	padding: 0;
+    margin: 0;
+    overflow: hidden;
+    visibility: hidden;
+	
+}
+
+.normal{
+	max-height : 300;
+}
+
+.description_competence{
+	/* width : 80%; */
+	padding: 5px 9px 5px 12px;
+	margin : auto;
+	color : #C48A13 ;
+}
+
+.aligner{
+	margin : auto;
+}
+.aligner table img{
+	width : 2.5em;
+}
+.aligner table{
+	width : 80%;
+	margin : auto;
+}
+
+
+
+.cadre img, .cadre {
+  /*z-index: 1;           /* image au dessus */
+  position: relative;   /* pour prise en compte z-index */
+  width: 2.5em;           /* largeur à ajuster suivant le besoin */ 
+}
+
+
+.cadre {
+	line-height: 1em;     /* pour centrage vertical */
+	margin : auto;
+	background-color : rgba(0, 0, 0,0.75);
+}
+.cadre2 {
+  position: relative;   /* pour servir de référent */
+  width: 2.5em;          /* largeur à ajuster suivant le besoin */
+  line-height: 1em;     /* pour centrage vertical */
+  margin : auto;
+  height : 2.6em;
+}
+
+.test{
+	border: 1.5px solid grey;
+	background-color : rgba(0, 0, 0,0.15);
+}
+
+
+
+.test:hover{
+	border: 1.5px solid #B4B2B2;
+}
+
+@font-face {
+	font-family: "Olde_English";
+	src: url('../Police/Olde_English/OldeEnglish.ttf');
+}
+
+.titre{
+	font-family: "Olde_English";
+	font-style: normal;
+	font-size : 35;
+	letter-spacing: .15rem;
+	text-align : center;
+	color : white;
+	
+}
+
+.table_competence{
+	transition: all 1.5s;
+	display: block;
+	overflow : hidden;
+	text-align : center;
+}
+.table_competence,.table_competence tbody{
+	width: 100%;
+    text-align: center;
+}
+
+
+
+
+/* Général aux couleurs de police */
+.red {
+	color : red;
+}
+.PM {
+	color : #2C7F26;
+}
+.PA{
+	color : #3794F3;
+}
+.tour{
+	color : white;
+}
+.armure{
+	color : grey;
+}
+.canon{
+	color : yellow;
+}
+.case{
+	color : green;
+}
+.vie{
+	color : #FF006A;
+}
+.competence{
+	color : #DB6409;
+}
+.bouclier{
+	color : #C675DE;
+}
+.entete{
+	color : #C2BF11;	/*  #DF8139; ou alors #951673;  */
+}
+.exemple{
+	color : #1344CB;
+}
+.force{
+	color : #853d35;
+}
+.intelligence{
+	color : #B40404;
+}
+.agilité{
+	color : #3ADF00;
+}
+.mana{
+	color : #00BFFF;
+}
+.réussite{
+	color : gold;
+}
+.inventaire{
+	color : #A4A4A4;
+}
+.sang{
+	color : #740D0D;
+}
+.surcharge{
+	color : #BB84c3;
+}
+
+.detail{
+	color : #bdc3c7;
+}
+
+.repliement_statistiques
+
+.couts{
+	float : left;
+	text-align: left;
+}
+
+
+
+/* Selection du div après le footer (div de lien du site, génant sur la version mobile)*/
+.footer ~ div {
+    visibility : hidden;
+}
+
+
+/* } */

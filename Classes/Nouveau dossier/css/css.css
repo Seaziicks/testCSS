@@ -1,0 +1,302 @@
+﻿body{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	line-height: 1;
+}
+
+.page1 {
+	background-image : url("../image/image1bis.jpg");
+	background-size: cover;
+}
+
+.page2 {
+	background-image : url("../image/image2bis.jpg");
+	background-size: cover;
+}
+
+body > div { /*le ous les div(s) dans le body*/
+	display: flex; /*affichage en mode flex*/
+	flex-flow : row  wrap; /* le flux des flex est affiché en ligne et emiplés (s'il n'y a pas assez de palce)*/
+	z-index : 2;
+	
+}
+
+body > div > main,aside{
+	 z-index : 1; 
+}
+
+body > div >main > main,aside{ 	
+	border-radius : 7px; margin: 5px; padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+body > header {  margin-top: 32px; padding: 20px; position : fixed; z-index : 1;
+}
+
+body > header {
+	order: 3; height: 300px; width : 100%; flex: 0 1 100%; margin-left : 0; margin-right : 0 ; 
+	}
+
+body > nav {
+	order: 1;  flex: 0 1 100%; margin : 0; z-index : 1000;
+}
+
+body > div > main,body > div > main > main{
+	 min-height: 400px; flex:1 ; 
+}
+
+body > div > main > main > ul li{
+	display : inline-block;
+	
+}
+
+#margehaute{
+	padding-top : 372px;
+}
+
+
+
+
+
+
+#ancre{
+	text-align : center;
+}
+
+h1{
+	font-family : orbitronmedium ;
+	text-align : center;
+	color : #FFBF00;
+}
+
+
+h6{
+	visibility : hidden;
+}
+
+
+ul{
+	color: yellow;
+}
+main a, ol, h3 {
+	color : #1EC0DD;
+	font-family : sans-serif;
+	
+}
+
+.div1{
+    max-width: 1024px;
+    margin: auto;
+	margin-top : 35px;
+
+	-webkit-background-clip: padding-box;
+    background-clip: padding-box;
+	margin-bottom : 35px;
+	background-color : rgba (255,255,255,0.1);
+	background-image: linear-gradient(to right, #563407, #B26808);
+
+}
+
+.div2{
+
+	
+    max-width: 1024px;
+    margin: auto;
+	margin-top : 35px;
+
+	-webkit-background-clip: padding-box;
+    background-clip: padding-box;
+	margin-bottom : 35px;
+	background-color : #07190B;
+	background-image: linear-gradient(to right, #07190B, #0A2A12);
+
+}
+
+.paratext{
+	height : 200px;
+	width : 200px;
+	display: inline;
+}
+
+.okok{
+	float : right;
+	padding-left : 30px;
+	width : 200px;
+	color : #424242;
+}
+
+#origine{
+
+	padding : 0;
+	background-image : url("../image/fondtest.jpeg");
+	background-size: cover;
+}
+#origine2{
+	padding : 0;
+	background-image : url("../image/fondtest1.jpg");
+	background-size: cover;
+}
+
+
+
+
+
+
+
+.post {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.div1 p, .div2 p{
+	padding-top:5px;
+	padding-right: 20px;
+	padding-left : 20px;
+	border-radius : 2px;
+	font-family : sans-serif;
+	text-align : justify;
+	color : #FAFAFA;
+	line-height:20px;
+}
+
+.even {
+	width : 50px;
+	height : 50px;
+	float : left;
+}
+
+.odd{
+	width : 50px;
+	height : 50px;
+	float : right;
+}
+
+
+
+#menu ul  {
+	padding:0;
+	margin:0;
+	min-width : 100%;
+	position : fixed;
+	background-color : #1A1919;
+	opacity: 1;
+	min-height : 25px;
+	z-index : 1000;
+}
+
+
+#menu ul li {
+	display: inline-block;
+	padding-top : 10px;
+	margin-bottom : 0 ;
+	min-height: 5%;
+	min-width : 15%;
+	text-align : center;
+	height : 25px;
+}
+
+#menu a:link, main a
+{ 
+ text-decoration:none;
+}
+#menu a:hover:link{
+	text-decoration: underline;
+}
+
+tr a:link, main a {
+	 text-decoration:none;
+}
+tr a {
+	color : white;
+}
+tr a:hover:link{
+	text-decoration: underline;
+}
+
+#menu a{
+	color : #DF2424;
+}
+
+#logoSite{
+	float : left;
+	padding-left : 4%;
+	padding-right : 10%;
+	padding-top : 5px;
+	padding-bottom : 5px;
+	width:150px;
+	height:25px;
+}
+
+
+
+
+
+
+.footer {
+	background : #474747;
+	min-width : 100%;
+	overflow:auto;
+}
+
+.footer table {	
+	min-width : 80%;
+	margin : auto;
+	color : white;
+	padding-bottom : 25px;
+	padding-top : 20px;
+	font-family : sans-serif;
+}
+
+
+
+td ,th{
+	width:100px; height:20px;
+	padding-top : 15px;
+	font-size : 80%;
+}
+th{	
+	border-bottom : 1px solid white;
+	text-align : left;
+
+	border-right : 25px solid #474747;
+	border-left : 25px solid #474747;
+}
+
+td{
+	border-right : 25px solid #474747;
+	border-left : 25px solid #474747;
+}
+
+#logoIUT{
+	float : right;
+	width:10%;
+}
+
+.actuel{
+	background : #383737;
+}
+

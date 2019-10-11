@@ -1,0 +1,22 @@
+.cache{
+	background-color: red;
+	visibility : hidden;
+	height : 400;
+	position : absolute;
+	height : 0;
+	width : 400;
+}
+
+.normal{
+	background-color: blue;
+	height : 100%;
+	position : absolute;
+	height : 400;
+	width : 400;
+}
+
+.test{
+	webkit-transition: 15s all ;
+    transition: 15s all ;
+	overflow: hidden;
+}

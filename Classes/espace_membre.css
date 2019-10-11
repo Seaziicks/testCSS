@@ -1,0 +1,112 @@
+body{
+	background: url("../the_elder_scrolls_v_skyrim_by_artfall-d4w0bgn.jpg") no-repeat center fixed;
+	background-size: cover;
+	font-size : 18px;
+	background-position:right top;
+	flex-flow : row  wrap;
+}
+
+.backgroundt{
+	text-align : center;
+	width : 100%;
+}
+
+.backgroundt h1{
+	margin : auto;
+}
+
+.background{
+	background-color : rgba(0,0,0,0.7);
+	color : white;
+	width : 80%;
+	height : 75%;
+	margin : 0% 10% 0% 10%;
+	padding : 20px;
+}
+
+.pseudo{
+	font : bold;
+}
+#barre{
+	width : 82%;
+	margin : auto;
+	padding-left : 2%;
+	
+}
+#barre4{
+	padding-right : 0px;
+}
+
+#barre > :first-child,#barre #pseudo{
+
+	border-radius : 8px 0 0 0px ;
+
+}
+
+#barre > :last-child,#barre #motdepasse {
+
+	border-radius :0 8px 0px 0;
+
+}
+
+#barre strong{
+
+	color : white;
+
+}
+
+ 
+
+#barre1,#barre2,#barre3,#barre4
+
+ {
+
+	 background-color : rgba(137,74,148,0.85);
+
+display:inline;
+
+/*padding: 5px;*/
+
+float: left;
+
+width:25%;
+
+height:3%;
+
+text-align:center;
+
+/*position: fixed;*/
+
+
+
+}
+
+#barre input{
+
+	border-radius : 8px;
+
+}
+
+
+
+#barre > :first-child,#barre #pseudo{
+
+	border-radius : 8px 0 0 8px ;
+
+}
+
+#barre > :last-child,#barre #motdepasse {
+
+	border-radius :0 8px 8px 0;
+
+}
+
+
+
+
+
+#barre1 p,#barre2 p,#barre3 form,#barre4 form {
+
+	margin-top : 1%;
+
+}

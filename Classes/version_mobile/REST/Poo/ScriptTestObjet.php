@@ -1,0 +1,147 @@
+
+<html>
+<body>
+<?php
+
+
+
+
+$array_expression = [
+'DegatsPhysiqueFlat' => 5,
+'DegatsPhysiquePourcentage' => 4,
+'DegatsMagiqueFlat' => 5,
+'DegatsMagiquePourcentage' => 4,
+'Force' => 5,
+'Agilite' => 5,
+'Intelligence' => 5,
+'Vitalite' => 5,
+'PA' => 5,
+'PM' => 5,
+'SortFlat' => 5,
+'SortPourcentage' => 4,
+'ArmureFlat' => 5,
+'ArmurePourcentage' => 4,
+'ArmureMagiqueFlat' => 5,
+'ArmureMagiquePourcentage' => 4,
+'DegatsFlat' => 5,
+'DegatsPourcentage' => 4,
+'SoinFlat' => 5,
+'SoinPourcentage' => 4,
+'Portee' => 5,
+'Degat' => 5,
+'Soin' => 5,
+'Shield' => 5
+];
+
+?>
+<textarea style="height : 100%; width : 100%">
+<?php
+?>
+public
+<?php
+foreach ($array_expression as $key => $value){
+
+	?> $_<?=$key?>,
+	<?php
+}
+
+?>
+
+	public function __construct(array $donnees)
+	  {
+		$this->hydrate($donnees);
+	  }
+<?php
+
+foreach ($array_expression as $key => $value){
+    if ($value == 0){
+	?> 
+	public function set<?=$key?>($<?=$key?>)
+	{
+	$<?=$key?> = (int) 0;
+
+		if ($<?=$key?> > 0)
+		{
+			$this->_<?=$key?> = $<?=$key?>;
+		}
+	}
+<?php
+	}elseif ($value == 1){
+		?>
+
+	public function set<?=$key?>($<?=$key?>)
+	{
+		if (is_string($<?=$key?>))
+		{
+			$this->_<?=$key?> = $<?=$key?>;
+		}
+	}
+<?php
+	}elseif($value == 2){
+		?> 
+	public function set<?=$key?>($<?=$key?>)
+	{
+	$<?=$key?> = (float) 0;
+
+		if ($<?=$key?> > 0)
+		{
+			$this->_<?=$key?> = $<?=$key?>;
+		}
+	}
+<?php
+	}elseif ($value == 3){
+		?>
+
+	public function set<?=$key?>($ID_<?=$key?>)
+	{
+	$ID_<?=$key?> = (int) $ID_<?=$key?>;
+
+		if ($ID_<?=$key?> > 0)
+		{
+			$db = new PDO('mysql:host=localhost;dbname=modifications(zone tampon);charset=utf8', 'root', '');
+			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
+
+			$manager = new EquipementManager($db);
+
+			$equipement = $manager->get($ID_<?=$key?>);
+			$this->_<?=$key?> = $equipement;
+		}
+	}
+<?php
+	}elseif($value == 4){
+		?> 
+	public function set<?=$key?>($<?=$key?>)
+	{
+	$this->_<?=$key?> = (float)$<?=$key?>;
+	}
+<?php
+	}elseif($value == 5){
+		?> 
+	public function set<?=$key?>($<?=$key?>)
+	{
+	$this->_<?=$key?> = (int)$<?=$key?>;
+	}
+<?php
+	}
+}
+
+?>
+
+	public function hydrate(array $donnees)
+	{
+	  foreach ($donnees as $key => $value)
+	  {
+		// On récupère le nom du setter correspondant à l'attribut.
+		$method = 'set'.ucfirst($key);
+			
+		// Si le setter correspondant existe.
+		if (method_exists($this, $method))
+		{
+		  // On appelle le setter.
+		  $this->$method($value);
+		}
+	  }
+	}
+</textarea>
+</body>
+</html>

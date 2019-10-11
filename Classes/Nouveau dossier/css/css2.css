@@ -1,0 +1,235 @@
+﻿#cool li{
+  display: inline-block;
+}
+
+body{
+ margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+line-height: 1;
+}
+
+
+span.left-block {
+  display:inline-block;
+  width: 300px;
+  border: 1px solid white;
+  white-space: nowrap;  
+  vertical-align:top;
+  overflow: hidden;
+}
+
+span.text-block
+{
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  max-width:100%;
+  
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+a{	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: clip;
+}
+
+
+
+header {
+	background-image : url("../image/image1.jpg");
+	background-size: cover;
+}
+
+body > div { /*le ous les div(s) dans le body*/
+	display: flex; /*affichage en mode flex*/
+	flex-flow : row  wrap; /* le flux des flex est affiché en ligne et emiplés (s'il n'y a pas assez de palce)*/
+
+	
+}
+
+body > div > main{ 	
+	background :white; border-radius : 7px; margin: 5px; padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+body > div >aside{ 	
+	background-image: linear-gradient(to right, #FA2626 , #430808); margin: 2px; padding: 10px;
+	
+}
+body > div > aside {
+	order: 3;  flex: 0 1 100%; margin : 0;  text-align : center; font-size : 300%;
+}
+
+body > div > header {
+	order: 2; height: 300px; flex: 0 1 100%; margin-left : 0; margin-right : 0 ; margin-top: 25px; padding: 20px;
+	}
+
+
+body > div > nav {
+	order: 1;  flex: 0 1 100%; margin : 0;  
+}
+
+body > div > main {
+	order: 4; min-height: 400px; flex:1 ; 
+}
+body > div > div {
+	order: 5; min-height: 400px; flex:1 ; 
+}
+
+h1{
+	font-family : earth_orbiterregular ;
+	text-align : center;
+}
+
+
+.div1{
+
+	
+    max-width: 600px;
+    margin: auto;
+	margin-top : 35px;
+	min-height : 600px;
+	-webkit-background-clip: padding-box;
+    background-clip: padding-box;
+	margin-bottom : 35px;
+}
+
+#origine{
+
+	padding : 0;
+	background-image : url("../image/fond.jpg");
+}
+p{
+	padding:20px; 
+	border-radius : 2px;
+	font-family : sans-serif;
+	line-height: 1.7;
+	text-align : justify;
+	text-align : left;
+}
+
+h4{
+	padding-left : 20px;
+}
+h3 {
+	text-align : center;
+	color : black;
+	
+	padding-top : 15px;
+}
+#menu ul  {
+	padding:0;
+	margin:0;
+	min-width : 100%;
+	position : fixed;
+	background-color : #1A1919;
+	opacity: 1;
+	min-height : 25px;
+}
+#menu ul li {
+	padding-top : 10px;
+	margin-bottom : 0 ;
+	min-height: 5%;
+	min-width : 15%;
+	text-align : center;
+	height : 25px;
+}
+
+#menu a:link 
+{ 
+ text-decoration:none;
+}
+#menu a:hover:link{
+	text-decoration: underline;
+}
+
+tr a:link {
+	 text-decoration:none;
+}
+
+tr a{
+	color : white;
+}
+tr a:hover:link{
+	text-decoration: underline;
+}
+
+#menu a{
+	color : #0B92DF;
+}
+
+#logoSite{
+	float : left;
+	padding-left : 4%;
+	padding-right : 10%;
+	padding-top : 5px;
+	padding-bottom : 5px;
+	width:150px;
+	height:25px;
+}
+
+.footer {
+	background : #474747;
+	min-width : 100%;
+	overflow:auto;
+}
+
+.footer table {	
+	min-width : 80%;
+	margin : auto;
+	color : white;
+	padding-bottom : 25px;
+	padding-top : 20px;
+	font-family : sans-serif;
+}
+
+
+
+td ,th{
+	width:100px; height:20px;
+	padding-top : 15px;
+	font-size : 80%;
+}
+th{	
+	border-bottom : 1px solid white;
+	text-align : left;
+
+	border-right : 25px solid #474747;
+	border-left : 25px solid #474747;
+}
+
+td{
+	border-right : 25px solid #474747;
+	border-left : 25px solid #474747;
+}
+
+#logoIUT{
+	float : right;
+	width:15%;
+}
+
+#profil{
+	padding-right : 150px;
+	height : 150px;
+	width : 150px;
+	float : left;
+}
+span a:link {
+	 text-decoration:none;
+}
+
+span a{
+	color : #1EC0DD;
+}
+span a:hover:link{
+	text-decoration: underline;
+}

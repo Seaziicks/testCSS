@@ -1,0 +1,356 @@
+body{
+	margin : 0;
+	height : 100%;
+	width : 100%;
+	background-image : url("images/image_test.jpg");
+	background-image : url("images/image_test.jpg");
+}
+
+body > div{ /*le ous les div(s) dans le body*/
+	display: flex; /*affichage en mode flex*/
+	flex-flow : row  wrap; /* le flux des flex est affiché en ligne et emiplés (s'il n'y a pas assez de palce)*/	
+}
+
+.centrage{
+	transform: translateY(5%);
+	margin: auto;
+	padding-top : 0;
+	min-height : 90%;
+	min-width : 90%;
+
+}
+
+
+.original,.modification,.résultat{
+	height : 90%;
+	width : 30%;
+	margin: 0 auto;
+	transform: translateY(5%);
+	text-align : center;
+	color : white;
+	
+}
+.original>div,.modification>div,.résultat>div{
+	padding-top : 5%;
+	margin : 0px 10% 0px 10%;
+	
+}
+
+
+.original{
+	background-color : rgba(43,43,43,0.5);
+}
+
+.modification{
+
+	background-color : rgba(193,163,0,0.35);
+}
+
+.résultat{
+
+	background-color : rgba(255,0,220,0.2);;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.blanc {
+	background-color : rgba(255, 255, 255, 0.75);
+	min-width : 75px;
+	text-align : center;
+	min-height : 2.5em;
+}
+
+
+.cadre img, .cadre {
+  /*z-index: 1;           /* image au dessus */
+  position: relative;   /* pour prise en compte z-index */
+  width: 2.5em;           /* largeur à ajuster suivant le besoin */ 
+}
+
+
+.cadre {
+	line-height: 1em;     /* pour centrage vertical */
+	margin : auto;
+	background-color : rgba(0, 0, 0,0.75);
+}
+
+
+
+.test{
+	border: 1.5px solid grey;
+	background-color : rgba(0, 0, 0,0.15);
+}
+
+
+
+.test:hover{
+	border: 1.5px solid #B4B2B2;
+}
+
+
+
+.test:hover >div>span{
+	left: 2.9em;            /* position égale à la largeur de l'image */
+	visibility: visible;
+	border-radius : 2.3px;
+	border: 3px solid #D14011;
+}
+
+.cadre2 {
+  position: relative;   /* pour servir de référent */
+  width: 2em;          /* largeur à ajuster suivant le besoin */
+  line-height: 1em;     /* pour centrage vertical */
+  margin : auto;
+  height : 2.35em;
+}
+
+
+
+
+.cadre>span {
+  position: absolute;   /* positionnement hors flux */
+            /* décalage à gauche toute */
+  /*padding: 0 .25em;     /* un peu d'espace latéral */
+  color: #eee;          /* couleur du texte à ajuster suivant le besoin */
+  background: rgba(0, 0, 0, 1);     /* couleur du fond à ajuster suivant le besoin */
+  /*transition: all .5s;  /* la transition à appliquer */
+  visibility: hidden;
+  width: 22em;      /* */
+  padding : 9px;      /* */
+  z-index: 100;      /* */
+  top : -3px;      /* */
+  color : #C48A13;      /* */
+}
+
+.voir{
+	position : relative;
+}
+
+.formule{
+	background-color : rgba(0, 0, 0, 0.8);
+	border-radius : 2.3px;
+	margin : 0;
+	padding : 0;
+	left : 0;
+	text-align : left;
+	border: 1px inset #DE680C
+}
+
+
+
+
+
+.aligner table{
+	border-collapse: separate;
+    border-spacing: 10px 10px; /* Nombre de pixels d'espace horizontal (5px), vertical (8px) */
+	border-radius : 10px;
+	max-width : 80%;
+	max-height : 85%;
+	min-height : 30%;
+	margin : 0 auto;
+}
+
+.aligner th{
+	padding : 0px 0px 20px 0px;
+}
+
+.centrer{
+	margin: auto;
+	height : 80%;
+	max-width : 100%;
+	padding : 11% 0% 0 14%;
+}
+
+.aligner{
+}
+
+.footer{
+	height : 20%;
+	min-width : 100%;
+	background-color : rgba(50,50,50, 0.85);
+	position : absolute;
+	bottom :0;
+	text-align : center;
+}
+
+.footer div{
+	width : 100%;
+	height : 10%;
+	text-align : center;
+	padding : auto;
+}
+
+.footer div div{
+	padding : auto;
+}
+
+.footer  table {
+	text-align : center;
+	width : 60%;
+	height : 90%;
+	margin : auto;
+}
+
+.footer td{
+	color : white;
+	width :  16.66%;
+}
+
+
+
+
+
+
+
+.red {
+	color : red;
+}
+.PM {
+	color : #2C7F26;
+}
+.PA{
+	color : #3794F3;
+}
+.tour{
+	color : white;
+}
+.armure{
+	color : grey;
+}
+.canon{
+	color : yellow;
+}
+.case{
+	color : green;
+}
+.vie{
+	color : #FF006A;
+}
+.competence{
+	color : #DB6409;
+}
+.bouclier{
+	color : #C675DE;
+}
+.entete{
+	color : #C2BF11;	/*  #DF8139; ou alors #951673;  */
+}
+.exemple{
+	color : #1344CB;
+}
+.force{
+	color : #853d35;
+}
+.intelligence{
+	color : #B40404;
+}
+.agilité{
+	color : #3ADF00;
+}
+.mana{
+	color : #00BFFF;
+}
+.réussite{
+	color : gold;
+}
+.inventaire{
+	color : #A4A4A4;
+}
+.sang{
+	color : #740D0D;
+}
+
+
+.couts{
+	float : left;
+	text-align: left;
+}
+
+
+
+
+
+.activé {
+    -webkit-animation: pulsate 3s ease-out;
+    -webkit-animation-iteration-count: infinite; 
+    opacity: 0.7;
+	color : white;
+	text-shadow : 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+@-webkit-keyframes pulsate {
+    0% { 
+        opacity: 0.7;
+    }
+    50% { 
+        opacity: 1.0;
+    }
+    100% { 
+        opacity: 0.7;
+    }
+}
+@-webkit-keyframes pulsate2 {
+    0% { 
+        opacity: 0.6;
+    }
+	25% { 
+        opacity: 0.8;
+    }
+    50% { 
+        opacity: 1.0;
+    }
+	75% { 
+        opacity: 0.8;
+    }
+    100% { 
+        opacity: 0.6;
+    }
+}
