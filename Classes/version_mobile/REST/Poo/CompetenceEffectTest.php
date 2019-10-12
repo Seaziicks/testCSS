@@ -2,22 +2,25 @@
 
 class CompetenceEffectTest
 {
-	public $_idCompetence,
+	public $_idCompetenceEffect,
+			$_idCompetence,
             $_effectOrder,
             $_actionType,
             $_effectType,
 			$_niveau,
             $_niveauRequis,
 			$_typeCalcul,
-			$_calculA,
-			$_calculB,
+			$_calcul1A,
+			$_calcul1B,
+			$_calcul2A,
+			$_calcul2B,
 			$_amplitude,
 			$_nombreAmplitude,
 			$_statistique,
 			$_impact,
 			$_pourcentage;
 
-    public PersonnageTest $_Personnage;
+    public $_Personnage;
 
 	public function __construct(array $donnees, PersonnageTest $Personnage)
 	{
@@ -25,17 +28,27 @@ class CompetenceEffectTest
 	$this->setPersonnage($Personnage);
 	}
 
-	public function set($id)
+	public function setIdCompetenceEffect($idCompetenceEffect)
 	{
-	$id = (int) $id;
+		$idCompetenceEffect = (int) $idCompetenceEffect;
 
-		if ($id > 0)
+		if ($idCompetenceEffect > 0)
 		{
-		  $this->_idCompetence = $id;
+			$this->_idCompetenceEffect = $idCompetenceEffect;
 		}
 	}
 
-    public function setOrder($effectOrder)
+	public function setIdCompetence($idCompetence)
+	{
+		$idCompetence = (int) $idCompetence;
+
+		if ($idCompetence > 0)
+		{
+		  $this->_idCompetence = $idCompetence;
+		}
+	}
+
+    public function setEffectOrder($effectOrder)
     {
         $effectOrder = (int) $effectOrder;
 
@@ -95,20 +108,36 @@ class CompetenceEffectTest
 		}
 	}
 
-	public function setCalculA($Calcul1a)
+	public function setCalcul1A($Calcul1a)
 	{
 	$Calcul1a = (int) $Calcul1a;
 
 		if ($Calcul1a > 0)
 		{
-		  $this->_calculA = $Calcul1a;
+		  $this->_calcul1A = $Calcul1a;
 		}
 	}
 
-	public function setCalculB($Calcul1b)
+	public function setCalcul1B($Calcul1b)
 	{
 	$Calcul1b = (float) $Calcul1b;
-	$this->_calculB = $Calcul1b;
+	$this->_calcul1B = $Calcul1b;
+	}
+
+	public function setCalcul2A($Calcul2a)
+	{
+		$Calcul2a = (int) $Calcul2a;
+
+		if ($Calcul2a > 0)
+		{
+			$this->_calcul2A = $Calcul2a;
+		}
+	}
+
+	public function setCalcul2B($Calcul2b)
+	{
+		$Calcul2b = (float) $Calcul2b;
+		$this->_calcul2B = $Calcul2b;
 	}
 
 	public function setAmplitude($Amplitude1)
@@ -149,12 +178,7 @@ class CompetenceEffectTest
 
 	public function setPourcentage($Pourcentage1)
 	{
-	$Pourcentage1 = (int) $Pourcentage1;
-
-		if ($Pourcentage1 > 0)
-		{
-		  $this->_pourcentage = $Pourcentage1;
-		}
+		$this->_pourcentage = (boolean) $Pourcentage1;
 	}
 
     public function getStatistique(){
@@ -198,7 +222,7 @@ class CompetenceEffectTest
     }
 
     public function getCalculElement($secondPartElement){
-        $retour = '_calcul'.$secondPartElement;
+        $retour = '_calcul1'.$secondPartElement;
         return $this->$retour;
     }
 

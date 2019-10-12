@@ -91,7 +91,7 @@ class CompetenceTest
 			$_Valeur_Temporaire2,
 			$_Statistique_Temporaire1;
 
-    public PersonnageTest $_Personnage;
+    public $_Personnage;
     public $_Effects = [];
     public $_db;
 
@@ -1035,45 +1035,42 @@ class CompetenceTest
         $this->_Description3 = '.';
 
         echo $this->getElement('Description',1);
-
-        for($f=0 ; $f < count($this->_Effects) ; $f++){
-            // echo $this->getElement('Description', $g);
-            if(!is_null($this->getElement('Description', ($f+2)))){
-
-                if($this->_Effects[$f]->getElement('typeCalcul') == 1){
-
-                    ?><span class="voir"><span class="<?= $this->_Effects[$f]->getImpact();?>"> <?= $this->_Effects[$f]->getCalcul(); ?>
-				</span><span class="formule"><span class="<?= $this->_Effects[$f]->getImpact();?>"><?php echo $this->_Effects[$f]->getCalculElement('A'); if($this->_Effects[$f]->getElement('pourcentage')){echo '%';} ?></span>
-                    <?php
-                    if($this->_Effects[$f]->getCalculElement('B')>1){
-                        if($this->_Effects[$f]->getElement('pourcentage')){
-                            ?>(<span class="<?= $this->_Effects[$f]->getImpact();?>">+1%</span>/<?= ''.$this->_Effects[$f]->getCalculElement('B');?><span class="<?= $this->_Effects[$f]->getElement('statistique');?>"><?php echo $this->_Effects[$f]->getElement('statistique'); ?></span>)</span></span>
-                            <?php
-                        }else{
-                            ?>(<span class="<?= $this->_Effects[$f]->getImpact();?>">+1</span>/<?= ''.$this->_Effects[$f]->getCalculElement('B');?><span class="<?= $this->_Effects[$f]->getElement('statistique');?>"><?php echo $this->_Effects[$f]->getElement('statistique'); ?></span>)</span></span>
-                            <?php
-                        }
-                    }else{
-                        if($this->_Effects[$f]->getElement('pourcentage')){
-                            ?>(<span class="<?= $this->_Effects[$f]->getImpact();?>"><?= $this->_Effects[$f]->getCalculElement('A').'+'.round(1/$this->_Effects[$f]->getCalculElement('B')).'%'; ?></span>/<?php echo $this->_Effects[$f]->getElement('statistique'); ?>)</span></span>
-                            <?php
-                        }else{
-                            ?>(<span class="<?= $this->_Effects[$f]->getImpact();?>"><?= $this->_Effects[$f]->getCalculElement('A').'+'.round(1/$this->_Effects[$f]->getCalculElement('B')); ?></span>/<?php echo $this->_Effects[$f]->getElement('statistique'); ?>)</span></span>
-                            <?php
-                        }
-                    }
-
-                    if(!is_null($this->_Effects[$f]->getElement('amplitude'))){
-                        ?>
-                        <span class="<?php echo $this->_Effects[$f]->getElement('statistique');?>">+<span id="NombreAmplitude<?php echo $f;?>" class=""><?php echo $this->_Effects[$f]->getElement('nombreAmplitude');?></span>D<span id="Amplitude<?php echo $f;?>" ><?php echo $this->_Effects[$f]->getElement('amplitude');?></span></span>
-                    <?php }
-                    echo $this->getElement('Description',($f+2));
-
-                }
+        foreach($this->_Effects as $effect){
+            if($effect->getElement('typeCalcul') == 1) {
+                $this->getDescriptionOfType1($effect);
             }
-
         }
 
+    }
+
+    public function getDescriptionOfType1(CompetenceEffectTest $effect){
+
+        ?><span class="voir"><span class="<?= $effect->getImpact();?>"> <?= $effect->getCalcul(); ?>
+            </span><span class="formule"><span class="<?= $effect->getImpact();?>"><?= $effect->getCalculElement('A'); if($effect->getElement('pourcentage')){echo '%';} ?></span>
+        <?php
+        if($effect->getCalculElement('B')>1){
+            if($effect->getElement('pourcentage')){
+                ?>(<span class="<?= $effect->getImpact();?>">+1%</span>/<?= ''.$effect->getCalculElement('B');?><span class="<?= $effect->getElement('statistique');?>"><?= $effect->getElement('statistique'); ?></span>)</span></span>
+                <?php
+            }else{
+                ?>(<span class="<?= $effect->getImpact();?>">+1</span>/<?= ''.$effect->getCalculElement('B');?><span class="<?= $effect->getElement('statistique');?>"><?= $effect->getElement('statistique'); ?></span>)</span></span>
+                <?php
+            }
+        }else{
+            if($effect->getElement('pourcentage')){
+                ?>(<span class="<?= $effect->getImpact();?>"><?= $effect->getCalculElement('A').'+'.round(1/$effect->getCalculElement('B')).'%'; ?></span>/<?= $effect->getElement('statistique'); ?>)</span></span>
+                <?php
+            }else{
+                ?>(<span class="<?= $effect->getImpact();?>"><?= $effect->getCalculElement('A').'+'.round(1/$effect->getCalculElement('B')); ?></span>/<?= $effect->getElement('statistique'); ?>)</span></span>
+                <?php
+            }
+        }
+
+        if(!is_null($effect->getElement('amplitude'))){
+            ?>
+            <span class="<?= $effect->getElement('statistique');?>">+<span id="NombreAmplitude<?= $effect->_effectOrder;?>" class=""><?= $effect->getElement('nombreAmplitude');?></span>D<span id="Amplitude<?= $effect->_effectOrder;?>" ><?= $effect->getElement('amplitude');?></span></span>
+        <?php }
+        echo $this->getElement('Description',($effect->_effectOrder + 1));
     }
 
 
