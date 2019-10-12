@@ -25,7 +25,7 @@ class CompetenceManager
     // $q = $this->_db->query('SELECT id, nom, forcePerso, degats, niveau, experience FROM personnages WHERE id = '.$id);
     $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
-    return new CompetenceTest($donnees, $Personnage);
+    return new CompetenceTest($donnees, $Personnage, $this->_db);
   }
   
   public function getListForCharacter($id, PersonnageTest $Personnage)
@@ -42,7 +42,7 @@ class CompetenceManager
 
     while ($donnees = $competences->fetch(PDO::FETCH_ASSOC))
     {
-      $listCompetences[] = new CompetenceTest($donnees, $Personnage);
+      $listCompetences[] = new CompetenceTest($donnees, $Personnage, $this->_db);
     }
 
     return $listCompetences;

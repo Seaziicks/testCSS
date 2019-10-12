@@ -91,12 +91,16 @@ class CompetenceTest
 			$_Valeur_Temporaire2,
 			$_Statistique_Temporaire1;
 
-    public $_Personnage;
+    public PersonnageTest $_Personnage;
+    public $_Effects = [];
+    public $_db;
 
-	public function __construct(array $donnees, PersonnageTest $Personnage)
+	public function __construct(array $donnees, PersonnageTest $Personnage, $db)
 	{
-	$this->hydrate($donnees);
-	$this->setPersonnage($Personnage);
+	    $this->_db = $db;
+        $this->hydrate($donnees);
+        $this->setPersonnage($Personnage);
+        $this->getEffects();
 	}
 
 	public function set($id)
@@ -918,7 +922,7 @@ class CompetenceTest
                             ?>(<span class="<?php echo $this->getImpact($f);?>">+1%</span>/<?php echo ''.$this->getCalculElement('b',$f);?><span class="<?php echo $this->getElement('Statistique',$f);?>"><?php echo $this->getElement('Statistique',$f); ?></span>)</span></span>
                             <?php
                         }else{
-                            ?>(<span class="<?php echo $this->getImpact($f);?>">+1</span>/<?php echo ''.$this->getCalculElement('b',$f);?><span class="<?php echo $this->getElement('Statistique',$f);?>"><?php echo $this->getElement('Statistique',$f); ?></span>)</span></span>
+                            ?>(<span class="<?php echo $this->getImpact($f);?>">+1</span>/<?php echo ''.$this->getCalculElement('b',$f);?><span class="<?php echo $this->getElement('Statistique',$f);?>"><?php echo $this->getElement('Statistique',$f); ?></span></span></span>
                             <?php
                         }
                     }else{
@@ -963,7 +967,7 @@ class CompetenceTest
         if($this->getElement('Pourcentage',$index)){$impact='';}
         elseif($this->getElement('Impact', $index)== "vie"){$impact=' points de vie';}
         elseif($this->getElement('Impact', $index)== "bouclier" ){$impact=' points de bouclier';}
-        elseif($this->getElement('Impact', $index)!= "red" && $this->getCalculElement('a',$index)+(floor((float)$this->getStatistiqueValue($index)/$this->getCalculElement('Calcul','b',$index)))>2){$impact=' '.$this->getElement('Impact', $index).'s';}
+        elseif($this->getElement('Impact', $index)!= "red" && $this->getCalculElement('a',$index)+(floor((float)$this->getStatistiqueValue($index)/$this->getCalculElement('Calcul','b')))>2){$impact=' '.$this->getElement('Impact', $index).'s';}
         elseif($this->getElement('Impact', $index) != "red"){$impact=' '.$this->getElement('Impact', $index);}
         elseif($this->getElement('Impact', $index) == "red" && !$this->getElement('Pourcentage', $index)){$impact=' points de dégâts';}
 
@@ -1018,6 +1022,59 @@ class CompetenceTest
     }
 
 
+    private function getEffects()
+    {
+        $managerCompetenceEffects = new CompetenceEffectManager($this->_db);
+
+        $this->_Effects = $managerCompetenceEffects->getEffectListForCompetence(175, $this->_Personnage);
+    }
+
+    public function getNewDescriptionComplete(){
+
+        $this->_Description2 = '. Pour cet exemple, il inflige également ';
+        $this->_Description3 = '.';
+
+        echo $this->getElement('Description',1);
+
+        for($f=0 ; $f < count($this->_Effects) ; $f++){
+            // echo $this->getElement('Description', $g);
+            if(!is_null($this->getElement('Description', ($f+2)))){
+
+                if($this->_Effects[$f]->getElement('typeCalcul') == 1){
+
+                    ?><span class="voir"><span class="<?= $this->_Effects[$f]->getImpact();?>"> <?= $this->_Effects[$f]->getCalcul(); ?>
+				</span><span class="formule"><span class="<?= $this->_Effects[$f]->getImpact();?>"><?php echo $this->_Effects[$f]->getCalculElement('A'); if($this->_Effects[$f]->getElement('pourcentage')){echo '%';} ?></span>
+                    <?php
+                    if($this->_Effects[$f]->getCalculElement('B')>1){
+                        if($this->_Effects[$f]->getElement('pourcentage')){
+                            ?>(<span class="<?= $this->_Effects[$f]->getImpact();?>">+1%</span>/<?= ''.$this->_Effects[$f]->getCalculElement('B');?><span class="<?= $this->_Effects[$f]->getElement('statistique');?>"><?php echo $this->_Effects[$f]->getElement('statistique'); ?></span>)</span></span>
+                            <?php
+                        }else{
+                            ?>(<span class="<?= $this->_Effects[$f]->getImpact();?>">+1</span>/<?= ''.$this->_Effects[$f]->getCalculElement('B');?><span class="<?= $this->_Effects[$f]->getElement('statistique');?>"><?php echo $this->_Effects[$f]->getElement('statistique'); ?></span>)</span></span>
+                            <?php
+                        }
+                    }else{
+                        if($this->_Effects[$f]->getElement('pourcentage')){
+                            ?>(<span class="<?= $this->_Effects[$f]->getImpact();?>"><?= $this->_Effects[$f]->getCalculElement('A').'+'.round(1/$this->_Effects[$f]->getCalculElement('B')).'%'; ?></span>/<?php echo $this->_Effects[$f]->getElement('statistique'); ?>)</span></span>
+                            <?php
+                        }else{
+                            ?>(<span class="<?= $this->_Effects[$f]->getImpact();?>"><?= $this->_Effects[$f]->getCalculElement('A').'+'.round(1/$this->_Effects[$f]->getCalculElement('B')); ?></span>/<?php echo $this->_Effects[$f]->getElement('statistique'); ?>)</span></span>
+                            <?php
+                        }
+                    }
+
+                    if(!is_null($this->_Effects[$f]->getElement('amplitude'))){
+                        ?>
+                        <span class="<?php echo $this->_Effects[$f]->getElement('statistique');?>">+<span id="NombreAmplitude<?php echo $f;?>" class=""><?php echo $this->_Effects[$f]->getElement('nombreAmplitude');?></span>D<span id="Amplitude<?php echo $f;?>" ><?php echo $this->_Effects[$f]->getElement('amplitude');?></span></span>
+                    <?php }
+                    echo $this->getElement('Description',($f+2));
+
+                }
+            }
+
+        }
+
+    }
 
 
 
