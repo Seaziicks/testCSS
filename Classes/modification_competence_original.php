@@ -145,7 +145,7 @@ for($g=2;$g<=6;$g++){
 }
 
 //Avec la modification de "$stata" et "$statb" respectivement en "${'stat'.$f}" et "${'stat'.($f+1)}", il n'y a plus besoin de 'merde.php'. Mais je le laisse quand même.
-// En tout cas, vive la création de variable par concaténation de string et d'autres variables ! :D
+// En tout cas, vive la création de variable par concaténation de string avec d'autres variables ! :D
 
 
 

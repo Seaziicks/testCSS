@@ -1,0 +1,31 @@
+#barre strong{
+	color : white;
+}
+ 
+#barre1,#barre2,#barre3,#barre4
+ {
+	 background-color : rgba(137,74,148,0.85);
+display:inline;
+/*padding: 5px;*/
+float: left;
+width:25%;
+height:3%;
+text-align:center;
+/*position: fixed;*/
+
+}
+#barre input{
+	border-radius : 8px;
+}
+
+#barre > :first-child,#barre #pseudo{
+	border-radius : 8px 0 0 8px ;
+}
+#barre > :last-child,#barre #motdepasse {
+	border-radius :0 8px 8px 0;
+}
+
+
+#barre1 p,#barre2 p,#barre3 form,#barre4 form {
+	margin-top : 1%;
+}

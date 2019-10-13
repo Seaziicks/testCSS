@@ -42,13 +42,13 @@ class PersonnageTest
 		$this->hydrate($donnees);
 	  }
 
-	public function setId($id)
+	public function setId_Personnage($Id_Personnage)
 	{
-	$id = (int) $id;
+        $Id_Personnage = (int) $Id_Personnage;
 
-		if ($id > 0)
+		if ($Id_Personnage > 0)
 		{
-		  $this->_Id_Personnage = $id;
+		  $this->_Id_Personnage = $Id_Personnage;
 		}
 	}
 

@@ -103,13 +103,13 @@ class CompetenceTest
         $this->getEffects();
 	}
 
-	public function set($id)
+	public function setId_Competence($Id_Competence)
 	{
-	$id = (int) $id;
+        $Id_Competence = (int) $Id_Competence;
 
-		if ($id > 0)
+		if ($Id_Competence > 0)
 		{
-		  $this->_Id_Competence = $id;
+		  $this->_Id_Competence = $Id_Competence;
 		}
 	}
 
@@ -1030,9 +1030,6 @@ class CompetenceTest
     }
 
     public function getNewDescriptionComplete(){
-
-        $this->_Description2 = '. Pour cet exemple, il inflige également ';
-        $this->_Description3 = '.';
 
         echo $this->getElement('Description',1);
         foreach($this->_Effects as $effect){

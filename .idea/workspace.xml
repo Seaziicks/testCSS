@@ -1,10 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="553a92f0-132a-4e6a-843e-43d518de4555" name="Default Changelist" comment="Cleaning a bit, and separatingin functions.">
+    <list default="true" id="553a92f0-132a-4e6a-843e-43d518de4555" name="Default Changelist" comment="Ancient TreeSkills now can use OOP to be displayed. Classes/version_mobile/REST/Poo/testMagmaticien.php for example.">
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Police/Luminari/Luminari-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Police/Luminari/example.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Police/Luminari/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Arbre.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/BDD.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Ammeublissement.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Bouclier_de_magma.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Boule_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Cage_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Canalisation.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Cape_de_magma.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Case_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Cercle_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Colonne_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Enchantement_de_magma.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Fout_de_magma.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Genki-dama.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Javelot_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Jet_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Lance_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Mur_de_lave.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/AatroxE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/AkaliW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/AnnieW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/Annie_Passive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/AurelionSolQ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/BardQ (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/BardQ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/BlindMonkRKick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/BrandE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/BrandP.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/BrandR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/BurningAgony.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/CarpetBomb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/Corki_RapidReload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/DianaOrbs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/DianaTeleport.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/EkkoW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/EzrealR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/GalioR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/GarenR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/GravesChargeShot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/GravesQLineSpell.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/HecarimW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/KarthusFallenOne.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/KarthusLayWasteA1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/KaynW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/KogMawLivingArtillery.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/KogMawQ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/LucianQ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/Masochism.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/NamiW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/NautilusGrandLine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/NautilusSplashZone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/OrnnW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/PykeR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/RumbleFlameThrower.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/Ryze_P.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/ShyvanaFireball.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/ShyvanaReinforcedScales.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/ShyvanaTransformCast.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/SwainQ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/SwainR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/SwainW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/SyndraE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/TormentedSoil.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/TristanaR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/TryndamereE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/VelkozR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/ViR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/ViktorDeathRay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/ability_warlock_backdraft.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/artifactability_firemage_phoenixbolt.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/inv_helm_circlet_firelands_d_01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/inv_misc_volatilefire.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/p6_necro_corpseexplosion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/spell_fire_burningspeed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/spell_fire_fire.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/spell_mage_flameorb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/spell_mage_meteor.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/spell_shaman_spewlava.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/witchdoctor_sacrifice.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/wizard_arcaneorb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/wizard_disintegrate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/wizard_energytwister.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/wizard_explosiveblast.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/wizard_frostnova.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/wizard_hydra.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/wizard_magicmissile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/wizard_rayoffrost.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/x1_barbarian_avalanche_v2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/x1_crusader_bombardment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Nouveau dossier/x1_demonhunter_vengeance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Piege_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Plui_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Robe_de_magma.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Surchauffe_controlee.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Trainée_de_lave.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Vague_de_lave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Volcan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/Icones/Zone_de_surchauffe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/gettyimages-165622625-1024x1024.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/icone.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/magma.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Magmaticien/newworld.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Paladin/Fond/diablo-3-season-9-crusader-build.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Paladin/css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Rang.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/RangManager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/Specialite.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/barre_membre.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/equipement.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/equipements.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/inlinemod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/inlinemod2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/menutest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/personnage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/testMagmaticien.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/images/build/mobile-build-necromancer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/membre.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/build/yellow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/CompetenceEffectTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/CompetenceEffectTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/equipement.css" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/equipement.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/implemente1.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/implemente1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/modification_competence_original.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/modification_competence_original.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/CompetenceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/CompetenceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/PersonnageTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/version_mobile/REST/Poo/PersonnageTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/build/yellow (1).png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +176,7 @@
         <item name="jdbc:mysql://localhost:3306/modifications(zone tampon)" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="modifications(zone tampon): schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="competence: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="arbres: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -96,7 +223,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -138,7 +265,8 @@
       <workItem from="1570811105503" duration="195000" />
       <workItem from="1570811479160" duration="796000" />
       <workItem from="1570882855504" duration="13555000" />
-      <workItem from="1570901584882" duration="2063000" />
+      <workItem from="1570901584882" duration="2092000" />
+      <workItem from="1570906024573" duration="12230000" />
     </task>
     <task id="LOCAL-00001" summary="Starting with the new implementation of competence's effects.">
       <created>1570896897480</created>
@@ -147,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570896897480</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Cleaning a bit, and separatingin functions.">
+      <created>1570903656996</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570903656997</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +304,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Starting with the new implementation of competence's effects." />
     <MESSAGE value="Cleaning a bit, and separatingin functions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaning a bit, and separatingin functions." />
+    <MESSAGE value="Ancient TreeSkills now can use OOP to be displayed. Classes/version_mobile/REST/Poo/testMagmaticien.php for example." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ancient TreeSkills now can use OOP to be displayed. Classes/version_mobile/REST/Poo/testMagmaticien.php for example." />
   </component>
 </project>
