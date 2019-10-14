@@ -31,14 +31,14 @@ class CompetenceEffectManager
     return new CompetenceEffectTest($donnees, $Personnage);
   }
   
-  public function getEffectListForCompetence($idCompetence, PersonnageTest $Personnage)
+  public function getEffectListForCompetence(int $idCompetence, PersonnageTest $Personnage)
   {
     $listCompetenceEffects = [];
     $competences = $this->_db->query('SELECT ce.*, c.Niveau 
                                         FROM competenceEffect ce, competence c
                                         WHERE ce.idCompetence = '.$idCompetence.'
                                         AND ce.idCompetence = c.Id_Competence
-                                        ORDER BY effectOrder');									// Je récupère toutes les effets d'une competence, triées niveau requis.
+                                        ORDER BY effectOrder');									// Je récupère toutes les effets d'une competence, triées par ordre d'effet.
 
 
     while ($donnees = $competences->fetch(PDO::FETCH_ASSOC))

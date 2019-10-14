@@ -59,7 +59,7 @@
 				$Coiffe=$bdd->query('SELECT '.$actuel.'
 									FROM equiper AS e, personnage AS p
 									WHERE e.Id_Personnage = p.Id_Personnage
-									AND p.Libellé = \'' . $personnage . '\'
+									AND p.Libellé = \'' . $personnage->_Libellé . '\'
 								');
 				
 				$ok=$Coiffe->fetch();
@@ -70,7 +70,7 @@
 					$objet=$bdd->query('SELECT o.*
 											FROM equiper AS e, personnage AS p, equipement AS o 
 											WHERE e.Id_Personnage = p.Id_Personnage
-											AND p.Libellé = \'' . $personnage . '\'
+											AND p.Libellé = \'' . $personnage->_Libellé . '\'
 											AND o.Id_Objet='.$ok[''.$actuel.''].'
 											');
 

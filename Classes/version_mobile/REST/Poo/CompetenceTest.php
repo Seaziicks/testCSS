@@ -1026,7 +1026,7 @@ class CompetenceTest
     {
         $managerCompetenceEffects = new CompetenceEffectManager($this->_db);
 
-        $this->_Effects = $managerCompetenceEffects->getEffectListForCompetence(175, $this->_Personnage);
+        $this->_Effects = $managerCompetenceEffects->getEffectListForCompetence(intval($this->_Id_Competence), $this->_Personnage);
     }
 
     public function getNewDescriptionComplete(){

@@ -14,7 +14,7 @@ include("BDD.php");
 if(isset($_SESSION['pseudo'])){
 		// Recherche du rang de l'utilisateur pour savoir si la demande en cours doit être accomplie.
 
-		$recherche = $bdd->query('SELECT * FROM membres WHERE pseudo="'.$_SESSION['pseudo'].'"') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
+		$recherche = $bdd->query('SELECT * FROM membres WHERE pseudo=\''.$_SESSION['pseudo'].'\'') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
 
 		$data = $recherche->fetch(); //On les mets sous forme string
 
@@ -177,7 +177,14 @@ input[type="number"]{
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="modification_competence.js"></script>
-		<script> var arr = {"niveau" : <?php echo intval($competence['Niveau']);?>,"force" : <?php echo intval($bonusforce+$force);?>, "agilite" : <?php echo ($bonusagilité+$agilité); ?>, "intelligence": <?php echo ($bonusintelligence+$intelligence); ?>,"pa" : <?php echo intval($paactuel); ?>,"pm" :  <?php echo intval($pmactuel); ?>,"vitalite" : <?php echo intval($bonusvitalité+$vitalité); ?>,"ressource" : <?php echo intval($ressource+$bonusressource); ?>};</script>
+		<script> var arr = {"niveau" : <?= intval($competence['Niveau']);?>,
+                "force" : <?= intval($bonusforce+$force);?>,
+                "agilite" : <?= ($bonusagilité+$agilité); ?>,
+                "intelligence": <?= ($bonusintelligence+$intelligence); ?>,
+                "pa" : <?= intval($paactuel); ?>,
+                "pm" :  <?= intval($pmactuel); ?>,
+                "vitalite" : <?= intval($bonusvitalité+$vitalité); ?>,
+                "ressource" : <?= intval($ressource+$bonusressource); ?>};</script>
 </head>
 
 <body>
@@ -224,8 +231,8 @@ input[type="number"]{
 
 	<div class="original">
 	<div>
-		Original :	<br><br><br><span class="competence"><?php echo $competence['Libellé'];?></span><br><br><?php include('modification_competence_original.php');include('effets.php'); ?>
-		<?php if (!empty($competence['Exemple'])){ ?><br><br></br><div class="exemple"><i><?php echo $competence['Exemple']; ?> </i></div><?php }?>
+		Original :	<br><br><br><span class="competence"><?= $competence['Libellé'];?></span><br><br><?php include('modification_competence_original.php');include('effets.php'); ?>
+		<?php if (!empty($competence['Exemple'])){ ?><br><br></br><div class="exemple"><i><?= $competence['Exemple']; ?> </i></div><?php }?>
 	</div>
 	</div>
 
@@ -234,7 +241,7 @@ input[type="number"]{
 		Modification
 		<br><br>
 		<form action="modification_competence.php" method="post">
-			Numéro de compétence : <input type="number" name="Id_Competence" value="<?php echo $competence['Id_Competence'];?>"style="width:40px" onload="this.select()" autofocus>
+			Numéro de compétence : <input type="number" name="Id_Competence" value="<?= $competence['Id_Competence'];?>"style="width:40px" onload="this.select()" autofocus>
 			<input type="submit" name="inscription" value="Compétence">
 		</form>
 		
@@ -264,10 +271,10 @@ input[type="number"]{
 				<div id="effets" class="normal transition">
 					<br><?php include('modification_competence_effets.php');?>
 				</div>
-					<TEXTAREA name="newFin" id="newFin" rows=3 cols=36 onblur="modification_description('Fin', this)"><?php echo $competence['Fin'];?></TEXTAREA>
+					<TEXTAREA name="newFin" id="newFin" rows=3 cols=36 onblur="modification_description('Fin', this)"><?= $competence['Fin'];?></TEXTAREA>
 				<br>
 				<input id="Modification_demandee" name="Modification_demandee" type="hidden" value="ok">
-				<input name="Id_Competence" value="<?php echo $competence['Id_Competence'];?>" type="hidden">
+				<input name="Id_Competence" value="<?= $competence['Id_Competence'];?>" type="hidden">
 				<input type="submit" name="Modification_competence" value="Modifier">
 			</form>
 		
@@ -279,8 +286,8 @@ input[type="number"]{
 
 	<div class="résultat">
 	<div>
-		Modifié :	<br><br><br><span class="competence" id="Libelle"><?php echo $competence['Libellé'];?></span><br><br><?php include('modification_competence_apercu.php'); include('modification_competence_effets_appercu.php'); ?><br>
-		<span id="Fin"><?php echo $competence['Fin'];?></span>
+		Modifié :	<br><br><br><span class="competence" id="Libelle"><?= $competence['Libellé'];?></span><br><br><?php include('modification_competence_apercu.php'); include('modification_competence_effets_appercu.php'); ?><br>
+		<span id="Fin"><?= $competence['Fin'];?></span>
 	</div>
 	</div>
  </div>

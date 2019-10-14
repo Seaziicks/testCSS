@@ -59,6 +59,10 @@ $arbre = new Arbre($personnage, $db);
 
 </main>
 
+<?php
+$pointsCompétenceUtilisés=0;
+$personnage = $managerPersonnage->get(6);
+?>
 <div class="footer"><div class="resistant"><?php include("barre_membre.php");?></div> <?php include('personnage.php');?> </div>
 
 

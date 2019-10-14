@@ -18,7 +18,8 @@ class Arbre
     public function getSpecialites() {
         $competences = $this->_db->query('SELECT DISTINCT Spécialité
 								FROM arbres
-								WHERE ID_Personnage = '.$this->_personnage->_Id_Personnage.'');									// Je récupère toutes les compétences de voleur, triées par Spécialité, puis Rang, puis Ordre.
+								WHERE ID_Personnage = '.$this->_personnage->_Id_Personnage.'
+								ORDER BY Spécialité');									// Je récupère toutes les compétences de voleur, triées par Spécialité, puis Rang, puis Ordre.
         $this->_specialitesLibelles = $competences->fetchAll(PDO::FETCH_NUM);
 
         foreach ($this->_specialitesLibelles as $libelle) {
