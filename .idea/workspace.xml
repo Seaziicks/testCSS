@@ -164,7 +164,7 @@
       <workItem from="1570958671587" duration="3230000" />
       <workItem from="1570987862898" duration="1737000" />
       <workItem from="1570992236521" duration="2208000" />
-      <workItem from="1571077928005" duration="4361000" />
+      <workItem from="1571077928005" duration="4429000" />
     </task>
     <task id="LOCAL-00001" summary="Starting with the new implementation of competence's effects.">
       <created>1570896897480</created>
@@ -187,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570926507574</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Building the Effect Creator template.">
+      <created>1571085946188</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571085946188</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +217,7 @@
     <MESSAGE value="Starting with the new implementation of competence's effects." />
     <MESSAGE value="Cleaning a bit, and separatingin functions." />
     <MESSAGE value="Ancient TreeSkills now can use OOP to be displayed. Classes/version_mobile/REST/Poo/testMagmaticien.php for example." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ancient TreeSkills now can use OOP to be displayed. Classes/version_mobile/REST/Poo/testMagmaticien.php for example." />
+    <MESSAGE value="Building the Effect Creator template." />
+    <option name="LAST_COMMIT_MESSAGE" value="Building the Effect Creator template." />
   </component>
 </project>
