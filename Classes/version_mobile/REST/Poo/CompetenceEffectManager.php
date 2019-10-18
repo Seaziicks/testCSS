@@ -22,7 +22,7 @@ class CompetenceEffectManager
   {
     $id = (int) $id;
 	$q = $this->_db->query('SELECT ce.*, c.Niveau 
-                            FROM competenceEffect ce, competence c
+                            FROM competenceeffect ce, competence c
                             WHERE ce.idCompetenceEffect = '.$id.'
                             AND ce.idCompetence = c.Id_Competence');
     // $q = $this->_db->query('SELECT id, nom, forcePerso, degats, niveau, experience FROM personnages WHERE id = '.$id);
@@ -35,7 +35,7 @@ class CompetenceEffectManager
   {
     $listCompetenceEffects = [];
     $competences = $this->_db->query('SELECT ce.*, c.Niveau 
-                                        FROM competenceEffect ce, competence c
+                                        FROM competenceeffect ce, competence c
                                         WHERE ce.idCompetence = '.$idCompetence.'
                                         AND ce.idCompetence = c.Id_Competence
                                         ORDER BY effectOrder');									// Je récupère toutes les effets d'une competence, triées par ordre d'effet.
