@@ -228,7 +228,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(24, "Shield", 3); ?>
                                 </select><br/>
 
-                modeApplication => <select type="number" name="niveauRequis" style="text-align : center; width : 270px;" id="niveauRequis" rows=1 cols=15 >
+                modeApplication => <select type="number" name="modeApplication" style="text-align : center; width : 270px;" id="modeApplication" rows=1 cols=15 >
                                     <option disabled="disabled" selected="selected"> Choisissez le type d'application de l'effet </option>
                                     <?= optionWithSpace(1, "Sois même", 3); ?>
                                     <?= optionWithSpace(2, "Cible unique", 3); ?>
@@ -259,7 +259,8 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                 calcul2B => <input type="number" name="calcul2B" id="calcul2B" style="width:50px"><br/>
                 amplitude => <input type="number" name="amplitude" id="amplitude" rows=3 cols=36 > </input>
                 nombreAmplitude => <input type="number" name="nombreAmplitude" id="nombreAmplitude" style="width:50px"><br/>
-                statistique => <input name="statistique" id="statistique" style="width:50px">
+                statistique1 => <input name="statistique1" id="statistique1" style="width:50px">
+                statistique2 => <input name="statistique2" id="statistique2" style="width:50px">
                 impact => <input name="impact" id="impact" rows=3 cols=36 > </input><br/>
                 pourcentage	 => <input name="pourcentage" id="pourcentage" rows=3 cols=36 > </input><br/>
 
