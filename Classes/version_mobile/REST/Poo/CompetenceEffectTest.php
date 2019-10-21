@@ -16,7 +16,8 @@ class CompetenceEffectTest
 			$_calcul2B,
 			$_amplitude,
 			$_nombreAmplitude,
-			$_statistique,
+			$_statistique1,
+			$_statistique2,
 			$_impact,
 			$_pourcentage;
 
@@ -160,11 +161,19 @@ class CompetenceEffectTest
 		}
 	}
 
-	public function setStatistique($Statistique1)
+	public function setStatistique1($Statistique1)
 	{
 		if (is_string($Statistique1))
 		{
-		  $this->_statistique = $Statistique1;
+		  $this->_statistique1 = $Statistique1;
+		}
+	}
+
+	public function setStatistique2($Statistique2)
+	{
+		if (is_string($Statistique2))
+		{
+			$this->_statistique2 = $Statistique2;
 		}
 	}
 
@@ -181,15 +190,15 @@ class CompetenceEffectTest
 		$this->_pourcentage = (boolean) $Pourcentage1;
 	}
 
-    public function getStatistique(){
-        if($this->getElement('statistique') == 'ressource')
+    public function getStatistique(int $index){
+        if($this->getElement('statistique'.$index) == 'ressource')
             return $this->getElement('Type_Ressource');
         else
-            return $this->getElement('statistique');
+            return $this->getElement('statistique'.$index);
     }
 
-    public function getStatistiqueValue(){
-        switch ($this->getElement('statistique')) {
+    public function getStatistiqueValue(int $index){
+        switch ($this->getElement('statistique'.$index)) {
             case "force":
                 return $this->_Personnage->getTotalForce();
                 break;
@@ -213,7 +222,7 @@ class CompetenceEffectTest
     }
 
     public function getCalcul(){
-		return ($this->getCalculElement('A')+(floor((float)$this->getStatistiqueValue()/$this->getCalculElement('B'))));
+		return ($this->getCalculElement('A')+(floor((float)$this->getStatistiqueValue('1')/$this->getCalculElement('B'))));
     }
 
     public function getElement($elementName){

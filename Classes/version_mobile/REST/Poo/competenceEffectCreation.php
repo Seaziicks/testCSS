@@ -27,14 +27,13 @@ if(isset($_POST['Modification_demandee'])){
         if(!isset($_POST['newamplitude']) || empty($_POST['newamplitude'])){$_POST['newamplitude']='NULL';}
         if(!isset($_POST['newnombreAmplitude']) || empty($_POST['newnombreAmplitude'])){$_POST['newnombreAmplitude']='NULL';}
 
-        for($m=1;$m<=2;$m++){
-            if(!isset($_POST['newstatistique1']) || empty($_POST['newstatistique1']) || $_POST['newstatistique1']=='NULL'){$_POST['newstatistique1']='NULL';}else{$_POST['newstatistique1']='\''.str_replace("'", "\'",$_POST['newstatistique1']).'\'';}
-            if(!isset($_POST['newstatistique2']) || empty($_POST['newstatistique2']) || $_POST['newstatistique2']=='NULL'){$_POST['newstatistique2']='NULL';}else{$_POST['newstatistique2']='\''.str_replace("'", "\'",$_POST['newstatistique2']).'\'';}
-        }
+        if(!isset($_POST['newstatistique1']) || empty($_POST['newstatistique1']) || $_POST['newstatistique1']=='NULL'){$_POST['newstatistique1']='NULL';}else{$_POST['newstatistique1']='"'.$_POST['newstatistique1'].'"';}
+        if(!isset($_POST['newstatistique2']) || empty($_POST['newstatistique2']) || $_POST['newstatistique2']=='NULL'){$_POST['newstatistique2']='NULL';}else{$_POST['newstatistique2']='"'.$_POST['newstatistique2'].'"';}
+
 
         if(!isset($_POST['newimpact']) || empty($_POST['newimpact']) || $_POST['newimpact']=='NULL'){$_POST['newimpact']='NULL';}else{$_POST['newimpact']='\''.str_replace("'", "\'",$_POST['newimpact']).'\'';}
 
-        if(!isset($_POST['newpourcentage'])){$_POST['newpourcentage']='NULL';}else{$_POST['newpourcentage']=1;}
+        if(!isset($_POST['newpourcentage'])){$_POST['newpourcentage']='NULL';}
 
 
         try{

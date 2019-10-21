@@ -1047,25 +1047,25 @@ class CompetenceTest
         <?php
         if($effect->getCalculElement('B')>1){
             if($effect->getElement('pourcentage')){
-                ?>(<span class="<?= $effect->getImpact();?>">+1%</span>/<?= ''.$effect->getCalculElement('B');?><span class="<?= $effect->getElement('statistique');?>"><?= $effect->getElement('statistique'); ?></span>)</span></span>
+                ?>(<span class="<?= $effect->getImpact();?>">+1%</span>/<?= ''.$effect->getCalculElement('B');?><span class="<?= $effect->getElement('statistique1');?>"><?= $effect->getElement('statistique1'); ?></span>)</span></span>
                 <?php
             }else{
-                ?>(<span class="<?= $effect->getImpact();?>">+1</span>/<?= ''.$effect->getCalculElement('B');?><span class="<?= $effect->getElement('statistique');?>"><?= $effect->getElement('statistique'); ?></span>)</span></span>
+                ?>(<span class="<?= $effect->getImpact();?>">+1</span>/<?= ''.$effect->getCalculElement('B');?><span class="<?= $effect->getElement('statistique1');?>"><?= $effect->getElement('statistique1'); ?></span>)</span></span>
                 <?php
             }
         }else{
             if($effect->getElement('pourcentage')){
-                ?>(<span class="<?= $effect->getImpact();?>"><?= $effect->getCalculElement('A').'+'.round(1/$effect->getCalculElement('B')).'%'; ?></span>/<?= $effect->getElement('statistique'); ?>)</span></span>
+                ?>(<span class="<?= $effect->getImpact();?>"><?= $effect->getCalculElement('A').'+'.round(1/$effect->getCalculElement('B')).'%'; ?></span>/<?= $effect->getElement('statistique1'); ?>)</span></span>
                 <?php
             }else{
-                ?>(<span class="<?= $effect->getImpact();?>"><?= $effect->getCalculElement('A').'+'.round(1/$effect->getCalculElement('B')); ?></span>/<?= $effect->getElement('statistique'); ?>)</span></span>
+                ?>(<span class="<?= $effect->getImpact();?>"><?= $effect->getCalculElement('A').'+'.round(1/$effect->getCalculElement('B')); ?></span>/<?= $effect->getElement('statistique1'); ?>)</span></span>
                 <?php
             }
         }
 
         if(!is_null($effect->getElement('amplitude'))){
             ?>
-            <span class="<?= $effect->getElement('statistique');?>">+<span id="NombreAmplitude<?= $effect->_effectOrder;?>" class=""><?= $effect->getElement('nombreAmplitude');?></span>D<span id="Amplitude<?= $effect->_effectOrder;?>" ><?= $effect->getElement('amplitude');?></span></span>
+            <span class="<?= $effect->getElement('statistique1');?>">+<span id="NombreAmplitude<?= $effect->_effectOrder;?>" class=""><?= $effect->getElement('nombreAmplitude');?></span>D<span id="Amplitude<?= $effect->_effectOrder;?>" ><?= $effect->getElement('amplitude');?></span></span>
         <?php }
         echo $this->getElement('Description',($effect->_effectOrder + 1));
     }
