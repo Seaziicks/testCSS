@@ -198,7 +198,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(2, "Dommage Magique", 3); ?>
                                     <?= optionWithSpace(3, "Soin", 3); ?>
                                     <?= optionWithSpace(4, "Bouclier", 3); ?>
-                                    <?= optionWithSpace(5, "Effet", 3); ?>
+                                    <?= optionWithSpace(5, "Effet Général", 3); ?>
                                 </select><br/>
                 effectType =>   <select type="number" name="neweffectType" id="neweffectType" style="width:175px"><br/>
                                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type d'effet </option>
