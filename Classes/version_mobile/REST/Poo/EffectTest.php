@@ -4,9 +4,12 @@ class EffectTest{
 
     public $_IDEffectApplied,
         $_EffectType,
-        $_EffectValue,
+        $_EffectValueMin,
+        $_EffectValueMax,
+        $_ID_Competence,
         $_IDLauncher,
         $_IDRecieiver,
+        $_NumberOfUse,
         $_NumberOfTurn,
         $_NumberOfFight;
 
@@ -35,13 +38,33 @@ class EffectTest{
         }
     }
 
-	public function setEffectValue($EffectValue)
+	public function setEffectValueMin($EffectValueMin)
     {
-        $EffectValue = (float) 0;
+        $EffectValueMin = (float) 0;
 
-        if ($EffectValue > 0)
+        if ($EffectValueMin > 0)
         {
-            $this->_EffectValue = $EffectValue;
+            $this->_EffectValueMin = $EffectValueMin;
+        }
+    }
+
+    public function setEffectValueMax($EffectValueMax)
+    {
+        $EffectValueMax = (float) 0;
+
+        if ($EffectValueMax > 0)
+        {
+            $this->_EffectValueMax = $EffectValueMax;
+        }
+    }
+
+    public function setID_Competence($ID_Competence)
+    {
+        $ID_Competence = (int) 0;
+
+        if ($ID_Competence > 0)
+        {
+            $this->_ID_Competence = $ID_Competence;
         }
     }
 
@@ -62,6 +85,16 @@ class EffectTest{
         if ($IDRecieiver > 0)
         {
             $this->_IDRecieiver = $IDRecieiver;
+        }
+    }
+
+    public function setNumberOfUse($NumberOfUse)
+    {
+        $NumberOfUse = (int) 0;
+
+        if ($NumberOfUse > 0)
+        {
+            $this->_NumberOfUse = $NumberOfUse;
         }
     }
 

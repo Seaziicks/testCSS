@@ -199,6 +199,10 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(3, "Soin", 3); ?>
                                     <?= optionWithSpace(4, "Bouclier", 3); ?>
                                     <?= optionWithSpace(5, "Effet Général", 3); ?>
+                                    <?= optionWithSpace(6, "Effet avant attaque", 3); ?>
+                                    <?= optionWithSpace(7, "Effet après attaque ", 3); ?>
+                                    <?= optionWithSpace(8, "Effet avant competence", 3); ?>
+                                    <?= optionWithSpace(9, "Effet après competence ", 3); ?>
                                 </select><br/>
                 effectType =>   <select type="number" name="neweffectType" id="neweffectType" style="width:175px"><br/>
                                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type d'effet </option>
@@ -222,10 +226,12 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(18, "DegatsPourcentage", 3); ?>
                                     <?= optionWithSpace(19, "SoinFlat", 3); ?>
                                     <?= optionWithSpace(20, "SoinPourcentage", 3); ?>
-                                    <?= optionWithSpace(21, "Portee", 3); ?>
-                                    <?= optionWithSpace(22, "Degat", 3); ?>
-                                    <?= optionWithSpace(23, "Soin", 3); ?>
-                                    <?= optionWithSpace(24, "Shield", 3); ?>
+                                    <?= optionWithSpace(21, "Ignore armure", 3); ?>
+                                    <?= optionWithSpace(22, "Augmente le nombre d'attaque", 3); ?>
+                                    <?= optionWithSpace(23, "Portee", 3); ?>
+                                    <?= optionWithSpace(24, "Degat", 3); ?>
+                                    <?= optionWithSpace(25, "Soin", 3); ?>
+                                    <?= optionWithSpace(26, "Shield", 3); ?>
                                 </select><br/>
 
                 modeApplication => <select type="number" name="newmodeApplication" style="text-align : center; width : 270px;" id="newmodeApplication" rows=1 cols=15 >
@@ -236,10 +242,6 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(4, "Effet de rebond direct", 3); ?>
                                     <option value="" disabled="disabled"> Effet sur plusieurs tour </option>
                                     <?= optionWithSpace(5, "Canalisation", 3); ?>
-                                    <?= optionWithSpace(6, "Ignore armure", 3); ?>
-                                    <?= optionWithSpace(7, "Boost/Malus avant attaque", 3); ?>
-                                    <?= optionWithSpace(8, "Boost/Malus après attaque ", 3); ?>
-                                    <?= optionWithSpace(9, "Augmente le nombre d'attaque", 3); ?>
                                     <?= optionWithSpace(10, "S'accumule après avoir toucher", 3); ?>
                                     <?= optionWithSpace(11, "S'accumule sur une cible particulière", 3); ?>
                                     <?= optionWithSpace(12, "Effet de zone", 3); ?>

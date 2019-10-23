@@ -10,12 +10,12 @@ class CompetenceEffectManager
 
   public function add(CompetenceEffectTest $competence)
   {
-    
+
   }
 
   public function delete(CompetenceEffectTest $competence)
   {
-	  
+
   }
 
   public function get($id, PersonnageTest $Personnage)
@@ -30,7 +30,7 @@ class CompetenceEffectManager
 
     return new CompetenceEffectTest($donnees, $Personnage);
   }
-  
+
   public function getEffectListForCompetence(int $idCompetence, PersonnageTest $Personnage)
   {
     $listCompetenceEffects = [];
@@ -51,7 +51,7 @@ class CompetenceEffectManager
 
   public function update(CompetenceEffectTest $competence)
   {
-	  
+
   }
 
   public function setDb(PDO $db)

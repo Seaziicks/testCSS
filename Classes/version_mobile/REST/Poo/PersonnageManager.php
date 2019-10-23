@@ -41,7 +41,7 @@ class PersonnageManager
 
   public function delete(Personnage $perso)
   {
-    $this->_db->exec('DELETE FROM personnages WHERE id = '.$perso->id());
+    $this->_db->exec('DELETE FROM personnage WHERE Id_Personnage = '.$perso->id());
   }
 
   public function get($id)
@@ -83,8 +83,7 @@ class PersonnageManager
   {
 	  
 	  
-	$q = $this->_db->prepare('UPDATE personnage SET Niveau = :Niveau, PA = :PA, PM = :PM, Force = :Force, Agilité = :Agilité, Intelligence = :Intelligence, Vitalité = :Vitalité, Ressource = :Ressource, Réussite = :Réussite, Charisme = :Charisme, Marchandage = :Marchandage, Intimidation = :Intimidation, Chance = :Chance WHERE id = :id');
-    $q = $this->_db->prepare('UPDATE personnages SET forcePerso = :forcePerso, degats = :degats, niveau = :niveau, experience = :experience WHERE id = :id');
+	$q = $this->_db->prepare('UPDATE personnage SET Niveau = :Niveau, PA = :PA, PM = :PM, Force = :Force, Agilité = :Agilité, Intelligence = :Intelligence, Vitalité = :Vitalité, Ressource = :Ressource, Réussite = :Réussite, Charisme = :Charisme, Marchandage = :Marchandage, Intimidation = :Intimidation, Chance = :Chance WHERE Id_Personnage = :id');
 
     $q->bindValue(':Niveau', $perso->Niveau(), PDO::PARAM_INT);
 	$q->bindValue(':PA', $perso->PA(), PDO::PARAM_INT);

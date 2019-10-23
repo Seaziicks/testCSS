@@ -2,7 +2,7 @@
 // On enregistre notre autoload.
 function chargerClasse($classname)
 {
-    require 'Poo/'.$classname.'.php';
+    require 'Poo/' . $classname . '.php';
 }
 
 spl_autoload_register('chargerClasse');
@@ -42,12 +42,12 @@ switch ($http_method) {
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "INSERT INTO effectapplied (EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
                                                 IDRecieiver,NumberOfUse,NumberOfTurn,NumberOfFight)
-            VALUES (".$effects->EffectType.",".$effects->EffectValueMin.",".$effects->EffectValueMax.",
-                    ".$effects->ID_Competence.",".$effects->IDLauncher.",".$effects->IDRecieiver.",
-                    ".$effects->NumberOfUse.", ".$effects->NumberOfTurn.",".$effects->NumberOfFight.")";
+            VALUES (" . $effects->EffectType . "," . $effects->EffectValueMin . "," . $effects->EffectValueMax . ",
+                    " . $effects->ID_Competence . "," . $effects->IDLauncher . "," . $effects->IDRecieiver . ",
+                    " . $effects->NumberOfUse . ", " . $effects->NumberOfTurn . "," . $effects->NumberOfFight . ")";
             // use exec() because no results are returned
             $bdd->exec($sql);
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
         $bdd = null;
@@ -111,25 +111,25 @@ switch ($http_method) {
                 $bonusCombatManager = new BonusCombatManager($bdd);
                 $bonusCombat = $bonusCombatManager->get($effects->IDRecieiver);
                 echo $effects->ActionType;
-                switch ($effects->ActionType){
+                switch ($effects->ActionType) {
                     case 1:
                     case 2:
                         $DegatsSubits = calculerReductionDegats($perso, $bonusCombat, $effects->EffectValueMin);
                         $BouclierRestant = max(0, $perso->_Bouclier - $DegatsSubits);
                         $PDVRestant = max(0, $perso->_PDV_Actuel - max(0, $DegatsSubits - $perso->_Bouclier));
-                        echo '$DegatsEnvoyés => '.$effects->EffectValueMin.'<br>';
-                        echo '$DegatsSubits => '.$DegatsSubits.'<br>';
-                        echo '$BouclierRestant => '.$BouclierRestant.'<br>';
-                        echo '$PDVRestant => '.$PDVRestant.'<br>';
-                        $sql = "UPDATE personnage SET PDV_Actuel = ".$PDVRestant.", Bouclier = ".$BouclierRestant." WHERE Id_Personnage = ".$effects->IDRecieiver;
+                        echo '$DegatsEnvoyés => ' . $effects->EffectValueMin . '<br>';
+                        echo '$DegatsSubits => ' . $DegatsSubits . '<br>';
+                        echo '$BouclierRestant => ' . $BouclierRestant . '<br>';
+                        echo '$PDVRestant => ' . $PDVRestant . '<br>';
+                        $sql = "UPDATE personnage SET PDV_Actuel = " . $PDVRestant . ", Bouclier = " . $BouclierRestant . " WHERE Id_Personnage = " . $effects->IDRecieiver;
                         break;
                     case 3:
                         $PDVSoignes = min($perso->getTotalVitalité() * 2, $perso->_PDV_Actuel + $effects->EffectValueMin);
-                        $sql = "UPDATE personnage SET PDV_Actuel = ".$PDVSoignes." WHERE Id_Personnage = ".$effects->IDRecieiver;
+                        $sql = "UPDATE personnage SET PDV_Actuel = " . $PDVSoignes . " WHERE Id_Personnage = " . $effects->IDRecieiver;
                         break;
                     case 4:
                         $BouclierTotal = max(0, $perso->_Bouclier - $effects->EffectValueMin);
-                        $sql = "UPDATE personnage SET Bouclier = ".$BouclierTotal." WHERE Id_Personnage = ".$effects->IDRecieiver;
+                        $sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE Id_Personnage = " . $effects->IDRecieiver;
                         break;
                 }
 
@@ -141,8 +141,8 @@ switch ($http_method) {
                 deliver_responseRest(200, "Effect applied", NULL);
 
             }
-        } catch(PDOException $e) {
-            echo $effects->ActionType.''.$sql . "<br>" . $e->getMessage();
+        } catch (PDOException $e) {
+            echo $effects->ActionType . '' . $sql . "<br>" . $e->getMessage();
         }
 
         break;
@@ -159,21 +159,21 @@ switch ($http_method) {
             $bonusCombat = $bonusCombatManager->get($effects->IDRecieiver);
 
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            switch ($effects->ActionType){
+            switch ($effects->ActionType) {
                 case 1:
                 case 2:
                     $DegatsSubits = $this->calculerReductionDegats($perso, $bonusCombat, $effects->EffectValueMin);
                     $BouclierRestant = max(0, $perso->_Bouclier - $DegatsSubits);
                     $PDVRestant = max(0, $perso->_PDV_Actuel - max(0, $DegatsSubits - $perso->_Bouclier));
-                    $sql = "UPDATE personnage SET PDV_Actuel = ".$PDVRestant.", Bouclier = ".$BouclierRestant." WHERE $effects->Id_Personnage = ".$effects->IDRecieiver;
+                    $sql = "UPDATE personnage SET PDV_Actuel = " . $PDVRestant . ", Bouclier = " . $BouclierRestant . " WHERE $effects->Id_Personnage = " . $effects->IDRecieiver;
                     break;
                 case 3:
                     $PDVSoignes = min($perso->getTotalVitalité() * 2, $perso->_PDV_Actuel + $effects->EffectValueMin);
-                    $sql = "UPDATE personnage SET PDV_Actuel = ".$PDVSoignes." WHERE $effects->Id_Personnage = ".$effects->IDRecieiver;
+                    $sql = "UPDATE personnage SET PDV_Actuel = " . $PDVSoignes . " WHERE $effects->Id_Personnage = " . $effects->IDRecieiver;
                     break;
                 case 4:
                     $BouclierTotal = max(0, $perso->_Bouclier - $effects->EffectValueMin);
-                    $sql = "UPDATE personnage SET Bouclier = ".$BouclierTotal." WHERE $effects->Id_Personnage = ".$effects->IDRecieiver;
+                    $sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE $effects->Id_Personnage = " . $effects->IDRecieiver;
                     break;
             }
 
@@ -193,7 +193,7 @@ switch ($http_method) {
             ];
             // echo json_encode($policy);
             // echo "New record created successfully";
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
         $bdd = null;
@@ -202,12 +202,14 @@ switch ($http_method) {
         break;
 }
 
-function calculerReductionDegats(PersonnageTest $perso, BonusCombat $bonusCombat, int $EffectValueMin) : int {
-    return $EffectValueMin - floor(($perso->_Bonus_Armure +$bonusCombat->_ArmureFlat)*$bonusCombat->_ArmurePourcentage);
+function calculerReductionDegats(PersonnageTest $perso, BonusCombat $bonusCombat, int $EffectValueMin): int
+{
+    return $EffectValueMin - floor(($perso->_Bonus_Armure + $bonusCombat->_ArmureFlat) * $bonusCombat->_ArmurePourcentage);
 }
 
 /// Envoi de la réponse au Client
-function deliver_responseRest($status, $status_message, $data){
+function deliver_responseRest($status, $status_message, $data)
+{
     /// Paramétrage de l'entête HTTP, suite
     // header("HTTP/1.1 $status $status_message");
 /// Paramétrage de la réponse retournée
@@ -218,7 +220,6 @@ function deliver_responseRest($status, $status_message, $data){
     $json_response = json_encode($response);
     echo $json_response;
 }
-
 
 
 ?>

@@ -4,11 +4,13 @@
 /*
 Programme lancerCompetence
 
-    Récupérer le Personnage et ses Bonus et BonusCombat
+    Récupérer le Personnage et BonusCombat
+    Récupérer tous les Personnage cibles.
     Récupérer la compétence et ses effets
+    Trier les effets <= Rafinnage 1
     Pour chaque effet
         Si que le niveau requis est bien atteint
-           Rafinnage 1 => Appliquer l'effet
+           Appliquer l'effet <= Raffinage 2
         Sinon
             Rien
         Fin si
@@ -18,23 +20,33 @@ Fin LancerCompetence
 
 
 
-Raffinage 1 => Appliquer l'effet
+Raffinage 1 => Trier les effets
+    EffetsGeneraux = [];
+    EffetsAvantCompetence = [];
+    EffetAprèsCompetence = [];
 
-Si s'applique à (sois-même | cibleUnique |  Alors
-    LancerEffet(cibles, nbTours)
-Sinon Si s'applique à une cible unique Alors
-    lancerEffetUnique(cibles, nbTours)
-Sinon Si s'applique en zone Alors
-    lancerEffetZone(cibles, nbTours)
-Sinon Si s'applique par rebond Alors
-    lancerEffetRebond(cibles, nbTours)
-Sinon Si canalisation Alors
-    LancerCanalisation(nbTours)
-Sinon Si
+    foreach($effects as $effect) {
+        Switch (effectType) {
+            case 5 :
+               array_push(EffetsGeneraux, effet);
+                break;
+            case 8 :
+               array_push(EffetsAvantCompetence, effet);
+                break;
+            case 9 :
+               array_push(EffetAprèsCompetence, effet);
+                break;
+        }
+    }
 
-Sinon
-    RaiseError => Application non reconnue.
-FinSi
+
+
+
+
+Raffinage 2 =>Appliquer l'effet
+
+    foreach($cibles as $cible) {
+    }
 
 
 
