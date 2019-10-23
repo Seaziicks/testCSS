@@ -9,18 +9,16 @@ Programme lancerCompetence
     Récupérer la compétence et ses effets
     Trier les effets <= Rafinnage 1
     Pour chaque effet
-        Si que le niveau requis est bien atteint
+        Si que le niveau requis est bien atteint Alors
            Appliquer l'effet <= Raffinage 2
-        Sinon
-            Rien
         Fin si
     Fin Pour
 
 Fin LancerCompetence
 
 
-
-Raffinage 1 => Trier les effets
+------------------------------------------------------------
+Raffinage 1.1 : Trier les effets
     EffetsGeneraux = [];
     EffetsAvantCompetence = [];
     EffetAprèsCompetence = [];
@@ -39,21 +37,33 @@ Raffinage 1 => Trier les effets
         }
     }
 
-
-
-
-
-Raffinage 2 =>Appliquer l'effet
+------------------------------
+Raffinage 1.2 : Appliquer l'effet
 
     foreach($cibles as $cible) {
+
+        foreach($EffetsAvantCompetence as (EffectTest) $beforeEffect)
+            $beforeEffect->appliquereffet();
+
+        appliquerEffetCompetenceAvecBonusGeneraux();
+
+        foreach($EffetsAprèsCompetence as (EffectTest) $afterEffect)
+            $afterEffect->appliquereffet();
     }
+------------------------------------------------------------
+Raffinage 2.1 : ->appliquereffet();
 
 
+
+------------------------------
+
+Raffinage 2.2 : appliquerEffetCompetenceAvecBonusGeneraux();
 
 
 
 
 ------------------------------------------------------------------------------------------------------------------------
+
 Programme DonnerCoupCorpACorp
  ...
 Fin DonnerCoupCorpACorp
