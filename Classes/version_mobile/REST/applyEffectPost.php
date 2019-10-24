@@ -13,9 +13,9 @@ try {
     // set the PDO error mode to exception
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "INSERT INTO effectapplied (EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
-                                        IDRecieiver,NumberOfUse,NumberOfTurn,NumberOfFight)
+                                        IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
     VALUES (".$effects['EffectType'].",".$effects['EffectValueMin'].",".$effects['EffectValueMax'].",
-            ".$effects['IDCompetence'].",".$effects['IDLauncher'].",".$effects['IDRecieiver'].",
+            ".$effects['IDCompetence'].",".$effects['IDLauncher'].",".$effects['IDReceiver'].",
             ".$effects['NumberOfUse'].", ".$effects['NumberOfTurn'].",".$effects['NumberOfFight'].")";
     // use exec() because no results are returned
     $bdd->exec($sql);
@@ -26,7 +26,7 @@ try {
         'EffectValueMax' => $effects['EffectValueMax'],
         'IDCompetence' => $effects['EffectValueMin'],
         'IDLauncher' => $effects['IDLauncher'],
-        'IDRecieiver' => $effects['IDRecieiver'],
+        'IDReceiver' => $effects['IDReceiver'],
         'NumberOfUse' => $effects['NumberOfUse'],
         'NumberOfTurn' => $effects['NumberOfTurn'],
         'NumberOfFight' => $effects['NumberOfFight'],

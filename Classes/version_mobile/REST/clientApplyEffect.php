@@ -23,8 +23,8 @@
             <input type="number" name="IDLauncher" id="IDLauncher" required>
         </div>
         <div class="form-example">
-            <label for="IDRecieiver">IDRecieiver: </label>
-            <input type="number" name="IDRecieiver" id="IDRecieiver" required>
+            <label for="IDReceiver">IDReceiver: </label>
+            <input type="number" name="IDReceiver" id="IDReceiver" required>
         </div>
         <div class="form-example">
             <label for="NumberOfUse">NumberOfUse: </label>

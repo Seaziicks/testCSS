@@ -8,7 +8,7 @@ class EffectTest{
         $_EffectValueMax,
         $_ID_Competence,
         $_IDLauncher,
-        $_IDRecieiver,
+        $_IDReceiver,
         $_NumberOfUse,
         $_NumberOfTurn,
         $_NumberOfFight;
@@ -78,13 +78,13 @@ class EffectTest{
         }
     }
 
-	public function setIDRecieiver($IDRecieiver)
+	public function setIDReceiver($IDReceiver)
     {
-        $IDRecieiver = (int) 0;
+        $IDReceiver = (int) 0;
 
-        if ($IDRecieiver > 0)
+        if ($IDReceiver > 0)
         {
-            $this->_IDRecieiver = $IDRecieiver;
+            $this->_IDReceiver = $IDReceiver;
         }
     }
 

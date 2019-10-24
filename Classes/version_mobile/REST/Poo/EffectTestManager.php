@@ -19,9 +19,9 @@ class EffectTestManager
             // set the PDO error mode to exception
             $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "INSERT INTO effectapplied (EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
-            IDRecieiver,NumberOfUse,NumberOfTurn,NumberOfFight)
+            IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
             VALUES (" . $effects->_EffectType . "," . $effects->_EffectValueMin . "," . $effects->_EffectValueMax . ",
-            " . $effects->_ID_Competence . "," . $effects->_IDLauncher . "," . $effects->_IDRecieiver . ",
+            " . $effects->_ID_Competence . "," . $effects->_IDLauncher . "," . $effects->_IDReceiver . ",
             " . $effects->_NumberOfUse . ", " . $effects->_NumberOfTurn . "," . $effects->_NumberOfFight . ")";
             // use exec() because no results are returned
             $this->_db->exec($sql);
@@ -35,7 +35,7 @@ class EffectTestManager
             'EffectValueMax' => $effects->EffectValueMax,
             'IDCompetence' => $effects->ID_Competence,
             'IDLauncher' => $effects->IDLauncher,
-            'IDRecieiver' => $effects->IDRecieiver,
+            'IDReceiver' => $effects->IDReceiver,
             'NumberOfUse' => $effects->NumberOfUse,
             'NumberOfTurn' => $effects->NumberOfTurn,
             'NumberOfFight' => $effects->NumberOfFight,
@@ -73,7 +73,7 @@ class EffectTestManager
         $listCompetenceEffects = [];
         $competences = $this->_db->query('SELECT * 
         FROM effectapplied
-        WHERE IDReciever = ' . $idPersonnage . '
+        WHERE IDReceiver = ' . $idPersonnage . '
         ORDER BY effectOrder');
 
         while ($donnees = $competences->fetch(PDO::FETCH_ASSOC)) {

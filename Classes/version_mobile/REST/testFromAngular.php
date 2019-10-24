@@ -33,7 +33,7 @@ switch ($http_method) {
                 'EffectValueMax' => 'ok',
                 'IDCompetence' => 'ok',
                 'IDLauncher' => 'ok',
-                'IDRecieiver' => 'ok',
+                'IDReceiver' => 'ok',
                 'NumberOfUse' => 'ok',
                 'NumberOfTurn' => 'ok',
                 'NumberOfFight' => 'ok',

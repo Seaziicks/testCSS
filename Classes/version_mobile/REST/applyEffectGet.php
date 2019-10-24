@@ -6,7 +6,7 @@ include('../BDD.php');
 $idCompetence = $_GET['id'];
 $effectsApplied = $bdd->query('SELECT *
 					from effectapplied
-					where IDRecieiver='.$_GET['id'].'');
+					where IDReceiver='.$_GET['id'].'');
 								
 	$réponse=array();
 	while($resultat = $effectsApplied->fetch(PDO::FETCH_ASSOC)){

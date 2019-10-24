@@ -226,12 +226,13 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(18, "DegatsPourcentage", 3); ?>
                                     <?= optionWithSpace(19, "SoinFlat", 3); ?>
                                     <?= optionWithSpace(20, "SoinPourcentage", 3); ?>
-                                    <?= optionWithSpace(21, "Ignore armure", 3); ?>
-                                    <?= optionWithSpace(22, "Augmente le nombre d'attaque", 3); ?>
-                                    <?= optionWithSpace(23, "Portee", 3); ?>
-                                    <?= optionWithSpace(24, "Degat", 3); ?>
-                                    <?= optionWithSpace(25, "Soin", 3); ?>
-                                    <?= optionWithSpace(26, "Shield", 3); ?>
+                                    <?= optionWithSpace(21, "IgnoreArmureFlat ", 3); ?>
+                                    <?= optionWithSpace(22, "IgnoreArmurePourcentage ", 3); ?>
+                                    <?= optionWithSpace(23, "Augmente le nombre d'attaque", 3); ?>
+                                    <?= optionWithSpace(24, "Portee", 3); ?>
+                                    <?= optionWithSpace(25, "Degat", 3); ?>
+                                    <?= optionWithSpace(26, "Soin", 3); ?>
+                                    <?= optionWithSpace(27, "Shield", 3); ?>
                                 </select><br/>
 
                 modeApplication => <select type="number" name="newmodeApplication" style="text-align : center; width : 270px;" id="newmodeApplication" rows=1 cols=15 >
@@ -242,12 +243,12 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(4, "Effet de rebond direct", 3); ?>
                                     <option value="" disabled="disabled"> Effet sur plusieurs tour </option>
                                     <?= optionWithSpace(5, "Canalisation", 3); ?>
-                                    <?= optionWithSpace(10, "S'accumule après avoir toucher", 3); ?>
-                                    <?= optionWithSpace(11, "S'accumule sur une cible particulière", 3); ?>
-                                    <?= optionWithSpace(12, "Effet de zone", 3); ?>
-                                    <?= optionWithSpace(13, "Effet de zone après accumulation sur N tours", 3); ?>
-                                    <?= optionWithSpace(14, "Effet de zone après accumulation après avoir toucher sur N tours", 3); ?>
-                                    <?= optionWithSpace(15, "Effet de zone après accumulation d'une cible particulière sur N tours", 3); ?>
+                                    <?= optionWithSpace(6, "S'accumule après avoir toucher", 3); ?>
+                                    <?= optionWithSpace(7, "S'accumule sur une cible particulière", 3); ?>
+                                    <?= optionWithSpace(8, "Effet de zone", 3); ?>
+                                    <?= optionWithSpace(9, "Effet de zone après accumulation sur N tours", 3); ?>
+                                    <?= optionWithSpace(10, "Effet de zone après accumulation après avoir toucher sur N tours", 3); ?>
+                                    <?= optionWithSpace(11, "Effet de zone après accumulation d'une cible particulière sur N tours", 3); ?>
                                 </select>
                 niveauRequis => <input type="number" name="newniveauRequis" id="newniveauRequis" rows=3 cols=36 > </input><br/>
                 typeCalcul => <select onchange="changeTypeCalcul()" type="number" name="newtypeCalcul" style="text-align : center; width : 190px;" id="newtypeCalcul" rows=1 cols=15 >

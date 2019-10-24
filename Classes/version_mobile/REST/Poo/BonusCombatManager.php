@@ -12,11 +12,11 @@ class BonusCombatManager
     public function get($id)
     {
         $id = (int) $id;
-        $q = $this->_db->query('SELECT * FROM personnage WHERE Id_Personnage = '.$id);
+        // $q = $this->_db->query('SELECT * FROM personnage WHERE Id_Personnage = '.$id);
         // $q = $this->_db->query('SELECT id, nom, forcePerso, degats, niveau, experience FROM personnages WHERE id = '.$id);
         $effects = $this->_db->query('SELECT effect_type.Name, effectapplied.*
 					from effectapplied, effect_type
-					where IDRecieiver='.$id.'
+					where IDReceiver='.$id.'
 					and EffectType = ID_Effect');
 
         $reponse['DegatsPhysiqueFlat'] = 0;

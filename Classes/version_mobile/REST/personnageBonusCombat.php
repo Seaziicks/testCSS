@@ -5,7 +5,7 @@ include('../BDD.php');
 
 $effects = $bdd->query('SELECT effect_type.Name, effectapplied.*
 					from effectapplied, effect_type
-					where IDRecieiver='.$_GET['id'].'
+					where IDReceiver='.$_GET['id'].'
 					and EffectType = ID_Effect');
 
 
