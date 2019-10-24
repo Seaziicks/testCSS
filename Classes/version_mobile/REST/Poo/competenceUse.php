@@ -4,8 +4,16 @@
 /*
 Programme lancerCompetence
 
-    Récupérer le Personnage et BonusCombat
-    Récupérer tous les Personnage cibles.
+    $personnageManager = new PersonnageManager($bdd);
+    $personnage = personnageManager->get($_POST['idLauncher']);
+    $bonusCombatManager = new BonusCombatManager($bdd);
+    $bonusCombatLauncher = $bonusCombatManager->get($personnage->_Id_Personnage);
+    $receivers = [];
+    $bonusCombatReceivers = [];
+    foreach($_POST['receivers'] as $recieverID) {
+        array_push($receivers, $personnageManager->get($recieverID));
+        array_push($bonusCombatReceivers, $bonusCombatManager->get($receiverID));
+    }
     Récupérer la compétence et ses effets
     Trier les effets actifs sur le personnage <= Rafinnage 1
 
@@ -48,6 +56,7 @@ Raffinage 1.1 : Trier les effets actifs sur le personnage
 Raffinage 1.2 : Appliquer l'effet
 
     foreach($cibles as PersonnageTest $cible) {
+        $bonusCombatReceiver = $bonusCombatManager->get($cible->Id_Personnage);
         appliquerEffetCompetenceAvecBonusGeneraux($competenceEffect, $cible);
     }
 
@@ -67,7 +76,7 @@ Raffinage 2.2 : appliquerEffetCompetenceAvecBonusGeneraux(EffectTest $effect, Pe
         case 1:
         case 2:
             $DegatsEnvoyes = $effect->dealDamagesWithBonusCombat();
-            $DegatsSubits = $cible->calculerReductionDegats($effects->EffectValueMin);
+            $DegatsSubits = $cible->calculateReducedDamages($effects->EffectValueMin, $bonusCombatLauncher, $bonusCombatReceiver);
             $BouclierRestant = max(0, $perso->_Bouclier - $DegatsSubits);
             $PDVRestant = max(0, $perso->_PDV_Actuel - max(0, $DegatsSubits - $perso->_Bouclier));
             $sql = "UPDATE personnage SET PDV_Actuel = " . $PDVRestant . ", Bouclier = " . $BouclierRestant . " WHERE $effects->Id_Personnage = " . $effects->IDReceiver;
@@ -97,10 +106,5 @@ Fin DonnerCoupCorpACorp
 
 
 ------------------------------------------------------------------------------------------------------------------------
-
-function calculerReductionDegats(PersonnageTest $perso, BonusCombat $bonusCombat, int $EffectValueMin): int
-{
-    return $EffectValueMin - floor(($perso->_Bonus_Armure + $bonusCombat->_ArmureFlat) * $bonusCombat->_ArmurePourcentage);
-}
 
 */
