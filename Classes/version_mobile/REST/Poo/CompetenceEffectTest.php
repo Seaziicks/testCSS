@@ -198,18 +198,18 @@ class CompetenceEffectTest
     }
 
     public function getStatistiqueValue(int $index){
-        switch ($this->getElement('statistique'.$index)) {
+        switch (strtolower($this->getElement('statistique'.$index))) {
             case "force":
                 return $this->_Personnage->getTotalForce();
                 break;
-			case "Intelligence":
             case "intelligence":
                 return $this->_Personnage->getTotalIntelligence();
                 break;
+			case "agilité":
             case "agilite":
                 return $this->_Personnage->getTotalAgilité();
                 break;
-            case "PDV":
+            case "pdv":
                 return $this->_Personnage->getTotalVitalité();
                 break;
             case "niveau":
@@ -250,7 +250,32 @@ class CompetenceEffectTest
 
 
 
+	public function dealDamagesWithBonusCombat(BonusCombat $bonusCombat, int $actionType) {
+		$damagesInitialWithBonusStatistique = $this->_calcul1A + floor(($this->getStatistiqueValue(1) + $this->getBonusCombatStatistique($this->getStatistique(1), $bonusCombat)) / $this->_calcul1B);
+		if($actionType == 1) {
+			 $degatBonusCombatFlat = ($damagesInitialWithBonusStatistique + $bonusCombat->_DegatsFlat + $bonusCombat->_DegatsPhysiqueFlat + $bonusCombat->_SortFlat);
+			 $degatBonusCombatPourcentage = $degatBonusCombatFlat *(1 + $bonusCombat->_DegatsPourcentage)*(1 + $bonusCombat->_DegatsPhysiquePourcentage)*(1 + $bonusCombat->_SortPourcentage);
+		} elseif ($actionType == 2){
+			$degatBonusCombatFlat = ($damagesInitialWithBonusStatistique + $bonusCombat->_DegatsFlat + $bonusCombat->_DegatsMagiqueFlat + $bonusCombat->_SortFlat);
+			$degatBonusCombatPourcentage = $degatBonusCombatFlat *(1 + $bonusCombat->_DegatsPourcentage)*(1 + $bonusCombat->_DegatsMagiquePourcentage)*(1 + $bonusCombat->_SortPourcentage);
+		}
+		return $degatBonusCombatPourcentage;
+	}
 
+	public function getBonusCombatStatistique(string $statistique, BonusCombat $bonusCombat){
+		switch (strtolower($statistique)){
+			case "force":
+				return $bonusCombat->_Force;
+				break;
+			case "agilité":
+			case "agilite":
+				return $bonusCombat->_Agilite;
+				break;
+			case "intelligence":
+				return $bonusCombat->_Intelligence;
+				break;
+		}
+	}
 
 
 
