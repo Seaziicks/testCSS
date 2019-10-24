@@ -19,10 +19,17 @@ class BonusCombat
         $_ArmurePourcentage,
         $_ArmureMagiqueFlat,
         $_ArmureMagiquePourcentage,
+        $_ReductionDegatFlat,
+        $_ReductionDegatPourcentage,
         $_DegatsFlat,
         $_DegatsPourcentage,
         $_SoinFlat,
         $_SoinPourcentage,
+        $_IgnoreArmureFlat,
+        $_IgnoreArmurePourcentage,
+        $_IgnoreArmureMagiqueFlat,
+        $_IgnoreArmureMagiquePourcentage,
+        $_AugmenteNombreAttaque,
         $_Portee,
         $_Degat,
         $_Soin,
@@ -113,6 +120,16 @@ class BonusCombat
         $this->_ArmureMagiquePourcentage = (float)$ArmureMagiquePourcentage;
     }
 
+    public function setReductionDegatFlat($ReductionDegatFlat)
+    {
+        $this->_ReductionDegatFlat = (int)$ReductionDegatFlat;
+    }
+
+    public function setReductionDegatPourcentage($ReductionDegatPourcentage)
+    {
+        $this->_ReductionDegatPourcentage = (float)$ReductionDegatPourcentage;
+    }
+
 	public function setDegatsFlat($DegatsFlat)
     {
         $this->_DegatsFlat = (int)$DegatsFlat;
@@ -131,6 +148,31 @@ class BonusCombat
 	public function setSoinPourcentage($SoinPourcentage)
     {
         $this->_SoinPourcentage = (float)$SoinPourcentage;
+    }
+
+    public function setIgnoreArmureFlat($IgnoreArmureFlat)
+    {
+        $this->_IgnoreArmureFlat = (int)$IgnoreArmureFlat;
+    }
+
+    public function setIgnoreArmurePourcentage($IgnoreArmurePourcentage)
+    {
+        $this->_IgnoreArmurePourcentage = (float)$IgnoreArmurePourcentage;
+    }
+
+    public function setIgnoreArmureMagiqueFlat($IgnoreArmureMagiqueFlat)
+    {
+        $this->_IgnoreArmureMagiqueFlat = (int)$IgnoreArmureMagiqueFlat;
+    }
+
+    public function setIgnoreArmureMagiquePourcentage($IgnoreArmureMagiquePourcentage)
+    {
+        $this->_IgnoreArmureMagiquePourcentage = (float)$IgnoreArmureMagiquePourcentage;
+    }
+
+    public function setAugmenteNombreAttaque($AugmenteNombreAttaque)
+    {
+        $this->_AugmenteNombreAttaque = (float)$AugmenteNombreAttaque;
     }
 
 	public function setPortee($Portee)

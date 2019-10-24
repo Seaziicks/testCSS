@@ -67,7 +67,7 @@ Raffinage 2.2 : appliquerEffetCompetenceAvecBonusGeneraux(EffectTest $effect, Pe
         case 1:
         case 2:
             $DegatsEnvoyes = $effect->dealDamagesWithBonusCombat();
-            $DegatsSubits = $cible->calculerReductionDegats($perso, $bonusCombat, $effects->EffectValueMin);
+            $DegatsSubits = $cible->calculerReductionDegats($effects->EffectValueMin);
             $BouclierRestant = max(0, $perso->_Bouclier - $DegatsSubits);
             $PDVRestant = max(0, $perso->_PDV_Actuel - max(0, $DegatsSubits - $perso->_Bouclier));
             $sql = "UPDATE personnage SET PDV_Actuel = " . $PDVRestant . ", Bouclier = " . $BouclierRestant . " WHERE $effects->Id_Personnage = " . $effects->IDReceiver;

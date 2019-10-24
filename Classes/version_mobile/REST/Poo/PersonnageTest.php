@@ -373,6 +373,24 @@ class PersonnageTest
         return $this->_Bouclier;
     }
 
+    public function calculateReducedDamages(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
+        $flatReduction = $this->_Bonus_Armure + $bonusCombatReceiver->_ArmureFlat + $bonusCombatReceiver->_ReductionDegatFlat;
+        $pourcentageReduction = $flatReduction * (1 + $bonusCombatReceiver->_ArmurePourcentage) * (1 + $bonusCombatReceiver->_ReductionDegatPourcentage);
+        $effectiveReduction = (($flatReduction * $pourcentageReduction) * $bonusCombatLauncher->_IgnoreArmurePourcentage) - $bonusCombatLauncher->_IgnoreArmureFlat;
+        return $value - floor($effectiveReduction);
+
+	}
+
+    public function calculateReducedPhysicalDamages(int $value,BonusCombat $bonusCombat) {
+        return $value - floor(($this->_Bonus_Armure + $bonusCombat->_ArmureFlat) * $bonusCombat->_ArmurePourcentage);
+
+    }
+
+    public function calculateReducedMagicalDamages(int $value,BonusCombat $bonusCombat) {
+        return $value - floor(($this->_Bonus_Armure + $bonusCombat->_ArmureFlat) * $bonusCombat->_ArmurePourcentage);
+
+    }
+
 
 
 
