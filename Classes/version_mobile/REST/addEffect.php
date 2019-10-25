@@ -171,11 +171,11 @@ switch ($http_method) {
                     break;
                 case 3:
                     $PDVSoignes = min($perso->getTotalVitalité() * 2, $perso->_PDV_Actuel + $effects->EffectValueMin);
-                    $sql = "UPDATE personnage SET PDV_Actuel = " . $PDVSoignes . " WHERE $effects->Id_Personnage = " . $effects->IDReceiver;
+                    $sql = "UPDATE personnage SET PDV_Actuel = " . $PDVSoignes . " WHERE Id_Personnage = " . $effects->IDReceiver;
                     break;
                 case 4:
                     $BouclierTotal = max(0, $perso->_Bouclier - $effects->EffectValueMin);
-                    $sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE $effects->Id_Personnage = " . $effects->IDReceiver;
+                    $sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE Id_Personnage = " . $effects->IDReceiver;
                     break;
             }
 
@@ -223,6 +223,31 @@ function deliver_responseRest($status, $status_message, $data)
     $json_response = json_encode($response);
     echo $json_response;
 }
+
+/*
+UPDATE `effect_type` SET `Name` = 'SoinRecuFlat' WHERE `effect_type`.`ID_Effect` = 23;
+UPDATE `effect_type` SET `Name` = 'SoinRecuPourcentage' WHERE `effect_type`.`ID_Effect` = 24;
+UPDATE `effect_type` SET `Name` = 'IgnoreArmureFlat' WHERE `effect_type`.`ID_Effect` = 25;
+UPDATE `effect_type` SET `Name` = 'IgnoreArmurePourcentage' WHERE `effect_type`.`ID_Effect` = 26;
+UPDATE `effect_type` SET `Name` = 'IgnoreArmureMagiqueFlat' WHERE `effect_type`.`ID_Effect` = 27;
+UPDATE `effect_type` SET `Name` = 'IgnoreArmureMagiquePourcentage' WHERE `effect_type`.`ID_Effect` = 28;
+UPDATE `effect_type` SET `Name` = 'Augmente le nombre d\'attaque' WHERE `effect_type`.`ID_Effect` = 29;
+UPDATE `effect_type` SET `Name` = 'RedicrectionDegatFlat' WHERE `effect_type`.`ID_Effect` = 30;
+UPDATE `effect_type` SET `Name` = 'RedicrectionDegatPourcentage' WHERE `effect_type`.`ID_Effect` = 31;
+UPDATE `effect_type` SET `Name` = 'Portee' WHERE `effect_type`.`ID_Effect` = 32;
+UPDATE `effect_type` SET `Name` = 'Degat' WHERE `effect_type`.`ID_Effect` = 33
+UPDATE `effect_type` SET `Name` = 'DegatDiffere' WHERE `effect_type`.`ID_Effect` = 34;
+UPDATE `effect_type` SET `Name` = 'Soin' WHERE `effect_type`.`ID_Effect` = 35;
+UPDATE `effect_type` SET `Name` = 'Shield' WHERE `effect_type`.`ID_Effect` = 36;
+*/
+
+
+
+
+
+
+
+
 
 
 ?>

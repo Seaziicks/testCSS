@@ -248,10 +248,12 @@ class CompetenceEffectTest
         return $impact;
     }
 
-
+    public function getEffectWithBonusCombatStatistique(BonusCombat $bonusCombat) {
+		return$this->_calcul1A + floor(($this->getStatistiqueValue(1) + $this->getBonusCombatStatistique($this->getStatistique(1), $bonusCombat)) / $this->_calcul1B);
+	}
 
 	public function dealDamagesWithBonusCombat(BonusCombat $bonusCombat, int $actionType) {
-		$damagesInitialWithBonusStatistique = $this->_calcul1A + floor(($this->getStatistiqueValue(1) + $this->getBonusCombatStatistique($this->getStatistique(1), $bonusCombat)) / $this->_calcul1B);
+		$damagesInitialWithBonusStatistique = $this->getEffectWithBonusCombatStatistique($bonusCombat);
 		if($actionType == 1) {
 			 $degatBonusCombatFlat = ($damagesInitialWithBonusStatistique + $bonusCombat->_DegatsFlat + $bonusCombat->_DegatsPhysiqueFlat + $bonusCombat->_SortFlat);
 			 $degatBonusCombatPourcentage = $degatBonusCombatFlat *(1 + $bonusCombat->_DegatsPourcentage)*(1 + $bonusCombat->_DegatsPhysiquePourcentage)*(1 + $bonusCombat->_SortPourcentage);
@@ -260,6 +262,13 @@ class CompetenceEffectTest
 			$degatBonusCombatPourcentage = $degatBonusCombatFlat *(1 + $bonusCombat->_DegatsPourcentage)*(1 + $bonusCombat->_DegatsMagiquePourcentage)*(1 + $bonusCombat->_SortPourcentage);
 		}
 		return $degatBonusCombatPourcentage;
+	}
+
+	public function dealHealWithBonusCombat(BonusCombat $bonusCombat) {
+		$healInitialWithBonusStatistique = $this->getEffectWithBonusCombatStatistique($bonusCombat);
+		$healBonusCombatFlat = ($healInitialWithBonusStatistique + $bonusCombat->_SoinFlat + $bonusCombat->_SortFlat);
+		$healBonusCombatPourcentage = $healBonusCombatFlat *(1 + $bonusCombat->_SoinPourcentage)*(1 + $bonusCombat->_SortPourcentage);
+		return $healBonusCombatPourcentage;
 	}
 
 	public function getBonusCombatStatistique(string $statistique, BonusCombat $bonusCombat){

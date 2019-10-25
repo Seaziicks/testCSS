@@ -3,6 +3,8 @@
 class BonusCombat
 {
     public
+        $_DegatsFlat,
+        $_DegatsPourcentage,
         $_DegatsPhysiqueFlat,
         $_DegatsPhysiquePourcentage,
         $_DegatsMagiqueFlat,
@@ -19,25 +21,38 @@ class BonusCombat
         $_ArmurePourcentage,
         $_ArmureMagiqueFlat,
         $_ArmureMagiquePourcentage,
-        $_ReductionDegatFlat,
-        $_ReductionDegatPourcentage,
-        $_DegatsFlat,
-        $_DegatsPourcentage,
+        $_ReductionDegatsFlat,
+        $_ReductionDegatsPourcentage,
         $_SoinFlat,
         $_SoinPourcentage,
+        $_SoinRecuFlat,
+        $_SoinRecuPourcentage,
         $_IgnoreArmureFlat,
         $_IgnoreArmurePourcentage,
         $_IgnoreArmureMagiqueFlat,
         $_IgnoreArmureMagiquePourcentage,
         $_AugmenteNombreAttaque,
+        $_RedirectionDegatFlat,
+        $_RedirectionDegatPourcentage,
         $_Portee,
         $_Degat,
+        $_DegatDiffere,
         $_Soin,
         $_Shield;
 
 	public function __construct(array $donnees)
     {
         $this->hydrate($donnees);
+    }
+
+	public function setDegatsFlat($DegatsFlat)
+    {
+        $this->_DegatsFlat = (int)$DegatsFlat;
+    }
+
+	public function setDegatsPourcentage($DegatsPourcentage)
+    {
+        $this->_DegatsPourcentage = (float)$DegatsPourcentage;
     }
 
 	public function setDegatsPhysiqueFlat($DegatsPhysiqueFlat)
@@ -120,24 +135,14 @@ class BonusCombat
         $this->_ArmureMagiquePourcentage = (float)$ArmureMagiquePourcentage;
     }
 
-    public function setReductionDegatFlat($ReductionDegatFlat)
+	public function setReductionDegatsFlat($ReductionDegatsFlat)
     {
-        $this->_ReductionDegatFlat = (int)$ReductionDegatFlat;
+        $this->_ReductionDegatsFlat = (int)$ReductionDegatsFlat;
     }
 
-    public function setReductionDegatPourcentage($ReductionDegatPourcentage)
+	public function setReductionDegatsPourcentage($ReductionDegatsPourcentage)
     {
-        $this->_ReductionDegatPourcentage = (float)$ReductionDegatPourcentage;
-    }
-
-	public function setDegatsFlat($DegatsFlat)
-    {
-        $this->_DegatsFlat = (int)$DegatsFlat;
-    }
-
-	public function setDegatsPourcentage($DegatsPourcentage)
-    {
-        $this->_DegatsPourcentage = (float)$DegatsPourcentage;
+        $this->_ReductionDegatsPourcentage = (float)$ReductionDegatsPourcentage;
     }
 
 	public function setSoinFlat($SoinFlat)
@@ -150,29 +155,49 @@ class BonusCombat
         $this->_SoinPourcentage = (float)$SoinPourcentage;
     }
 
-    public function setIgnoreArmureFlat($IgnoreArmureFlat)
+	public function setSoinRecuFlat($SoinRecuFlat)
+    {
+        $this->_SoinRecuFlat = (int)$SoinRecuFlat;
+    }
+
+	public function setSoinRecuPourcentage($SoinRecuPourcentage)
+    {
+        $this->_SoinRecuPourcentage = (float)$SoinRecuPourcentage;
+    }
+
+	public function setIgnoreArmureFlat($IgnoreArmureFlat)
     {
         $this->_IgnoreArmureFlat = (int)$IgnoreArmureFlat;
     }
 
-    public function setIgnoreArmurePourcentage($IgnoreArmurePourcentage)
+	public function setIgnoreArmurePourcentage($IgnoreArmurePourcentage)
     {
         $this->_IgnoreArmurePourcentage = (float)$IgnoreArmurePourcentage;
     }
 
-    public function setIgnoreArmureMagiqueFlat($IgnoreArmureMagiqueFlat)
+	public function setIgnoreArmureMagiqueFlat($IgnoreArmureMagiqueFlat)
     {
         $this->_IgnoreArmureMagiqueFlat = (int)$IgnoreArmureMagiqueFlat;
     }
 
-    public function setIgnoreArmureMagiquePourcentage($IgnoreArmureMagiquePourcentage)
+	public function setIgnoreArmureMagiquePourcentage($IgnoreArmureMagiquePourcentage)
     {
         $this->_IgnoreArmureMagiquePourcentage = (float)$IgnoreArmureMagiquePourcentage;
     }
 
-    public function setAugmenteNombreAttaque($AugmenteNombreAttaque)
+	public function setAugmenteNombreAttaque($AugmenteNombreAttaque)
     {
-        $this->_AugmenteNombreAttaque = (float)$AugmenteNombreAttaque;
+        $this->_AugmenteNombreAttaque = (int)$AugmenteNombreAttaque;
+    }
+
+	public function setRedirectionDegatFlat($RedirectionDegatFlat)
+    {
+        $this->_RedirectionDegatFlat = (int)$RedirectionDegatFlat;
+    }
+
+	public function setRedirectionDegatPourcentage($RedirectionDegatPourcentage)
+    {
+        $this->_RedirectionDegatPourcentage = (float)$RedirectionDegatPourcentage;
     }
 
 	public function setPortee($Portee)
@@ -183,6 +208,11 @@ class BonusCombat
 	public function setDegat($Degat)
     {
         $this->_Degat = (int)$Degat;
+    }
+
+	public function setDegatDiffere($DegatDiffere)
+    {
+        $this->_DegatDiffere = (int)$DegatDiffere;
     }
 
 	public function setSoin($Soin)

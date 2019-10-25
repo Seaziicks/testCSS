@@ -374,26 +374,36 @@ class PersonnageTest
         return $this->_Bouclier;
     }
 
-    public function calculateReducedDamages(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
-        $flatReduction = $this->_Bonus_Armure + $bonusCombatReceiver->_ArmureFlat + $bonusCombatReceiver->_ReductionDegatFlat;
-        $pourcentageReduction = $flatReduction * (1 + $bonusCombatReceiver->_ArmurePourcentage) * (1 + $bonusCombatReceiver->_ReductionDegatPourcentage);
-        $effectiveReduction = (($flatReduction * $pourcentageReduction) * $bonusCombatLauncher->_IgnoreArmurePourcentage) - $bonusCombatLauncher->_IgnoreArmureFlat;
-        return $value - floor($effectiveReduction);
-
+    public function calculateDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
+        $armorWithFlatBonus = $this->_Bonus_Armure + $bonusCombatReceiver->_ArmureFlat;
+        $armorWithPourcentageAndFlatBonus = $armorWithFlatBonus * (1 + $bonusCombatReceiver->_ArmurePourcentage);
+        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * ( 1 - $bonusCombatLauncher->_IgnoreArmurePourcentage)) - $bonusCombatLauncher->_IgnoreArmureFlat;
+        $damagesWithFlatAndPourcentageReduction = ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
+        return floor($damagesWithFlatAndPourcentageReduction - $armorWithIgnoredArmor);
 	}
 
-    public function calculateReducedPhysicalDamages(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
-        $flatReduction = $this->_Bonus_Armure + $bonusCombatReceiver->_ArmureFlat + $bonusCombatReceiver->_ReductionDegatFlat;
-        $pourcentageReduction = $flatReduction * (1 + $bonusCombatReceiver->_ArmurePourcentage) * (1 + $bonusCombatReceiver->_ReductionDegatPourcentage);
-        $effectiveReduction = (($flatReduction * $pourcentageReduction) * $bonusCombatLauncher->_IgnoreArmurePourcentage) - $bonusCombatLauncher->_IgnoreArmureFlat;
-        return $value - floor($effectiveReduction);
+    public function calculatePhysicalDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
+        $armorWithFlatBonus = $this->_Bonus_Armure + $bonusCombatReceiver->_ArmureFlat;
+        $armorWithPourcentageAndFlatBonus = $armorWithFlatBonus * (1 + $bonusCombatReceiver->_ArmurePourcentage);
+        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * ( 1 - $bonusCombatLauncher->_IgnoreArmurePourcentage)) - $bonusCombatLauncher->_IgnoreArmureFlat;
+        $damagesWithFlatAndPourcentageReduction = ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
+        return floor($damagesWithFlatAndPourcentageReduction - $armorWithIgnoredArmor);
     }
 
-    public function calculateReducedMagicalDamages(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
-        $flatReduction = $this->_Bonus_ArmureMagique + $bonusCombatReceiver->_ArmureMagiqueFlat + $bonusCombatReceiver->_ReductionDegatFlat;
-        $pourcentageReduction = $flatReduction * (1 + $bonusCombatReceiver->_ArmureMagiquePourcentage) * (1 + $bonusCombatReceiver->_ReductionDegatPourcentage);
-        $effectiveReduction = (($flatReduction * $pourcentageReduction) * $bonusCombatLauncher->_IgnoreArmureMagiquePourcentage) - $bonusCombatLauncher->_IgnoreArmureMagiqueFlat;
-        return $value - floor($effectiveReduction);
+    public function calculateMagicalDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
+        $armorWithFlatBonus = $this->_Bonus_ArmureMagique + $bonusCombatReceiver->_ArmureMagiqueFlat;
+        $armorWithPourcentageAndFlatBonus = $armorWithFlatBonus * (1 + $bonusCombatReceiver->_ArmureMagiquePourcentage);
+        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * ( 1 - $bonusCombatLauncher->_IgnoreArmureMagiquePourcentage)) - $bonusCombatLauncher->_IgnoreArmureMagiqueFlat;
+        $damagesWithFlatAndPourcentageReduction = ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
+        return floor($damagesWithFlatAndPourcentageReduction - $armorWithIgnoredArmor);
+    }
+
+    public function calculateReducedDamages(int $value, BonusCombat $bonusCombatReceiver) {
+        return ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
+    }
+
+    public function calculateHealWithBonusCombat(int $value, BonusCombat $bonusCombatReceiver) {
+	    return ($value + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);;
     }
 
 

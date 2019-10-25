@@ -1,11 +1,33 @@
 TODO :
-	- !!! Modifier "Recieiver" par "Reciever" partout ... !!!
+	
 	- Add Id_Personnage to Arbre table, because the Poo part (the future implementation), is using it to get all the data. (More safe, unuse of string => good method)
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
-
+	- Add "NumberOfUse", "NumberOfTurn", and "NumberOfFight" to CompetenceEffect to signifiate how long it should last
+	- Implémenter le renvoie de dégâts (Armure Francklin)
 
 
 
 Probably TODO :
 	- Add a new relational table between Personnage and Competence, in order to (at least) store the lvl of the Competence for the Personnage, 
 	and have the "same" competence for multiple Personnage.
+
+Normaly DID :
+	- !!! Modifier "Recieiver" par "Reciever" partout ... !!!
+	- Finir implémenter VolDeVie
+
+
+Notifier ces implémentation dans un changelog :
+	- Le vol de vie ets fixé à 20%  : Beaucoup plus simple au niveau implémentatiton, vu que je ne l'avais pas prévu à la base.
+						En effet, cela permet de ne pas rajouter une champ optionnel dans la BDD.
+	- Tous les effets sont de la forme ''' (valeurInitiale + boostFlat) * (1 + boostPourcentage) '''
+	- Ignorer l'armure est de la forme ''' (valeurInitiale * (1 - malusPourcentage)) - malusFlat '''
+
+	- Les effets de dommage et heal laissés sur les personnes par des compétences (tels que des poisons et des heal répétitifs) sont atatché au lancement.
+		Cela veut dire qu'il ne dépendent que de l'état initial du lanceur au moment du lancement du sort, et ne se metteront pas à jours si ses statistiques
+		ou son bonusCombat change.
+		=> Dans le RP que nous avions commencé, nous partions du principe que même si un personnage est K.O./meurt, ses boost et malus restent, intacts.
+		=> Donc la magie est détachée du lanceur à partir du moment où elle est lancée.
+		=> Cela permet également de simplifier l'existance des objets renfermant de la magie ou enchantés, et de ne pas passer par l'explication d'un conteneur.
+	- Les effets de dommage laissés sur les personnages passent à travers les amures physiques et magiques.
+	- Il n'y a pas d'utilisation des boost magique et armure magiques, car c'est plus simple à gérer dans le RP. Le code peut être updaté relatiement rapidement
+		pour le prendre en compte, en cas de nécessité.

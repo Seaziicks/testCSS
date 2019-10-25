@@ -7,30 +7,42 @@
 
 
 $array_expression = [
-'DegatsPhysiqueFlat' => 5,
-'DegatsPhysiquePourcentage' => 4,
-'DegatsMagiqueFlat' => 5,
-'DegatsMagiquePourcentage' => 4,
-'Force' => 5,
-'Agilite' => 5,
-'Intelligence' => 5,
-'Vitalite' => 5,
-'PA' => 5,
-'PM' => 5,
-'SortFlat' => 5,
-'SortPourcentage' => 4,
-'ArmureFlat' => 5,
-'ArmurePourcentage' => 4,
-'ArmureMagiqueFlat' => 5,
-'ArmureMagiquePourcentage' => 4,
-'DegatsFlat' => 5,
-'DegatsPourcentage' => 4,
-'SoinFlat' => 5,
-'SoinPourcentage' => 4,
-'Portee' => 5,
-'Degat' => 5,
-'Soin' => 5,
-'Shield' => 5
+    'DegatsFlat' => 5,
+    'DegatsPourcentage' => 4,
+    'DegatsPhysiqueFlat' => 5,
+    'DegatsPhysiquePourcentage' => 4,
+    'DegatsMagiqueFlat' => 5,
+    'DegatsMagiquePourcentage' => 4,
+    'Force' => 5,
+    'Agilite' => 5,
+    'Intelligence' => 5,
+    'Vitalite' => 5,
+    'PA' => 5,
+    'PM' => 5,
+    'SortFlat' => 5,
+    'SortPourcentage' => 4,
+    'ArmureFlat' => 5,
+    'ArmurePourcentage' => 4,
+    'ArmureMagiqueFlat' => 5,
+    'ArmureMagiquePourcentage' => 4,
+    'ReductionDegatsFlat' => 5,
+    'ReductionDegatsPourcentage' => 4,
+    'SoinFlat' => 5,
+    'SoinPourcentage' => 4,
+    'SoinRecuFlat' => 5,
+    'SoinRecuPourcentage' => 4,
+    'IgnoreArmureFlat' => 5,
+    'IgnoreArmurePourcentage' => 4,
+    'IgnoreArmureMagiqueFlat' => 5,
+    'IgnoreArmureMagiquePourcentage' => 4,
+    'AugmenteNombreAttaque' => 5,
+    'RedirectionDegatFlat' => 5,
+    'RedirectionDegatPourcentage' => 4,
+    'Portee' => 5,
+    'Degat' => 5,
+    'DegatDiffere' => 5,
+    'Soin' => 5,
+    'Shield' => 5
 ];
 
 ?>
@@ -58,7 +70,7 @@ foreach ($array_expression as $key => $value){
 	?> 
 	public function set<?=$key?>($<?=$key?>)
 	{
-	$<?=$key?> = (int) 0;
+	$<?=$key?> = (int) $<?=$key?>;
 
 		if ($<?=$key?> > 0)
 		{
@@ -81,7 +93,7 @@ foreach ($array_expression as $key => $value){
 		?> 
 	public function set<?=$key?>($<?=$key?>)
 	{
-	$<?=$key?> = (float) 0;
+	$<?=$key?> = (float) $<?=$key?>;
 
 		if ($<?=$key?> > 0)
 		{
@@ -124,7 +136,11 @@ foreach ($array_expression as $key => $value){
 <?php
 	}
 }
-
+foreach ($array_expression as $key => $value) {
+    ?>
+    $reponse['<?= $key ?>'] = 0;
+    <?php
+}
 ?>
 
 	public function hydrate(array $donnees)
