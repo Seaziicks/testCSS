@@ -291,9 +291,9 @@ class CompetenceEffectTest
 
 	public function dealWithBonusCombat(BonusCombat $bonusCombat, int $actionType) {
 		if($actionType < 5)
-			$this->dealDamagesWithBonusCombat($bonusCombat, $actionType);
+			return $this->dealDamagesWithBonusCombat($bonusCombat, $actionType);
 		elseif($actionType == 5)
-			$this->dealHealWithBonusCombat($bonusCombat);
+			return $this->dealHealWithBonusCombat($bonusCombat);
 	}
 
 	public function getBonusCombatStatistique(string $statistique, BonusCombat $bonusCombat){

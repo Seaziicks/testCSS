@@ -1,9 +1,6 @@
 TODO :
+	- !!! FINIR DE : Implémenter le fait de pouvoir déclencher des effets à la réception de compétence, à la réception d'attaque, et au début/fin de tour. !!!
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
-	
-	- Implémenter le renvoie de dégâts (Armure Francklin)
-	- De manière plus générale, implémenter le fait de pouvoir déclencher des effets à la réception de compétence, à la réception d'attaque, et au début de tour.
-
 
 
 Probably TODO :

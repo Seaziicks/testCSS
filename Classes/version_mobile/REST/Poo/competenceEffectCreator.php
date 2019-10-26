@@ -207,8 +207,30 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(11, "Effet après attaque ", 3); ?>
                                     <?= optionWithSpace(12, "Effet avant competence", 3); ?>
                                     <?= optionWithSpace(13, "Effet après competence ", 3); ?>
-                                    <?= optionWithSpace(14, "EffetDebutTour", 3); ?>
-                                    <?= optionWithSpace(15, "EffetFinTour", 3); ?>
+                                    <?= optionWithSpace(14, "Effet avant dégâts", 3); ?>
+                                    <?= optionWithSpace(15, "Effet après dégâts", 3); ?>
+                                    <?= optionWithSpace(16, "Effet avant dégâts physique", 3); ?>
+                                    <?= optionWithSpace(17, "Effet après dégâts physique", 3); ?>
+                                    <?= optionWithSpace(18, "Effet avant dégâts magique", 3); ?>
+                                    <?= optionWithSpace(19, "Effet après dégâts magique", 3); ?>
+                                    <?= optionWithSpace(20, "Effet avant soin", 3); ?>
+                                    <?= optionWithSpace(21, "Effet après soin ", 3); ?>
+                                    <?= optionWithSpace(22, "Effet avant action reçu", 3); ?>
+                                    <?= optionWithSpace(23, "Effet après action reçu", 3); ?>
+                                    <?= optionWithSpace(24, "Effet avant attaque reçu", 3); ?>
+                                    <?= optionWithSpace(25, "Effet après attaque reçu", 3); ?>
+                                    <?= optionWithSpace(26, "Effet avant competence reçu", 3); ?>
+                                    <?= optionWithSpace(27, "Effet après competence reçu", 3); ?>
+                                    <?= optionWithSpace(28, "Effet avant dégâts reçu", 3); ?>
+                                    <?= optionWithSpace(29, "Effet après dégâts reçu", 3); ?>
+                                    <?= optionWithSpace(30, "Effet avant dégâts physique reçu", 3); ?>
+                                    <?= optionWithSpace(31, "Effet après dégâts physique reçu", 3); ?>
+                                    <?= optionWithSpace(32, "Effet avant dégâts magique reçu", 3); ?>
+                                    <?= optionWithSpace(33, "Effet après dégâts magique reçu", 3); ?>
+                                    <?= optionWithSpace(34, "Effet avant soin reçu", 3); ?>
+                                    <?= optionWithSpace(35, "Effet après soin reçu", 3); ?>
+                                    <?= optionWithSpace(36, "EffetDebutTour", 3); ?>
+                                    <?= optionWithSpace(37, "EffetFinTour", 3); ?>
                                 </select><br/>
                 effectType =>   <select type="number" name="neweffectType" id="neweffectType" style="width:175px"><br/>
                                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type d'effet </option>

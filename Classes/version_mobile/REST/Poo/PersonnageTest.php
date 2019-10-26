@@ -406,6 +406,14 @@ class PersonnageTest
 	    return ($value + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);;
     }
 
+    public function triggerEffectBeforeReceivingAction($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect) {
+        $q = $bdd->query('SELECT * FROM effectapplied WHERE IDReceiver = '.$this->_Id_Personnage.' and (ActionType in (22,24,26,28,30,32,34))');
+    }
+
+    public function triggerEffectAfterReceivingAction($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect) {
+        $q = $bdd->query('SELECT * FROM effectapplied WHERE IDReceiver = '.$this->_Id_Personnage.' and (ActionType in (23,25,27,29,31,33,35))');
+    }
+
 
 
 
