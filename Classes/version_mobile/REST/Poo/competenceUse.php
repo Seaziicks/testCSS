@@ -15,8 +15,8 @@ Programme lancerCompetence
         array_push($bonusCombatReceivers, $bonusCombatManager->get($receiverID));
     }
     $competenceManager = new CompetenceManager($bdd);
-    $competence = competenceManager->get($id, $launcher);
-    $effects = $competence->_Effects;
+    $competence = competenceManager->get($_POST['idCompetence'], $launcher);
+    $competenceEffects = $competence->_Effects;
     *** Trier les effets actifs sur le personnage <= Rafinnage 1 ***
 
     for($indexCible = 0 ; $indexCible < count($receivers) ; indexCible++) {
@@ -54,21 +54,24 @@ Raffinage 1.1 : Trier les effets actifs sur le personnage
     EffetsAvantAction = [];
     EffetAprèsAction = [];
 
+    $effectTestManager = new EffectTestManager($bdd);
+    $effects = getEffectListForReceiver($launcher->_Id_personnage);
+
     foreach($effects as $effect) {
         Switch ($effects->ActionType) {
             case 5 :
                 // Récupéré dans BonusCombat
                 break;
-            case 6 :
+            case 8 :
                array_push(EffetsAvantAction, effet);
                 break;
-            case 7 :
+            case 9 :
                array_push(EffetAprèsAction, effet);
                 break;
-            case 8 :
+            case 12 :
                array_push(EffetsAvantCompetence, effet);
                 break;
-            case 9 :
+            case 13 :
                array_push(EffetAprèsCompetence, effet);
                 break;
         }
@@ -80,7 +83,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
     switch ($competenceEffect->_actionType) {
         case 1: // Damages Physical & Magical
         case 2:
-            $initialDamages = $competenceEffect->dealDamagesWithBonusCombat();
+            $initialDamages = $competenceEffect->dealDamagesWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType);
             $effectiveDamages = $receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver);
             $remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
             $remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
@@ -90,7 +93,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
             break;
         case 3: // LifeSteal Physical & Magical
         case 4:
-            $initialDamages = $competenceEffect->dealDamagesWithBonusCombat();
+            $initialDamages = $competenceEffect->dealDamagesWithBonusCombat($bonusCombatLauncher);
             $effectiveDamages = $receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver);
             $lifeSteal = floor($effectiveDamages * 0.2);
             $remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
@@ -102,7 +105,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
             $bdd->exec($sql3);
             break;
         case 5: // Heal
-            $healBoostLauncher = dealHealWithBonusCombat($initialHeal, $bonusCombatLauncher);
+            $healBoostLauncher = dealHealWithBonusCombat($bonusCombatLauncher);
             $healBoostReceiver = $reveiver->calculateHealWithBonusCombat($healBoostLauncher, $bonusCombatReceiver);
             $lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
             $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
@@ -111,6 +114,25 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
             $BouclierTotal = max(0, $perso->_Bouclier - $competenceEffects->EffectValueMin);
             $sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
             break;
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 13:
+        case 13:
+            // $effects = $competenceEffect;
+
+            $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
+                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
+            VALUES (" . $competenceEffect->_actionType . "," . $competenceEffect->_effectType . "," . $competenceEffect->_EffectValueMin . "," . $competenceEffect->_EffectValueMax . ",
+                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
+                    " . $competenceEffect->_numberOfUse . ", " . $competenceEffect->_numberOfTurn . "," . $competenceEffect->_numberOfFight . ")";
+            // use exec() because no results are returned
+            $bdd->exec($sql);
+             break;
     }
     // use exec() because no results are returned
     $bdd->exec($sql);

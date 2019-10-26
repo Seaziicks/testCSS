@@ -55,40 +55,38 @@ class EffectTestManager
 
     public function getEffectListForLauncher(int $idPersonnage)
     {
-        $listCompetenceEffects = [];
-        $competences = $this->_db->query('SELECT * 
+        $listEffects = [];
+        $effects = $this->_db->query('SELECT * 
         FROM effectapplied
-        WHERE IDLauncher = ' . $idPersonnage . '
-        ORDER BY effectOrder');
+        WHERE IDLauncher = ' . $idPersonnage . '');
 
-        while ($donnees = $competences->fetch(PDO::FETCH_ASSOC)) {
+        while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
             $listEffects[] = new EffectTest($donnees);
         }
 
         return $listEffects;
     }
 
-    public function getEffectListForReciever(int $idPersonnage)
+    public function getEffectListForReceiver(int $idPersonnage)
     {
-        $listCompetenceEffects = [];
-        $competences = $this->_db->query('SELECT * 
+        $listEffects = [];
+        $effects = $this->_db->query('SELECT * 
         FROM effectapplied
-        WHERE IDReceiver = ' . $idPersonnage . '
-        ORDER BY effectOrder');
+        WHERE IDReceiver = ' . $idPersonnage . '');
 
-        while ($donnees = $competences->fetch(PDO::FETCH_ASSOC)) {
+        while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
             $listEffects[] = new EffectTest($donnees);
         }
 
         return $listEffects;
     }
 
-    public function delete(CompetenceEffectTest $competence)
+    public function delete(EffectTest $competence)
     {
 
     }
 
-    public function update(CompetenceEffectTest $competence)
+    public function update(EffectTest $competence)
     {
 
     }

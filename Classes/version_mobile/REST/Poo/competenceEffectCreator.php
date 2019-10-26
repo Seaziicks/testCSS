@@ -207,6 +207,8 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(11, "Effet après attaque ", 3); ?>
                                     <?= optionWithSpace(12, "Effet avant competence", 3); ?>
                                     <?= optionWithSpace(13, "Effet après competence ", 3); ?>
+                                    <?= optionWithSpace(14, "EffetDebutTour", 3); ?>
+                                    <?= optionWithSpace(15, "EffetFinTour", 3); ?>
                                 </select><br/>
                 effectType =>   <select type="number" name="neweffectType" id="neweffectType" style="width:175px"><br/>
                                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type d'effet </option>
@@ -241,6 +243,8 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(29, "AugmenteNombreAttaque", 3); ?>
                                     <?= optionWithSpace(30, "RedirectionDegatFlat", 3); ?>
                                     <?= optionWithSpace(31, "RedirectionDegatPourcentage", 3); ?>
+                                    <?= optionWithSpace(30, "RenvoieDegatFlat", 3); ?>
+                                    <?= optionWithSpace(31, "RenvoieDegatPourcentage", 3); ?>
                                     <?= optionWithSpace(32, "Portee", 3); ?>
                                     <?= optionWithSpace(33, "Degat", 3); ?>
                                     <?= optionWithSpace(34, "DegatDiffere", 3); ?>

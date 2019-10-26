@@ -19,7 +19,10 @@ class CompetenceEffectTest
 			$_statistique1,
 			$_statistique2,
 			$_impact,
-			$_pourcentage;
+			$_pourcentage,
+			$_numberOfUse,
+			$_numberOfTurn,
+			$_numberOfFight;
 
     public $_Personnage;
 
@@ -190,6 +193,21 @@ class CompetenceEffectTest
 		$this->_pourcentage = (boolean) $Pourcentage1;
 	}
 
+	public function setNumberOfUse($numberOfUse)
+	{
+		$this->_numberOfUse = (int)$numberOfUse;
+	}
+
+	public function setNumberOfTurn($numberOfTurn)
+	{
+		$this->_numberOfTurn = (int)$numberOfTurn;
+	}
+
+	public function setNumberOfFight($numberOfFight)
+	{
+		$this->_numberOfFight = (int)$numberOfFight;
+	}
+
     public function getStatistique(int $index){
         if($this->getElement('statistique'.$index) == 'ressource')
             return $this->getElement('Type_Ressource');
@@ -254,10 +272,10 @@ class CompetenceEffectTest
 
 	public function dealDamagesWithBonusCombat(BonusCombat $bonusCombat, int $actionType) {
 		$damagesInitialWithBonusStatistique = $this->getEffectWithBonusCombatStatistique($bonusCombat);
-		if($actionType == 1) {
+		if($actionType == 1 || $actionType == 3) {
 			 $degatBonusCombatFlat = ($damagesInitialWithBonusStatistique + $bonusCombat->_DegatsFlat + $bonusCombat->_DegatsPhysiqueFlat + $bonusCombat->_SortFlat);
 			 $degatBonusCombatPourcentage = $degatBonusCombatFlat *(1 + $bonusCombat->_DegatsPourcentage)*(1 + $bonusCombat->_DegatsPhysiquePourcentage)*(1 + $bonusCombat->_SortPourcentage);
-		} elseif ($actionType == 2){
+		} elseif ($actionType == 2 || $actionType == 4){
 			$degatBonusCombatFlat = ($damagesInitialWithBonusStatistique + $bonusCombat->_DegatsFlat + $bonusCombat->_DegatsMagiqueFlat + $bonusCombat->_SortFlat);
 			$degatBonusCombatPourcentage = $degatBonusCombatFlat *(1 + $bonusCombat->_DegatsPourcentage)*(1 + $bonusCombat->_DegatsMagiquePourcentage)*(1 + $bonusCombat->_SortPourcentage);
 		}
@@ -269,6 +287,13 @@ class CompetenceEffectTest
 		$healBonusCombatFlat = ($healInitialWithBonusStatistique + $bonusCombat->_SoinFlat + $bonusCombat->_SortFlat);
 		$healBonusCombatPourcentage = $healBonusCombatFlat *(1 + $bonusCombat->_SoinPourcentage)*(1 + $bonusCombat->_SortPourcentage);
 		return $healBonusCombatPourcentage;
+	}
+
+	public function dealWithBonusCombat(BonusCombat $bonusCombat, int $actionType) {
+		if($actionType < 5)
+			$this->dealDamagesWithBonusCombat($bonusCombat, $actionType);
+		elseif($actionType == 5)
+			$this->dealHealWithBonusCombat($bonusCombat);
 	}
 
 	public function getBonusCombatStatistique(string $statistique, BonusCombat $bonusCombat){

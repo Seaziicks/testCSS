@@ -1,8 +1,6 @@
 TODO :
-	
-	- Add Id_Personnage to Arbre table, because the Poo part (the future implementation), is using it to get all the data. (More safe, unuse of string => good method)
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
-	- Add "NumberOfUse", "NumberOfTurn", and "NumberOfFight" to CompetenceEffect to signifiate how long it should last
+	
 	- Implémenter le renvoie de dégâts (Armure Francklin)
 	- De manière plus générale, implémenter le fait de pouvoir déclencher des effets à la réception de compétence, à la réception d'attaque, et au début de tour.
 
@@ -12,9 +10,12 @@ Probably TODO :
 	- Add a new relational table between Personnage and Competence, in order to (at least) store the lvl of the Competence for the Personnage, 
 	and have the "same" competence for multiple Personnage.
 
+
 Normaly DID :
 	- !!! Modifier "Recieiver" par "Reciever" partout ... !!!
 	- Finir implémenter VolDeVie
+	- Add Id_Personnage to Arbre table, because the Poo part (the future implementation), is using it to get all the data. (More safe, unuse of string => good method)
+	- Add "NumberOfUse", "NumberOfTurn", and "NumberOfFight" to CompetenceEffect to signifiate how long it should last
 
 
 Notifier ces implémentation dans un changelog :
