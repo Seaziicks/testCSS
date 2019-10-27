@@ -325,6 +325,68 @@ class CompetenceEffectTest
 
 
 
+    public function appliquerEffetCompetenceAvecBonusGeneraux($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver)
+	{
+		switch ($this->_actionType) {
+			case 1: // Damages Physical & Magical
+			case 2:
+				$initialDamages = $this->dealDamagesWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+				$effectiveDamages = $receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver);
+				$remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
+				$remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
+				$sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
+				$bdd->exec($sql);
+				$sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $receiver->_Id_Personnage;
+				$bdd->exec($sql2);
+				break;
+			case 3: // LifeSteal Physical & Magical
+			case 4:
+				$initialDamages = $this->dealDamagesWithBonusCombat($bonusCombatLauncher);
+				$effectiveDamages = $receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver);
+				$lifeSteal = floor($effectiveDamages * 0.2);
+				$remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
+				$remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
+				$sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
+				$sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $receiver->_Id_Personnage;
+				$sql3 = "UPDATE personnage SET PDV_Actuel = (PDV_Actuel + " . $lifeSteal . ") WHERE Id_Personnage = " . $launcher->_Id_Personnage;
+				$bdd->exec($sql);
+				$bdd->exec($sql2);
+				$bdd->exec($sql3);
+				break;
+			case 5: // Heal
+				$healBoostLauncher = $this->dealHealWithBonusCombat($bonusCombatLauncher);
+				$healBoostReceiver = $receiver->calculateHealWithBonusCombat($healBoostLauncher, $bonusCombatReceiver);
+				$lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
+				$sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
+				break;
+			case 6: // Shield
+				$BouclierTotal = max(0, $receiver->_Bouclier - $this->EffectValueMin);
+				$sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
+				break;
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+			case 11:
+			case 12:
+			case 13:
+			case 13:
+			case 13:
+				$sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
+                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
+            VALUES (" . $this->_actionType . "," . $this->_effectType . "," . $this->_EffectValueMin . "," . $this->_EffectValueMax . ",
+                    " . $this->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
+                    " . $this->_numberOfUse . ", " . $this->_numberOfTurn . "," . $this->_numberOfFight . ")";
+				// use exec() because no results are returned
+				$bdd->exec($sql);
+				break;
+		}
+		// use exec() because no results are returned
+
+
+
+	}
+
 
 
 

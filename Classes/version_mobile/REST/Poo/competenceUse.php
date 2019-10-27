@@ -25,50 +25,50 @@ Programme lancerCompetence
         $bonusCombatReceiver = $bonusCombatReceivers[$indexCible];
 
         foreach($EffetsAvantAction as (EffectTest) $beforeActionEffect)
-            *** $beforeEffect->déclenchereffet($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach($EffetsAvantCompetence as (EffectTest) $beforeCompetenceEffect)
-            *** $beforeEffect->déclenchereffet($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach(EffetAvantDegats as (EffectTest) $beforeActionEffect)
-            *** $beforeEffect->déclenchereffet($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach(EffetAvantDegatsPhysiques as (EffectTest) $beforeCompetenceEffect)
-            *** $beforeEffect->déclenchereffet($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach(EffetAvantDegatsMagiques as (EffectTest) $beforeCompetenceEffect)
-            *** $beforeEffect->déclenchereffet($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach(EffetAvantSoin as (EffectTest) $beforeCompetenceEffect)
-        *** $beforeEffect->déclenchereffet($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
+        *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
         $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
 
         foreach($competenceEffects as (CompetenceEffectTest) $competenceEffect)
             if($competence->_Niveau >= $competenceEffect->_NiveauRequis)
-               *** appliquerEffetCompetenceAvecBonusGeneraux($competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver); ***
+               *** $competenceEffect->appliquerEffetCompetenceAvecBonusGeneraux($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver); ***
             }
         }
 
         $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
 
         foreach($EffetsAprèsAction as (EffectTest) $beforeActionEffect)
-            *** $beforeEffect->déclenchereffet($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach($EffetsAprèsCompetence as (EffectTest) $beforeCompetenceEffect)
-            *** $beforeEffect->déclenchereffet($beforeCompetenceEffect), $receiver, $bonusCombatReceiver; ***
+            *** $beforeEffect->useEffect($beforeCompetenceEffect), $receiver, $bonusCombatReceiver; ***
 
         foreach(EffetAprèsDegats as (EffectTest) $beforeActionEffect)
-            *** $beforeEffect->déclenchereffet($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach(EffetAprèsDegatsPhysiques as (EffectTest) $beforeCompetenceEffect)
-            *** $beforeEffect->déclenchereffet($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach(EffetAprèsDegatsMagiques as (EffectTest) $beforeCompetenceEffect)
-            *** $beforeEffect->déclenchereffet($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
         foreach(EffetAprèsSoin as (EffectTest) $beforeCompetenceEffect)
-            *** $beforeEffect->déclenchereffet($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
+            *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
     }
 
 Fin LancerCompetence
@@ -169,12 +169,12 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
             break;
         case 5: // Heal
             $healBoostLauncher = $competenceEffect->dealHealWithBonusCombat($bonusCombatLauncher);
-            $healBoostReceiver = $reveiver->calculateHealWithBonusCombat($healBoostLauncher, $bonusCombatReceiver);
+            $healBoostReceiver = $receiver->calculateHealWithBonusCombat($healBoostLauncher, $bonusCombatReceiver);
             $lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
             $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
             break;
         case 6: // Shield
-            $BouclierTotal = max(0, $perso->_Bouclier - $competenceEffects->EffectValueMin);
+            $BouclierTotal = max(0, $receiver->_Bouclier - $competenceEffects->EffectValueMin);
             $sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
             break;
         case 7:
@@ -202,9 +202,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
 
 
 ------------------------------
-Raffinage 1.3 : ->déclenchereffet(EffectTest $effect, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver);
-
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+Raffinage 1.3 : ->useEffect(EffectTest $effect, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver);
 
     switch(true) {
         case $effect->_EffectType <= 30:
