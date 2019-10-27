@@ -32,7 +32,7 @@ Programme lancerCompetence
 
         foreach($competenceEffects as (CompetenceEffectTest) $competenceEffect)
             if($competence->_Niveau >= $competenceEffect->_NiveauRequis)
-               *** appliquerEffetCompetenceAvecBonusGeneraux($competenceEffect, $receiver, $bonusCombatReceiver); ***
+               *** appliquerEffetCompetenceAvecBonusGeneraux($competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver); ***
             }
         }
 
@@ -67,7 +67,7 @@ Raffinage 1.1 : Trier les effets actifs sur le personnage
     $effects = getEffectListForReceiver($launcher->_Id_personnage);
 
     foreach($effects as $effect) {
-        Switch ($effects->ActionType) {
+        Switch ($effect->ActionType) {
             case 7 :
                 // Récupéré dans BonusCombat
                 break;
@@ -112,7 +112,7 @@ Raffinage 1.1 : Trier les effets actifs sur le personnage
     }
 
 ------------------------------
-Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $competenceEffect,PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver);
+Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $competenceEffect, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver);
 
     $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
 
@@ -159,7 +159,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
         case 13:
         case 13:
         case 13:
-            // $effects = $competenceEffect;
+            // $effect = $competenceEffect;
 
             $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
                                                 IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
@@ -182,7 +182,7 @@ Raffinage 1.3 : ->déclenchereffet(EffectTest $effect);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     switch(true) {
-        case $effect->_EffectType <= 32:
+        case $effect->_EffectType <= 30:
             $sql = "INSERT INTO effectapplied (EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
                                                 IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
             VALUES (" . $effect->_EffectType . "," . $effect->_EffectValueMin . "," . $effect->_EffectValueMax . ",
@@ -190,25 +190,25 @@ Raffinage 1.3 : ->déclenchereffet(EffectTest $effect);
                     " . $effect->_NumberOfUse . ", " . $effect->_NumberOfTurn . "," . $effect->_NumberOfFight . ")";
             // use exec() because no results are returned
             $bdd->exec($sql);
-        case 33: // Damage
+        case $effect->_EffectType == 33: // Damage
             $initialDamages = $effect->_EffectValueMin;
             $effectiveDamages = $receiver->calculateReducedDamages($initialDamages, $bonusCombatReceiver);
-            $remainingShield = max(0, $perso->_Bouclier - $effectiveDamages);
-            $remainingHP = max(0, $perso->_PDV_Actuel - max(0, $effectiveDamages - $perso->_Bouclier));
-            $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE $effects->Id_Personnage = " . $effects->_IDReceiver;
-            $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $effects->_EffectValueMin . ") WHERE idPersonnage = " . $effects->_IDReceiver;
+            $remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
+            $remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
+            $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE $effect->Id_Personnage = " . $effect->_IDReceiver;
+            $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $effect->_EffectValueMin . ") WHERE idPersonnage = " . $effect->_IDReceiver;
             $bdd->exec($sql2);
             break;
-        case 35: // Heal
-            $initialHeal = $effects->_EffectValueMin;
+        case $effect->_EffectType == 35: // Heal
+            $initialHeal = $effect->_EffectValueMin;
             $healBoostReceiver = ($initialHeal + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);
             $lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
-            $idReceiver = $effects->_IDReceiver != null ? $effects->_IDReceiver : $receiver->_Id_Personnage;
-            $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $effects->_IDReceiver;
+            $idReceiver = $effect->_IDReceiver != null ? $effect->_IDReceiver : $receiver->_Id_Personnage;
+            $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $effect->_IDReceiver;
             break;
-        case 36: // Shield
-            $totalShield = max(0, $perso->_Bouclier - $effects->_EffectValueMin);
-            $sql = "UPDATE personnage SET Bouclier = " . $totalShield . " WHERE Id_Personnage = " . $effects->_IDReceiver;
+        case $effect->_EffectType == 36: // Shield
+            $totalShield = max(0, $receiver->_Bouclier - $effect->_EffectValueMin);
+            $sql = "UPDATE personnage SET Bouclier = " . $totalShield . " WHERE Id_Personnage = " . $effect->_IDReceiver;
             break;
     }
 

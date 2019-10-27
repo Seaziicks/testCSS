@@ -3,6 +3,7 @@
 class EffectTest{
 
     public $_IDEffectApplied,
+        $_ActionType,
         $_EffectType,
         $_EffectValueMin,
         $_EffectValueMax,
@@ -20,7 +21,7 @@ class EffectTest{
 
 	public function setIDEffectApplied($IDEffectApplied)
     {
-        $IDEffectApplied = (int) 0;
+        $IDEffectApplied = (int) $IDEffectApplied;
 
         if ($IDEffectApplied > 0)
         {
@@ -28,9 +29,14 @@ class EffectTest{
         }
     }
 
+    public function setActionType($actionType)
+    {
+        $this->_IDEffectApplied = (int) $actionType;
+    }
+
 	public function setEffectType($EffectType)
     {
-        $EffectType = (int) 0;
+        $EffectType = (int) $EffectType;
 
         if ($EffectType > 0)
         {
@@ -40,7 +46,7 @@ class EffectTest{
 
 	public function setEffectValueMin($EffectValueMin)
     {
-        $EffectValueMin = (float) 0;
+        $EffectValueMin = (float) $EffectValueMin;
 
         if ($EffectValueMin > 0)
         {
@@ -50,7 +56,7 @@ class EffectTest{
 
     public function setEffectValueMax($EffectValueMax)
     {
-        $EffectValueMax = (float) 0;
+        $EffectValueMax = (float) $EffectValueMax;
 
         if ($EffectValueMax > 0)
         {
@@ -60,7 +66,7 @@ class EffectTest{
 
     public function setID_Competence($ID_Competence)
     {
-        $ID_Competence = (int) 0;
+        $ID_Competence = (int) $ID_Competence;
 
         if ($ID_Competence > 0)
         {
@@ -70,7 +76,7 @@ class EffectTest{
 
 	public function setIDLauncher($IDLauncher)
     {
-        $IDLauncher = (int) 0;
+        $IDLauncher = (int) $IDLauncher;
 
         if ($IDLauncher > 0)
         {
@@ -80,7 +86,7 @@ class EffectTest{
 
 	public function setIDReceiver($IDReceiver)
     {
-        $IDReceiver = (int) 0;
+        $IDReceiver = (int) $IDReceiver;
 
         if ($IDReceiver > 0)
         {
@@ -90,7 +96,7 @@ class EffectTest{
 
     public function setNumberOfUse($NumberOfUse)
     {
-        $NumberOfUse = (int) 0;
+        $NumberOfUse = (int) $NumberOfUse;
 
         if ($NumberOfUse > 0)
         {
@@ -100,7 +106,7 @@ class EffectTest{
 
 	public function setNumberOfTurn($NumberOfTurn)
     {
-        $NumberOfTurn = (int) 0;
+        $NumberOfTurn = (int) $NumberOfTurn;
 
         if ($NumberOfTurn > 0)
         {
@@ -110,7 +116,7 @@ class EffectTest{
 
 	public function setNumberOfFight($NumberOfFight)
     {
-        $NumberOfFight = (int) 0;
+        $NumberOfFight = (int) $NumberOfFight;
 
         if ($NumberOfFight > 0)
         {
@@ -131,6 +137,45 @@ class EffectTest{
                 // On appelle le setter.
                 $this->$method($value);
             }
+        }
+    }
+
+    public function useEffect($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver)
+    {
+        if($this->_ActionType > 7)
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        switch (true) {
+            case $this->_EffectType <= 30:
+                $sql = "INSERT INTO effectapplied (EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
+                                                    IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
+                VALUES (" . $this->_EffectType . "," . $this->_EffectValueMin . "," . $this->_EffectValueMax . ",
+                        " . $this->_ID_Competence . "," . $this->_IDLauncher . "," . $this->_IDReceiver . ",
+                        " . $this->_NumberOfUse . ", " . $this->_NumberOfTurn . "," . $this->_NumberOfFight . ")";
+                // use exec() because no results are returned
+                $bdd->exec($sql);
+            case $this->_EffectType == 33: // Damage
+                $initialDamages = $this->_EffectValueMin;
+                $effectiveDamages = $receiver->calculateReducedDamages($initialDamages, $bonusCombatReceiver);
+                $remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
+                $remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
+                $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE $this->Id_Personnage = " . $this->_IDReceiver;
+                $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $this->_EffectValueMin . ") WHERE idPersonnage = " . $this->_IDReceiver;
+                $bdd->exec($sql);
+                $bdd->exec($sql2);
+                break;
+            case $this->_EffectType == 35: // Heal
+                $initialHeal = $this->_EffectValueMin;
+                $healBoostReceiver = ($initialHeal + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);
+                $lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
+                $idReceiver = $this->_IDReceiver != null ? $this->_IDReceiver : $receiver->_Id_Personnage;
+                $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $this->$idReceiver;
+                $bdd->exec($sql);
+                break;
+            case $this->_EffectType == 35: // Shield
+                $totalShield = max(0, $receiver->_Bouclier - $this->_EffectValueMin);
+                $sql = "UPDATE personnage SET Bouclier = " . $totalShield . " WHERE Id_Personnage = " . $this->_IDReceiver;
+                $bdd->exec($sql);
+                break;
         }
     }
 
