@@ -8,17 +8,16 @@ function chargerClasse($classname)
     require $classname.'.php';
 }
 
-
-$db = new PDO('mysql:host=localhost;dbname=modifications(zone tampon);charset=utf8', 'root', '');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
-
+include('BDD.php');
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
 
-$managerPersonnage = new PersonnageManager($db);
+
+$managerPersonnage = new PersonnageManager($bdd);
 
 $personnage = $managerPersonnage->get(6);
 
-$arbre = new Arbre($personnage, $db);
+$arbre = new Arbre($personnage, $bdd);
 ?>
 
 <html lang="fr">
