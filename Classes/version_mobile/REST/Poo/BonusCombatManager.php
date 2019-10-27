@@ -18,7 +18,7 @@ class BonusCombatManager
 					from effectapplied, effect_type
 					where IDReceiver='.$id.'
 					and EffectType = ID_Effect
-					and applicationType = 0');
+					and ActionType = 0');
 
         $reponse['DegatsFlat'] = 0;
         $reponse['DegatsPourcentage'] = 0;

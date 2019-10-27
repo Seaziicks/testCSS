@@ -27,13 +27,13 @@ $equipementsPortes = $equipementPortesManager->getListForCharacter($id);
 
 
 
-echo $bonusCombat->_PA.'<br/>';
-echo $bonusCombat->_DegatsPhysiqueFlat.'<br/>';
-echo $bonusCombat->_Intelligence.'<br/>';
-echo $perso->_Bonus_Armure.'<br/>';
-echo $perso->_Bonus_Intelligence.'<br/>';
-echo $perso->_Bonus_Force.'<br/>';
-echo $equipementsPortes->getBonus('Armure');
+echo 'PA : '.$bonusCombat->_PA.'<br/>';
+echo 'DegatsPhysiqueFlat : '.$bonusCombat->_DegatsPhysiqueFlat.'<br/>';
+echo 'Intelligence : '.$bonusCombat->_Intelligence.'<br/>';
+echo 'Bonus Intelligence : '.$perso->_Bonus_Intelligence.'<br/>';
+echo 'Bonus Force : '.$perso->_Bonus_Force.'<br/>';
+echo 'BonusArmure : '.$perso->_Bonus_Armure.'<br/>';
+echo 'BonusArmure : '.$equipementsPortes->getBonus('Armure');
 
 
 
