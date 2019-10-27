@@ -1,7 +1,5 @@
 TODO :
-	- !!! FINIR DE : Implémenter le fait de pouvoir déclencher des effets à la réception de compétence, à la réception d'attaque, et au début/fin de tour. !!!
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
-    - Finir l'implémentation des différents déclancements et des différentes boucles for pour les 30 cas possibles de déclenchement.
 
 Probably TODO :
 	- Add a new relational table between Personnage and Competence, in order to (at least) store the lvl of the Competence for the Personnage, 
@@ -13,6 +11,9 @@ Normaly DID :
 	- Finir implémenter VolDeVie
 	- Add Id_Personnage to Arbre table, because the Poo part (the future implementation), is using it to get all the data. (More safe, unuse of string => good method)
 	- Add "NumberOfUse", "NumberOfTurn", and "NumberOfFight" to CompetenceEffect to signifiate how long it should last
+    - Finir l'implémentation des différents déclanchements et des différentes boucles for pour les 30 cas possibles de déclenchement avant/après.
+    - !!! FINIR DE : Implémenter le fait de pouvoir déclencher des effets à la réception de compétence, à la réception d'attaque, et au début/fin de tour  !!!
+        => turnEffect.php
 
 
 Notifier ces implémentation dans un changelog :

@@ -81,13 +81,13 @@ class EffectTestManager
         return $listEffects;
     }
 
-    public function getBeforeEffectListForReceiver(int $idPersonnage)
+    public function getBeforeCompetenceEffectListForReceiver(int $idPersonnage)
     {
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
                                     WHERE IDReceiver = '.$this->_Id_Personnage.' 
-                                    AND (ActionType in (22,24,26,28,30,32,34))');
+                                    AND (ActionType in (22,26,28,30,32,34))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
             $listEffects[] = new EffectTest($donnees);
@@ -96,13 +96,73 @@ class EffectTestManager
         return $listEffects;
     }
 
-    public function getAfterEffectListForReceiver(int $idPersonnage)
+    public function getAfterCompetenceEffectListForReceiver(int $idPersonnage)
     {
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
                                     WHERE IDReceiver = '.$this->_Id_Personnage.' 
-                                    AND (ActionType in (23,25,27,29,31,33,35))');
+                                    AND (ActionType in (23,27,29,31,33,35))');
+
+        while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
+            $listEffects[] = new EffectTest($donnees);
+        }
+
+        return $listEffects;
+    }
+
+    public function getBeforeAttackEffectListForReceiver(int $idPersonnage)
+    {
+        $listEffects = [];
+        $effects = $this->_db->query('SELECT * 
+                                    FROM effectapplied 
+                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    AND (ActionType in (22,24,28,30,32,34))');
+
+        while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
+            $listEffects[] = new EffectTest($donnees);
+        }
+
+        return $listEffects;
+    }
+
+    public function getAfterAttackEffectListForReceiver(int $idPersonnage)
+    {
+        $listEffects = [];
+        $effects = $this->_db->query('SELECT * 
+                                    FROM effectapplied 
+                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    AND (ActionType in (23,25,29,31,33,35))');
+
+        while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
+            $listEffects[] = new EffectTest($donnees);
+        }
+
+        return $listEffects;
+    }
+
+    public function getTurnStartEffectList(int $idPersonnage)
+    {
+        $listEffects = [];
+        $effects = $this->_db->query('SELECT * 
+                                    FROM effectapplied 
+                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    AND ActionType = 36');
+
+        while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
+            $listEffects[] = new EffectTest($donnees);
+        }
+
+        return $listEffects;
+    }
+
+    public function getTurnEndEffectList(int $idPersonnage)
+    {
+        $listEffects = [];
+        $effects = $this->_db->query('SELECT * 
+                                    FROM effectapplied 
+                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    AND ActionType = 37');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
             $listEffects[] = new EffectTest($donnees);

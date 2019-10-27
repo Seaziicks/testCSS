@@ -171,7 +171,7 @@ class EffectTest{
                 $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $this->$idReceiver;
                 $bdd->exec($sql);
                 break;
-            case $this->_EffectType == 35: // Shield
+            case $this->_EffectType == 36: // Shield
                 $totalShield = max(0, $receiver->_Bouclier - $this->_EffectValueMin);
                 $sql = "UPDATE personnage SET Bouclier = " . $totalShield . " WHERE Id_Personnage = " . $this->_IDReceiver;
                 $bdd->exec($sql);
