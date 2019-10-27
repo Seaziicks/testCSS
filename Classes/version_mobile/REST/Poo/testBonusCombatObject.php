@@ -9,19 +9,19 @@ spl_autoload_register('chargerClasse');
 
 session_start(); // On appelle session_start() APRÈS avoir enregistré l'autoload.
 
+include('BDD.php');
 
-$db = new PDO('mysql:host=localhost;dbname=modifications(zone tampon);charset=utf8', 'root', '');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
 $id = 9;
 
-$personnageManager = new PersonnageManager($db);
+$personnageManager = new PersonnageManager($bdd);
 $perso = $personnageManager->get($id);
 
-$bonusCombatManager = new BonusCombatManager($db);
+$bonusCombatManager = new BonusCombatManager($bdd);
 $bonusCombat = $bonusCombatManager->get($id);
 
-$equipementPortesManager = new EquipementPortesManager($db);
+$equipementPortesManager = new EquipementPortesManager($bdd);
 $equipementsPortes = $equipementPortesManager->getListForCharacter($id);
 
 
