@@ -406,13 +406,36 @@ class PersonnageTest
 	    return ($value + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);;
     }
 
-    public function triggerEffectBeforeReceivingAction($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect) {
-        $q = $bdd->query('SELECT * FROM effectapplied WHERE IDReceiver = '.$this->_Id_Personnage.' and (ActionType in (22,24,26,28,30,32,34))');
-    }
-
-    public function triggerEffectAfterReceivingAction($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect) {
-        $q = $bdd->query('SELECT * FROM effectapplied WHERE IDReceiver = '.$this->_Id_Personnage.' and (ActionType in (23,25,27,29,31,33,35))');
-    }
+    public function triggerEffectReceivingAction($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, boolean $before)
+    {
+        $effectsTestManager = new EffectTestManager($bdd);
+        if ($before) {
+            $effects = $effectsTestManager->getBeforeEffectListForReceiver($receiver->_Id_Personnage);
+        } else {
+            $effects = $effectsTestManager->getAfterEffectListForReceiver($receiver->_Id_Personnage);
+        }
+        foreach ($effects as $effect) {
+            if ($effect->_EffectType == 30) {
+                $initialDamages = $effect->_EffectValueMin;
+                $effectiveDamages = $launcher->calculateReducedDamages($initialDamages, $bonusCombatLauncher);
+                $remainingShield = max(0, $launcher->_Bouclier - $effectiveDamages);
+                $remainingHP = max(0, $launcher->_PDV_Actuel - max(0, $effectiveDamages - $launcher->_Bouclier));
+                $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $launcher->_Id_Personnage;
+                $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
+                $bdd->exec($sql);
+                $bdd->exec($sql2);
+            } elseif ($effect->_EffectType == 31) {
+                $initialDamages = ($competenceEffect->dealDamagesWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType)) * ($effect->_EffectValueMin / 100) ;
+                $effectiveDamages = $launcher->calculateReducedDamages($initialDamages, $bonusCombatLauncher);
+                $remainingShield = max(0, $launcher->_Bouclier - $effectiveDamages);
+                $remainingHP = max(0, $launcher->_PDV_Actuel - max(0, $effectiveDamages - $launcher->_Bouclier));
+                $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $launcher->_Id_Personnage;
+                $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
+                $bdd->exec($sql);
+                $bdd->exec($sql2);
+            }
+        }
+	}
 
 
 

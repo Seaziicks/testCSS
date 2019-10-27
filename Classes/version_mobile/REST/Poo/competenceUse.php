@@ -114,7 +114,7 @@ Raffinage 1.1 : Trier les effets actifs sur le personnage
 ------------------------------
 Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $competenceEffect,PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver);
 
-    $receiver->triggerEffectBeforeReceivingAction($bdd, $launcher, $receiver, $bonusCombatReceiver, $competenceEffect);
+    $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
 
     switch ($competenceEffect->_actionType) {
         case 1: // Damages Physical & Magical
@@ -173,7 +173,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
     // use exec() because no results are returned
     $bdd->exec($sql);
 
-    $receiver->triggerEffectAfterReceivingAction($bdd, $launcher, $receiver, $bonusCombatReceiver, $competenceEffect);
+    $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
 
 
 ------------------------------
