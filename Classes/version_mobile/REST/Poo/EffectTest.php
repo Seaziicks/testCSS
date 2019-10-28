@@ -31,7 +31,7 @@ class EffectTest{
 
     public function setActionType($actionType)
     {
-        $this->_IDEffectApplied = (int) $actionType;
+        $this->_ActionType = (int) $actionType;
     }
 
 	public function setEffectType($EffectType)
