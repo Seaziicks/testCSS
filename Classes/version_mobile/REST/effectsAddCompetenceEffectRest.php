@@ -21,7 +21,7 @@ $http_method = $_SERVER['REQUEST_METHOD'];
 switch ($http_method){
     /// Cas de la méthode GET
     case "GET" :
-        include('personnagesAddCompetenceEffect.php');
+        include('effectsAddCompetenceEffect.php');
         $matchingData=$réponse;
 
         /// Envoi de la réponse au Client
