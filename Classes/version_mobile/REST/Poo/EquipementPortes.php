@@ -181,17 +181,101 @@ class EquipementPortes
         }
     }
 
+    /*
+     * Specific function made to insert all data of getAllBonuses into an existing array.
+     * For the existing array $reponse, the added result looks like :
+     *          - $reponse['BonusForce'] = $value;
+     *          - $reponse['BonusAgilite'] = $value;
+     *          - $reponse['BonusIntelligence'] = $value;
+     *          - $reponse['BonusVitalite'] = $value;
+     *          - $reponse['BonusRessource'] = $value;
+     *          - $reponse['BonusArmure'] = $value;
+     *          - $reponse['BonusReussite'] = $value;
+     */
+    public function insertAllBonusesIntoArray($initialArray) {
+        foreach ($this->getAllBonuses() as $key => $value) {
+            $initialArray[''.$key] = $value;
+        }
+        return $initialArray;
+    }
+
+
+    /*
+     * Return an array of all wanted stat.
+     * The wanted stats must be an array of strings, available in :
+     *          - Force
+     *          - Agilite / Agilité
+     *          - Intelligence
+     *          - Vitalite / Vitalité
+     *          - Ressource
+     *          - Armure
+     *          - Reussite / Réussite
+     * @return Return an array of all wanted stats, as $bonuses['Bonus'.$stat] = $value;
+     */
+    public function getBonuses($wantedStats) {
+        $bonuses = [];
+        foreach($wantedStats as $stat) {
+            $bonuses['Bonus'.$stat] = $this->getBonus($stat);
+        }
+        return $bonuses;
+    }
+
+    /*
+     * Get all bonuses from equipments.
+     * Use the function getBonus to process all bonuses and return an array composed of :
+     *          - BonusForce
+     *          - BonusAgilite
+     *          - BonusIntelligence
+     *          - BonusVitalite
+     *          - BonusRessource
+     *          - BonusArmure
+     *          - BonusReussite
+     */
+    public function getAllBonuses() {
+	    return $this->getBonuses(['Force','Agilite','Intelligence','Vitalite','Ressource','Armure','Reussite']);
+    }
+
+    /*
+     * Permet de rechercher parmis tous les equipements les bonus pour le valeurs suivantes :
+     *          - Agilite / Agilité
+     *          - Force
+     *          - Intelligence
+     *          - Vitalite / Vitalité
+     *          - Armure
+     *          - Mana
+     *          - Ressource
+     *          - Reussite / Réussite
+     */
     public function getBonus($stat)
     {
+        switch ($stat) {
+            case 'agilite':
+            case 'agilité':
+            case'Agilite':
+                $stat = 'Agilité';
+                break;
+            case 'reussite':
+            case 'réussite':
+            case 'Reussite':
+                $stat = 'Réussite';
+                break;
+            case 'vitalite':
+            case 'vitalité':
+            case 'Vitalite':
+                $stat = 'Vitalité';
+
+        }
         $bonus = 0;
         $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
         foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
+            // On récupère le nom de l'attribut correspondant : _Coiffe pour Coiffe, etc.
             $param = '_' . $equipement;
 
-            // On appelle le setter.
+            // On vérifie que ce paramètre existe, et on gère le cas d'une arme à deux mains.
             if (isset($this->$param)) {
                 if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
+                    // On fait en sorte de mette seulement la première lettre de la caracteristique en majuscule.
+                    $stat = ucfirst(strtolower($stat));
                     $bonus += $this->$param->getBonus($stat);
                 }
             }
@@ -215,6 +299,10 @@ class EquipementPortes
             }
         }
         return $bonusForce;
+    }
+
+    public function getBonusAgilite() {
+	    return $this->getBonusAgilité();
     }
 
     public function getBonusAgilité()
@@ -255,6 +343,10 @@ class EquipementPortes
         }
 
         return $bonusIntelligence;
+    }
+
+    public function getBonusVitalite() {
+	    return $this->getBonusVitalité();
     }
 
     public function getBonusVitalité()
@@ -335,6 +427,10 @@ class EquipementPortes
         }
 
         return $bonusRessource;
+    }
+
+    public function getBonusReussite() {
+	    return $this->getBonusRéussite();
     }
 
     public function getBonusRéussite()
