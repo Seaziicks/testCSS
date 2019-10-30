@@ -2,15 +2,14 @@
 
 
 
-$competenceEffectsInfos = $bdd->query('SELECT ce.*, c.Niveau 
+$competenceEffectInfos = $bdd->query('SELECT ce.*, c.Niveau 
                                         FROM competenceeffect ce, competence c
                                         WHERE ce.idCompetenceEffect = '.$_GET['id'].'
                                         AND ce.idCompetence = c.Id_Competence');
 
 $réponse=array();
-while($effect=$competenceEffectsInfos->fetch(PDO::FETCH_ASSOC)){
-
-    array_push($réponse,$effect);
+while($effect=$competenceEffectInfos->fetch(PDO::FETCH_ASSOC)){
+    $réponse = $effect;
 }
 
 function EnJson($arr , $format = 0){
