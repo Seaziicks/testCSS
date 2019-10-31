@@ -265,13 +265,13 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(29, "AugmenteNombreAttaque", 3); ?>
                                     <?= optionWithSpace(30, "RedirectionDegatFlat", 3); ?>
                                     <?= optionWithSpace(31, "RedirectionDegatPourcentage", 3); ?>
-                                    <?= optionWithSpace(30, "RenvoieDegatFlat", 3); ?>
-                                    <?= optionWithSpace(31, "RenvoieDegatPourcentage", 3); ?>
-                                    <?= optionWithSpace(32, "Portee", 3); ?>
-                                    <?= optionWithSpace(33, "Degat", 3); ?>
-                                    <?= optionWithSpace(34, "DegatDiffere", 3); ?>
-                                    <?= optionWithSpace(35, "Soin", 3); ?>
-                                    <?= optionWithSpace(36, "Shield", 3); ?>
+                                    <?= optionWithSpace(32, "RenvoieDegatFlat", 3); ?>
+                                    <?= optionWithSpace(33, "RenvoieDegatPourcentage", 3); ?>
+                                    <?= optionWithSpace(34, "Portee", 3); ?>
+                                    <?= optionWithSpace(35, "Degat", 3); ?>
+                                    <?= optionWithSpace(36, "DegatDiffere", 3); ?>
+                                    <?= optionWithSpace(37, "Soin", 3); ?>
+                                    <?= optionWithSpace(38, "Shield", 3); ?>
                                 </select><br/>
 
                 modeApplication => <select type="number" name="newmodeApplication" style="text-align : center; width : 270px;" id="newmodeApplication" rows=1 cols=15 >
