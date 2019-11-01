@@ -225,20 +225,110 @@ function deliver_responseRest($status, $status_message, $data)
 }
 
 /*
+UPDATE `effect_type` SET `Name` = 'DegatsFlat' WHERE `effect_type`.`ID_Effect` = 1;
+UPDATE `effect_type` SET `Name` = 'DegatsPourcentage' WHERE `effect_type`.`ID_Effect` = 2;
+UPDATE `effect_type` SET `Name` = 'DegatsPhysiqueFlat' WHERE `effect_type`.`ID_Effect` = 3;
+UPDATE `effect_type` SET `Name` = 'DegatsPhysiquePourcentage' WHERE `effect_type`.`ID_Effect` = 4;
+UPDATE `effect_type` SET `Name` = 'DegatsMagiqueFlat' WHERE `effect_type`.`ID_Effect` = 5;
+UPDATE `effect_type` SET `Name` = 'DegatsMagiquePourcentage' WHERE `effect_type`.`ID_Effect` = 6;
+UPDATE `effect_type` SET `Name` = 'Force' WHERE `effect_type`.`ID_Effect` = 7;
+UPDATE `effect_type` SET `Name` = 'Agilite' WHERE `effect_type`.`ID_Effect` = 8;
+UPDATE `effect_type` SET `Name` = 'Intelligence' WHERE `effect_type`.`ID_Effect` = 9;
+UPDATE `effect_type` SET `Name` = 'Vitalite' WHERE `effect_type`.`ID_Effect` = 10;
+UPDATE `effect_type` SET `Name` = 'PA' WHERE `effect_type`.`ID_Effect` = 11;
+UPDATE `effect_type` SET `Name` = 'PM"' WHERE `effect_type`.`ID_Effect` = 12;
+UPDATE `effect_type` SET `Name` = 'SortFlat' WHERE `effect_type`.`ID_Effect` = 13;
+UPDATE `effect_type` SET `Name` = 'SortPourcentage' WHERE `effect_type`.`ID_Effect` = 14;
+UPDATE `effect_type` SET `Name` = 'ArmureFlat' WHERE `effect_type`.`ID_Effect` = 15;
+UPDATE `effect_type` SET `Name` = 'ArmurePourcentage' WHERE `effect_type`.`ID_Effect` = 16;
+UPDATE `effect_type` SET `Name` = 'ArmureMagiqueFlat' WHERE `effect_type`.`ID_Effect` = 17;
+UPDATE `effect_type` SET `Name` = 'ArmureMagiquePourcentage' WHERE `effect_type`.`ID_Effect` = 18;
+UPDATE `effect_type` SET `Name` = 'ReductionDegatsFlat' WHERE `effect_type`.`ID_Effect` = 19;
+UPDATE `effect_type` SET `Name` = 'ReductionDegatsPourcentage' WHERE `effect_type`.`ID_Effect` = 20;
+UPDATE `effect_type` SET `Name` = 'SoinFlat' WHERE `effect_type`.`ID_Effect` = 21;
+UPDATE `effect_type` SET `Name` = 'SoinPourcentage' WHERE `effect_type`.`ID_Effect` = 22;
 UPDATE `effect_type` SET `Name` = 'SoinRecuFlat' WHERE `effect_type`.`ID_Effect` = 23;
 UPDATE `effect_type` SET `Name` = 'SoinRecuPourcentage' WHERE `effect_type`.`ID_Effect` = 24;
 UPDATE `effect_type` SET `Name` = 'IgnoreArmureFlat' WHERE `effect_type`.`ID_Effect` = 25;
 UPDATE `effect_type` SET `Name` = 'IgnoreArmurePourcentage' WHERE `effect_type`.`ID_Effect` = 26;
 UPDATE `effect_type` SET `Name` = 'IgnoreArmureMagiqueFlat' WHERE `effect_type`.`ID_Effect` = 27;
 UPDATE `effect_type` SET `Name` = 'IgnoreArmureMagiquePourcentage' WHERE `effect_type`.`ID_Effect` = 28;
-UPDATE `effect_type` SET `Name` = 'Augmente le nombre d\'attaque' WHERE `effect_type`.`ID_Effect` = 29;
-UPDATE `effect_type` SET `Name` = 'RedicrectionDegatFlat' WHERE `effect_type`.`ID_Effect` = 30;
-UPDATE `effect_type` SET `Name` = 'RedicrectionDegatPourcentage' WHERE `effect_type`.`ID_Effect` = 31;
-UPDATE `effect_type` SET `Name` = 'Portee' WHERE `effect_type`.`ID_Effect` = 32;
-UPDATE `effect_type` SET `Name` = 'Degat' WHERE `effect_type`.`ID_Effect` = 33
-UPDATE `effect_type` SET `Name` = 'DegatDiffere' WHERE `effect_type`.`ID_Effect` = 34;
-UPDATE `effect_type` SET `Name` = 'Soin' WHERE `effect_type`.`ID_Effect` = 35;
-UPDATE `effect_type` SET `Name` = 'Shield' WHERE `effect_type`.`ID_Effect` = 36;
+UPDATE `effect_type` SET `Name` = 'AugmenteNombreAttaque' WHERE `effect_type`.`ID_Effect` = 29;
+UPDATE `effect_type` SET `Name` = 'RedirectionDegatFlat' WHERE `effect_type`.`ID_Effect` = 30;
+UPDATE `effect_type` SET `Name` = 'RedirectionDegatPourcentage' WHERE `effect_type`.`ID_Effect` = 31;
+UPDATE `effect_type` SET `Name` = 'RenvoieDegatFlat' WHERE `effect_type`.`ID_Effect` = 32;
+UPDATE `effect_type` SET `Name` = 'RenvoieDegatPourcentage' WHERE `effect_type`.`ID_Effect` = 33;
+UPDATE `effect_type` SET `Name` = 'Portee' WHERE `effect_type`.`ID_Effect` = 34;
+UPDATE `effect_type` SET `Name` = 'Degat' WHERE `effect_type`.`ID_Effect` = 35;
+UPDATE `effect_type` SET `Name` = 'DegatDiffere' WHERE `effect_type`.`ID_Effect` = 36;
+UPDATE `effect_type` SET `Name` = 'Soin' WHERE `effect_type`.`ID_Effect` = 37;
+UPDATE `effect_type` SET `Name` = 'Shield' WHERE `effect_type`.`ID_Effect` = 38;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UPDATE `action_type` SET `Name` = 'Dommage physique' WHERE `action_type`.`ID_Action_Type` = 1;
+UPDATE `action_type` SET `Name` = 'Dommage Magique' WHERE `action_type`.`ID_Action_Type` = 2;
+UPDATE `action_type` SET `Name` = 'VoleDeViePhysique' WHERE `action_type`.`ID_Action_Type` = 3;
+UPDATE `action_type` SET `Name` = 'VoleDeVieMagique' WHERE `action_type`.`ID_Action_Type` = 4;
+UPDATE `action_type` SET `Name` = 'Soin' WHERE `action_type`.`ID_Action_Type` = 5;
+UPDATE `action_type` SET `Name` = 'Bouclier' WHERE `action_type`.`ID_Action_Type` = 6;
+UPDATE `action_type` SET `Name` = 'Effet' WHERE `action_type`.`ID_Action_Type` = 7;
+UPDATE `action_type` SET `Name` = 'Effet avant action' WHERE `action_type`.`ID_Action_Type` = 8;
+UPDATE `action_type` SET `Name` = 'Effet après action' WHERE `action_type`.`ID_Action_Type` = 9;
+UPDATE `action_type` SET `Name` = 'Effet avant attaque' WHERE `action_type`.`ID_Action_Type` = 10;
+UPDATE `action_type` SET `Name` = 'Effet après attaque' WHERE `action_type`.`ID_Action_Type` = 11;
+UPDATE `action_type` SET `Name` = 'Effet avant competence' WHERE `action_type`.`ID_Action_Type` = 12;
+UPDATE `action_type` SET `Name` = 'Effet après competence' WHERE `action_type`.`ID_Action_Type` = 13;
+UPDATE `action_type` SET `Name` = 'Effet avant dégâts' WHERE `action_type`.`ID_Action_Type` = 14;
+UPDATE `action_type` SET `Name` = 'Effet après dégâts' WHERE `action_type`.`ID_Action_Type` = 15;
+UPDATE `action_type` SET `Name` = 'Effet avant dégâts physique' WHERE `action_type`.`ID_Action_Type` = 16;
+UPDATE `action_type` SET `Name` = 'Effet après dégâts physique' WHERE `action_type`.`ID_Action_Type` = 17;
+UPDATE `action_type` SET `Name` = 'Effet avant dégâts magique' WHERE `action_type`.`ID_Action_Type` = 18;
+UPDATE `action_type` SET `Name` = 'Effet après dégâts magique' WHERE `action_type`.`ID_Action_Type` = 19;
+UPDATE `action_type` SET `Name` = 'Effet avant soin' WHERE `action_type`.`ID_Action_Type` = 20;
+UPDATE `action_type` SET `Name` = 'Effet après soin' WHERE `action_type`.`ID_Action_Type` = 21;
+UPDATE `action_type` SET `Name` = 'Effet avant action reçu' WHERE `action_type`.`ID_Action_Type` = 22;
+UPDATE `action_type` SET `Name` = 'Effet après action reçu' WHERE `action_type`.`ID_Action_Type` = 23;
+UPDATE `action_type` SET `Name` = 'Effet avant attaque reçu' WHERE `action_type`.`ID_Action_Type` = 24;
+UPDATE `action_type` SET `Name` = 'Effet après attaque reçu' WHERE `action_type`.`ID_Action_Type` = 25;
+UPDATE `action_type` SET `Name` = 'Effet avant competence reçu' WHERE `action_type`.`ID_Action_Type` = 26;
+UPDATE `action_type` SET `Name` = 'Effet après competence reçu' WHERE `action_type`.`ID_Action_Type` = 27;
+UPDATE `action_type` SET `Name` = 'Effet avant dégâts reçu' WHERE `action_type`.`ID_Action_Type` = 28;
+UPDATE `action_type` SET `Name` = 'Effet après dégâts reçu' WHERE `action_type`.`ID_Action_Type` = 29;
+UPDATE `action_type` SET `Name` = 'Effet avant dégâts physique reçu' WHERE `action_type`.`ID_Action_Type` = 30;
+UPDATE `action_type` SET `Name` = 'Effet après dégâts physique reçu' WHERE `action_type`.`ID_Action_Type` = 31;
+UPDATE `action_type` SET `Name` = 'Effet avant dégâts magique reçu' WHERE `action_type`.`ID_Action_Type` = 32;
+UPDATE `action_type` SET `Name` = 'Effet après dégâts magique reçu' WHERE `action_type`.`ID_Action_Type` = 33;
+UPDATE `action_type` SET `Name` = 'Effet avant soin reçu' WHERE `action_type`.`ID_Action_Type` = 34;
+UPDATE `action_type` SET `Name` = 'Effet après soin reçu' WHERE `action_type`.`ID_Action_Type` = 35;
+UPDATE `action_type` SET `Name` = 'EffetDebutTour' WHERE `action_type`.`ID_Action_Type` = 36;
+UPDATE `action_type` SET `Name` = 'EffetFinTour' WHERE `action_type`.`ID_Action_Type` = 37;
 */
 
 
