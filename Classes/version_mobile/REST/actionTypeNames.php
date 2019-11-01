@@ -1,7 +1,7 @@
 <?php
 
 include('BDD.php');
-$personnagesInfos = $bdd->query('SELECT *
+$typeInfo = $bdd->query('SELECT *
 					from action_type  ');
 
 $reponse=array();
