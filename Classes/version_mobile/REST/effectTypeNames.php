@@ -4,15 +4,15 @@ include('BDD.php');
 $typeInfo = $bdd->query('SELECT *
 					from effect_type  ');
 
-$réponse=array();
+$reponse=array();
 
 while($type=$typeInfo->fetch()){
     $object['idType']= $type['ID_Effect'];
     $object['name']= $type['Name'];
-    array_push($réponse,$object);
+    array_push($reponse,$object);
 }
 
-deliver_response(200, "Votre message", $réponse);
+deliver_response(200, "Votre message", $reponse);
 
 /// Envoi de la réponse au Client
 function deliver_response($status, $status_message, $data){
