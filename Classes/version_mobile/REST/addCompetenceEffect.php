@@ -42,9 +42,9 @@ switch ($http_method) {
             echo '<br/>';
             foreach($jsonDecodeTestArray as $key => $value) {
                 if(empty($value)){
-                    $jsonDecodeTestArray->$key = null;
+                    $jsonDecodeTestArray[$key] = null;
                 }
-                echo $key.' : '.$jsonDecodeTestArray->$key.'<br/>';
+                echo $key.' : '.$jsonDecodeTestArray[$key].'<br/>';
             }
             echo '<br/>';
             echo '<br/>';
