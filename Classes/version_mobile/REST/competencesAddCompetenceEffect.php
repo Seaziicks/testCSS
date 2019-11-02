@@ -9,18 +9,9 @@ $competencesInfos = $bdd->query('SELECT DISTINCT c.Libellé, c.Id_Competence, c.
 								Colonne6,Colonne7,Colonne8,Colonne9)
 								ORDER BY Spécialité, Rang DESC');
 
-$réponse=array();
+$reponse=array();
 
 while($competence=$competencesInfos->fetch(PDO::FETCH_ASSOC)){
 
-    array_push($réponse,$competence);
-}
-
-function EnJson($arr , $format = 0){
-    header('Content-type: application/json;charset=utf-8'); //Setting the page Content-type
-    if($format){
-        return json_encode($arr,448);
-    }else{
-        return json_encode($arr);
-    }
+    array_push($reponse,$competence);
 }
