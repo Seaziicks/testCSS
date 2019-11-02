@@ -27,6 +27,11 @@ switch ($http_method) {
             echo '<br/><br/><br/>print_r($competenceEffect)<br/>';
             print_r($competenceEffect);
             echo '<br/><br/><br/><br/>';
+            $test['okok'] = 1;
+            $test['okokBis'] = 12;
+            echo '<br/><br/><br/><br/>';
+            print_r($test);
+            echo '<br/><br/><br/><br/>';
 
             if ($competenceEffect['idCompetenceEffect'] == -1) {
                 /*
