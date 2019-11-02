@@ -35,7 +35,6 @@ switch ($http_method) {
             echo '$jsonDecodeTest->effectType : '.$jsonDecodeTest->effectType.'<br/>';
             echo 'empty : '.empty($jsonDecodeTest->effectType).'<br/>';
             echo 'is_null : '.is_null($jsonDecodeTest->effectType).'<br/>';
-            print_r((array) $jsonDecodeTest);
             $jsonDecodeTestArray = (array) $jsonDecodeTest;
             echo '<br/>';
             echo '<br/>';
@@ -48,8 +47,8 @@ switch ($http_method) {
             }
             echo '<br/>';
             echo '<br/>';
-            echo 'empty : '.empty($jsonDecodeTestArray[effectType]).'<br/>';
-            echo 'is_null : '.is_null($jsonDecodeTestArray[effectType]).'<br/>';
+            echo 'empty : '.empty($jsonDecodeTestArray['effectType']).'<br/>';
+            echo 'is_null : '.is_null($jsonDecodeTestArray['effectType']).'<br/>';
             echo '<br/>';
             echo '<br/>';
             echo '<br/>';
