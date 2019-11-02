@@ -53,15 +53,15 @@ switch ($http_method) {
                 deliver_responseRest(201, "New competence effect created successfully", $policy);
             } else {
                 $sql = "UPDATE competenceeffect 
-                SET effectOrder = " . $competenceEffect['effectOrder'] . ", idCompetence = " . $competenceEffect['idCompetence'] . " 
-                actionType = " . $competenceEffect['actionType'] . ", effectType = " . $competenceEffect['effectType'] . " 
-                niveauRequis = " . $competenceEffect['niveauRequis'] . ", typeCalcul = " . $competenceEffect['typeCalcul'] . " 
-                calcul1A = " . $competenceEffect['calcul1A'] . ", calcul1B = " . $competenceEffect['calcul1B'] . " 
-                calcul2A = " . $competenceEffect['calcul2A'] . ", calcul2B = " . $competenceEffect['calcul2B'] . " 
-                amplitude = " . $competenceEffect['amplitude'] . ", nombreAmplitude = " . $competenceEffect['nombreAmplitude'] . " 
-                statistique1 = " . $competenceEffect['statistique1'] . ", statistique2 = " . $competenceEffect['statistique2'] . "
-                impact = NULL, pourcentage = " . $competenceEffect['pourcentage'] . " 
-                numberOfUse = " . $competenceEffect['numberOfUse'] . ", numberOfTurn = " . $competenceEffect['numberOfTurn'] . " 
+                SET effectOrder = " . $competenceEffect['effectOrder'] . ", idCompetence = " . $competenceEffect['idCompetence'] . ",
+                actionType = " . $competenceEffect['actionType'] . ", effectType = " . $competenceEffect['effectType'] . ",
+                niveauRequis = " . $competenceEffect['niveauRequis'] . ", typeCalcul = " . $competenceEffect['typeCalcul'] . ",
+                calcul1A = " . $competenceEffect['calcul1A'] . ", calcul1B = " . $competenceEffect['calcul1B'] . ",
+                calcul2A = " . $competenceEffect['calcul2A'] . ", calcul2B = " . $competenceEffect['calcul2B'] . ",
+                amplitude = " . $competenceEffect['amplitude'] . ", nombreAmplitude = " . $competenceEffect['nombreAmplitude'] . ",
+                statistique1 = " . $competenceEffect['statistique1'] . ", statistique2 = " . $competenceEffect['statistique2'] . ",
+                impact = NULL, pourcentage = " . $competenceEffect['pourcentage'] . ",
+                numberOfUse = " . $competenceEffect['numberOfUse'] . ", numberOfTurn = " . $competenceEffect['numberOfTurn'] . ",
                 numberOfFight = " . $competenceEffect['numberOfFight'] . " 
                 WHERE idCompetenceEffect = " . $competenceEffect['idCompetenceEffect'];
 
