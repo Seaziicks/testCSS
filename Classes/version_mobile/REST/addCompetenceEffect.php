@@ -27,7 +27,8 @@ switch ($http_method) {
                     $competenceEffect[$key] = '\''.$value.'\'';
                 }
                 if($key == 'pourcentage') {
-                    $competenceEffect[$key] = $value == 'NULL' ? 'false' : 'true';
+                    echo '<br/><br/><br/>'.$competenceEffect['pourcentage'].'<br/><br/><br/>';
+                    $competenceEffect[$key] = $value == 'NULL' ? 0 : 1;
                 }
             }
 
@@ -50,7 +51,7 @@ switch ($http_method) {
 
                 $bdd = null;
                 http_response_code(201);
-                deliver_responseRest(201, "New competence effect created successfully", $policy);
+                deliver_responseRest(201, "New competence effect created successfully", null);
             } else {
                 $sql = "UPDATE competenceeffect 
                 SET effectOrder = " . $competenceEffect['effectOrder'] . ", idCompetence = " . $competenceEffect['idCompetence'] . ",
