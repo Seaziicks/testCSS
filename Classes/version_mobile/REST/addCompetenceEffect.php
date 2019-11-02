@@ -45,6 +45,9 @@ switch ($http_method) {
                 } else if (is_string($value)) {
                     $jsonDecodeTestArray[$key] = '\''.$value.'\'';
                 }
+                if($key == 'pourcentage') {
+                    $jsonDecodeTestArray[$key] = $value == 'NULL' ? false : true;
+                }
                 echo $key.' : '.$jsonDecodeTestArray[$key].'<br/>';
             }
             echo '<br/>';
