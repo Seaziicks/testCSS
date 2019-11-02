@@ -21,7 +21,7 @@ switch ($http_method) {
             $sql;
             echo '<br/><br/><br/>$preInitializeTest<br/>';
             $preInitializeTest = $_GET['EffectCompetence'];
-            print_r($preInitializeTest);
+            echo $preInitializeTest;
             echo '<br/>$preInitializeTestType<br/>';
             echo gettype($preInitializeTest);
             echo '<br/><br/><br/>str_replace : <br/>';
