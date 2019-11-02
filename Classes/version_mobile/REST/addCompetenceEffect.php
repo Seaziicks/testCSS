@@ -96,7 +96,7 @@ switch ($http_method) {
                     " . $competenceEffect['calcul1A'] . ", " . $competenceEffect['calcul1B'] . ",
                     " . $competenceEffect['calcul2A']. ", " . $competenceEffect['calcul2B'] . ",
                     " . $competenceEffect['amplitude'] . ", " . $competenceEffect['nombreAmplitude'] . "
-                    ," . $competenceEffect['statistique1'] . ", " . $competenceEffect['statistique2'] . ",
+                    ,'" . $competenceEffect['statistique1'] . "', '" . $competenceEffect['statistique2'] . "',
                     " . $competenceEffect['impact'] . ", " . $competenceEffect['pourcentage'] . ",
                     " . $competenceEffect['numberOfUse'] . "," . $competenceEffect['numberOfTurn'] . "
                     ," . $competenceEffect['numberOfFight'] . ")";
