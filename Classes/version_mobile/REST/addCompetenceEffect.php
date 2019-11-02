@@ -19,19 +19,22 @@ switch ($http_method) {
     case "POST" :
         try {
             $sql;
-            $effects = json_decode($_GET['EffectCompetence']);
+            $competenceEffect = json_decode($_POST['EffectCompetence']);
 
-            if ($effects->idCompetenceEffect == -1) {
+            if ($competenceEffect->idCompetenceEffect == -1) {
                 $sql = "INSERT INTO competenceeffect (effectOrder, idCompetence, actionType, effectType, niveauRequis, 
                               typeCalcul, calcul1A, calcul1B, calcul2A, calcul2B, amplitude, nombreAmplitude,
                               statistique1, statistique2, impact, pourcentage, numberOfUse, numberOfTurn, numberOfFight)
-            VALUES (" . $effects->effectOrder . "," . $effects->idCompetence . "," . $effects->actionType . ",
-                    " . $effects->effectType . "," . $effects->niveauRequis . "," . $effects->typeCalcul . ",
-                    " . $effects->calcul1A . ", " . $effects->calcul1B . "," . $effects->calcul2A . "
-                    ," . $effects->calcul2B . "," . $effects->amplitude . "," . $effects->nombreAmplitude . "
-                    ," . $effects->statistique1 . "," . $effects->statistique2 . "," . $effects->impact . "
-                    ," . $effects->pourcentage . "," . $effects->numberOfUse . "," . $effects->numberOfTurn . "
-                    ," . $effects->numberOfFight . ")";
+            VALUES (" . $competenceEffect->effectOrder . "," . $competenceEffect->idCompetence . ",
+            " . $competenceEffect->actionType . ", " . $competenceEffect->effectType . ",
+            " . $competenceEffect->niveauRequis . ", " . $competenceEffect->typeCalcul . ",
+                    " . $competenceEffect->calcul1A . ", " . $competenceEffect->calcul1B . ",
+                    " . $competenceEffect->calcul2A . ", " . $competenceEffect->calcul2B . ",
+                    " . $competenceEffect->amplitude . ", " . $competenceEffect->nombreAmplitude . "
+                    ," . $competenceEffect->statistique1 . ", " . $competenceEffect->statistique2 . ",
+                    " . $competenceEffect->impact . ", " . $competenceEffect->pourcentage . ",
+                    " . $competenceEffect->numberOfUse . "," . $competenceEffect->numberOfTurn . "
+                    ," . $competenceEffect->numberOfFight . ")";
                 // use exec() because no results are returned
                 $bdd->exec($sql);
 
@@ -40,17 +43,17 @@ switch ($http_method) {
                 deliver_responseRest(201, "New competence effect created successfully", $policy);
             } else {
                 $sql = "UPDATE competenceeffect 
-                SET effectOrder = " . $effects->effectOrder . ", idCompetence = " . $effects->idCompetence . " 
-                actionType = " . $effects->actionType . ", effectType = " . $effects->effectType . " 
-                niveauRequis = " . $effects->niveauRequis . ", typeCalcul = " . $effects->typeCalcul . " 
-                calcul1A = " . $effects->calcul1A . ", calcul1B = " . $effects->calcul1B . " 
-                calcul2A = " . $effects->calcul2A . ", calcul2B = " . $effects->calcul2B . " 
-                amplitude = " . $effects->amplitude . ", nombreAmplitude = " . $effects->nombreAmplitude . " 
-                statistique1 = " . $effects->statistique1 . ", statistique2 = " . $effects->statistique2 . " 
-                impact = " . $effects->impact . ", pourcentage = " . $effects->pourcentage . " 
-                numberOfUse = " . $effects->numberOfUse . ", numberOfTurn = " . $effects->numberOfTurn . " 
-                numberOfFight = " . $effects->numberOfFight . " 
-                WHERE idCompetenceEffect = " . $effects->idCompetenceEffect;
+                SET effectOrder = " . $competenceEffect->effectOrder . ", idCompetence = " . $competenceEffect->idCompetence . " 
+                actionType = " . $competenceEffect->actionType . ", effectType = " . $competenceEffect->effectType . " 
+                niveauRequis = " . $competenceEffect->niveauRequis . ", typeCalcul = " . $competenceEffect->typeCalcul . " 
+                calcul1A = " . $competenceEffect->calcul1A . ", calcul1B = " . $competenceEffect->calcul1B . " 
+                calcul2A = " . $competenceEffect->calcul2A . ", calcul2B = " . $competenceEffect->calcul2B . " 
+                amplitude = " . $competenceEffect->amplitude . ", nombreAmplitude = " . $competenceEffect->nombreAmplitude . " 
+                statistique1 = " . $competenceEffect->statistique1 . ", statistique2 = " . $competenceEffect->statistique2 . " 
+                impact = " . $competenceEffect->impact . ", pourcentage = " . $competenceEffect->pourcentage . " 
+                numberOfUse = " . $competenceEffect->numberOfUse . ", numberOfTurn = " . $competenceEffect->numberOfTurn . " 
+                numberOfFight = " . $competenceEffect->numberOfFight . " 
+                WHERE idCompetenceEffect = " . $competenceEffect->idCompetenceEffect;
                 $bdd->exec($sql);
                 $bdd = null;
                 http_response_code(200);
@@ -58,7 +61,7 @@ switch ($http_method) {
             }
         } catch
         (PDOException $e) {
-            echo $effects->ActionType . '' . $sql . "<br>" . $e->getMessage();
+            echo $competenceEffect->idCompetenceEffect. '' . $sql . "<br>" . $e->getMessage();
         }
         break;
 }
