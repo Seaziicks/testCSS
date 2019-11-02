@@ -27,7 +27,7 @@ switch ($http_method) {
             echo '<br/><br/><br/>print_r($competenceEffect)<br/>';
             print_r($competenceEffect);
             echo '<br/>';
-            gettype($competenceEffect);
+            echo gettype($competenceEffect);
             echo '<br/><br/><br/><br/>';
             $test['okok'] = 1;
             $test['okokBis'] = 12;
