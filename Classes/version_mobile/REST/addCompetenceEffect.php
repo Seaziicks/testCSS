@@ -42,6 +42,8 @@ switch ($http_method) {
             foreach($jsonDecodeTestArray as $key => $value) {
                 if(empty($value) || is_null($value)){
                     $jsonDecodeTestArray[$key] = 'NULL';
+                } else if (is_string($value)) {
+                    $jsonDecodeTestArray[$key] = ''.$value.'';
                 }
                 echo $key.' : '.$jsonDecodeTestArray[$key].'<br/>';
             }
@@ -96,8 +98,8 @@ switch ($http_method) {
                     " . $competenceEffect['calcul1A'] . ", " . $competenceEffect['calcul1B'] . ",
                     " . $competenceEffect['calcul2A']. ", " . $competenceEffect['calcul2B'] . ",
                     " . $competenceEffect['amplitude'] . ", " . $competenceEffect['nombreAmplitude'] . "
-                    ,'" . $competenceEffect['statistique1'] . "', '" . $competenceEffect['statistique2'] . "',
-                    " . $competenceEffect['impact'] . ", " . $competenceEffect['pourcentage'] . ",
+                    ," . $competenceEffect['statistique1'] . ", " . $competenceEffect['statistique2'] . ",
+                    NULL, " . $competenceEffect['pourcentage'] . ",
                     " . $competenceEffect['numberOfUse'] . "," . $competenceEffect['numberOfTurn'] . "
                     ," . $competenceEffect['numberOfFight'] . ")";
                 // use exec() because no results are returned
@@ -130,8 +132,8 @@ switch ($http_method) {
                 calcul1A = " . $competenceEffect['calcul1A'] . ", calcul1B = " . $competenceEffect['calcul1B'] . " 
                 calcul2A = " . $competenceEffect['calcul2A'] . ", calcul2B = " . $competenceEffect['calcul2B'] . " 
                 amplitude = " . $competenceEffect['amplitude'] . ", nombreAmplitude = " . $competenceEffect['nombreAmplitude'] . " 
-                statistique1 = " . $competenceEffect['statistique1'] . ", statistique2 = " . $competenceEffect['statistique2'] . " 
-                impact = " . $competenceEffect['impact'] . ", pourcentage = " . $competenceEffect['pourcentage'] . " 
+                statistique1 = " . $competenceEffect['statistique1'] . ", statistique2 = " . $competenceEffect['statistique2'] . "
+                impact = NULL, pourcentage = " . $competenceEffect['pourcentage'] . " 
                 numberOfUse = " . $competenceEffect['numberOfUse'] . ", numberOfTurn = " . $competenceEffect['numberOfTurn'] . " 
                 numberOfFight = " . $competenceEffect['numberOfFight'] . " 
                 WHERE idCompetenceEffect = " . $competenceEffect['idCompetenceEffect'];
