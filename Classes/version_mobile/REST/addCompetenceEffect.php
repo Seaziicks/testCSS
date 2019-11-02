@@ -27,7 +27,7 @@ switch ($http_method) {
                     $competenceEffect[$key] = '\''.$value.'\'';
                 }
                 if($key == 'pourcentage') {
-                    $competenceEffect[$key] = $value == 'NULL' ? false : true;
+                    $competenceEffect[$key] = $value == 'NULL' ? 'false' : 'true';
                 }
             }
 
@@ -74,7 +74,7 @@ switch ($http_method) {
             }
         } catch
         (PDOException $e) {
-            echo $competenceEffect['idCompetenceEffect']. '' . $sql . "<br>" . $e->getMessage();
+            echo  $sql . "<br>" . $e->getMessage();
         }
         break;
 }
