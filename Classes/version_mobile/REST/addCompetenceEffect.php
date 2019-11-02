@@ -41,11 +41,15 @@ switch ($http_method) {
             echo '<br/>';
             echo '<br/>';
             foreach($jsonDecodeTestArray as $key => $value) {
-                if(empty($value)){
+                if(empty($value) || is_null($value)){
                     $jsonDecodeTestArray[$key] = null;
                 }
                 echo $key.' : '.$jsonDecodeTestArray[$key].'<br/>';
             }
+            echo '<br/>';
+            echo '<br/>';
+            echo 'empty : '.empty($jsonDecodeTestArray[effectType]).'<br/>';
+            echo 'is_null : '.is_null($jsonDecodeTestArray[effectType]).'<br/>';
             echo '<br/>';
             echo '<br/>';
             echo '<br/>';
