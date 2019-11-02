@@ -25,7 +25,7 @@ switch ($http_method) {
             echo '<br/>$preInitializeTestType<br/>';
             echo gettype($preInitializeTest);
             echo '<br/><br/><br/>str_replace : <br/>';
-            str_replace('null', 'NULL', $preInitializeTest, $count);
+            $preInitializeTest = str_replace('null', 'NULL', $preInitializeTest, $count);
             print_r($preInitializeTest);
             echo '<br/>Nombre de remplacement : '.$count.'<br/>';
             echo '<br/><br/><br/>json_decode : <br/>';
