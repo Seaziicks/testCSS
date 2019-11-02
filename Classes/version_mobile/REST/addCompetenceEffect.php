@@ -101,12 +101,10 @@ switch ($http_method) {
         break;
     case "DELETE" :
         try {
-        echo 'On est dans le DELETE !';
+        echo 'On est dans le DELETE ! <br/><br/>';
             $competenceEffect = (array)json_decode($_GET['EffectCompetence']);
-            print_r($competenceEffect);
-            echo '<br/>'.$competenceEffect['idCompetenceEffect'].'<br/>';
             $sql = "DELETE FROM competenceeffect
-                WHERE idCompetence = " . $competenceEffect['idCompetenceEffect'] . "";
+                WHERE idCompetenceEffect = " . $competenceEffect['idCompetenceEffect'] . "";
             $bdd->exec($sql);
             $bdd = null;
             http_response_code(200);
