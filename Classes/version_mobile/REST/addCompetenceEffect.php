@@ -29,6 +29,7 @@ switch ($http_method) {
                 if($key == 'pourcentage') {
                     echo '<br/><br/><br/>'.$competenceEffect['pourcentage'].'<br/><br/><br/>';
                     $competenceEffect[$key] = $value == 'NULL' ? '0' : '1';
+                    echo '<br/><br/><br/>'.$competenceEffect['pourcentage'].'<br/><br/><br/>';
                 }
             }
 
