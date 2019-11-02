@@ -37,6 +37,7 @@ switch ($http_method) {
             echo 'empty : '.empty($jsonDecodeTest->effectType).'<br/>';
             echo 'is_null : '.is_null($jsonDecodeTest->effectType).'<br/>';
             print_r($jsonDecodeTest);
+            print_r((array) $jsonDecodeTest);
             // $competenceEffect = json_decode($_GET['EffectCompetence']);
             $competenceEffect = $_GET['EffectCompetence'];
             echo '<br/><br/><br/><br/>';
