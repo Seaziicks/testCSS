@@ -41,7 +41,7 @@ switch ($http_method) {
             echo '<br/>';
             foreach($jsonDecodeTestArray as $key => $value) {
                 if(empty($value) || is_null($value)){
-                    $jsonDecodeTestArray[$key] = null;
+                    $jsonDecodeTestArray[$key] = NULL;
                 }
                 echo $key.' : '.$jsonDecodeTestArray[$key].'<br/>';
             }
