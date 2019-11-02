@@ -68,6 +68,8 @@ switch ($http_method) {
             print_r($test);
             echo '<br/><br/><br/><br/>';
 
+            $competenceEffect = $jsonDecodeTestArray;
+
             if ($competenceEffect['idCompetenceEffect'] == -1) {
                 /*
                 $sql = "INSERT INTO competenceeffect (effectOrder, idCompetence, actionType, effectType, niveauRequis, 
