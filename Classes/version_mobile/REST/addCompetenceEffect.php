@@ -31,7 +31,10 @@ switch ($http_method) {
                 if(empty($value)){
                     $jsonDecodeTest->$key = null;
                 }
+                echo $key.' : '.$jsonDecodeTest->$key.'<br/>';
             }
+            echo 'empty : '.empty($jsonDecodeTest->effectOrder).'<br/>';
+            echo 'is_null : '.is_null($jsonDecodeTest->effectOrder).'<br/>';
             print_r($jsonDecodeTest);
             // $competenceEffect = json_decode($_GET['EffectCompetence']);
             $competenceEffect = $_GET['EffectCompetence'];
