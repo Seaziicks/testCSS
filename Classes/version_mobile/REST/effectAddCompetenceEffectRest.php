@@ -22,7 +22,7 @@ switch ($http_method){
     /// Cas de la méthode GET
     case "GET" :
         include('effectAddCompetenceEffect.php');
-        $matchingData=$réponse;
+        $matchingData=$reponse;
 
         /// Envoi de la réponse au Client
         deliver_response(200, "Votre message", $matchingData);

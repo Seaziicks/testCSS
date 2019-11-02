@@ -7,9 +7,9 @@ $competenceEffectInfos = $bdd->query('SELECT ce.*, c.Niveau
                                         WHERE ce.idCompetenceEffect = '.$_GET['id'].'
                                         AND ce.idCompetence = c.Id_Competence');
 
-$réponse=array();
+$reponse=array();
 while($effect=$competenceEffectInfos->fetch(PDO::FETCH_ASSOC)){
-    $réponse = $effect;
+    $reponse = $effect;
     $reponse['pourcentage'] = $reponse['pourcentage'] == 0 ? false : true;
 }
 
