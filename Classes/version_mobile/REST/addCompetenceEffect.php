@@ -19,79 +19,19 @@ switch ($http_method) {
     case "POST" :
         try {
             $sql;
-            echo '<br/><br/><br/>$preInitializeTest<br/>';
-            $preInitializeTest = $_GET['EffectCompetence'];
-            echo $preInitializeTest;
-            echo '<br/><br/><br/>json_decode : <br/>';
-            $jsonDecodeTest = json_decode($preInitializeTest);
-            print_r($jsonDecodeTest);
-            echo '<br/><br/><br/>Changing with foreach<br/>';
-
-            foreach($jsonDecodeTest as $key => $value) {
-                if(empty($value)){
-                    $jsonDecodeTest->$key = null;
-                }
-            }
-            echo '$jsonDecodeTest->effectType : '.$jsonDecodeTest->effectType.'<br/>';
-            echo 'empty : '.empty($jsonDecodeTest->effectType).'<br/>';
-            echo 'is_null : '.is_null($jsonDecodeTest->effectType).'<br/>';
-            $jsonDecodeTestArray = (array) $jsonDecodeTest;
-            echo '<br/>';
-            echo '<br/>';
-            echo '<br/>';
-            foreach($jsonDecodeTestArray as $key => $value) {
+            $competenceEffect = (array) json_decode($_GET['EffectCompetence']);
+            foreach($competenceEffect as $key => $value) {
                 if(empty($value) || is_null($value)){
-                    $jsonDecodeTestArray[$key] = 'NULL';
+                    $competenceEffect[$key] = 'NULL';
                 } else if (is_string($value)) {
-                    $jsonDecodeTestArray[$key] = '\''.$value.'\'';
+                    $competenceEffect[$key] = '\''.$value.'\'';
                 }
                 if($key == 'pourcentage') {
-                    $jsonDecodeTestArray[$key] = $value == 'NULL' ? false : true;
+                    $competenceEffect[$key] = $value == 'NULL' ? false : true;
                 }
-                echo $key.' : '.$jsonDecodeTestArray[$key].'<br/>';
             }
-            echo '<br/>';
-            echo '<br/>';
-            echo 'empty : '.empty($jsonDecodeTestArray['effectType']).'<br/>';
-            echo 'is_null : '.is_null($jsonDecodeTestArray['effectType']).'<br/>';
-            echo '<br/>';
-            echo '<br/>';
-            echo '<br/>';
-            // $competenceEffect = json_decode($_GET['EffectCompetence']);
-            $competenceEffect = $_GET['EffectCompetence'];
-            echo '<br/><br/><br/><br/>';
-            echo 'print_r($_GET[\'EffectCompetence\']) : <br/>';
-            print_r($_GET['EffectCompetence']);
-            echo '<br/><br/><br/>print_r($competenceEffect)<br/>';
-            print_r($competenceEffect);
-            echo '<br/>';
-            echo gettype($competenceEffect);
-            echo '<br/><br/><br/><br/>';
-            $test['okok'] = 1;
-            $test['okokBis'] = 12;
-            echo '<br/><br/><br/><br/>';
-            print_r($test);
-            echo '<br/><br/><br/><br/>';
-
-            $competenceEffect = $jsonDecodeTestArray;
 
             if ($competenceEffect['idCompetenceEffect'] == -1) {
-                /*
-                $sql = "INSERT INTO competenceeffect (effectOrder, idCompetence, actionType, effectType, niveauRequis, 
-                              typeCalcul, calcul1A, calcul1B, calcul2A, calcul2B, amplitude, nombreAmplitude,
-                              statistique1, statistique2, impact, pourcentage, numberOfUse, numberOfTurn, numberOfFight)
-            VALUES (" . $competenceEffect->effectOrder . "," . $competenceEffect->idCompetence . ",
-            " . $competenceEffect->actionType . ", " . $competenceEffect->effectType . ",
-            " . $competenceEffect->niveauRequis . ", " . $competenceEffect->typeCalcul . ",
-                    " . $competenceEffect->calcul1A . ", " . $competenceEffect->calcul1B . ",
-                    " . $competenceEffect->calcul2A . ", " . $competenceEffect->calcul2B . ",
-                    " . $competenceEffect->amplitude . ", " . $competenceEffect->nombreAmplitude . "
-                    ," . $competenceEffect->statistique1 . ", " . $competenceEffect->statistique2 . ",
-                    " . $competenceEffect->impact . ", " . $competenceEffect->pourcentage . ",
-                    " . $competenceEffect->numberOfUse . "," . $competenceEffect->numberOfTurn . "
-                    ," . $competenceEffect->numberOfFight . ")";
-                */
-
                 $sql = "INSERT INTO competenceeffect (effectOrder, idCompetence, actionType, effectType, niveauRequis, 
                               typeCalcul, calcul1A, calcul1B, calcul2A, calcul2B, amplitude, nombreAmplitude,
                               statistique1, statistique2, impact, pourcentage, numberOfUse, numberOfTurn, numberOfFight)
@@ -112,22 +52,6 @@ switch ($http_method) {
                 http_response_code(201);
                 deliver_responseRest(201, "New competence effect created successfully", $policy);
             } else {
-                /*
-                $sql = "UPDATE competenceeffect 
-                SET effectOrder = " . $competenceEffect->effectOrder . ", idCompetence = " . $competenceEffect->idCompetence . "
-                actionType = " . $competenceEffect->actionType . ", effectType = " . $competenceEffect->effectType . " 
-                niveauRequis = " . $competenceEffect->niveauRequis . ", typeCalcul = " . $competenceEffect->typeCalcul . " 
-                calcul1A = " . $competenceEffect->calcul1A . ", calcul1B = " . $competenceEffect->calcul1B . " 
-                calcul2A = " . $competenceEffect->calcul2A . ", calcul2B = " . $competenceEffect->calcul2B . " 
-                amplitude = " . $competenceEffect->amplitude . ", nombreAmplitude = " . $competenceEffect->nombreAmplitude . " 
-                statistique1 = " . $competenceEffect->statistique1 . ", statistique2 = " . $competenceEffect->statistique2 . " 
-                impact = " . $competenceEffect->impact . ", pourcentage = " . $competenceEffect->pourcentage . " 
-                numberOfUse = " . $competenceEffect->numberOfUse . ", numberOfTurn = " . $competenceEffect->numberOfTurn . " 
-                numberOfFight = " . $competenceEffect->numberOfFight . " 
-                WHERE idCompetenceEffect = " . $competenceEffect->idCompetenceEffect;
-                */
-
-
                 $sql = "UPDATE competenceeffect 
                 SET effectOrder = " . $competenceEffect['effectOrder'] . ", idCompetence = " . $competenceEffect['idCompetence'] . " 
                 actionType = " . $competenceEffect['actionType'] . ", effectType = " . $competenceEffect['effectType'] . " 
