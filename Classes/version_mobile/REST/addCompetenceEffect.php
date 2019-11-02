@@ -28,7 +28,7 @@ switch ($http_method) {
             print_r($competenceEffect);
             echo '<br/><br/><br/><br/>';
 
-            if ($competenceEffect->idCompetenceEffect == -1) {
+            if ($competenceEffect['idCompetenceEffect'] == -1) {
                 /*
                 $sql = "INSERT INTO competenceeffect (effectOrder, idCompetence, actionType, effectType, niveauRequis, 
                               typeCalcul, calcul1A, calcul1B, calcul2A, calcul2B, amplitude, nombreAmplitude,
