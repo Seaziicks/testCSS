@@ -27,9 +27,7 @@ switch ($http_method) {
                     $competenceEffect[$key] = '\''.$value.'\'';
                 }
                 if($key == 'pourcentage') {
-                    echo '<br/><br/><br/>'.$competenceEffect['pourcentage'].'<br/><br/><br/>';
                     $competenceEffect[$key] = $competenceEffect[$key] == 'NULL' ? '0' : '1';
-                    echo '<br/><br/><br/>'.$competenceEffect['pourcentage'].'<br/><br/><br/>';
                 }
             }
 
@@ -50,9 +48,31 @@ switch ($http_method) {
                 // use exec() because no results are returned
                 $bdd->exec($sql);
 
+                $policy = [
+                    'effectOrder' => $competenceEffect['effectOrder'],
+                    'idCompetence' => $competenceEffect['idCompetence'],
+                    'actionType' => $competenceEffect['actionType'],
+                    'effectType' => $competenceEffect['effectType'],
+                    'niveauRequis' => $competenceEffect['niveauRequis'],
+                    'typeCalcul' => $competenceEffect['typeCalcul'],
+                    'calcul1A' => $competenceEffect['calcul1A'],
+                    'calcul1B' => $competenceEffect['calcul1B'],
+                    'calcul2A' => $competenceEffect['calcul2A'],
+                    'calcul2B' => $competenceEffect['calcul2B'],
+                    'amplitude' => $competenceEffect['amplitude'],
+                    'nombreAmplitude' => $competenceEffect['nombreAmplitude'],
+                    'statistique1' => $competenceEffect['statistique1'],
+                    'statistique2' => $competenceEffect['statistique2'],
+                    'impact' => $competenceEffect['impact'],
+                    'pourcentage' => $competenceEffect['pourcentage'],
+                    'numberOfUse' => $competenceEffect['numberOfUse'],
+                    'numberOfTurn' => $competenceEffect['numberOfTurn'],
+                    'numberOfFight' => $competenceEffect['numberOfFight'],
+                ];
+
                 $bdd = null;
                 http_response_code(201);
-                deliver_responseRest(201, "New competence effect created successfully", null);
+                deliver_responseRest(201, "New competence effect created successfully", $policy);
             } else {
                 $sql = "UPDATE competenceeffect 
                 SET effectOrder = " . $competenceEffect['effectOrder'] . ", idCompetence = " . $competenceEffect['idCompetence'] . ",
