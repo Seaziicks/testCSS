@@ -20,9 +20,13 @@ switch ($http_method) {
         try {
             $sql;
             $competenceEffect = json_decode($_GET['EffectCompetence']);
-            print_r($_GET['EffectCompetence']);
+
             echo '<br/><br/><br/><br/>';
+            echo 'print_r($_GET[\'EffectCompetence\']) : <br/>';
+            print_r($_GET['EffectCompetence']);
+            echo '<br/><br/><br/>print_r($competenceEffect)<br/>';
             print_r($competenceEffect);
+            echo '<br/><br/><br/><br/>';
 
             if ($competenceEffect->idCompetenceEffect == -1) {
                 $sql = "INSERT INTO competenceeffect (effectOrder, idCompetence, actionType, effectType, niveauRequis, 
