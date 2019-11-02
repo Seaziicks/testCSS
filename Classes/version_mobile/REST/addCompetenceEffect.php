@@ -19,7 +19,7 @@ switch ($http_method) {
     case "POST" :
         try {
             $sql;
-            $competenceEffect = json_decode($_POST['EffectCompetence']);
+            $competenceEffect = json_decode($_GET['EffectCompetence']);
 
             if ($competenceEffect->idCompetenceEffect == -1) {
                 $sql = "INSERT INTO competenceeffect (effectOrder, idCompetence, actionType, effectType, niveauRequis, 
