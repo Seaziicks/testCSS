@@ -43,7 +43,7 @@ switch ($http_method) {
                 if(empty($value) || is_null($value)){
                     $jsonDecodeTestArray[$key] = 'NULL';
                 } else if (is_string($value)) {
-                    $jsonDecodeTestArray[$key] = ''.$value.'';
+                    $jsonDecodeTestArray[$key] = '\''.$value.'\'';
                 }
                 echo $key.' : '.$jsonDecodeTestArray[$key].'<br/>';
             }
