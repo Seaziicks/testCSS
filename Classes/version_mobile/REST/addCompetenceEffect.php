@@ -99,6 +99,21 @@ switch ($http_method) {
             echo  $sql . "<br>" . $e->getMessage();
         }
         break;
+    case "DELETE" :
+        try {
+        echo 'On est dans le DELeTE !';
+            $competenceEffect = (array)json_decode($_GET['EffectCompetence']);
+            $sql = "DELETE FROM competenceeffect
+                WHERE idCompetence = " . $competenceEffect['idCompetenceEffect'] . "";
+            $bdd->exec($sql);
+            $bdd = null;
+            http_response_code(200);
+            deliver_responseRest(200, "EffectCompetence modified", NULL);
+        } catch
+        (PDOException $e) {
+            echo  $sql . "<br>" . $e->getMessage();
+        }
+        break;
 }
 
 /// Envoi de la réponse au Client
