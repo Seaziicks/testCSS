@@ -19,6 +19,16 @@ switch ($http_method) {
     case "POST" :
         try {
             $sql;
+            echo '<br/><br/><br/>$preInitializeTest<br/>';
+            $preInitializeTest = $_GET['EffectCompetence'];
+            print_r($preInitializeTest);
+            echo '<br/><br/><br/>str_replace : <br/>';
+            str_replace('null', 'NULL', $preInitializeTest);
+            print_r($preInitializeTest);
+            echo '<br/><br/><br/>json_decode : <br/>';
+            $jsonDecodeTest = json_decode($preInitializeTest);
+            print_r($jsonDecodeTest);
+            echo '<br/><br/><br/><br/>';
             // $competenceEffect = json_decode($_GET['EffectCompetence']);
             $competenceEffect = $_GET['EffectCompetence'];
             echo '<br/><br/><br/><br/>';
