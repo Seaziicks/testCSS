@@ -1,4 +1,5 @@
 TODO :
+    - When everything will be clean enough, maybe not delete the competence from competence AND competencelearned, just from competencelearned. But today we need this to not display it again.
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
 
 Probably TODO :
