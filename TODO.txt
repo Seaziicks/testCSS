@@ -1,4 +1,8 @@
 TODO :
+    - Display correctly all the Competence (Angular)
+    - Add the possibility to update/delete Competence.
+    - Add the possibility to CUD Personnage.
+    - Provide a better Personnage display possibility. At this time, there are only 9 Personnage, but when the GM will create decade of it, we need to have the possibility to order them.
     - When everything will be clean enough, maybe not delete the competence from competence AND competencelearned, just from competencelearned. But today we need this to not display it again.
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
 
