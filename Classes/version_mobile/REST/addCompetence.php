@@ -32,7 +32,7 @@ switch ($http_method) {
             }
 
             $sql = "INSERT INTO competence (Libellé, Niveau, Description1)
-            VALUES (" . $competence['competenceName'] . ", 1, 'Description de " . $competence['competenceName'] . "')";
+            VALUES (" . $competence['competenceName'] . ", 1, \" Description de " . $competence['competenceName'] . "\")";
             // use exec() because no results are returned
             $bdd->exec($sql);
 
