@@ -12,6 +12,7 @@ $competencesInfos = $bdd->query('SELECT DISTINCT c.Libellé, c.Id_Competence, c.
 $futurCompetencesInfos = $bdd->query('SELECT Libellé, Id_Competence, Image
 								FROM competence , learnedcompetence
 								WHERE idPersonnage = ' . $_GET['id'] . ' 
+								AND idCompetence = Id_Competence
 								ORDER BY Libellé');
 
 $reponse=array();
