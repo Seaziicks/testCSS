@@ -3,16 +3,27 @@
 
 include('../BDD.php');
 
+$effectsNames = $bdd->query('SELECT Name 
+                            FROM effect_type');
+
+while($effectWitoutCamelCase=$effectsNames->fetch(PDO::FETCH_ASSOC)) {
+    $reponse[''.$effectWitoutCamelCase['Name'].''] = 0;
+}
+
+$effectsNames->closeCursor();
+
+
+
+
 $effects = $bdd->query('SELECT effect_type.Name, effectapplied.*
 					from effectapplied, effect_type
 					where IDReceiver='.$_GET['id'].'
 					and EffectType = ID_Effect');
 
-
 while($effectWitoutCamelCase=$effects->fetch(PDO::FETCH_ASSOC)) {
-    $reponse[''.$effectWitoutCamelCase['Name'].''] = 0;
     $reponse[''.$effectWitoutCamelCase['Name'].''] += floatval($effectWitoutCamelCase['EffectValueMin']);
 }
+
 $effects->closeCursor();
 
 deliver_response(200, "Getting all fight bonuses", $reponse);
@@ -29,9 +40,3 @@ function deliver_response($status, $status_message, $data){
     /// Mapping de la réponse au format JSON
     echo json_encode($data);
 }
-
-
-
-
-
-?>
