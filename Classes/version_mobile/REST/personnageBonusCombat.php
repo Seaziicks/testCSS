@@ -9,32 +9,8 @@ $effects = $bdd->query('SELECT effect_type.Name, effectapplied.*
 					and EffectType = ID_Effect');
 
 
-$reponse['DegatsPhysiqueFlat'] = 0;
-$reponse['DegatsPhysiquePourcentage'] = 0;
-$reponse['DegatsMagiqueFlat'] = 0;
-$reponse['DegatsMagiquePourcentage'] = 0;
-$reponse['Force'] = 0;
-$reponse['Agilite'] = 0;
-$reponse['Intelligence'] = 0;
-$reponse['Vitalite'] = 0;
-$reponse['PA'] = 0;
-$reponse['PM'] = 0;
-$reponse['SortFlat'] = 0;
-$reponse['SortPourcentage'] = 0;
-$reponse['ArmureFlat'] = 0;
-$reponse['ArmurePourcentage'] = 0;
-$reponse['ArmureMagiqueFlat'] = 0;
-$reponse['ArmureMagiquePourcentage'] = 0;
-$reponse['DegatsFlat'] = 0;
-$reponse['DegatsPourcentage'] = 0;
-$reponse['SoinFlat'] = 0;
-$reponse['SoinPourcentage'] = 0;
-$reponse['Portee'] = 0;
-$reponse['Degat'] = 0;
-$reponse['Soin'] = 0;
-$reponse['Shield'] = 0;
-
 while($effectWitoutCamelCase=$effects->fetch(PDO::FETCH_ASSOC)) {
+    $reponse[''.$effectWitoutCamelCase['Name'].''] = 0;
     $reponse[''.$effectWitoutCamelCase['Name'].''] += floatval($effectWitoutCamelCase['EffectValueMin']);
 }
 $effects->closeCursor();
