@@ -78,7 +78,7 @@ switch ($http_method) {
             $bdd->exec($sql);
             $bdd = null;
             http_response_code(200);
-            deliver_responseRest(200, "EffectCompetence modified", NULL);
+            deliver_responseRest(200, "Competence deleted !", NULL);
         } catch
         (PDOException $e) {
             echo  $sql . "<br>" . $e->getMessage();
