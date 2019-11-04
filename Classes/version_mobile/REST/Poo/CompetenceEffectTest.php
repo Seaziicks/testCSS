@@ -325,8 +325,10 @@ class CompetenceEffectTest
 
 
 
-    public function appliquerEffetCompetenceAvecBonusGeneraux($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver)
+    public function appliquerEffetCompetenceAvecBonusGeneraux($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, int $indexCible)
 	{
+		// index cible sert à savoir, en cas d'effets liés dont des "effet cible unique", si c'est la cible sur laquelle appliquer les "effet cible unique" liés.
+		// => S'appliquera uniquement sur la cible 0.
 		switch ($this->_actionType) {
 			case 1: // Damages Physical & Magical
 			case 2:

@@ -1,4 +1,7 @@
 TODO :
+    - !!! Définir si les effets avant/après se déclenchent pour chaque effet, ou seulement sur l'utilisation de la compétence. !!!
+    - !!! Faire en sorte de déporter les fonctions appliquerEffetCompetenceAvecBonusGeneraux() et useEffect(); !!!
+    - !! Faire une table qui référence les cibles des compétences qui doivent les sauvegarder !!
     - Display correctly all the Competence and add an interface for the Competence (Angular)
     - Add the possibility to update/delete Competence.
     - Add the possibility to CUD Personnage.
@@ -7,7 +10,13 @@ TODO :
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
 
 Probably TODO :
-
+    - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas, si les autres effets liés sont cibles multiples.
+        => Effets liés = effets avec cibles partagées.
+        => A mettre en place dans CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ...);
+        => A mettre en place dans la partie Angular lors de la récupération de la compétence, récupérer les cibles déjà identitfiées,
+            définir les effets à appliquer et donc le nombre de cibles à sélectionner.
+        -> Dans le cas de Jet de Lave, avoir 3 effets liés, dont les deux derniers avec emmagasinement sur N tour : Dégâts cible unique, Dégâts 50% cible unique, Dégâts zone
+    - Ajouter la possibilité de choisir des effets avec cibles uniquement distinctes (boost du centaure) sur N tours.
 
 
 Normaly DID :

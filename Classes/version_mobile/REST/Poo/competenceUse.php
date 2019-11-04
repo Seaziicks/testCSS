@@ -5,17 +5,17 @@
 Programme lancerCompetence
 
     $personnageManager = new PersonnageManager($bdd);
-    $launcher = personnageManager->get($_POST['idLauncher']);
+    $launcher = $personnageManager->get($_POST['idLauncher']);
     $bonusCombatManager = new BonusCombatManager($bdd);
     $bonusCombatLauncher = $bonusCombatManager->get($launcher->_Id_Personnage);
     $receivers = [];
     $bonusCombatReceivers = [];
-    foreach($_POST['receivers'] as $recieverID) {
-        array_push($receivers, $personnageManager->get($recieverID));
+    foreach($_POST['receivers'] as $receiverID) {
+        array_push($receivers, $personnageManager->get($receiverID));
         array_push($bonusCombatReceivers, $bonusCombatManager->get($receiverID));
     }
     $competenceManager = new CompetenceManager($bdd);
-    $competence = competenceManager->get($_POST['idCompetence'], $launcher);
+    $competence = $competenceManager->get($_POST['idCompetence'], $launcher);
     $competenceEffects = $competence->_Effects;
     *** Trier les effets actifs sur le personnage <= Rafinnage 1 ***
 
@@ -77,70 +77,70 @@ Fin LancerCompetence
 ------------------------------------------------------------
 Raffinage 1.1 : Trier les effets actifs sur le personnage
     // EffetsGeneraux = [];
-    EffetAvantAction = [];
-    EffetAprèsAction = [];
-    EffetAvantCompetence = [];
-    EffetAprèsCompetence = [];
-    EffetAvantDegats = [];
-    EffetAprèsDegats = [];
-    EffetAvantDegatsPhysiques = [];
-    EffetAprèsDegatsPhysiques = [];
-    EffetAvantDegatsMagiques = [];
-    EffetAprèsDegatsMagiques = [];
-    EffetAvantSoin = [];
-    EffetAprèsSoin = [];
+    $EffetAvantAction = [];
+$EffetAprèsAction = [];
+$EffetAvantCompetence = [];
+$EffetAprèsCompetence = [];
+$EffetAvantDegats = [];
+$EffetAprèsDegats = [];
+$EffetAvantDegatsPhysiques = [];
+$EffetAprèsDegatsPhysiques = [];
+$EffetAvantDegatsMagiques = [];
+$EffetAprèsDegatsMagiques = [];
+$EffetAvantSoin = [];
+$EffetAprèsSoin = [];
 
 
-    $effectTestManager = new EffectTestManager($bdd);
-    $effects = getEffectListForReceiver($launcher->_Id_personnage);
+$effectTestManager = new EffectTestManager($bdd);
+$effects = getEffectListForReceiver($launcher->_Id_personnage);
 
-    foreach($effects as $effect) {
-        Switch ($effect->ActionType) {
-            case 7 :
-                // Récupéré dans BonusCombat
-                break;
-            case 8 :
-                array_push(EffetAvantAction, effet);
-                break;
-            case 9 :
-                array_push(EffetAprèsAction, effet);
-                break;
-            case 12 :
-                array_push(EffetAvantCompetence, effet);
-                break;
-            case 13 :
-                array_push(EffetAprèsCompetence, effet);
-                break;
-            case 14 :
-                array_push(EffetAvantDegats, effet);
-                break;
-            case 15 :
-                array_push(EffetAprèsDegats, effet);
-                break;
-            case 16 :
-                array_push(EffetAvantDegatsPhysiques, effet);
-                break;
-            case 17 :
-                array_push(EffetAprèsDegatsPhysiques, effet);
-                break;
-            case 18 :
-                array_push(EffetAvantDegatsMagiques, effet);
-                break;
-            case 19 :
-                array_push(EffetAprèsDegatsMagiques, effet);
-                break;
-            case 20 :
-                array_push(EffetAvantSoin, effet);
-                break;
-            case 21 :
-                array_push(EffetAprèsSoin, effet);
-                break;
+foreach($effects as $effect) {
+    Switch ($effect->ActionType) {
+        case 7 :
+            // Récupéré dans BonusCombat
+            break;
+        case 8 :
+            array_push($EffetAvantAction, $effect);
+            break;
+        case 9 :
+            array_push($EffetAprèsAction, $effect);
+            break;
+        case 12 :
+            array_push($EffetAvantCompetence, $effect);
+            break;
+        case 13 :
+            array_push($EffetAprèsCompetence, $effect);
+            break;
+        case 14 :
+            array_push($EffetAvantDegats, $effect);
+            break;
+        case 15 :
+            array_push($EffetAprèsDegats, $effect);
+            break;
+        case 16 :
+            array_push($EffetAvantDegatsPhysiques, $effect);
+            break;
+        case 17 :
+            array_push($EffetAprèsDegatsPhysiques, $effect);
+            break;
+        case 18 :
+            array_push($EffetAvantDegatsMagiques, $effect);
+            break;
+        case 19 :
+            array_push($EffetAprèsDegatsMagiques, $effect);
+            break;
+        case 20 :
+            array_push($EffetAvantSoin, $effect);
+            break;
+        case 21 :
+            array_push($EffetAprèsSoin, $effect);
+            break;
 
-        }
     }
+}
 
 ------------------------------
-Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $competenceEffect, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver);
+Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux($bdd, CompetenceEffectTest $competenceEffect, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver);
 
 
     switch ($competenceEffect->_actionType) {
@@ -174,7 +174,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
             $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
             break;
         case 6: // Shield
-            $BouclierTotal = max(0, $receiver->_Bouclier - $competenceEffects->EffectValueMin);
+            $BouclierTotal = max(0, $receiver->_Bouclier - $competenceEffect->EffectValueMin);
             $sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
             break;
         case 7:
@@ -202,7 +202,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux(CompetenceEffectTest $
 
 
 ------------------------------
-Raffinage 1.3 : ->useEffect(EffectTest $effect, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver);
+Raffinage 1.3 : ->useEffect($bdd, EffectTest $effect, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver);
 
     switch(true) {
         case $effect->_EffectType <= 30:
