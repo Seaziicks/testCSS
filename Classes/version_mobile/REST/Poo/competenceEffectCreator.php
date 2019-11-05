@@ -285,9 +285,11 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(6, "S'accumule après avoir toucher", 3); ?>
                                     <?= optionWithSpace(7, "S'accumule sur une cible particulière", 3); ?>
                                     <?= optionWithSpace(8, "Effet de zone", 3); ?>
-                                    <?= optionWithSpace(9, "Effet de zone après accumulation sur N tours", 3); ?>
-                                    <?= optionWithSpace(10, "Effet de zone après accumulation après avoir toucher sur N tours", 3); ?>
-                                    <?= optionWithSpace(11, "Effet de zone après accumulation d'une cible particulière sur N tours", 3); ?>
+                                    <?= optionWithSpace(9, "Effet de zone après M accumulation sur N tours", 3); ?>
+                                    <?= optionWithSpace(10, "Effet de zone après M accumulation après avoir toucher sur N tours", 3); ?>
+                                    <?= optionWithSpace(11, "Effet de zone après M accumulation d'une cible particulière sur N tours", 3); ?>
+                                    <?= optionWithSpace(12, "Effet sur précédentes cibles après M accumulation sur N tours", 3); ?>
+                                    <?= optionWithSpace(13, "Effet sur précédentes cibles après M accumulation sur cibles distinctes sur N tours", 3); ?>
                                 </select>
                 niveauRequis => <input type="number" name="newniveauRequis" id="newniveauRequis" rows=3 cols=36 > </input><br/>
                 typeCalcul => <select onchange="changeTypeCalcul()" type="number" name="newtypeCalcul" style="text-align : center; width : 190px;" id="newtypeCalcul" rows=1 cols=15 >

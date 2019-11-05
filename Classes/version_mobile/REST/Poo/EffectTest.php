@@ -178,7 +178,4 @@ class EffectTest{
                 break;
         }
     }
-
-
 }
-?>

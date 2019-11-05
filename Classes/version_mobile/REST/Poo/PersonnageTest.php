@@ -414,8 +414,8 @@ class PersonnageTest
         } else {
             $effects = $effectsTestManager->getAfterEffectListForReceiver($receiver->_Id_Personnage);
         }
-        foreach ($effects as $effect) {
-            if ($effect->_EffectType == 30) {
+        foreach ($effects as $effect) { // Revoie Dégâts flat
+            if ($effect->_EffectType == 32) {
                 $initialDamages = $effect->_EffectValueMin;
                 $effectiveDamages = $launcher->calculateReducedDamages($initialDamages, $bonusCombatLauncher);
                 $remainingShield = max(0, $launcher->_Bouclier - $effectiveDamages);
@@ -424,7 +424,7 @@ class PersonnageTest
                 $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
                 $bdd->exec($sql);
                 $bdd->exec($sql2);
-            } elseif ($effect->_EffectType == 31) {
+            } elseif ($effect->_EffectType == 33) { // Renvoie Dégats pourcentage
                 $initialDamages = ($competenceEffect->dealDamagesWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType)) * ($effect->_EffectValueMin / 100) ;
                 $effectiveDamages = $launcher->calculateReducedDamages($initialDamages, $bonusCombatLauncher);
                 $remainingShield = max(0, $launcher->_Bouclier - $effectiveDamages);

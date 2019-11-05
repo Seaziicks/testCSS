@@ -57,7 +57,7 @@ switch ($http_method) {
 
             $bdd = null;
             http_response_code(201);
-            deliver_responseRest(201, "New competence effect created successfully", $policy);
+            deliver_responseRest(201, "New competence created successfully", $policy);
         } catch
         (PDOException $e) {
             echo  $sql . "<br>" . $e->getMessage();

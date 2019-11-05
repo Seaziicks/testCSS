@@ -311,27 +311,18 @@ class CompetenceEffectTest
 		}
 	}
 
-
-
-
-
     public function setPersonnage(PersonnageTest $Personnage)
     {
         $this->_Personnage = $Personnage;
     }
 
-
-
-
-
-
     public function appliquerEffetCompetenceAvecBonusGeneraux($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, int $indexCible)
 	{
 		// index cible sert à savoir, en cas d'effets liés dont des "effet cible unique", si c'est la cible sur laquelle appliquer les "effet cible unique" liés.
 		// => S'appliquera uniquement sur la cible 0.
-		switch ($this->_actionType) {
-			case 1: // Damages Physical & Magical
-			case 2:
+		switch (true) {
+			case $this->_actionType == 1: // Damages Physical & Magical
+			case $this->_actionType == 2:
 				$initialDamages = $this->dealDamagesWithBonusCombat($bonusCombatLauncher, $this->_actionType);
 				$effectiveDamages = $receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver);
 				$remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
@@ -341,8 +332,8 @@ class CompetenceEffectTest
 				$sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $receiver->_Id_Personnage;
 				$bdd->exec($sql2);
 				break;
-			case 3: // LifeSteal Physical & Magical
-			case 4:
+			case $this->_actionType == 3: // LifeSteal Physical & Magical
+			case $this->_actionType == 4:
 				$initialDamages = $this->dealDamagesWithBonusCombat($bonusCombatLauncher);
 				$effectiveDamages = $receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver);
 				$lifeSteal = floor($effectiveDamages * 0.2);
@@ -355,25 +346,17 @@ class CompetenceEffectTest
 				$bdd->exec($sql2);
 				$bdd->exec($sql3);
 				break;
-			case 5: // Heal
+			case $this->_actionType == 5: // Heal
 				$healBoostLauncher = $this->dealHealWithBonusCombat($bonusCombatLauncher);
 				$healBoostReceiver = $receiver->calculateHealWithBonusCombat($healBoostLauncher, $bonusCombatReceiver);
 				$lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
 				$sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
 				break;
-			case 6: // Shield
+			case $this->_actionType == 6: // Shield
 				$BouclierTotal = max(0, $receiver->_Bouclier - $this->EffectValueMin);
 				$sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
 				break;
-			case 7:
-			case 8:
-			case 9:
-			case 10:
-			case 11:
-			case 12:
-			case 13:
-			case 13:
-			case 13:
+			case $this->_actionType > 6 : // Tous les effets
 				$sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
                                                 IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
             VALUES (" . $this->_actionType . "," . $this->_effectType . "," . $this->_EffectValueMin . "," . $this->_EffectValueMax . ",
@@ -383,17 +366,7 @@ class CompetenceEffectTest
 				$bdd->exec($sql);
 				break;
 		}
-		// use exec() because no results are returned
-
-
-
 	}
-
-
-
-
-
-
 
 
 	public function hydrate(array $donnees)
@@ -412,7 +385,3 @@ class CompetenceEffectTest
 	  }
 	}
 }
-
-
-?>
-

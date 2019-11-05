@@ -101,7 +101,6 @@ switch ($http_method) {
         break;
     case "DELETE" :
         try {
-        echo 'On est dans le DELETE ! <br/><br/>';
             $competenceEffect = (array)json_decode($_GET['EffectCompetence']);
             $sql = "DELETE FROM competenceeffect
                 WHERE idCompetenceEffect = " . $competenceEffect['idCompetenceEffect'] . "";

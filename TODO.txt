@@ -1,13 +1,14 @@
 TODO :
-    - !!! Définir si les effets avant/après se déclenchent pour chaque effet, ou seulement sur l'utilisation de la compétence. !!!
-    - !!! Faire en sorte de déporter les fonctions appliquerEffetCompetenceAvecBonusGeneraux() et useEffect(); !!!
-    - !! Faire une table qui référence les cibles des compétences qui doivent les sauvegarder !!
+    - Vérifier et mettre en place la possibilité de gestion automatique de JetDeLave avec effet niveau 3, et BoostCentaure avec effet niveau 3.
+    - !! Faire une table qui référence les cibles pour les compétences qui doivent les sauvegarder !!
     - Display correctly all the Competence and add an interface for the Competence (Angular)
     - Add the possibility to update/delete Competence.
     - Add the possibility to CUD Personnage.
     - Provide a better Personnage display possibility. At this time, there are only 9 Personnage, but when the GM will create decade of it, we need to have the possibility to order them.
     - When everything will be clean enough, maybe not delete the competence from competence AND competencelearned, just from competencelearned. But today we need this to not display it again.
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
+    - Introduce DamageRedirection, and decide if redirection takes into account damageRedirection/armor from the initial target, and damageRedirection/Armor from redirecting target.
+        => Introduce it in CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ... );
 
 Probably TODO :
     - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas, si les autres effets liés sont cibles multiples.
@@ -15,9 +16,15 @@ Probably TODO :
         => A mettre en place dans CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ...);
         => A mettre en place dans la partie Angular lors de la récupération de la compétence, récupérer les cibles déjà identitfiées,
             définir les effets à appliquer et donc le nombre de cibles à sélectionner.
+        => Les CompetenceEffect doivent être dans un ordre hyper spécifique car : On va les récupérer dans l'ordre, et récupérer les entités séléctionnées dans l'odre dans elquel ils sont joués,
+            pour les réattribuer dans le bon ordre, et donc attribuer les bonnes cibles aux bons effets.
+        => Pour simplifier, si il n'y a aucun effet lié, on transmet une première list de cibles vide. Comme cela, on prend toujours la liste en position 0 pour jouer les effet liés.
         -> Dans le cas de Jet de Lave, avoir 3 effets liés, dont les deux derniers avec emmagasinement sur N tour : Dégâts cible unique, Dégâts 50% cible unique, Dégâts zone
     - Ajouter la possibilité de choisir des effets avec cibles uniquement distinctes (boost du centaure) sur N tours.
 
+
+A vérifier :
+    - !!! Faire en sorte de déporter les fonctions appliquerEffetCompetenceAvecBonusGeneraux() et useEffect(); !!!
 
 Normaly DID :
 	- !!! Modifier "Recieiver" par "Receiver" partout ... !!!
@@ -30,6 +37,9 @@ Normaly DID :
         => competenceUse.php
     - Add a new relational table between Personnage and Competence, in order to (at least) store the lvl of the Competence for the Personnage,
         and have the "same" competence for multiple Personnage.
+
+    - !!! Définir si les effets avant/après se déclenchent pour chaque effet, ou seulement sur l'utilisation de la compétence. !!!
+        => Les avant/après ne se déclenchent qu'une seule fois par compétence, mais sur chaque cible.
 
 
 Notifier ces implémentation dans un changelog :
@@ -47,3 +57,7 @@ Notifier ces implémentation dans un changelog :
 	- Les effets de dommage laissés sur les personnages passent à travers les amures physiques et magiques.
 	- Il n'y a pas d'utilisation des boost magique et armure magiques, car c'est plus simple à gérer dans le RP. Le code peut être updaté relatiement rapidement
 		pour le prendre en compte, en cas de nécessité.
+
+Technicité :
+    - Expliquer clairement le concept d'effets liés, pourquoi il est né et comment il est utilisé.
+        => Première réponse : Le concept d'effet liés est venu de la compétence JetDeLave. Cette compétence un soucis : Au bout de
