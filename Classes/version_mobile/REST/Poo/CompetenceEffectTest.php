@@ -7,6 +7,7 @@ class CompetenceEffectTest
             $_effectOrder,
             $_actionType,
             $_effectType,
+            $_applicationType,
 			$_niveau,
             $_niveauRequis,
 			$_typeCalcul,
@@ -22,7 +23,8 @@ class CompetenceEffectTest
 			$_pourcentage,
 			$_numberOfUse,
 			$_numberOfTurn,
-			$_numberOfFight;
+			$_numberOfFight,
+	        $_linkedEffect;
 
     public $_Personnage;
 
@@ -79,6 +81,16 @@ class CompetenceEffectTest
         if ($Effect_Type > 0)
         {
             $this->_effectType = $Effect_Type;
+        }
+    }
+
+    public function setApplicationType($applicationType)
+    {
+        $applicationType = (int) $applicationType;
+
+        if ($applicationType > 0)
+        {
+            $this->_applicationType = $applicationType;
         }
     }
 
@@ -207,6 +219,11 @@ class CompetenceEffectTest
 	{
 		$this->_numberOfFight = (int)$numberOfFight;
 	}
+
+    public function setLinkedEffect($linkedEffect)
+    {
+        $this->_linkedEffect = (boolean) $linkedEffect;
+    }
 
     public function getStatistique(int $index){
         if($this->getElement('statistique'.$index) == 'ressource')
@@ -367,6 +384,10 @@ class CompetenceEffectTest
 				break;
 		}
 	}
+
+	public function canBeUsed(){
+	    return true;
+    }
 
 
 	public function hydrate(array $donnees)

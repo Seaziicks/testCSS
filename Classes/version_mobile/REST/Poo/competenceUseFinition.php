@@ -16,12 +16,18 @@ $personnageManager = new PersonnageManager($bdd);
 $launcher = $personnageManager->get($_POST['idLauncher']);
 $bonusCombatManager = new BonusCombatManager($bdd);
 $bonusCombatLauncher = $bonusCombatManager->get($launcher->_Id_Personnage);
-$receivers = [];
-$bonusCombatReceivers = [];
+$receiversLists = [];
+$bonusCombatReceiversLists = [];
 
-foreach ($_POST['receivers'] as $receiverID) {
-    array_push($receivers, $personnageManager->get($receiverID));
-    array_push($bonusCombatReceivers, $bonusCombatManager->get($receiverID));
+foreach ($_POST['receivers'] as $receiversSelection) {
+    $receiverList = array();
+    $bonusCombatReceiversList = array();
+    foreach ($receiversSelection as $receiverID) {
+        array_push($receiverList, $personnageManager->get($receiverID));
+        array_push($bonusCombatReceiversList, $bonusCombatManager->get($receiverID));
+    }
+    array_push($receiversLists, $receiverList);
+    array_push($bonusCombatReceiversLists, $bonusCombatReceiversList);
 }
 
 
@@ -92,53 +98,83 @@ foreach ($effects as $effect) {
 }
 
 
-for ($indexCible = 0; $indexCible < count($receivers); $indexCible++) {
+$indexReceiversList = 1; // Commence à 1 car le 0 est réservé à la list de cibles des effets liés.
+$linkedTargetsDone = array(); // Liste des cibles effets liés déjà affectées par les effets avant/après
+foreach ($competenceEffects as $competenceEffect) {
+    if ($competence->_Niveau >= $competenceEffect->_NiveauRequis && $competenceEffect->canBeUsed()) {
+        if ($competenceEffect->_linkedEffect) {
+            $receivers = $receiversLists[0];
+            $bonusCombatReceivers = $bonusCombatReceiversLists[0];
+        } else {
+            $receivers = $receiversLists[$indexReceiversList];
+            $bonusCombatReceivers = $bonusCombatReceiversLists[$indexReceiversList];
+            $indexReceiversList++;
+        }
+        for ($indexCible = 0; $indexCible < count($receivers); $indexCible++) {
 
-    $receiver = $receivers[$indexCible];
-    $bonusCombatReceiver = $bonusCombatReceivers[$indexCible];
+            $receiver = $receivers[$indexCible];
+            $bonusCombatReceiver = $bonusCombatReceivers[$indexCible];
 
-    foreach ($beforeActionEffects as $beforeActionEffect)
-        $beforeActionEffect->useEffect($bdd, $beforeActionEffect, $receiver, $bonusCombatReceiver);
+            if (!$competenceEffect->_linkedEffect ||
+                ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
 
-    foreach ($beforeCompetenceEffects as $beforeCompetenceEffect)
-        $beforeCompetenceEffect->useEffect($bdd, $beforeCompetenceEffect, $receiver, $bonusCombatReceiver);
+                foreach ($beforeActionEffects as $beforeActionEffect)
+                    $beforeActionEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    foreach ($beforeDamagesEffects as $beforeDamagesEffect)
-        $beforeDamagesEffect->useEffect($bdd, $beforeDamagesEffect, $receiver, $bonusCombatReceiver);
+                foreach ($beforeCompetenceEffects as $beforeCompetenceEffect)
+                    $beforeCompetenceEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    foreach ($beforePhysicalDamagesEffects as $beforePhysicalDamagesEffect)
-        $beforePhysicalDamagesEffect->useEffect($bdd, $beforePhysicalDamagesEffect, $receiver, $bonusCombatReceiver);
+                foreach ($beforeDamagesEffects as $beforeDamagesEffect)
+                    $beforeDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    foreach ($beforeMagicalDamagesEffects as $beforeMagicalDamagesEffect)
-        $beforeMagicalDamagesEffect->useEffect($bdd, $beforeMagicalDamagesEffect, $receiver, $bonusCombatReceiver);
+                foreach ($beforePhysicalDamagesEffects as $beforePhysicalDamagesEffect)
+                    $beforePhysicalDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    foreach ($beforeHealEffects as $beforeHealEffect)
-        $beforeHealEffect->useEffect($bdd, $beforeHealEffect, $receiver, $bonusCombatReceiver);
+                foreach ($beforeMagicalDamagesEffects as $beforeMagicalDamagesEffect)
+                    $beforeMagicalDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
+                foreach ($beforeHealEffects as $beforeHealEffect)
+                    $beforeHealEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+            }
 
-    foreach ($competenceEffects as $competenceEffect)
-        if ($competence->_Niveau >= $competenceEffect->_NiveauRequis)
+            $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
+
+            //-----------
             $competenceEffect->appliquerEffetCompetenceAvecBonusGeneraux($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $indexCible);
 
 
-    $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
+            $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
 
-    foreach ($afterActionEffects as $beforeActionEffect)
-        $beforeActionEffect->useEffect($bdd, $beforeActionEffect, $receiver, $bonusCombatReceiver);
+            if (!$competenceEffect->_linkedEffect ||
+                ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
 
-    foreach ($afterCompetenceEffects as $beforeCompetenceEffect)
-        $beforeCompetenceEffect->useEffect($bdd, $beforeCompetenceEffect, $receiver, $bonusCombatReceiver);
+                foreach ($afterActionEffects as $beforeActionEffect)
+                    $beforeActionEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    foreach ($afterDamagesEffects as $afterDamagesEffect)
-        $afterDamagesEffect->useEffect($bdd, $afterDamagesEffect, $receiver, $bonusCombatReceiver);
+                foreach ($afterCompetenceEffects as $beforeCompetenceEffect)
+                    $beforeCompetenceEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    foreach ($afterPhysicalDamagesEffects as $afterPhysicalDamagesEffect)
-        $afterPhysicalDamagesEffect->useEffect($bdd, $afterPhysicalDamagesEffect, $receiver, $bonusCombatReceiver);
+                foreach ($afterDamagesEffects as $afterDamagesEffect)
+                    $afterDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    foreach ($afterMagicalDamagesEffects as $afterMagicalDamagesEffect)
-        $afterMagicalDamagesEffect->useEffect($bdd, $afterMagicalDamagesEffect, $receiver, $bonusCombatReceiver);
+                foreach ($afterPhysicalDamagesEffects as $afterPhysicalDamagesEffect)
+                    $afterPhysicalDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
-    foreach ($afterHealEffects as $afterHealEffect)
-        $afterHealEffect->useEffect($bdd, $afterHealEffect, $receiver, $bonusCombatReceiver);
+                foreach ($afterMagicalDamagesEffects as $afterMagicalDamagesEffect)
+                    $afterMagicalDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+
+                foreach ($afterHealEffects as $afterHealEffect)
+                    $afterHealEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+            }
+
+            if ($effect->_linkedEffect)
+                array_pus($linkedTargetsDone, $receiver->_Id_Personnage);
+        }
+    }
+}
+
+
+function linkedTargetDone($linkedTargetList, $linkedTarget)
+{
+    return array_search($linkedTarget, $linkedTargetList);
 }

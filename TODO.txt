@@ -11,15 +11,19 @@ TODO :
         => Introduce it in CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ... );
 
 Probably TODO :
-    - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas, si les autres effets liés sont cibles multiples.
+    - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas,
+        si les autres effets liés sont cibles multiples.
         => Effets liés = effets avec cibles partagées.
         => A mettre en place dans CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ...);
         => A mettre en place dans la partie Angular lors de la récupération de la compétence, récupérer les cibles déjà identitfiées,
             définir les effets à appliquer et donc le nombre de cibles à sélectionner.
-        => Les CompetenceEffect doivent être dans un ordre hyper spécifique car : On va les récupérer dans l'ordre, et récupérer les entités séléctionnées dans l'odre dans elquel ils sont joués,
-            pour les réattribuer dans le bon ordre, et donc attribuer les bonnes cibles aux bons effets.
-        => Pour simplifier, si il n'y a aucun effet lié, on transmet une première list de cibles vide. Comme cela, on prend toujours la liste en position 0 pour jouer les effet liés.
-        -> Dans le cas de Jet de Lave, avoir 3 effets liés, dont les deux derniers avec emmagasinement sur N tour : Dégâts cible unique, Dégâts 50% cible unique, Dégâts zone
+        => Les CompetenceEffect doivent être dans un ordre hyper spécifique car : On va les récupérer dans l'ordre,
+            et récupérer les entités séléctionnées dans l'odre dans lelquel ils sont joués, pour les réattribuer dans le bon ordre,
+            et donc attribuer les bonnes cibles aux bons effets.
+        => Pour simplifier, si il n'y a aucun effet lié, on transmet une première list de cibles vide. Comme cela,
+            on prend toujours la liste en position 0 pour jouer les effet liés, et ensuite les liste des effets dans l'ordre en fonction de leur ordre d'arrivé.
+        -> Dans le cas de Jet de Lave, avoir 3 effets liés, dont les deux derniers avec emmagasinement sur N tour :
+            Dégâts cible unique, Dégâts 50% cible unique, Dégâts zone
     - Ajouter la possibilité de choisir des effets avec cibles uniquement distinctes (boost du centaure) sur N tours.
 
 
