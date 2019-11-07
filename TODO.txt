@@ -47,6 +47,8 @@ Normaly DID :
     - !!! Définir si les effets avant/après se déclenchent pour chaque effet, ou seulement sur l'utilisation de la compétence. !!!
         => Les avant/après ne se déclenchent qu'une seule fois par compétence, mais sur chaque cible.
 
+    - Gestion des applicationUse, dans CompetenceEffectTest.
+
 
 Notifier ces implémentation dans un changelog :
 	- Le vol de vie est fixé à 20%  : Beaucoup plus simple au niveau implémentatiton, vu que je ne l'avais pas prévu à la base.
@@ -63,6 +65,10 @@ Notifier ces implémentation dans un changelog :
 	- Les effets de dommage laissés sur les personnages passent à travers les amures physiques et magiques.
 	- Il n'y a pas d'utilisation des boost magique et armure magiques, car c'est plus simple à gérer dans le RP. Le code peut être updaté relatiement rapidement
 		pour le prendre en compte, en cas de nécessité.
+	- Quand on précise le nombre d'accumulation nécessaire, c'est à ce nombre d'utilisation qui déclenchera l'effet.
+        => Pou JetDeLave : 3 accumulations pour que l'effet se déclence veut dire que j'ai besoin de l'utiliser 2 fois, et à la troisième utilisation, l'effet se déclenche.
+        => Donc à l'utilisation en cours. Ce qui veut dire, que je n'ai pas besoin de le valider, étant donné que je suis dans l'effet de la compétence en question.
+        => Aurait pu être renomé en quelque chose comme numberOfUseToExec.
 
 Technicité :
     - Expliquer clairement le concept d'effets liés, pourquoi il est né et comment il est utilisé.

@@ -53,21 +53,32 @@ class CompetenceManager
 	  
   }
 
-  public function getPreviousCompetenceUses(int $idCompetence, int $idPersonnage) {
-      $competenceUses = $this->_db->query('SELECT DISTINCT *
+  public function getPreviousCompetenceUses(int $idCompetence, int $idLauncher) {
+      $competenceUses = $this->_db->query('SELECT *
 								FROM competenceeffectuse
 								WHERE idCompetence = ' . $idCompetence . '
-								AND idPersonnage = ' . $idPersonnage . '
-								ORDER BY turnUse, idCompetenceUse');									// Je récupère toutes les utilisations de compétence, ordonnées par ordre d'arrivée.
+								AND idLauncher = ' . idLauncher . '
+								ORDER BY turnUse DESC, idCompetenceUse DESC');									// Je récupère toutes les utilisations de cette compétence, ordonnées par ordre d'arrivée.
+      $previousTargets= array();
+      while($competenceUse = $competenceUses->fetch()){
+          array_push($previousTargets, $competenceUse);
+      }
 
+      return $previousTargets;
   }
 
-    public function getPreviousCharacterUses(int $idCompetence, int $idPersonnage) {
-        $competenceUses = $this->_db->query('SELECT DISTINCT *
+    public function getPreviousCharacterUses(int $idLauncher) {
+        $competenceUses = $this->_db->query('SELECT *
 								FROM competenceeffectuse
-								WHERE idPersonnage = ' . $idPersonnage . '
-								ORDER BY turnUse, idCompetenceUse');									// Je récupère toutes les utilisations de compétence, ordonnées par ordre d'arrivée.
+								WHERE idLauncher = ' . idLauncher . '
+								ORDER BY turnUse DESC, idCompetenceUse DESC');									// Je récupère toutes les utilisations de compétence, ordonnées par ordre d'arrivée.
 
+        $previousCompetencesAndTargets= array();
+        while($competenceUse = $competenceUses->fetch()){
+            array_push($previousCompetencesAndTargets, $competenceUse);
+        }
+
+        return $previousCompetencesAndTargets;
     }
 
   public function setDb(PDO $db)

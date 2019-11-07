@@ -101,15 +101,15 @@ foreach ($effects as $effect) {
 $indexReceiversList = 1; // Commence à 1 car le 0 est réservé à la list de cibles des effets liés.
 $linkedTargetsDone = array(); // Liste des cibles effets liés déjà affectées par les effets avant/après
 foreach ($competenceEffects as $competenceEffect) {
-    if ($competence->_Niveau >= $competenceEffect->_NiveauRequis && $competenceEffect->canBeUsed()) {
-        if ($competenceEffect->_linkedEffect) {
-            $receivers = $receiversLists[0];
-            $bonusCombatReceivers = $bonusCombatReceiversLists[0];
-        } else {
-            $receivers = $receiversLists[$indexReceiversList];
-            $bonusCombatReceivers = $bonusCombatReceiversLists[$indexReceiversList];
-            $indexReceiversList++;
-        }
+    if ($competenceEffect->_linkedEffect) {
+        $receivers = $receiversLists[0];
+        $bonusCombatReceivers = $bonusCombatReceiversLists[0];
+    } else {
+        $receivers = $receiversLists[$indexReceiversList];
+        $bonusCombatReceivers = $bonusCombatReceiversLists[$indexReceiversList];
+        $indexReceiversList++;
+    }
+    if ($competence->_Niveau >= $competenceEffect->_NiveauRequis && $competenceEffect->canBeUsed($launcher->_Id_Personnage, $competenceManager, $receivers)) {
         for ($indexCible = 0; $indexCible < count($receivers); $indexCible++) {
 
             $receiver = $receivers[$indexCible];

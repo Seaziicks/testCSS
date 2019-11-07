@@ -397,10 +397,85 @@ class CompetenceEffectTest
 		}
 	}
 
-	public function canBeUsed(){
-	    return true;
+	public function canBeUsed(int $idPersonnage, CompetenceManager $competenceManager, array $receivers): boolean{
+	    if($this->_applicationType < 5)
+	        return true;
+	    else if($this->_applicationType == 6 || $this->_applicationType == 12 || $this->_applicationType == 18)
+	    {
+	        // Cas des différents "après accumulation".
+            $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
+            return $this->accumulativeUse($previousUses);
+        } else if($this->_applicationType == 7 || $this->_applicationType == 13)
+        {
+	        // Cas des différents "après accumulation sur cible unique".
+            $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
+            return $this->accumulativeUse($previousUses) &&  $this->uniqueTarget($previousUses, $receivers[0]);
+        } else if($this->_applicationType == 8 || $this->_applicationType == 14 || $this->_applicationType == 19)
+        {
+	        // Cas des différents "après accumulation sur cible distinctes".
+            $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
+            return $this->accumulativeUse($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
+        } else if($this->_applicationType == 9 || $this->_applicationType == 15 || $this->_applicationType == 20)
+        {
+	        // Cas des différents "après accumulation successives".
+            $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);
+            return $this->successiveUses($previousUses);
+        } else if($this->_applicationType == 10 || $this->_applicationType == 16) {
+	        // Cas des différents "après accumulation successives sur cibles uniques".
+            $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);
+            return $this->successiveUses($previousUses) && $this->uniqueTarget($previousUses, $receivers[0]);
+        } else if($this->_applicationType == 11 || $this->_applicationType == 17 || $this->_applicationType == 21)
+        {
+	        // Cas des différents "après accumulation successives sur cibles distinctes".
+            $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);
+            return $this->successiveUses($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
+        }
     }
 
+    /*
+     * $this->_numberOfAccumulation - 1 car quand on précise le nombre d'accumulation nécessaire, c'est à ce nombre d'utilisation qui déclenchera l'effet.
+     *      => Pou JetDeLave : 3 accumulations pour que l'effet se déclence veut dire que j'ai besoin de l'utiliser 2 fois, et à la troisième utilisation, l'effet se déclenche.
+     *      => Donc à l'utilisation en cours. Ce qui veut dire, que je n'ai pas besoin de le valider, étant donné que je suis dans l'effet de la compétence en question.
+     *      => Aurait pu être renomé en quelque chose comme numberOfUseToExec.
+     */
+    public function accumulativeUse(array $previousUses): boolean {
+        return count($previousUses) == $this->_numberOfAccumulation - 1;
+    }
+
+    public function successiveUses(array $previousUses): boolean {
+        $index = 0;
+        while ($previousUses[$index]['idCompetence'] == $this->_idCompetence && $index < $this->_numberOfAccumulation - 1 && $index < count($previousUses)) {
+            $index++;
+        }
+        if ($index != $this->_numberOfAccumulation - 1)
+            return false;
+        return true;
+    }
+
+    public function uniqueTarget(array $previousUses, $actualTarget): boolean {
+        $index = 0;
+        while ($previousUses[$index]['idReceiver '] == $actualTarget && $index < $this->_numberOfAccumulation - 1 && $index < count($previousUses)) {
+            if($previousUses[$index]['idCompetence'] == $this->_idCompetence)
+                $index++;
+        }
+        if ($index != $this->_numberOfAccumulation - 1)
+            return false;
+        return true;
+    }
+
+    public function distinctTargets(array $previousUses, $actualTarget): boolean {
+        $index = 0;
+        $arrayTargets = array();
+        while (!in_array($arrayTargets, $previousUses[$index]['idReceiver']) && $index < $this->_numberOfAccumulation - 1  && $index < count($previousUses)) {
+            if($previousUses[$index]['idCompetence'] == $this->_idCompetence) {
+                $index++;
+                array_push($arrayTargets, $previousUses[$index]['idReceiver']);
+            }
+        }
+        if ($index != $this->_numberOfAccumulation - 1 && in_array($arrayTargets, $actualTarget))
+            return false;
+        return true;
+    }
 
 	public function hydrate(array $donnees)
 	{
