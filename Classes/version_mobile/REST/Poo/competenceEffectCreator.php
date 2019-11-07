@@ -280,33 +280,23 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(2, "Cible unique", 3); ?>
                                     <?= optionWithSpace(3, "Effet de zone", 3); ?>
                                     <?= optionWithSpace(4, "Effet de rebond direct", 3); ?>
-                                    <?= optionWithSpace(2, "Cible unique après M accumulation", 3); ?>
-                                    <?= optionWithSpace(2, "Cible unique après M accumulation sur cible unique", 3); ?>
-                                    <?= optionWithSpace(13, "Cible unique après M accumulation sur cibles distinctes", 3); ?>
-
-                                    <?= optionWithSpace(2, "Cible unique après M accumulation successives", 3); ?>
-                                    <?= optionWithSpace(2, "Cible unique après M accumulation successives sur cible unique", 3); ?>
-                                    <?= optionWithSpace(13, "Cible unique après M accumulation successives sur cibles distinctes", 3); ?>
-                                    <?= optionWithSpace(2, "Effet de zone après M accumulation", 3); ?>
-                                    <?= optionWithSpace(2, "Effet de zone après M accumulation sur cible unique", 3); ?>
-                                    <?= optionWithSpace(13, "Effet de zone après M accumulation sur cibles distinctes", 3); ?>
-                                    <?= optionWithSpace(2, "Effet de zone après M accumulation successives", 3); ?>
-                                    <?= optionWithSpace(2, "Effet de zone après M accumulation successives sur cible unique", 3); ?>
-                                    <?= optionWithSpace(13, "Effet de zone après M accumulation successives sur cibles distinctes", 3); ?>
-                                    <?= optionWithSpace(12, "Effet sur précédentes cibles après M accumulation", 3); ?>
-                                    <?= optionWithSpace(13, "Effet sur précédentes cibles après M accumulation sur cibles distinctes", 3); ?>
-                                    <?= optionWithSpace(12, "Effet sur précédentes cibles après M accumulation successives", 3); ?>
-                                    <?= optionWithSpace(13, "Effet sur précédentes cibles après M accumulation successives sur cibles distinctes", 3); ?>
-
-                                    <option value="" disabled="disabled"> Effet sur plusieurs tour </option>
                                     <?= optionWithSpace(5, "Canalisation", 3); ?>
-                                    <?= optionWithSpace(6, "S'accumule après avoir touché", 3); ?>
-                                    <?= optionWithSpace(7, "S'accumule sur une cible unique", 3); ?>
-                                    <?= optionWithSpace(8, "Effet de zone", 3); ?>
-                                    <?= optionWithSpace(9, "Effet de zone après M accumulation sur N tours", 3); ?>
-                                    <?= optionWithSpace(11, "Effet de zone après M accumulation d'une cible unique sur N tours", 3); ?>
-                                    <?= optionWithSpace(12, "Effet sur précédentes cibles après M accumulation sur N tours", 3); ?>
-                                    <?= optionWithSpace(13, "Effet sur précédentes cibles après M accumulation sur cibles distinctes sur N tours", 3); ?>
+                                    <?= optionWithSpace(5, "Cible unique après M accumulation", 3); ?>
+                                    <?= optionWithSpace(6, "Cible unique après M accumulation sur cible unique", 3); ?>
+                                    <?= optionWithSpace(7, "Cible unique après M accumulation sur cibles distinctes", 3); ?>
+                                    <?= optionWithSpace(8, "Cible unique après M accumulation successives", 3); ?>
+                                    <?= optionWithSpace(9, "Cible unique après M accumulation successives sur cible unique", 3); ?>
+                                    <?= optionWithSpace(10, "Cible unique après M accumulation successives sur cibles distinctes", 3); ?>
+                                    <?= optionWithSpace(11, "Effet de zone après M accumulation", 3); ?>
+                                    <?= optionWithSpace(12, "Effet de zone après M accumulation sur cible unique", 3); ?>
+                                    <?= optionWithSpace(13, "Effet de zone après M accumulation sur cibles distinctes", 3); ?>
+                                    <?= optionWithSpace(14, "Effet de zone après M accumulation successives", 3); ?>
+                                    <?= optionWithSpace(15, "Effet de zone après M accumulation successives sur cible unique", 3); ?>
+                                    <?= optionWithSpace(16, "Effet de zone après M accumulation successives sur cibles distinctes", 3); ?>
+                                    <?= optionWithSpace(17, "Effet sur précédentes cibles après M accumulation", 3); ?>
+                                    <?= optionWithSpace(18, "Effet sur précédentes cibles après M accumulation sur cibles distinctes", 3); ?>
+                                    <?= optionWithSpace(19, "Effet sur précédentes cibles après M accumulation successives", 3); ?>
+                                    <?= optionWithSpace(20, "Effet sur précédentes cibles après M accumulation successives sur cibles distinctes", 3); ?>
                                 </select>
                 niveauRequis => <input type="number" name="newniveauRequis" id="newniveauRequis" rows=3 cols=36 > </input><br/>
                 typeCalcul => <select onchange="changeTypeCalcul()" type="number" name="newtypeCalcul" style="text-align : center; width : 190px;" id="newtypeCalcul" rows=1 cols=15 >

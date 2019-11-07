@@ -53,6 +53,23 @@ class CompetenceManager
 	  
   }
 
+  public function getPreviousCompetenceUses(int $idCompetence, int $idPersonnage) {
+      $competenceUses = $this->_db->query('SELECT DISTINCT *
+								FROM competenceeffectuse
+								WHERE idCompetence = ' . $idCompetence . '
+								AND idPersonnage = ' . $idPersonnage . '
+								ORDER BY turnUse, idCompetenceUse');									// Je récupère toutes les utilisations de compétence, ordonnées par ordre d'arrivée.
+
+  }
+
+    public function getPreviousCharacterUses(int $idCompetence, int $idPersonnage) {
+        $competenceUses = $this->_db->query('SELECT DISTINCT *
+								FROM competenceeffectuse
+								WHERE idPersonnage = ' . $idPersonnage . '
+								ORDER BY turnUse, idCompetenceUse');									// Je récupère toutes les utilisations de compétence, ordonnées par ordre d'arrivée.
+
+    }
+
   public function setDb(PDO $db)
   {
     $this->_db = $db;

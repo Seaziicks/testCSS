@@ -26,6 +26,8 @@ Probably TODO :
             Dégâts cible unique, Dégâts 50% cible unique, Dégâts zone
     - Ajouter la possibilité de choisir des effets avec cibles uniquement distinctes (boost du centaure) sur N tours.
 
+    => (Angular) !!! Si il y a des effets liés, vérifier si ce sont des effets cibles uniques, et si plusieurs effets liés sont cibles uniques, alors changer de couleur de bordure !!!
+
 
 A vérifier :
     - !!! Faire en sorte de déporter les fonctions appliquerEffetCompetenceAvecBonusGeneraux() et useEffect(); !!!

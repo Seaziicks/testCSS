@@ -24,6 +24,8 @@ class CompetenceEffectTest
 			$_numberOfUse,
 			$_numberOfTurn,
 			$_numberOfFight,
+            $_numberOfTarget,
+            $_numberOfAccumulation,
 	        $_linkedEffect;
 
     public $_Personnage;
@@ -223,6 +225,16 @@ class CompetenceEffectTest
     public function setLinkedEffect($linkedEffect)
     {
         $this->_linkedEffect = (boolean) $linkedEffect;
+    }
+
+    public function setNumberOfTarget($numberOfTarget)
+    {
+        $this->_numberOfTarget = (int)$numberOfTarget;
+    }
+
+    public function setNumberOfAccumulation($numberOfAccumulation)
+    {
+        $this->_numberOfAccumulation = (int)$numberOfAccumulation;
     }
 
     public function getStatistique(int $index){
