@@ -140,12 +140,11 @@ class EffectTest{
         }
     }
 
-    public function useEffect($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver)
+    public function useEffect($bdd, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver)
     {
-        if($this->_ActionType > 7)
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // if($this->_ActionType > 7)
         switch (true) {
-            case $this->_EffectType <= 30:
+            case $this->_EffectType <= 34:
                 $sql = "INSERT INTO effectapplied (EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
                                                     IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
                 VALUES (" . $this->_EffectType . "," . $this->_EffectValueMin . "," . $this->_EffectValueMax . ",
@@ -153,7 +152,7 @@ class EffectTest{
                         " . $this->_NumberOfUse . ", " . $this->_NumberOfTurn . "," . $this->_NumberOfFight . ")";
                 // use exec() because no results are returned
                 $bdd->exec($sql);
-            case $this->_EffectType == 33: // Damage
+            case $this->_EffectType == 35: // Damage
                 $initialDamages = $this->_EffectValueMin;
                 $effectiveDamages = $receiver->calculateReducedDamages($initialDamages, $bonusCombatReceiver);
                 $remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
@@ -163,7 +162,15 @@ class EffectTest{
                 $bdd->exec($sql);
                 $bdd->exec($sql2);
                 break;
-            case $this->_EffectType == 35: // Heal
+            case $this->_EffectType == 36: // Differed damage
+                $sql = "INSERT INTO effectapplied (EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
+                                                    IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
+                VALUES (35," . $this->_EffectValueMin . "," . $this->_EffectValueMax . ",
+                        " . $this->_ID_Competence . "," . $this->_IDLauncher . "," . $this->_IDReceiver . ",
+                        " . $this->_NumberOfUse . ", " . $this->_NumberOfTurn . "," . $this->_NumberOfFight . ")";
+                // use exec() because no results are returned
+                $bdd->exec($sql);
+            case $this->_EffectType == 37: // Heal
                 $initialHeal = $this->_EffectValueMin;
                 $healBoostReceiver = ($initialHeal + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);
                 $lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
@@ -171,7 +178,7 @@ class EffectTest{
                 $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $this->$idReceiver;
                 $bdd->exec($sql);
                 break;
-            case $this->_EffectType == 36: // Shield
+            case $this->_EffectType == 38: // Shield
                 $totalShield = max(0, $receiver->_Bouclier - $this->_EffectValueMin);
                 $sql = "UPDATE personnage SET Bouclier = " . $totalShield . " WHERE Id_Personnage = " . $this->_IDReceiver;
                 $bdd->exec($sql);

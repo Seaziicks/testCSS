@@ -301,6 +301,7 @@ class CompetenceEffectTest
 
 	public function dealDamagesWithBonusCombat(BonusCombat $bonusCombat, int $actionType) {
 		$damagesInitialWithBonusStatistique = $this->getEffectWithBonusCombatStatistique($bonusCombat);
+        $degatBonusCombatPourcentage = 0;
 		if($actionType == 1 || $actionType == 3) {
 			 $degatBonusCombatFlat = ($damagesInitialWithBonusStatistique + $bonusCombat->_DegatsFlat + $bonusCombat->_DegatsPhysiqueFlat + $bonusCombat->_SortFlat);
 			 $degatBonusCombatPourcentage = $degatBonusCombatFlat *(1 + $bonusCombat->_DegatsPourcentage)*(1 + $bonusCombat->_DegatsPhysiquePourcentage)*(1 + $bonusCombat->_SortPourcentage);
@@ -352,9 +353,11 @@ class CompetenceEffectTest
 		switch (true) {
 			case $this->_actionType == 1: // Damages Physical & Magical
 			case $this->_actionType == 2:
-				$initialDamages = $this->dealDamagesWithBonusCombat($bonusCombatLauncher, $this->_actionType);
-				$effectiveDamages = $receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver);
-				$remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
+				$initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+				$damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
+                $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
+                $effectiveDamages = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
+                $remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
 				$remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
 				$sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
 				$bdd->exec($sql);
@@ -363,8 +366,10 @@ class CompetenceEffectTest
 				break;
 			case $this->_actionType == 3: // LifeSteal Physical & Magical
 			case $this->_actionType == 4:
-				$initialDamages = $this->dealDamagesWithBonusCombat($bonusCombatLauncher);
-				$effectiveDamages = $receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver);
+				$initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
+                $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
+                $effectiveDamages = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
 				$lifeSteal = floor($effectiveDamages * 0.2);
 				$remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
 				$remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
@@ -376,7 +381,7 @@ class CompetenceEffectTest
 				$bdd->exec($sql3);
 				break;
 			case $this->_actionType == 5: // Heal
-				$healBoostLauncher = $this->dealHealWithBonusCombat($bonusCombatLauncher);
+				$healBoostLauncher = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
 				$healBoostReceiver = $receiver->calculateHealWithBonusCombat($healBoostLauncher, $bonusCombatReceiver);
 				$lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
 				$sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
@@ -398,33 +403,33 @@ class CompetenceEffectTest
 	}
 
 	public function canBeUsed(int $idPersonnage, CompetenceManager $competenceManager, array $receivers): boolean{
-	    if($this->_applicationType < 5)
+	    if($this->_applicationType < 7)
 	        return true;
-	    else if($this->_applicationType == 6 || $this->_applicationType == 12 || $this->_applicationType == 18)
+	    else if($this->_applicationType == 7 || $this->_applicationType == 13 || $this->_applicationType == 19)
 	    {
 	        // Cas des différents "après accumulation".
             $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
             return $this->accumulativeUse($previousUses);
-        } else if($this->_applicationType == 7 || $this->_applicationType == 13)
+        } else if($this->_applicationType == 8 || $this->_applicationType == 14)
         {
 	        // Cas des différents "après accumulation sur cible unique".
             $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
             return $this->accumulativeUse($previousUses) &&  $this->uniqueTarget($previousUses, $receivers[0]);
-        } else if($this->_applicationType == 8 || $this->_applicationType == 14 || $this->_applicationType == 19)
+        } else if($this->_applicationType == 9 || $this->_applicationType == 15 || $this->_applicationType == 20)
         {
 	        // Cas des différents "après accumulation sur cible distinctes".
             $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
             return $this->accumulativeUse($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
-        } else if($this->_applicationType == 9 || $this->_applicationType == 15 || $this->_applicationType == 20)
+        } else if($this->_applicationType == 10 || $this->_applicationType == 16 || $this->_applicationType == 21)
         {
 	        // Cas des différents "après accumulation successives".
             $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);
             return $this->successiveUses($previousUses);
-        } else if($this->_applicationType == 10 || $this->_applicationType == 16) {
+        } else if($this->_applicationType == 11 || $this->_applicationType == 17) {
 	        // Cas des différents "après accumulation successives sur cibles uniques".
             $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);
             return $this->successiveUses($previousUses) && $this->uniqueTarget($previousUses, $receivers[0]);
-        } else if($this->_applicationType == 11 || $this->_applicationType == 17 || $this->_applicationType == 21)
+        } else if($this->_applicationType == 12 || $this->_applicationType == 18 || $this->_applicationType == 22)
         {
 	        // Cas des différents "après accumulation successives sur cibles distinctes".
             $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);

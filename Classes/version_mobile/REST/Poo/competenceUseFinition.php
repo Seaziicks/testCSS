@@ -12,6 +12,8 @@ session_start(); // On appelle session_start() APRÈS avoir enregistré l'autolo
 include('BDD.php');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
+$turn = $_POST['turn'];
+
 $personnageManager = new PersonnageManager($bdd);
 $launcher = $personnageManager->get($_POST['idLauncher']);
 $bonusCombatManager = new BonusCombatManager($bdd);
@@ -100,6 +102,7 @@ foreach ($effects as $effect) {
 
 $indexReceiversList = 1; // Commence à 1 car le 0 est réservé à la list de cibles des effets liés.
 $linkedTargetsDone = array(); // Liste des cibles effets liés déjà affectées par les effets avant/après
+$effectWithSpecialApplicationTypeHasBeenLaunched = false;
 foreach ($competenceEffects as $competenceEffect) {
     if ($competenceEffect->_linkedEffect) {
         $receivers = $receiversLists[0];
@@ -119,22 +122,22 @@ foreach ($competenceEffects as $competenceEffect) {
                 ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
 
                 foreach ($beforeActionEffects as $beforeActionEffect)
-                    $beforeActionEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($beforeCompetenceEffects as $beforeCompetenceEffect)
-                    $beforeCompetenceEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($beforeDamagesEffects as $beforeDamagesEffect)
-                    $beforeDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $beforeDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($beforePhysicalDamagesEffects as $beforePhysicalDamagesEffect)
-                    $beforePhysicalDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $beforePhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($beforeMagicalDamagesEffects as $beforeMagicalDamagesEffect)
-                    $beforeMagicalDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $beforeMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($beforeHealEffects as $beforeHealEffect)
-                    $beforeHealEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $beforeHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
             }
 
             $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
@@ -149,32 +152,54 @@ foreach ($competenceEffects as $competenceEffect) {
                 ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
 
                 foreach ($afterActionEffects as $beforeActionEffect)
-                    $beforeActionEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($afterCompetenceEffects as $beforeCompetenceEffect)
-                    $beforeCompetenceEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($afterDamagesEffects as $afterDamagesEffect)
-                    $afterDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $afterDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($afterPhysicalDamagesEffects as $afterPhysicalDamagesEffect)
-                    $afterPhysicalDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $afterPhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($afterMagicalDamagesEffects as $afterMagicalDamagesEffect)
-                    $afterMagicalDamagesEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $afterMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
                 foreach ($afterHealEffects as $afterHealEffect)
-                    $afterHealEffect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $afterHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
             }
 
-            if ($effect->_linkedEffect)
-                array_pus($linkedTargetsDone, $receiver->_Id_Personnage);
+            if ($competenceEffect->_linkedEffect)
+                array_push($linkedTargetsDone, $receiver->_Id_Personnage);
+
+            if(!$effectWithSpecialApplicationTypeHasBeenLaunched)
+                addTargetToCompetenceUse($bdd, $competence, $launcher, $receiver, $turn);
         }
+        if($competenceEffect->_applicationType > 6)
+            $effectWithSpecialApplicationTypeHasBeenLaunched = true;
     }
 }
+if($effectWithSpecialApplicationTypeHasBeenLaunched)
+    clearTargets($bdd, $competence);
 
 
 function linkedTargetDone($linkedTargetList, $linkedTarget)
 {
     return array_search($linkedTarget, $linkedTargetList);
+}
+
+function addTargetToCompetenceUse($bdd, CompetenceTest $competence, PersonnageTest $launcher, PersonnageTest $receiver, int $turnUse) {
+    $sql = "INSERT INTO competenceeffectuse (idCompetence, idLauncher, idReceiver, turnUse)
+            VALUES (" . $competence->_Id_Competence. ", " . $launcher->_Id_Personnage. ",
+            " . $receiver->_Id_Personnage. ",".$turnUse.")";
+    // use exec() because no results are returned
+    $bdd->exec($sql);
+    $bdd->exec($sql);
+}
+
+function clearTargets($bdd, CompetenceTest $competence){
+    $sql = "DELETE FROM competenceeffectuse
+                WHERE idCompetence = " . $competence->_Id_Competence . "";
+    $bdd->exec($sql);
 }
