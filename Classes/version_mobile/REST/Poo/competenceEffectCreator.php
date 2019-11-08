@@ -279,6 +279,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(1, "Sois même", 3); ?>
                                     <?= optionWithSpace(2, "Cible unique", 3); ?>
                                     <?= optionWithSpace(3, "Effet de zone", 3); ?>
+                                    <?= optionWithSpace(4, "Effet sur précédentes cibles", 3); ?>
                                     <?= optionWithSpace(4, "Effet de rebond direct", 3); ?>
                                     <?= optionWithSpace(5, "Canalisation", 3); ?>
                                     <?= optionWithSpace(6, "Cible unique après M accumulation", 3); ?>
