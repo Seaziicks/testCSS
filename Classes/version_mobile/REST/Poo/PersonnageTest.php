@@ -410,13 +410,13 @@ class PersonnageTest
 	    return (($value - $bonusCombatReceiver->_RedirectionDegatFlat) * (1 - $bonusCombatReceiver->_RedirectionDegatPourcentage));
     }
 
-    public function triggerEffectReceivingAction($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, boolean $before)
+    public function triggerEffectReceivingCompetence($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, boolean $before)
     {
         $effectsTestManager = new EffectTestManager($bdd);
         if ($before) {
-            $effects = $effectsTestManager->getBeforeEffectListForReceiver($receiver->_Id_Personnage);
+            $effects = $effectsTestManager->getBeforeCompetenceEffectListForReceiver($receiver->_Id_Personnage);
         } else {
-            $effects = $effectsTestManager->getAfterEffectListForReceiver($receiver->_Id_Personnage);
+            $effects = $effectsTestManager->getAfterCompetenceEffectListForReceiver($receiver->_Id_Personnage);
         }
         foreach ($effects as $effect) {
             if($competenceEffect->_effectType < 5) { // Si je reçois des dégâts

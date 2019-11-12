@@ -112,69 +112,73 @@ foreach ($competenceEffects as $competenceEffect) {
         $bonusCombatReceivers = $bonusCombatReceiversLists[$indexReceiversList];
         $indexReceiversList++;
     }
+    if($competenceEffect->_applicationType == 1)
+        $receivers = [$launcher->_Id_Personnage]; // Cas de ldu cible sois-même
     if ($competence->_Niveau >= $competenceEffect->_NiveauRequis && $competenceEffect->canBeUsed($launcher->_Id_Personnage, $competenceManager, $receivers)) {
         for ($indexCible = 0; $indexCible < count($receivers); $indexCible++) {
+            if ((isCibleUnique($competenceEffect) && $indexCible == 0)
+                || (!isCibleUnique($competenceEffect) && $indexCible < $competenceEffect->_numberOfTarget)) {
+                $receiver = $receivers[$indexCible];
+                $bonusCombatReceiver = $bonusCombatReceivers[$indexCible];
 
-            $receiver = $receivers[$indexCible];
-            $bonusCombatReceiver = $bonusCombatReceivers[$indexCible];
+                if (!$competenceEffect->_linkedEffect ||
+                    ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
 
-            if (!$competenceEffect->_linkedEffect ||
-                ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
+                    foreach ($beforeActionEffects as $beforeActionEffect)
+                        $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                foreach ($beforeActionEffects as $beforeActionEffect)
-                    $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    foreach ($beforeCompetenceEffects as $beforeCompetenceEffect)
+                        $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                foreach ($beforeCompetenceEffects as $beforeCompetenceEffect)
-                    $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    foreach ($beforeDamagesEffects as $beforeDamagesEffect)
+                        $beforeDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                foreach ($beforeDamagesEffects as $beforeDamagesEffect)
-                    $beforeDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    foreach ($beforePhysicalDamagesEffects as $beforePhysicalDamagesEffect)
+                        $beforePhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                foreach ($beforePhysicalDamagesEffects as $beforePhysicalDamagesEffect)
-                    $beforePhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    foreach ($beforeMagicalDamagesEffects as $beforeMagicalDamagesEffect)
+                        $beforeMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                foreach ($beforeMagicalDamagesEffects as $beforeMagicalDamagesEffect)
-                    $beforeMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    foreach ($beforeHealEffects as $beforeHealEffect)
+                        $beforeHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                }
 
-                foreach ($beforeHealEffects as $beforeHealEffect)
-                    $beforeHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
+
+                //-----------
+                $competenceEffect->appliquerEffetCompetenceAvecBonusGeneraux($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $indexCible);
+
+
+                $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
+
+                if (!$competenceEffect->_linkedEffect ||
+                    ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
+
+                    foreach ($afterActionEffects as $beforeActionEffect)
+                        $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+
+                    foreach ($afterCompetenceEffects as $beforeCompetenceEffect)
+                        $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+
+                    foreach ($afterDamagesEffects as $afterDamagesEffect)
+                        $afterDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+
+                    foreach ($afterPhysicalDamagesEffects as $afterPhysicalDamagesEffect)
+                        $afterPhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+
+                    foreach ($afterMagicalDamagesEffects as $afterMagicalDamagesEffect)
+                        $afterMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+
+                    foreach ($afterHealEffects as $afterHealEffect)
+                        $afterHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                }
+
+                if ($competenceEffect->_linkedEffect)
+                    array_push($linkedTargetsDone, $receiver->_Id_Personnage);
+
+                if (!$effectWithSpecialApplicationTypeHasBeenLaunched)
+                    addTargetToCompetenceUse($bdd, $competence, $launcher, $receiver, $turn);
             }
-
-            $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
-
-            //-----------
-            $competenceEffect->appliquerEffetCompetenceAvecBonusGeneraux($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $indexCible);
-
-
-            $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
-
-            if (!$competenceEffect->_linkedEffect ||
-                ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
-
-                foreach ($afterActionEffects as $beforeActionEffect)
-                    $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
-
-                foreach ($afterCompetenceEffects as $beforeCompetenceEffect)
-                    $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
-
-                foreach ($afterDamagesEffects as $afterDamagesEffect)
-                    $afterDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
-
-                foreach ($afterPhysicalDamagesEffects as $afterPhysicalDamagesEffect)
-                    $afterPhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
-
-                foreach ($afterMagicalDamagesEffects as $afterMagicalDamagesEffect)
-                    $afterMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
-
-                foreach ($afterHealEffects as $afterHealEffect)
-                    $afterHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
-            }
-
-            if ($competenceEffect->_linkedEffect)
-                array_push($linkedTargetsDone, $receiver->_Id_Personnage);
-
-            if(!$effectWithSpecialApplicationTypeHasBeenLaunched)
-                addTargetToCompetenceUse($bdd, $competence, $launcher, $receiver, $turn);
         }
         if($competenceEffect->_applicationType > 6)
             $effectWithSpecialApplicationTypeHasBeenLaunched = true;
@@ -195,11 +199,15 @@ function addTargetToCompetenceUse($bdd, CompetenceTest $competence, PersonnageTe
             " . $receiver->_Id_Personnage. ",".$turnUse.")";
     // use exec() because no results are returned
     $bdd->exec($sql);
-    $bdd->exec($sql);
 }
 
 function clearTargets($bdd, CompetenceTest $competence){
     $sql = "DELETE FROM competenceeffectuse
                 WHERE idCompetence = " . $competence->_Id_Competence . "";
     $bdd->exec($sql);
+}
+
+function isCibleUnique(CompetenceEffectTest $competenceEffect): boolean {
+    return $competenceEffect->_applicationType == 2 || ($competenceEffect->_applicationType > 6
+        & $competenceEffect->_applicationType < 13);
 }
