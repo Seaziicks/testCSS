@@ -1,16 +1,12 @@
 TODO :
-    - Ajouter la mise en base de donnée dans comepetenceeffectuse des cibles touchées si un des effets de la compétence applicationType > 6
-    - Lorsqu'un effet avec applicationType > 6 a eu lieu, supprimer ses cibles de comepetenceeffectuse
+    - (Angular) Ajouter à CompetenceEffect le nombre de cibles maximum.
     - Vérifier et mettre en place la possibilité de gestion automatique de JetDeLave avec effet niveau 3, et BoostCentaure avec effet niveau 3.
-    - !! Faire une table qui référence les cibles pour les compétences qui doivent les sauvegarder !!
     - Display correctly all the Competence and add an interface for the Competence (Angular)
     - Add the possibility to update/delete Competence.
     - Add the possibility to CUD Personnage.
     - Provide a better Personnage display possibility. At this time, there are only 9 Personnage, but when the GM will create decade of it, we need to have the possibility to order them.
     - When everything will be clean enough, maybe not delete the competence from competence AND competencelearned, just from competencelearned. But today we need this to not display it again.
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
-    - Introduce DamageRedirection, and decide if redirection takes into account damageRedirection/armor from the initial target, and damageRedirection/Armor from redirecting target.
-        => Introduce it in CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ... );
     - Implémenter la mort/KO des perso
         => !!! Enlever les effets de redirection de dégâts quand cela arrive !!!
 
@@ -55,6 +51,12 @@ Normaly DID :
     - Gestion de la redirection de dégats (à la fois dans PersonnageTest->triggerEffectReceivingAction() pour infliger les dégâts au lanceur de la compétence,
         et CompetenceEffectTest->calculateHealWithBonusCombat() pour la réduction des dégâts. Cette redirection ne se fait que sur les dégâts directs).
 
+    - Ajouter la mise en base de donnée dans comepetenceeffectuse des cibles touchées si un des effets de la compétence applicationType > 6
+    - Lorsqu'un effet avec applicationType > 6 a eu lieu, supprimer ses cibles de comepetenceeffectuse
+    - !! Faire une table qui référence les cibles pour les compétences qui doivent les sauvegarder !!
+    - Gestion du cas de cible sois-même
+    - Introduce DamageRedirection, and decide if redirection takes into account damageReduction/armor from the initial target, and damageReduction/Armor from redirecting target.
+        => Introduce it in CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ... );
 
 Notifier ces implémentation dans un changelog :
 	- Le vol de vie est fixé à 20%  : Beaucoup plus simple au niveau implémentatiton, vu que je ne l'avais pas prévu à la base.
