@@ -31,7 +31,8 @@ Probably TODO :
     - Ajouter la possibilité de choisir des effets avec cibles uniquement distinctes (boost du centaure) sur N tours.
 
     => (Angular) !!! Si il y a des effets liés, vérifier si ce sont des effets cibles uniques, et si plusieurs effets liés sont cibles uniques, alors changer de couleur de bordure !!!
-
+    - Possiblement prendre en compte des dégâts différés qui augmentent/diminuent.
+    - Ajouter un champs qui spécifie dans combien de temps doit être déclenché l'effet, avec une vérification appropriée.
 
 A vérifier :
     - !!! Faire en sorte de déporter les fonctions appliquerEffetCompetenceAvecBonusGeneraux() et useEffect(); !!!
