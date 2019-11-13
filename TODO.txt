@@ -1,7 +1,8 @@
 TODO :
-    - (Angular) Ajouter à CompetenceEffect le nombre de cibles maximum.
-    - Vérifier et mettre en place la possibilité de gestion automatique de JetDeLave avec effet niveau 3, et BoostCentaure avec effet niveau 3.
-    - Display correctly all the Competence and add an interface for the Competence (Angular)
+    - (Angular) Ajouter à CompetenceEffect le nombre de cibles maximum, pour le rendre cohérent avec la partie PHP, qui l'a déjà.
+    - (Angular) Faire en sorte d'afficher tous les nouveaux champs possibles pour un CompetenceEffect
+    - Vérifier et mettre en place la possibilité de gestion automatique de JetDeLave avec effet niveau 3, et BoostCentaure avec effet niveau 3, differerDegats du Nain et châtiment du Sacrieur.
+    - Display correctly all the Competences created (no matter what personnage it belongs to) and add an interface for the Competence (Angular)
     - Add the possibility to update/delete Competence.
     - Add the possibility to CUD Personnage.
     - Provide a better Personnage display possibility. At this time, there are only 9 Personnage, but when the GM will create decade of it, we need to have the possibility to order them.
@@ -9,6 +10,7 @@ TODO :
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
     - Implémenter la mort/KO des perso
         => !!! Enlever les effets de redirection de dégâts quand cela arrive !!!
+    - Mettre en place les groupe et sous-groupe relatifs au entités, pour pouvoir trier plus aisément les entités.
 
 Probably TODO :
     - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas,
@@ -28,7 +30,9 @@ Probably TODO :
 
     => (Angular) !!! Si il y a des effets liés, vérifier si ce sont des effets cibles uniques, et si plusieurs effets liés sont cibles uniques, alors changer de couleur de bordure !!!
     - Possiblement prendre en compte des dégâts différés qui augmentent/diminuent.
-    - Ajouter un champs qui spécifie dans combien de temps doit être déclenché l'effet, avec une vérification appropriée.
+    - Rajouter la possibilité de lier un effet avant/après dégâts/soin/bouclier reçu en fonction du montant reçu.
+        => Rajouter un booléen, et si ce booléen est actif, on prend dans Effect->_ValueMin la valeur qu'on multiplie directement au montant de CompetenceEffect pour obtenir la valeur à appliquer.
+
 
 A vérifier :
     - !!! Faire en sorte de déporter les fonctions appliquerEffetCompetenceAvecBonusGeneraux() et useEffect(); !!!
@@ -58,10 +62,12 @@ Normaly DID :
     - Gestion du cas de cible sois-même
     - Introduce DamageRedirection, and decide if redirection takes into account damageReduction/armor from the initial target, and damageReduction/Armor from redirecting target.
         => Introduce it in CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ... );
+    - Ajouter un champs qui spécifie dans combien de temps doit être déclenché l'effet, avec une vérification appropriée.
+    - Prendre en compte les dégâts différés.
 
 Notifier ces implémentation dans un changelog :
-	- Le vol de vie est fixé à 20%  : Beaucoup plus simple au niveau implémentatiton, vu que je ne l'avais pas prévu à la base.
-						En effet, cela permet de ne pas rajouter une champ optionnel dans la BDD.
+	- Le vol de vie est fixé à 20%  : Beaucoup plus simple au niveau implémentatiton, vu que je ne l'avais pas prévu à la base. En effet, cela permet de ne pas rajouter une champ optionnel dans la BDD.
+	    Les dégâts redirigés et différés ne l'impactent et le ne diffèrent pas, car ils sont infligés.
 	- Tous les effets sont de la forme ''' (valeurInitiale + boostFlat) * (1 + boostPourcentage) '''
 	- Ignorer l'armure est de la forme ''' (valeurInitiale * (1 - malusPourcentage)) - malusFlat '''
 
@@ -83,5 +89,7 @@ Notifier ces implémentation dans un changelog :
 
 Technicité :
     - Expliquer clairement le concept d'effets liés, pourquoi il est né et comment il est utilisé.
-        => Première réponse : Le concept d'effet liés est venu de la compétence JetDeLave. Cette compétence un soucis : Au bout de
+        => Première réponse : Le concept d'effet liés est venu de la compétence JetDeLave. Cette compétence un soucis : Au bout de 3 effets, elle doit infliger des dégâts supplémentaires à la cible,
+            et faire un effet de dégâts de zone autour. Or une seule sélection est possible, en distingant la première cible des autres, et cela permet de ne pas prendre la cible principale dans l'effet de zone.
+            L'effet de zone ne s'active que si la cible précédente est sélectionnée.
     - Pour l'instant, pour la redirection de dégâts et la réduction de dégâts, il faut renter une valeur < 1, car elle est directement multipliée.

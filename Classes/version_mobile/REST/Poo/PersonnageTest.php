@@ -410,6 +410,11 @@ class PersonnageTest
 	    return (($value - $bonusCombatReceiver->_RedirectionDegatFlat) * (1 - $bonusCombatReceiver->_RedirectionDegatPourcentage));
     }
 
+    public function calculateNonDifferedDamages(int $value, BonusCombat $bonusCombatReceiver) {
+        return (($value - $bonusCombatReceiver->_DiffererDegatsFlat - $bonusCombatReceiver->_DiffererDegatsFlatToTheEndOfEffect)
+            * (1 - $bonusCombatReceiver->_DiffererDegatsPourcentage - $bonusCombatReceiver->_DiffererDegatsPourcentageToTheEndOfEffect));
+    }
+
     public function triggerEffectReceivingCompetence($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, boolean $before)
     {
         $effectsTestManager = new EffectTestManager($bdd);
@@ -458,6 +463,64 @@ class PersonnageTest
                     $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
                     $bdd->exec($sql);
                     $bdd->exec($sql2);
+                } elseif ($effect->_EffectType == 39) { // DiffererDegatsFlatToTheEndOfEffect
+                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                    $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
+                    $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
+                    $effectiveRedirection = min($damageAfterReduction, $effect->_EffectValueMin);
+                    $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
+                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
+                            VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
+                                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
+                                    0, 0, 0," . ($effect->_NumberOfTurn - 1) . ")"; // $effect->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
+                    // use exec() because no results are returned
+                    $bdd->exec($sql);
+                    break;
+                } elseif ($effect->_EffectType == 40) { // DiffererDegatsPourcentageToTheEndOfEffect
+                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                    $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
+                    $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
+                    $effectiveRedirection = ceil($damageAfterReduction * $effect->_EffectValueMin);
+                    $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
+                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
+                            VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
+                                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
+                                    0, 0, 0," . ($effect->_NumberOfTurn - 1) . ")"; // $effect->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
+                    // use exec() because no results are returned
+                    $bdd->exec($sql);
+                    break;
+                } elseif ($effect->_EffectType == 41) { // DiffererDegatsFlat
+                    // !!!!!!!!! A refaire pour savoir sur combien de tours on diffère les dégâts. Probablement rajouter un champ dans EffectApplied !!!!!!!!!
+                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                    $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
+                    $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
+                    $effectiveRedirection = min($damageAfterReduction, $effect->_EffectValueMin);
+                    $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
+                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
+                            VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
+                                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
+                                    0, 0, 0," . ($effect->_NumberOfTurn - 1) . ")"; // $effect->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
+                    // use exec() because no results are returned
+                    $bdd->exec($sql);
+                    break;
+                } elseif ($effect->_EffectType == 42) { // DiffererDegatsPourcentage
+                    // !!!!!!!!! A refaire pour savoir sur combien de tours on diffère les dégâts. Probablement rajouter un champ dans EffectApplied !!!!!!!!!
+                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                    $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
+                    $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
+                    $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
+                    $effectiveRedirection = ceil($damageAfterReduction * $effect->_EffectValueMin);
+                    $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
+                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
+                            VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
+                                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
+                                    0, 0, 0," . ($effect->_NumberOfTurn - 1) . ")"; // $effect->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
+                    // use exec() because no results are returned
+                    $bdd->exec($sql);
+                    break;
                 }
             }
         }

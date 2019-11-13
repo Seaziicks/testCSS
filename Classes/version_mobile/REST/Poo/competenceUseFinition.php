@@ -141,18 +141,20 @@ foreach ($competenceEffects as $competenceEffect) {
 
                     foreach ($beforeHealEffects as $beforeHealEffect)
                         $beforeHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+
+
+                    $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
                 }
 
-                $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
 
                 //-----------
                 $competenceEffect->appliquerEffetCompetenceAvecBonusGeneraux($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $indexCible);
 
 
-                $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
-
                 if (!$competenceEffect->_linkedEffect ||
                     ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
+
+                    $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
 
                     foreach ($afterActionEffects as $beforeActionEffect)
                         $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
