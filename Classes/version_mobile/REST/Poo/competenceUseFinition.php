@@ -112,7 +112,7 @@ foreach ($competenceEffects as $competenceEffect) {
         $bonusCombatReceivers = $bonusCombatReceiversLists[$indexReceiversList];
         $indexReceiversList++;
     }
-    if($competenceEffect->_applicationType == 1)
+    if ($competenceEffect->_applicationType == 1)
         $receivers = [$launcher->_Id_Personnage]; // Cas de ldu cible sois-même
     if ($competence->_Niveau >= $competenceEffect->_NiveauRequis && $competenceEffect->canBeUsed($launcher->_Id_Personnage, $competenceManager, $receivers)) {
         for ($indexCible = 0; $indexCible < count($receivers); $indexCible++) {
@@ -130,17 +130,21 @@ foreach ($competenceEffects as $competenceEffect) {
                     foreach ($beforeCompetenceEffects as $beforeCompetenceEffect)
                         $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                    foreach ($beforeDamagesEffects as $beforeDamagesEffect)
-                        $beforeDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    if ($competenceEffect->_ActionType < 5)
+                        foreach ($beforeDamagesEffects as $beforeDamagesEffect)
+                            $beforeDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                    foreach ($beforePhysicalDamagesEffects as $beforePhysicalDamagesEffect)
-                        $beforePhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    if ($competenceEffect->_ActionType == 1 || $competenceEffect->_ActionType == 3)
+                        foreach ($beforePhysicalDamagesEffects as $beforePhysicalDamagesEffect)
+                            $beforePhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                    foreach ($beforeMagicalDamagesEffects as $beforeMagicalDamagesEffect)
-                        $beforeMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    if ($competenceEffect->_ActionType == 2 || $competenceEffect->_ActionType == 4)
+                        foreach ($beforeMagicalDamagesEffects as $beforeMagicalDamagesEffect)
+                            $beforeMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                    foreach ($beforeHealEffects as $beforeHealEffect)
-                        $beforeHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    if ($competenceEffect->_ActionType == 5)
+                        foreach ($beforeHealEffects as $beforeHealEffect)
+                            $beforeHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
 
                     $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
@@ -162,17 +166,21 @@ foreach ($competenceEffects as $competenceEffect) {
                     foreach ($afterCompetenceEffects as $beforeCompetenceEffect)
                         $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                    foreach ($afterDamagesEffects as $afterDamagesEffect)
-                        $afterDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    if ($competenceEffect->_ActionType < 5)
+                        foreach ($afterDamagesEffects as $afterDamagesEffect)
+                            $afterDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                    foreach ($afterPhysicalDamagesEffects as $afterPhysicalDamagesEffect)
-                        $afterPhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    if ($competenceEffect->_ActionType == 1 || $competenceEffect->_ActionType == 3)
+                        foreach ($afterPhysicalDamagesEffects as $afterPhysicalDamagesEffect)
+                            $afterPhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                    foreach ($afterMagicalDamagesEffects as $afterMagicalDamagesEffect)
-                        $afterMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    if ($competenceEffect->_ActionType == 2 || $competenceEffect->_ActionType == 4)
+                        foreach ($afterMagicalDamagesEffects as $afterMagicalDamagesEffect)
+                            $afterMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
 
-                    foreach ($afterHealEffects as $afterHealEffect)
-                        $afterHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                    if ($competenceEffect->_ActionType == 5)
+                        foreach ($afterHealEffects as $afterHealEffect)
+                            $afterHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
                 }
 
                 if ($competenceEffect->_linkedEffect)
@@ -182,11 +190,11 @@ foreach ($competenceEffects as $competenceEffect) {
                     addTargetToCompetenceUse($bdd, $competence, $launcher, $receiver, $turn);
             }
         }
-        if($competenceEffect->_applicationType > 6)
+        if ($competenceEffect->_applicationType > 6)
             $effectWithSpecialApplicationTypeHasBeenLaunched = true;
     }
 }
-if($effectWithSpecialApplicationTypeHasBeenLaunched)
+if ($effectWithSpecialApplicationTypeHasBeenLaunched)
     clearTargets($bdd, $competence);
 
 
@@ -195,21 +203,24 @@ function linkedTargetDone($linkedTargetList, $linkedTarget)
     return array_search($linkedTarget, $linkedTargetList);
 }
 
-function addTargetToCompetenceUse($bdd, CompetenceTest $competence, PersonnageTest $launcher, PersonnageTest $receiver, int $turnUse) {
+function addTargetToCompetenceUse($bdd, CompetenceTest $competence, PersonnageTest $launcher, PersonnageTest $receiver, int $turnUse)
+{
     $sql = "INSERT INTO competenceeffectuse (idCompetence, idLauncher, idReceiver, turnUse)
-            VALUES (" . $competence->_Id_Competence. ", " . $launcher->_Id_Personnage. ",
-            " . $receiver->_Id_Personnage. ",".$turnUse.")";
+            VALUES (" . $competence->_Id_Competence . ", " . $launcher->_Id_Personnage . ",
+            " . $receiver->_Id_Personnage . "," . $turnUse . ")";
     // use exec() because no results are returned
     $bdd->exec($sql);
 }
 
-function clearTargets($bdd, CompetenceTest $competence){
+function clearTargets($bdd, CompetenceTest $competence)
+{
     $sql = "DELETE FROM competenceeffectuse
                 WHERE idCompetence = " . $competence->_Id_Competence . "";
     $bdd->exec($sql);
 }
 
-function isCibleUnique(CompetenceEffectTest $competenceEffect): boolean {
+function isCibleUnique(CompetenceEffectTest $competenceEffect): boolean
+{
     return $competenceEffect->_applicationType == 2 || ($competenceEffect->_applicationType > 6
-        & $competenceEffect->_applicationType < 13);
+            & $competenceEffect->_applicationType < 13);
 }

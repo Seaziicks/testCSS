@@ -11,6 +11,7 @@ TODO :
     - Implémenter la mort/KO des perso
         => !!! Enlever les effets de redirection de dégâts quand cela arrive !!!
     - Mettre en place les groupe et sous-groupe relatifs au entités, pour pouvoir trier plus aisément les entités.
+    - !!! Faire attention à bien déclencher les bon effets dans PersonnageTest->triggerEffectReceivingCompetence() (seulement les EfffetsAprèsDégâts quand on reçoit des dégâts, etc ...) !!!
 
 Probably TODO :
     - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas,
@@ -20,7 +21,7 @@ Probably TODO :
         => A mettre en place dans la partie Angular lors de la récupération de la compétence, récupérer les cibles déjà identitfiées,
             définir les effets à appliquer et donc le nombre de cibles à sélectionner.
         => Les CompetenceEffect doivent être dans un ordre hyper spécifique car : On va les récupérer dans l'ordre,
-            et récupérer les entités séléctionnées dans l'odre dans lelquel ils sont joués, pour les réattribuer dans le bon ordre,
+            et récupérer les entités séléctionnées dans l'ordre dans lequel ils sont joués, pour les réattribuer dans le bon ordre,
             et donc attribuer les bonnes cibles aux bons effets.
         => Pour simplifier, si il n'y a aucun effet lié, on transmet une première list de cibles vide. Comme cela,
             on prend toujours la liste en position 0 pour jouer les effet liés, et ensuite les liste des effets dans l'ordre en fonction de leur ordre d'arrivé.
@@ -29,7 +30,6 @@ Probably TODO :
     - Ajouter la possibilité de choisir des effets avec cibles uniquement distinctes (boost du centaure) sur N tours.
 
     => (Angular) !!! Si il y a des effets liés, vérifier si ce sont des effets cibles uniques, et si plusieurs effets liés sont cibles uniques, alors changer de couleur de bordure !!!
-    - Possiblement prendre en compte des dégâts différés qui augmentent/diminuent.
     - Rajouter la possibilité de lier un effet avant/après dégâts/soin/bouclier reçu en fonction du montant reçu.
         => Rajouter un booléen, et si ce booléen est actif, on prend dans Effect->_ValueMin la valeur qu'on multiplie directement au montant de CompetenceEffect pour obtenir la valeur à appliquer.
 
@@ -64,6 +64,8 @@ Normaly DID :
         => Introduce it in CompetenceEffectTest->appliquerEffetCompetenceAvecBonusGeneraux( ... );
     - Ajouter un champs qui spécifie dans combien de temps doit être déclenché l'effet, avec une vérification appropriée.
     - Prendre en compte les dégâts différés.
+    - Possiblement prendre en compte des dégâts différés qui augmentent/diminuent. => Se fait à chaque utilisation de l'effet.
+    - Mettre à jour competenceUseFinition pour ne déclencher les effets que si c'est le bon type d'action qui ets fait (afterDamagesEffect si c'est dégâts, afterHealEffect si c'est heal, etc ...)
 
 Notifier ces implémentation dans un changelog :
 	- Le vol de vie est fixé à 20%  : Beaucoup plus simple au niveau implémentatiton, vu que je ne l'avais pas prévu à la base. En effet, cela permet de ne pas rajouter une champ optionnel dans la BDD.
@@ -86,6 +88,11 @@ Notifier ces implémentation dans un changelog :
         => Donc à l'utilisation en cours. Ce qui veut dire, que je n'ai pas besoin de le valider, étant donné que je suis dans l'effet de la compétence en question.
         => Aurait pu être renomé en quelque chose comme numberOfUseToExec.
     - Les renvois de dégâts ne sont affectés que par les réduction générales de dégâts, et non par l'armure, qu'elle soit physique ou magique.
+    - Un effet peut avoir une valeur pour le faire changer en fonction des utilisations (géré dans EffectTest->useEffect()). Ce modificateur est de base à 1, pour ne pas nativement impacter les effets sur le temps.
+        => Une des limitations imposées : L'effet ne peut changer de signe. Si il est négatif, il doit rester négatif, ou passera à null si il change pour être positif vause du facteur, et inversement.
+        => Une autre : On peut spécifier deux type de facteur : flat et pourcentage. Flat si modificateur (> 1 ou < -1), et pourcentage si modificateur (< 1 et > -1).
+            Donc on ne peut multiplier l'effet par 2 ou plus, et on ne peut réduire directement l'effet par 1 ou moins. (mettre 0.99999 pour multiplier par 2, et 1.000001 pour enlever 1, ça devrait marcher).
+        => Le facteur de changement de l'effet est constant. Eh oui, il va falloir se débrouiller avec. Mais disons que c'est déjà bien que cette option soit possible.
 
 Technicité :
     - Expliquer clairement le concept d'effets liés, pourquoi il est né et comment il est utilisé.
@@ -93,3 +100,7 @@ Technicité :
             et faire un effet de dégâts de zone autour. Or une seule sélection est possible, en distingant la première cible des autres, et cela permet de ne pas prendre la cible principale dans l'effet de zone.
             L'effet de zone ne s'active que si la cible précédente est sélectionnée.
     - Pour l'instant, pour la redirection de dégâts et la réduction de dégâts, il faut renter une valeur < 1, car elle est directement multipliée.
+    - Le renvoie de dégâts et le différage de dégâts sont appliqué de deux manière distinctes.
+        Ils sont d'abord déduit des dégâts, et ensuite, ils s'appliquent dans les Personnage->TriggerEffectReceivingCompetence.
+        Donc le lanceur voit juste ses dégâts diminués, et le receveur voit juste les effets qui s'activent, mais les deux ne sont pas traités en même temps.
+            => Cela oblige à faire les calculs pour l'un comme pour l'autre.
