@@ -11,7 +11,6 @@ TODO :
     - Implémenter la mort/KO des perso
         => !!! Enlever les effets de redirection de dégâts quand cela arrive !!!
     - Mettre en place les groupe et sous-groupe relatifs au entités, pour pouvoir trier plus aisément les entités.
-    - !!! Faire attention à bien déclencher les bon effets dans PersonnageTest->triggerEffectReceivingCompetence() (seulement les EfffetsAprèsDégâts quand on reçoit des dégâts, etc ...) !!!
 
 Probably TODO :
     - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas,
@@ -30,8 +29,7 @@ Probably TODO :
     - Ajouter la possibilité de choisir des effets avec cibles uniquement distinctes (boost du centaure) sur N tours.
 
     => (Angular) !!! Si il y a des effets liés, vérifier si ce sont des effets cibles uniques, et si plusieurs effets liés sont cibles uniques, alors changer de couleur de bordure !!!
-    - Rajouter la possibilité de lier un effet avant/après dégâts/soin/bouclier reçu en fonction du montant reçu.
-        => Rajouter un booléen, et si ce booléen est actif, on prend dans Effect->_ValueMin la valeur qu'on multiplie directement au montant de CompetenceEffect pour obtenir la valeur à appliquer.
+
 
 
 A vérifier :
@@ -65,7 +63,13 @@ Normaly DID :
     - Ajouter un champs qui spécifie dans combien de temps doit être déclenché l'effet, avec une vérification appropriée.
     - Prendre en compte les dégâts différés.
     - Possiblement prendre en compte des dégâts différés qui augmentent/diminuent. => Se fait à chaque utilisation de l'effet.
-    - Mettre à jour competenceUseFinition pour ne déclencher les effets que si c'est le bon type d'action qui ets fait (afterDamagesEffect si c'est dégâts, afterHealEffect si c'est heal, etc ...)
+    - Mettre à jour competenceUseFinition pour ne déclencher les effets que si c'est le bon type d'action qui est fait (afterDamagesEffect si c'est dégâts, afterHealEffect si c'est heal, etc ...)
+
+    - !!! Faire attention à bien déclencher les bon effets dans PersonnageTest->triggerEffectReceivingCompetence() (seulement les EfffetsAprèsDégâts quand on reçoit des dégâts, etc ...) !!!
+    - Rajouter la possibilité de lier un effet avant/après dégâts/soin/bouclier reçu en fonction du montant reçu.
+        => Rajouter un booléen, et si ce booléen est actif, on prend dans Effect->_ValueMin la valeur qu'on multiplie directement au montant de CompetenceEffect pour obtenir la valeur à appliquer.
+        =>Ne marche que pour les effets de boost, et non pour les effets qui réagissent au dégâts tels que le renvoie, la redirection et le fait de les différer.
+            Ni pour les dégâts, dégâts différés, le heal et le shield
 
 Notifier ces implémentation dans un changelog :
 	- Le vol de vie est fixé à 20%  : Beaucoup plus simple au niveau implémentatiton, vu que je ne l'avais pas prévu à la base. En effet, cela permet de ne pas rajouter une champ optionnel dans la BDD.

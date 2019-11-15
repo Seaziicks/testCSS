@@ -1,416 +1,400 @@
 <?php
+
 class PersonnageTest
 {
 
 
-	public $_Id_Personnage,
-			$_Libellé,
-			$_Niveau,
-			$_PA,
-			$_PA_Actuel,
-			$_PM,
-			$_PM_Actuel,
-			$_Force,
-			$_Agilité,
-			$_Intelligence,
-			$_Vitalité,
-			$_PDV_Actuel,
-            $_Bouclier,
-			$_Ressource,
-			$_Ressource_Actuelle,
-			$_Type_Ressource,
-			$_Réussite,
-			$_Charisme,
-			$_Marchandage,
-			$_Intimidation,
-			$_Chance,
-			$_Inventaire,
-			$_Image,
-			$_Ordre_Colorimetrique;
+    public $_Id_Personnage,
+        $_Libellé,
+        $_Niveau,
+        $_PA,
+        $_PA_Actuel,
+        $_PM,
+        $_PM_Actuel,
+        $_Force,
+        $_Agilité,
+        $_Intelligence,
+        $_Vitalité,
+        $_PDV_Actuel,
+        $_Bouclier,
+        $_Ressource,
+        $_Ressource_Actuelle,
+        $_Type_Ressource,
+        $_Réussite,
+        $_Charisme,
+        $_Marchandage,
+        $_Intimidation,
+        $_Chance,
+        $_Inventaire,
+        $_Image,
+        $_Ordre_Colorimetrique;
 
-	public $_Bonus_Force = 0,
-            $_Bonus_Agilité = 0,
-            $_Bonus_Intelligence = 0,
-            $_Bonus_Vitalité = 0,
-            $_Bonus_Ressource = 0,
-            $_Bonus_Réussite = 0,
-            $_Bonus_Armure = 0,
-            $_Bonus_ArmureMagique = 0;
+    public $_Bonus_Force = 0,
+        $_Bonus_Agilité = 0,
+        $_Bonus_Intelligence = 0,
+        $_Bonus_Vitalité = 0,
+        $_Bonus_Ressource = 0,
+        $_Bonus_Réussite = 0,
+        $_Bonus_Armure = 0,
+        $_Bonus_ArmureMagique = 0;
 
 
-	public function __construct(array $donnees)
-	  {
-		$this->hydrate($donnees);
-	  }
+    public function __construct(array $donnees)
+    {
+        $this->hydrate($donnees);
+    }
 
-	public function setId_Personnage($Id_Personnage)
-	{
-        $Id_Personnage = (int) $Id_Personnage;
+    public function setId_Personnage($Id_Personnage)
+    {
+        $Id_Personnage = (int)$Id_Personnage;
 
-		if ($Id_Personnage > 0)
-		{
-		  $this->_Id_Personnage = $Id_Personnage;
-		}
-	}
+        if ($Id_Personnage > 0) {
+            $this->_Id_Personnage = $Id_Personnage;
+        }
+    }
 
-	public function setLibellé($nom)
-	{
-		if (is_string($nom))
-		{
-		  $this->_Libellé = $nom;
-		}
-	}
+    public function setLibellé($nom)
+    {
+        if (is_string($nom)) {
+            $this->_Libellé = $nom;
+        }
+    }
 
-	public function setNiveau($Niveau)
-	{
-	$Niveau = (int) $Niveau;
+    public function setNiveau($Niveau)
+    {
+        $Niveau = (int)$Niveau;
 
-		if ($Niveau > 0)
-		{
-		  $this->_Niveau = $Niveau;
-		}
-	}
+        if ($Niveau > 0) {
+            $this->_Niveau = $Niveau;
+        }
+    }
 
-	public function setPA($PA)
-	{
-	$PA = (int) $PA;
+    public function setPA($PA)
+    {
+        $PA = (int)$PA;
 
-		if ($PA > 0)
-		{
-		  $this->_PA = $PA;
-		}
-	}
+        if ($PA > 0) {
+            $this->_PA = $PA;
+        }
+    }
 
-	public function setPA_Actuel($PA_Actuel)
-	{
-	$PA_Actuel = (int) $PA_Actuel;
+    public function setPA_Actuel($PA_Actuel)
+    {
+        $PA_Actuel = (int)$PA_Actuel;
 
-		if ($PA_Actuel > 0)
-		{
-		  $this->_PA_Actuel = $PA_Actuel;
-		}
-	}
+        if ($PA_Actuel > 0) {
+            $this->_PA_Actuel = $PA_Actuel;
+        }
+    }
 
-	public function setPM($PM)
-	{
-	$PM = (int) $PM;
+    public function setPM($PM)
+    {
+        $PM = (int)$PM;
 
-		if ($PM > 0)
-		{
-		  $this->_PM = $PM;
-		}
-	}
+        if ($PM > 0) {
+            $this->_PM = $PM;
+        }
+    }
 
-	public function setPM_Actuel($PM_Actuel)
-	{
-	$PM_Actuel = (int) $PM_Actuel;
+    public function setPM_Actuel($PM_Actuel)
+    {
+        $PM_Actuel = (int)$PM_Actuel;
 
-		if ($PM_Actuel > 0)
-		{
-		  $this->_PM_Actuel = $PM_Actuel;
-		}
-	}
+        if ($PM_Actuel > 0) {
+            $this->_PM_Actuel = $PM_Actuel;
+        }
+    }
 
-	public function setForce($Force)
-	{
-	$Force = (int) $Force;
+    public function setForce($Force)
+    {
+        $Force = (int)$Force;
 
-		if ($Force > 0)
-		{
-		  $this->_Force = $Force;
-		}
-	}
+        if ($Force > 0) {
+            $this->_Force = $Force;
+        }
+    }
 
-	public function setAgilité($Agilité)
-	{
-	$Agilité = (int) $Agilité;
+    public function setAgilité($Agilité)
+    {
+        $Agilité = (int)$Agilité;
 
-		if ($Agilité > 0)
-		{
-		  $this->_Agilité = $Agilité;
-		}
-	}
+        if ($Agilité > 0) {
+            $this->_Agilité = $Agilité;
+        }
+    }
 
-	public function setIntelligence($Intelligence)
-	{
-	$Intelligence = (int) $Intelligence;
+    public function setIntelligence($Intelligence)
+    {
+        $Intelligence = (int)$Intelligence;
 
-		if ($Intelligence > 0)
-		{
-		  $this->_Intelligence = $Intelligence;
-		}
-	}
+        if ($Intelligence > 0) {
+            $this->_Intelligence = $Intelligence;
+        }
+    }
 
-	public function setVitalité($Vitalité)
-	{
-	$Vitalité = (int) $Vitalité;
+    public function setVitalité($Vitalité)
+    {
+        $Vitalité = (int)$Vitalité;
 
-		if ($Vitalité > 0)
-		{
-		  $this->_Vitalité = $Vitalité;
-		}
-	}
+        if ($Vitalité > 0) {
+            $this->_Vitalité = $Vitalité;
+        }
+    }
 
-	public function setPDV_Actuel($PDV_Actuel)
-	{
-	$PDV_Actuel = (int) $PDV_Actuel;
+    public function setPDV_Actuel($PDV_Actuel)
+    {
+        $PDV_Actuel = (int)$PDV_Actuel;
 
-		if ($PDV_Actuel > 0)
-		{
-		  $this->_PDV_Actuel = $PDV_Actuel;
-		}
-	}
+        if ($PDV_Actuel > 0) {
+            $this->_PDV_Actuel = $PDV_Actuel;
+        }
+    }
 
     public function setBouclier($Bouclier)
     {
-        $Bouclier = (int) $Bouclier;
+        $Bouclier = (int)$Bouclier;
 
-        if ($Bouclier > 0)
-        {
+        if ($Bouclier > 0) {
             $this->_Bouclier = $Bouclier;
         }
     }
 
-	public function setRessource($Ressource)
-	{
-	$Ressource = (int) $Ressource;
+    public function setRessource($Ressource)
+    {
+        $Ressource = (int)$Ressource;
 
-		if ($Ressource > 0)
-		{
-		  $this->_Ressource = $Ressource;
-		}
-	}
+        if ($Ressource > 0) {
+            $this->_Ressource = $Ressource;
+        }
+    }
 
-	public function setRessource_Actuelle($Ressource_Actuelle)
-	{
-	$Ressource_Actuelle = (int) $Ressource_Actuelle;
+    public function setRessource_Actuelle($Ressource_Actuelle)
+    {
+        $Ressource_Actuelle = (int)$Ressource_Actuelle;
 
-		if ($Ressource_Actuelle > 0)
-		{
-		  $this->_Ressource_Actuelle = $Ressource_Actuelle;
-		}
-	}
+        if ($Ressource_Actuelle > 0) {
+            $this->_Ressource_Actuelle = $Ressource_Actuelle;
+        }
+    }
 
-	public function setType_Ressource($Type_Ressource)
-	{
-		if (is_string($Type_Ressource))
-		{
-		  $this->_Type_Ressource = $Type_Ressource;
-		}
-	}
+    public function setType_Ressource($Type_Ressource)
+    {
+        if (is_string($Type_Ressource)) {
+            $this->_Type_Ressource = $Type_Ressource;
+        }
+    }
 
-	public function setRéussite($Réussite)
-	{
-	$Réussite = (int) $Réussite;
+    public function setRéussite($Réussite)
+    {
+        $Réussite = (int)$Réussite;
 
-		if ($Réussite > 0)
-		{
-		  $this->_Réussite = $Réussite;
-		}
-	}
+        if ($Réussite > 0) {
+            $this->_Réussite = $Réussite;
+        }
+    }
 
-	public function setCharisme($Charisme)
-	{
-	$Charisme = (int) $Charisme;
+    public function setCharisme($Charisme)
+    {
+        $Charisme = (int)$Charisme;
 
-		if ($Charisme > 0)
-		{
-		  $this->_Charisme = $Charisme;
-		}
-	}
+        if ($Charisme > 0) {
+            $this->_Charisme = $Charisme;
+        }
+    }
 
-	public function setMarchandage($Marchandage)
-	{
-	$Marchandage = (int) $Marchandage;
+    public function setMarchandage($Marchandage)
+    {
+        $Marchandage = (int)$Marchandage;
 
-		if ($Marchandage > 0)
-		{
-		  $this->_Marchandage = $Marchandage;
-		}
-	}
+        if ($Marchandage > 0) {
+            $this->_Marchandage = $Marchandage;
+        }
+    }
 
-	public function setIntimidation($Intimidation)
-	{
-	$Intimidation = (int) $Intimidation;
+    public function setIntimidation($Intimidation)
+    {
+        $Intimidation = (int)$Intimidation;
 
-		if ($Intimidation > 0)
-		{
-		  $this->_Intimidation = $Intimidation;
-		}
-	}
+        if ($Intimidation > 0) {
+            $this->_Intimidation = $Intimidation;
+        }
+    }
 
-	public function setChance($Chance)
-	{
-	$Chance = (int) $Chance;
+    public function setChance($Chance)
+    {
+        $Chance = (int)$Chance;
 
-		if ($Chance > 0)
-		{
-		  $this->_Chance = $Chance;
-		}
-	}
+        if ($Chance > 0) {
+            $this->_Chance = $Chance;
+        }
+    }
 
-	public function setInventaire($Inventaire)
-	{
-		if (is_string($Inventaire))
-		{
-		  $this->_Inventaire = $Inventaire;
-		}
-	}
+    public function setInventaire($Inventaire)
+    {
+        if (is_string($Inventaire)) {
+            $this->_Inventaire = $Inventaire;
+        }
+    }
 
-	public function setImage($Image)
-	{
-		if (is_string($Image))
-		{
-		  $this->_Image = $Image;
-		}
-	}
+    public function setImage($Image)
+    {
+        if (is_string($Image)) {
+            $this->_Image = $Image;
+        }
+    }
 
-	public function setOrdre_Colorimetrique($Ordre_Colorimetrique)
-	{
-	$Ordre_Colorimetrique = (int) $Ordre_Colorimetrique;
+    public function setOrdre_Colorimetrique($Ordre_Colorimetrique)
+    {
+        $Ordre_Colorimetrique = (int)$Ordre_Colorimetrique;
 
-		if ($Ordre_Colorimetrique > 0)
-		{
-		  $this->_Ordre_Colorimetrique = $Ordre_Colorimetrique;
-		}
-	}
+        if ($Ordre_Colorimetrique > 0) {
+            $this->_Ordre_Colorimetrique = $Ordre_Colorimetrique;
+        }
+    }
 
 
     public function setBonus_Force($Bonus_Force)
     {
-        $Bonus_Force = (int) $Bonus_Force;
+        $Bonus_Force = (int)$Bonus_Force;
 
-        if ($Bonus_Force > 0)
-        {
+        if ($Bonus_Force > 0) {
             $this->_Bonus_Force = $Bonus_Force;
         }
     }
 
     public function setBonus_Agilité($Bonus_Agilité)
     {
-        $Bonus_Agilité = (int) $Bonus_Agilité;
+        $Bonus_Agilité = (int)$Bonus_Agilité;
 
-        if ($Bonus_Agilité > 0)
-        {
+        if ($Bonus_Agilité > 0) {
             $this->_Bonus_Agilité = $Bonus_Agilité;
         }
     }
 
     public function setBonus_Intelligence($Bonus_Intelligence)
     {
-        $Bonus_Intelligence = (int) $Bonus_Intelligence;
+        $Bonus_Intelligence = (int)$Bonus_Intelligence;
 
-        if ($Bonus_Intelligence > 0)
-        {
+        if ($Bonus_Intelligence > 0) {
             $this->_Bonus_Intelligence = $Bonus_Intelligence;
         }
     }
 
     public function setBonus_Vitalité($Bonus_Vitalité)
     {
-        $Bonus_Vitalité = (int) $Bonus_Vitalité;
+        $Bonus_Vitalité = (int)$Bonus_Vitalité;
 
-        if ($Bonus_Vitalité > 0)
-        {
+        if ($Bonus_Vitalité > 0) {
             $this->_Bonus_Vitalité = $Bonus_Vitalité;
         }
     }
 
     public function setBonus_Ressource($Bonus_Ressource)
     {
-        $Bonus_Ressource = (int) $Bonus_Ressource;
+        $Bonus_Ressource = (int)$Bonus_Ressource;
 
-        if ($Bonus_Ressource > 0)
-        {
+        if ($Bonus_Ressource > 0) {
             $this->_Bonus_Ressource = $Bonus_Ressource;
         }
     }
 
     public function setBonus_Réussite($Bonus_Réussite)
     {
-        $Bonus_Réussite = (int) $Bonus_Réussite;
+        $Bonus_Réussite = (int)$Bonus_Réussite;
 
-        if ($Bonus_Réussite > 0)
-        {
+        if ($Bonus_Réussite > 0) {
             $this->_Bonus_Réussite = $Bonus_Réussite;
         }
     }
 
     public function setBonus_Armure($Bonus_Armure)
     {
-        $Bonus_Armure = (int) $Bonus_Armure;
+        $Bonus_Armure = (int)$Bonus_Armure;
 
-        if ($Bonus_Armure > 0)
-        {
+        if ($Bonus_Armure > 0) {
             $this->_Bonus_Armure = $Bonus_Armure;
         }
     }
 
-    public function getTotalForce(){
-	    return ($this->_Force + $this->_Bonus_Force);
+    public function getTotalForce()
+    {
+        return ($this->_Force + $this->_Bonus_Force);
     }
 
-    public function getTotalAgilité(){
-	    return ($this->_Agilité + $this->_Bonus_Agilité);
+    public function getTotalAgilité()
+    {
+        return ($this->_Agilité + $this->_Bonus_Agilité);
     }
 
-    public function getTotalIntelligence(){
-	    return ($this->_Intelligence + $this->_Bonus_Intelligence);
+    public function getTotalIntelligence()
+    {
+        return ($this->_Intelligence + $this->_Bonus_Intelligence);
     }
 
-    public function getTotalVitalité(){
-	    return ($this->_Vitalité + $this->_Bonus_Vitalité);
+    public function getTotalVitalité()
+    {
+        return ($this->_Vitalité + $this->_Bonus_Vitalité);
     }
 
-    public function getTotalRessource(){
-	    return ($this->_Ressource + $this->_Bonus_Ressource);
+    public function getTotalRessource()
+    {
+        return ($this->_Ressource + $this->_Bonus_Ressource);
     }
 
-    public function getNiveau(){
-	    return $this->_Niveau;
+    public function getNiveau()
+    {
+        return $this->_Niveau;
     }
 
-    public function getBouclier(){
+    public function getBouclier()
+    {
         return $this->_Bouclier;
     }
 
-    public function calculateDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
+    public function calculateDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver)
+    {
         $armorWithFlatBonus = $this->_Bonus_Armure + $bonusCombatReceiver->_ArmureFlat;
         $armorWithPourcentageAndFlatBonus = $armorWithFlatBonus * (1 + $bonusCombatReceiver->_ArmurePourcentage);
-        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * ( 1 - $bonusCombatLauncher->_IgnoreArmurePourcentage)) - $bonusCombatLauncher->_IgnoreArmureFlat;
-        $damagesWithFlatAndPourcentageReduction = ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
-        return floor($damagesWithFlatAndPourcentageReduction - $armorWithIgnoredArmor);
-	}
-
-    public function calculatePhysicalDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
-        $armorWithFlatBonus = $this->_Bonus_Armure + $bonusCombatReceiver->_ArmureFlat;
-        $armorWithPourcentageAndFlatBonus = $armorWithFlatBonus * (1 + $bonusCombatReceiver->_ArmurePourcentage);
-        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * ( 1 - $bonusCombatLauncher->_IgnoreArmurePourcentage)) - $bonusCombatLauncher->_IgnoreArmureFlat;
+        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * (1 - $bonusCombatLauncher->_IgnoreArmurePourcentage)) - $bonusCombatLauncher->_IgnoreArmureFlat;
         $damagesWithFlatAndPourcentageReduction = ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
         return floor($damagesWithFlatAndPourcentageReduction - $armorWithIgnoredArmor);
     }
 
-    public function calculateMagicalDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver) {
+    public function calculatePhysicalDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver)
+    {
+        $armorWithFlatBonus = $this->_Bonus_Armure + $bonusCombatReceiver->_ArmureFlat;
+        $armorWithPourcentageAndFlatBonus = $armorWithFlatBonus * (1 + $bonusCombatReceiver->_ArmurePourcentage);
+        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * (1 - $bonusCombatLauncher->_IgnoreArmurePourcentage)) - $bonusCombatLauncher->_IgnoreArmureFlat;
+        $damagesWithFlatAndPourcentageReduction = ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
+        return floor($damagesWithFlatAndPourcentageReduction - $armorWithIgnoredArmor);
+    }
+
+    public function calculateMagicalDamagesReducedByArmor(int $value, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver)
+    {
         $armorWithFlatBonus = $this->_Bonus_ArmureMagique + $bonusCombatReceiver->_ArmureMagiqueFlat;
         $armorWithPourcentageAndFlatBonus = $armorWithFlatBonus * (1 + $bonusCombatReceiver->_ArmureMagiquePourcentage);
-        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * ( 1 - $bonusCombatLauncher->_IgnoreArmureMagiquePourcentage)) - $bonusCombatLauncher->_IgnoreArmureMagiqueFlat;
+        $armorWithIgnoredArmor = ($armorWithPourcentageAndFlatBonus * (1 - $bonusCombatLauncher->_IgnoreArmureMagiquePourcentage)) - $bonusCombatLauncher->_IgnoreArmureMagiqueFlat;
         $damagesWithFlatAndPourcentageReduction = ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
         return floor($damagesWithFlatAndPourcentageReduction - $armorWithIgnoredArmor);
     }
 
-    public function calculateReducedDamages(int $value, BonusCombat $bonusCombatReceiver) {
+    public function calculateReducedDamages(int $value, BonusCombat $bonusCombatReceiver)
+    {
         return ($value * (1 - $bonusCombatReceiver->_ReductionDegatPourcentage)) - $bonusCombatReceiver->_ReductionDegatFlat;
     }
 
-    public function calculateHealWithBonusCombat(int $value, BonusCombat $bonusCombatReceiver) {
-	    return ($value + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);;
+    public function calculateHealWithBonusCombat(int $value, BonusCombat $bonusCombatReceiver)
+    {
+        return ($value + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);;
     }
 
-    public function calculateDamagesReducedByRedirection(int $value, BonusCombat $bonusCombatReceiver) {
-	    return (($value - $bonusCombatReceiver->_RedirectionDegatFlat) * (1 - $bonusCombatReceiver->_RedirectionDegatPourcentage));
+    public function calculateDamagesReducedByRedirection(int $value, BonusCombat $bonusCombatReceiver)
+    {
+        return (($value - $bonusCombatReceiver->_RedirectionDegatFlat) * (1 - $bonusCombatReceiver->_RedirectionDegatPourcentage));
     }
 
-    public function calculateNonDifferedDamages(int $value, BonusCombat $bonusCombatReceiver) {
+    public function calculateNonDifferedDamages(int $value, BonusCombat $bonusCombatReceiver)
+    {
         return (($value - $bonusCombatReceiver->_DiffererDegatsFlat - $bonusCombatReceiver->_DiffererDegatsFlatToTheEndOfEffect)
             * (1 - $bonusCombatReceiver->_DiffererDegatsPourcentage - $bonusCombatReceiver->_DiffererDegatsPourcentageToTheEndOfEffect));
     }
@@ -419,132 +403,54 @@ class PersonnageTest
     {
         $effectsTestManager = new EffectTestManager($bdd);
         if ($before) {
-            $effects = $effectsTestManager->getBeforeCompetenceEffectListForReceiver($receiver->_Id_Personnage);
+            if ($competenceEffect->_actionType < 5)
+                $effects = $effectsTestManager->getBeforeDamagingCompetenceEffectListForReceiver($receiver->_Id_Personnage);
+            elseif ($competenceEffect->_actionType == 5)
+                $effects = $effectsTestManager->getBeforeHealingCompetenceEffectListForReceiver($receiver->_Id_Personnage);
+            else
+                $effects = $effectsTestManager->getBeforeCompetenceEffectListForReceiver($receiver->_Id_Personnage);
         } else {
-            $effects = $effectsTestManager->getAfterCompetenceEffectListForReceiver($receiver->_Id_Personnage);
+            if ($competenceEffect->_actionType < 5)
+                $effects = $effectsTestManager->getAfterDamagingCompetenceEffectListForReceiver($receiver->_Id_Personnage);
+            elseif ($competenceEffect->_actionType == 5)
+                $effects = $effectsTestManager->getAfterHealingCompetenceEffectListForReceiver($receiver->_Id_Personnage);
+            else
+                $effects = $effectsTestManager->getAfterCompetenceEffectListForReceiver($receiver->_Id_Personnage);
         }
+
         foreach ($effects as $effect) {
-            if($competenceEffect->_effectType < 5) { // Si je reçois des dégâts
-                if($effect->_EffectType == 30){ // Redirection dégâts flat
-                    $personnageManager = new PersonnageManager($bdd);
-                    $launcher = $personnageManager->get($effect->_IDLauncher);
-                    $effectiveDamages = $effect->_EffectValueMin;
-                    $remainingShield = max(0, $launcher->_Bouclier - $effectiveDamages);
-                    $remainingHP = max(0, $launcher->_PDV_Actuel - max(0, $effectiveDamages - $launcher->_Bouclier));
-                    $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $launcher->_Id_Personnage;
-                    $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $effectiveDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
-                    $bdd->exec($sql);
-                    $bdd->exec($sql2);
-                } elseif ($effect->_EffectType == 31) { // Redirection dégâts pourcentage
-                    $personnageManager = new PersonnageManager($bdd);
-                    $launcher = $personnageManager->get($effect->_IDLauncher);
-                    $effectiveDamages = ($competenceEffect->dealDamagesWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType)) * ($effect->_EffectValueMin);
-                    $remainingShield = max(0, $launcher->_Bouclier - $effectiveDamages);
-                    $remainingHP = max(0, $launcher->_PDV_Actuel - max(0, $effectiveDamages - $launcher->_Bouclier));
-                    $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $launcher->_Id_Personnage;
-                    $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $effectiveDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
-                    $bdd->exec($sql);
-                    $bdd->exec($sql2);
-                } elseif ($effect->_EffectType == 32) { // Revoie Dégâts flat
-                    $initialDamages = $effect->_EffectValueMin;
-                    $effectiveDamages = $launcher->calculateReducedDamages($initialDamages, $bonusCombatLauncher);
-                    $remainingShield = max(0, $launcher->_Bouclier - $effectiveDamages);
-                    $remainingHP = max(0, $launcher->_PDV_Actuel - max(0, $effectiveDamages - $launcher->_Bouclier));
-                    $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $launcher->_Id_Personnage;
-                    $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
-                    $bdd->exec($sql);
-                    $bdd->exec($sql2);
-                } elseif ($effect->_EffectType == 33) { // Renvoie Dégats pourcentage
-                    $initialDamages = ($competenceEffect->dealDamagesWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType)) * ($effect->_EffectValueMin);
-                    $effectiveDamages = $launcher->calculateReducedDamages($initialDamages, $bonusCombatLauncher);
-                    $remainingShield = max(0, $launcher->_Bouclier - $effectiveDamages);
-                    $remainingHP = max(0, $launcher->_PDV_Actuel - max(0, $effectiveDamages - $launcher->_Bouclier));
-                    $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $launcher->_Id_Personnage;
-                    $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
-                    $bdd->exec($sql);
-                    $bdd->exec($sql2);
-                } elseif ($effect->_EffectType == 39) { // DiffererDegatsFlatToTheEndOfEffect
-                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
-                    $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
-                    $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
-                    $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
-                    $effectiveRedirection = min($damageAfterReduction, $effect->_EffectValueMin);
-                    $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
-                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
-                            VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
-                                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
-                                    0, 0, 0," . ($effect->_NumberOfTurn - 1) . ")"; // $effect->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
-                    // use exec() because no results are returned
-                    $bdd->exec($sql);
-                    break;
-                } elseif ($effect->_EffectType == 40) { // DiffererDegatsPourcentageToTheEndOfEffect
-                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
-                    $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
-                    $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
-                    $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
-                    $effectiveRedirection = ceil($damageAfterReduction * $effect->_EffectValueMin);
-                    $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
-                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
-                            VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
-                                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
-                                    0, 0, 0," . ($effect->_NumberOfTurn - 1) . ")"; // $effect->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
-                    // use exec() because no results are returned
-                    $bdd->exec($sql);
-                    break;
-                } elseif ($effect->_EffectType == 41) { // DiffererDegatsFlat
-                    // !!!!!!!!! A refaire pour savoir sur combien de tours on diffère les dégâts. Probablement rajouter un champ dans EffectApplied !!!!!!!!!
-                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
-                    $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
-                    $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
-                    $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
-                    $effectiveRedirection = min($damageAfterReduction, $effect->_EffectValueMin);
-                    $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
-                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
-                            VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
-                                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
-                                    0, 0, 0," . ($effect->_NumberOfTurn - 1) . ")"; // $effect->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
-                    // use exec() because no results are returned
-                    $bdd->exec($sql);
-                    break;
-                } elseif ($effect->_EffectType == 42) { // DiffererDegatsPourcentage
-                    // !!!!!!!!! A refaire pour savoir sur combien de tours on diffère les dégâts. Probablement rajouter un champ dans EffectApplied !!!!!!!!!
-                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
-                    $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
-                    $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
-                    $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
-                    $effectiveRedirection = ceil($damageAfterReduction * $effect->_EffectValueMin);
-                    $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
-                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
-                            VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
-                                    " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
-                                    0, 0, 0," . ($effect->_NumberOfTurn - 1) . ")"; // $effect->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
-                    // use exec() because no results are returned
-                    $bdd->exec($sql);
-                    break;
-                }
+            $effect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+        }
+    }
+
+    public function triggerEffectReceivingAttack($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, boolean $before)
+    {
+        $effectsTestManager = new EffectTestManager($bdd);
+        if ($before) {
+            // A implémenter quand on gérera les attaques
+        } else {
+            // A implémenter quand on gérera les attaques
+        }
+
+        foreach ($effects as $effect) {
+            $effect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+        }
+    }
+
+
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value) {
+            // On récupère le nom du setter correspondant à l'attribut.
+            $method = 'set' . ucfirst($key);
+
+            // Si le setter correspondant existe.
+            if (method_exists($this, $method)) {
+                // On appelle le setter.
+                $this->$method($value);
             }
         }
-	}
-
-
-
-
-
-
-	public function hydrate(array $donnees)
-	{
-	  foreach ($donnees as $key => $value)
-	  {
-		// On récupère le nom du setter correspondant à l'attribut.
-		$method = 'set'.ucfirst($key);
-
-		// Si le setter correspondant existe.
-		if (method_exists($this, $method))
-		{
-		  // On appelle le setter.
-		  $this->$method($value);
-		}
-	  }
-	}
+    }
 }
+
 ?>

@@ -125,26 +125,26 @@ foreach ($competenceEffects as $competenceEffect) {
                     ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
 
                     foreach ($beforeActionEffects as $beforeActionEffect)
-                        $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                        $beforeActionEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     foreach ($beforeCompetenceEffects as $beforeCompetenceEffect)
-                        $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                        $beforeCompetenceEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     if ($competenceEffect->_ActionType < 5)
                         foreach ($beforeDamagesEffects as $beforeDamagesEffect)
-                            $beforeDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                            $beforeDamagesEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     if ($competenceEffect->_ActionType == 1 || $competenceEffect->_ActionType == 3)
                         foreach ($beforePhysicalDamagesEffects as $beforePhysicalDamagesEffect)
-                            $beforePhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                            $beforePhysicalDamagesEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     if ($competenceEffect->_ActionType == 2 || $competenceEffect->_ActionType == 4)
                         foreach ($beforeMagicalDamagesEffects as $beforeMagicalDamagesEffect)
-                            $beforeMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                            $beforeMagicalDamagesEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     if ($competenceEffect->_ActionType == 5)
                         foreach ($beforeHealEffects as $beforeHealEffect)
-                            $beforeHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                            $beforeHealEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
 
                     $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
@@ -161,26 +161,26 @@ foreach ($competenceEffects as $competenceEffect) {
                     $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
 
                     foreach ($afterActionEffects as $beforeActionEffect)
-                        $beforeActionEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                        $beforeActionEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     foreach ($afterCompetenceEffects as $beforeCompetenceEffect)
-                        $beforeCompetenceEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                        $beforeCompetenceEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     if ($competenceEffect->_ActionType < 5)
                         foreach ($afterDamagesEffects as $afterDamagesEffect)
-                            $afterDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                            $afterDamagesEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     if ($competenceEffect->_ActionType == 1 || $competenceEffect->_ActionType == 3)
                         foreach ($afterPhysicalDamagesEffects as $afterPhysicalDamagesEffect)
-                            $afterPhysicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                            $afterPhysicalDamagesEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     if ($competenceEffect->_ActionType == 2 || $competenceEffect->_ActionType == 4)
                         foreach ($afterMagicalDamagesEffects as $afterMagicalDamagesEffect)
-                            $afterMagicalDamagesEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                            $afterMagicalDamagesEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
 
                     if ($competenceEffect->_ActionType == 5)
                         foreach ($afterHealEffects as $afterHealEffect)
-                            $afterHealEffect->useEffect($bdd, $receiver, $bonusCombatReceiver);
+                            $afterHealEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
                 }
 
                 if ($competenceEffect->_linkedEffect)

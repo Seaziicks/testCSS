@@ -278,7 +278,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(42, "DiffererDegatsPourcentage", 3); ?>
                                 </select><br/>
 
-                modeApplication => <select type="number" name="newmodeApplication" style="text-align : center; width : 270px;" id="newmodeApplication" rows=1 cols=15 >
+                modeApplication => <select type="number" name="newmodeApplication" style="text-align : center; width : 270px;" id="newmodeApplication">
                                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type d'application de l'effet </option>
                                     <?= optionWithSpace(1, "Sois même", 3); ?>
                                     <?= optionWithSpace(2, "Cible unique", 3); ?>
