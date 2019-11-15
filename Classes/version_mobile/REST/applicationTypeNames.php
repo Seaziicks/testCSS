@@ -3,7 +3,7 @@
 include('BDD.php');
 try {
     $typeInfo = $bdd->query('SELECT *
-					from applicationtype  ');
+					from applicationType  ');
 
     $reponse = array();
 
