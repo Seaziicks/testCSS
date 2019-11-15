@@ -1,21 +1,27 @@
 <?php
 
 include('BDD.php');
-$typeInfo = $bdd->query('SELECT *
+try {
+    $typeInfo = $bdd->query('SELECT *
 					from applicationtype  ');
 
-$reponse=array();
+    $reponse = array();
 
-while($type=$typeInfo->fetch()){
-    $object['idType']= $type['idApplicationType'];
-    $object['name']= $type['name'];
-    array_push($reponse,$object);
+    while ($type = $typeInfo->fetch()) {
+        $object['idType'] = $type['idApplicationType'];
+        $object['name'] = $type['name'];
+        array_push($reponse, $object);
+    }
+
+    deliver_response(200, "Votre message", $reponse);
+} catch
+(PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
 }
 
-deliver_response(200, "Votre message", $reponse);
-
 /// Envoi de la réponse au Client
-function deliver_response($status, $status_message, $data){
+function deliver_response($status, $status_message, $data)
+{
     /// Paramétrage de l'entête HTTP, suite
     header("HTTP/1.1 $status $status_message");
     /// Paramétrage de la réponse retournée
