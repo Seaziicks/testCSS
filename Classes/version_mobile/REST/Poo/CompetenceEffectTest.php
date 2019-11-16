@@ -10,6 +10,8 @@ class CompetenceEffectTest
         $_applicationType,
         $_niveau,
         $_niveauRequis,
+        $_descriptionBefore,
+        $_descriptionAfter,
         $_typeCalcul,
         $_calcul1A,
         $_calcul1B,
@@ -106,6 +108,20 @@ class CompetenceEffectTest
         if ($Niveau_Requis > 0) {
             $this->_niveauRequis = $Niveau_Requis;
         }
+    }
+
+    public function setDescriptionBefore($descriptionBefore)
+    {
+        if (is_string($descriptionBefore))
+            $this->_descriptionBefore = $descriptionBefore;
+
+    }
+
+    public function setDescriptionAfter($descriptionAfter)
+    {
+        if (is_string($descriptionAfter))
+            $this->_descriptionAfter = $descriptionAfter;
+
     }
 
     public function setTypeCalcul($Type_calcul1)

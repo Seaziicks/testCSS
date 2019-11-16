@@ -2,15 +2,17 @@ TODO :
     - (Angular) Ajouter à CompetenceEffect le nombre de cibles maximum, pour le rendre cohérent avec la partie PHP, qui l'a déjà.
     - (Angular) Faire en sorte d'afficher tous les nouveaux champs possibles pour un CompetenceEffect
     - Vérifier et mettre en place la possibilité de gestion automatique de JetDeLave avec effet niveau 3, et BoostCentaure avec effet niveau 3, differerDegats du Nain et châtiment du Sacrieur.
-    - Display correctly all the Competences created (no matter what personnage it belongs to) and add an interface for the Competence (Angular)
+    - (Angular) Display correctly all the Competences created (no matter what personnage it belongs to) and add an interface for the Competence
     - Add the possibility to update/delete Competence.
     - Add the possibility to CUD Personnage.
-    - Provide a better Personnage display possibility. At this time, there are only 9 Personnage, but when the GM will create decade of it, we need to have the possibility to order them.
+    - (Angular) Provide a better Personnage display possibility. At this time, there are only 9 Personnage, but when the GM will create decade of it, we need to have the possibility to order them.
     - When everything will be clean enough, maybe not delete the competence from competence AND competencelearned, just from competencelearned. But today we need this to not display it again.
 	- Move the Description to every effect => 1 Description before the effect, and 1 Description after, in order to uncharge the Competence, and add other elements in it.
     - Implémenter la mort/KO des perso
         => !!! Enlever les effets de redirection de dégâts quand cela arrive !!!
     - Mettre en place les groupe et sous-groupe relatifs au entités, pour pouvoir trier plus aisément les entités.
+    - !!! (Angular) Mettre à jouter les différentes parties modifiées (Competence, CompetenceEffect, Personnage, BonusCombat !!!
+    - Bien plus tard, mais tenter de mettre en place une nouvelle gestion des équipements, ou au moins des armes, pour faire des armes qui soignent.
 
 Probably TODO :
     - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas,
