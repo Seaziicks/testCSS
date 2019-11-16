@@ -37,7 +37,7 @@ $effectsInfos = $bdd->query('SELECT *
 $effects = $response['Effects'];
 
 while($effect = $effectsInfos->fetch(PDO::FETCH_ASSOC)) {
-    array_push($effects, $effect);
+    array_push($response['Effects'], $effect);
 }
 
-array_push($response, $effects);
+// array_push($response, $effects);
