@@ -19,8 +19,9 @@ switch ($http_method){
             $competence=$competenceInfos->fetch();
             $matchingData=$competence;
             */
+            $response = [];
             include('competenceWithEffectsAngular.php');
-            $matchingData = $réponse;
+            $matchingData = $response;
         }
         /// Envoi de la réponse au Client
         deliver_response(200, "Votre message", $matchingData);
@@ -39,4 +40,3 @@ function deliver_response($status, $status_message, $data){
     echo json_encode($data);
 
 }
-?>
