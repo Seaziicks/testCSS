@@ -34,10 +34,10 @@ $response['Cooldown']=$responseWitoutCamelCase['Cooldown'];
 $effectsInfos = $bdd->query('SELECT *
 					from competenceeffect
 					where idCompetence = '.$_GET['id'].'');
-$effects = $response['Effects'];
-
+$effects = array();
+$response['Effects'] = [];
 while($effect = $effectsInfos->fetch(PDO::FETCH_ASSOC)) {
-    array_push($response['Effects'], $effect);
+    array_push($effects, $effect);
 }
 
-// array_push($response, $effects);
+array_push($response['Effects'], $effects);
