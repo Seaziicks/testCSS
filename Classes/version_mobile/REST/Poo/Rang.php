@@ -84,7 +84,7 @@ class Rang
 
                             <span>
 
-								<span class="competence"><?= $competencetoDisplay->_Libellé; ?></span></br></br>
+								<span class="competence"><?= $competencetoDisplay->_Libellé; ?></span><br/><br/>
 
                                 <div class="entete"><i><?= $competencetoDisplay->_Entete; ?></i></div>
 									<br> Niveau actuel de la compétence : <b ondblclick="inlineMod2(<?= $competencetoDisplay->_Id_Competence ?>, this, 'Niveau', 'nombre','competence')"><?= $competencetoDisplay->_Niveau;?></b>
