@@ -9,6 +9,8 @@ class Specialite
     /* @var $_personnage PersonnageTest */
     public $_personnage;
     public $_libelle;
+    /* @var $_db PDO */
+    public $_db;
 
     public function __construct(PersonnageTest $personnage, $libelle,  $db)
     {
