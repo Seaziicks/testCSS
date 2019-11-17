@@ -164,7 +164,7 @@ class EffectTest
         $this->_numberOfTurnOfDifferedEffect = $numberOfTurnOfDifferedEffect;
     }
 
-    public function useEffect($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect)
+    public function useEffect(PDO $bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect)
     {
         if (!$this->_differingEffect) {
             switch (true) {
@@ -189,6 +189,7 @@ class EffectTest
                     $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $effectiveDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
                     $bdd->exec($sql);
                     $bdd->exec($sql2);
+                    break;
                 case ($this->_EffectType == 31 && $competenceEffect->_effectType < 5):  // Redirection dégâts pourcentage
                     $personnageManager = new PersonnageManager($bdd);
                     $launcher = $personnageManager->get($this->_IDLauncher);
@@ -199,6 +200,7 @@ class EffectTest
                     $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $effectiveDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
                     $bdd->exec($sql);
                     $bdd->exec($sql2);
+                    break;
                 case ($this->_EffectType == 32 && $competenceEffect->_effectType < 5):  // Revoie Dégâts flat
                     $initialDamages = $this->_EffectValueMin;
                     $effectiveDamages = $launcher->calculateReducedDamages($initialDamages, $bonusCombatLauncher);
@@ -208,6 +210,7 @@ class EffectTest
                     $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
                     $bdd->exec($sql);
                     $bdd->exec($sql2);
+                    break;
                 case ($this->_EffectType == 33 && $competenceEffect->_effectType < 5): // Renvoie Dégats pourcentage
                     $initialDamages = ($competenceEffect->dealDamagesWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType)) * ($this->_EffectValueMin);
                     $effectiveDamages = $launcher->calculateReducedDamages($initialDamages, $bonusCombatLauncher);
@@ -217,6 +220,7 @@ class EffectTest
                     $sql2 = "UPDATE combatSession SET DegatsRecus = (DegatsRecus + " . $initialDamages . ") WHERE idPersonnage = " . $launcher->_Id_Personnage;
                     $bdd->exec($sql);
                     $bdd->exec($sql2);
+                    break;
                 case $this->_EffectType == 35: // Damage
                     $initialDamages = $this->_EffectValueMin;
                     $effectiveDamages = $receiver->calculateReducedDamages($initialDamages, $bonusCombatReceiver);
@@ -241,7 +245,7 @@ class EffectTest
                     $healBoostReceiver = ($initialHeal + $bonusCombatReceiver->_SoinRecuFlat) * (1 + $bonusCombatReceiver->_SoinRecuPourcentage);
                     $lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
                     $idReceiver = $this->_IDReceiver != null ? $this->_IDReceiver : $receiver->_Id_Personnage;
-                    $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $this->_IDReceiver;
+                    $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $idReceiver;
                     $bdd->exec($sql);
                     break;
                 case $this->_EffectType == 38: // Shield
@@ -250,13 +254,13 @@ class EffectTest
                     $bdd->exec($sql);
                     break;
                 case ($this->_EffectType == 39 && $competenceEffect->_effectType < 5) : // DiffererDegatsFlatToTheEndOfEffect
-                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                    $initialDamages = $competenceEffect->dealWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType);
                     $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
                     $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
                     $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
                     $effectiveRedirection = min($damageAfterReduction, $this->_EffectValueMin);
                     $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
-                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight, numberOfTurnBeforeApply)
+                                                IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight,numberOfTurnBeforeApply)
                             VALUES (1, NULL," . $effectiveRedirection . "," . $effectiveRedirection . ",
                                     " . $competenceEffect->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
                                     0, 0, 0," . ($this->_NumberOfTurn - 1) . ")"; // $this->_NumberOfTurn - 1 => Si je diffère pendant 1 tour, je prendrai les dégâts au début du tour suivant.
@@ -264,7 +268,7 @@ class EffectTest
                     $bdd->exec($sql);
                     break;
                 case ($this->_EffectType == 40 && $competenceEffect->_effectType < 5) : // DiffererDegatsPourcentageToTheEndOfEffect
-                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                    $initialDamages = $competenceEffect->dealWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType);
                     $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
                     $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
                     $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
@@ -278,7 +282,7 @@ class EffectTest
                     $bdd->exec($sql);
                     break;
                 case ($this->_EffectType == 41 && $competenceEffect->_effectType < 5) : // DiffererDegatsFlat
-                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                    $initialDamages = $competenceEffect->dealWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType);
                     $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
                     $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
                     $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
@@ -292,7 +296,7 @@ class EffectTest
                     $bdd->exec($sql);
                     break;
                 case ($this->_EffectType == 42 && $competenceEffect->_effectType < 5) : // DiffererDegatsPourcentage
-                    $initialDamages = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                    $initialDamages = $competenceEffect->dealWithBonusCombat($bonusCombatLauncher, $competenceEffect->_actionType);
                     $damageAfterRedirection = $receiver->calculateDamagesReducedByRedirection($initialDamages, $bonusCombatReceiver);
                     $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
                     $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
@@ -325,7 +329,7 @@ class EffectTest
      * Par contre, cela limite la modification relative à ne pas dépasser 1 ou être plus petite que -1, ce qui veut dire qu'on ne peut pas doubler la valeur à chaque tour.
      * On ne peut pas non plus tenter de réduire la valeur de l'effet de 1. Mais avec le floor, on peut faire un 1.0000001, ce qui devrait passer, j'espère.
      */
-    private function modifyEffectValue($bdd)
+    private function modifyEffectValue(PDO $bdd)
     {
         $tempMin = $this->_EffectValueMin;
         $tempMax = $this->_EffectValueMax;

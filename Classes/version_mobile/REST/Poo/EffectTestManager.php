@@ -5,6 +5,7 @@
 
 class EffectTestManager
 {
+    /* @var $_db PDO */
     private $_db; // Instance de PDO
 
     public function __construct($db)
@@ -30,15 +31,15 @@ class EffectTestManager
         }
         $this->_db = null;
         $policy = [
-            'EffectType' => $effects->EffectType,
-            'EffectValueMin' => $effects->EffectValueMin,
-            'EffectValueMax' => $effects->EffectValueMax,
-            'IDCompetence' => $effects->ID_Competence,
-            'IDLauncher' => $effects->IDLauncher,
-            'IDReceiver' => $effects->IDReceiver,
-            'NumberOfUse' => $effects->NumberOfUse,
-            'NumberOfTurn' => $effects->NumberOfTurn,
-            'NumberOfFight' => $effects->NumberOfFight,
+            'EffectType' => $effects->_EffectType,
+            'EffectValueMin' => $effects->_EffectValueMin,
+            'EffectValueMax' => $effects->_EffectValueMax,
+            'IDCompetence' => $effects->_ID_Competence,
+            'IDLauncher' => $effects->_IDLauncher,
+            'IDReceiver' => $effects->_IDReceiver,
+            'NumberOfUse' => $effects->_NumberOfUse,
+            'NumberOfTurn' => $effects->_NumberOfTurn,
+            'NumberOfFight' => $effects->_NumberOfFight,
         ];
     }
 
@@ -86,7 +87,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (22,26))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -101,7 +102,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (23,27))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -116,7 +117,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (22,26,28,30,32))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -131,7 +132,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (23,27,29,31,33))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -146,7 +147,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (22,26,34))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -161,7 +162,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (23,27,35))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -176,7 +177,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (22,24,28,30,32))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -191,7 +192,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (23,25,29,31,33))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -206,7 +207,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (22,24,34))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -221,7 +222,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND (ActionType in (23,25,35))');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -236,7 +237,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND ActionType = 36');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {
@@ -251,7 +252,7 @@ class EffectTestManager
         $listEffects = [];
         $effects = $this->_db->query('SELECT * 
                                     FROM effectapplied 
-                                    WHERE IDReceiver = '.$this->_Id_Personnage.' 
+                                    WHERE IDReceiver = '.$idPersonnage.' 
                                     AND ActionType = 37');
 
         while ($donnees = $effects->fetch(PDO::FETCH_ASSOC)) {

@@ -417,9 +417,9 @@ class PersonnageTest
             else
                 $effects = $effectsTestManager->getAfterCompetenceEffectListForReceiver($receiver->_Id_Personnage);
         }
-
+        /* @var $effects EffectTest[] */
         foreach ($effects as $effect) {
-            $effect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+            $effect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect);
         }
     }
 
@@ -431,9 +431,9 @@ class PersonnageTest
         } else {
             // A implémenter quand on gérera les attaques
         }
-
+        /* @var $effects EffectTest[] */
         foreach ($effects as $effect) {
-            $effect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
+            $effect->useEffect($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect);
         }
     }
 

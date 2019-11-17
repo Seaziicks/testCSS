@@ -15,6 +15,7 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une ale
 $turn = $_POST['turn'];
 
 $personnageManager = new PersonnageManager($bdd);
+/* @var $launcher PersonnageTest */
 $launcher = $personnageManager->get($_POST['idLauncher']);
 $bonusCombatManager = new BonusCombatManager($bdd);
 $bonusCombatLauncher = $bonusCombatManager->get($launcher->_Id_Personnage);
@@ -103,6 +104,7 @@ foreach ($effects as $effect) {
 $indexReceiversList = 1; // Commence à 1 car le 0 est réservé à la list de cibles des effets liés.
 $linkedTargetsDone = array(); // Liste des cibles effets liés déjà affectées par les effets avant/après
 $effectWithSpecialApplicationTypeHasBeenLaunched = false;
+/* @var $competenceEffect CompetenceEffectTest */
 foreach ($competenceEffects as $competenceEffect) {
     if ($competenceEffect->_linkedEffect) {
         $receivers = $receiversLists[0];
@@ -118,11 +120,13 @@ foreach ($competenceEffects as $competenceEffect) {
         for ($indexCible = 0; $indexCible < count($receivers); $indexCible++) {
             if ((isCibleUnique($competenceEffect) && $indexCible == 0)
                 || (!isCibleUnique($competenceEffect) && $indexCible < $competenceEffect->_numberOfTarget)) {
+                /* @var $receiver PersonnageTest */
                 $receiver = $receivers[$indexCible];
+                /* @var $bonusCombatReceiver BonusCombat */
                 $bonusCombatReceiver = $bonusCombatReceivers[$indexCible];
 
                 if (!$competenceEffect->_linkedEffect ||
-                    ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
+                    ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->_Id_Personnage, $linkedTargetsDone))) {
 
                     foreach ($beforeActionEffects as $beforeActionEffect)
                         $beforeActionEffect->useEffect($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver);
@@ -152,11 +156,11 @@ foreach ($competenceEffects as $competenceEffect) {
 
 
                 //-----------
-                $competenceEffect->appliquerEffetCompetenceAvecBonusGeneraux($bdd, $competenceEffect, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $indexCible);
+                $competenceEffect->appliquerEffetCompetenceAvecBonusGeneraux($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $indexCible);
 
 
                 if (!$competenceEffect->_linkedEffect ||
-                    ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->Id_Personnage, $linkedTargetsDone))) {
+                    ($competenceEffect->_linkedEffect && !linkedTargetDone($receiver->_Id_Personnage, $linkedTargetsDone))) {
 
                     $receiver->triggerEffectReceivingCompetence($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
 
@@ -203,23 +207,24 @@ function linkedTargetDone($linkedTargetList, $linkedTarget)
     return array_search($linkedTarget, $linkedTargetList);
 }
 
-function addTargetToCompetenceUse($bdd, CompetenceTest $competence, PersonnageTest $launcher, PersonnageTest $receiver, int $turnUse)
+function addTargetToCompetenceUse(PDO $bdd, CompetenceTest $competence, PersonnageTest $launcher, PersonnageTest $receiver, int $turnUse)
 {
     $sql = "INSERT INTO competenceeffectuse (idCompetence, idLauncher, idReceiver, turnUse)
             VALUES (" . $competence->_Id_Competence . ", " . $launcher->_Id_Personnage . ",
             " . $receiver->_Id_Personnage . "," . $turnUse . ")";
     // use exec() because no results are returned
+
     $bdd->exec($sql);
 }
 
-function clearTargets($bdd, CompetenceTest $competence)
+function clearTargets(PDO $bdd, CompetenceTest $competence)
 {
     $sql = "DELETE FROM competenceeffectuse
                 WHERE idCompetence = " . $competence->_Id_Competence . "";
     $bdd->exec($sql);
 }
 
-function isCibleUnique(CompetenceEffectTest $competenceEffect): boolean
+function isCibleUnique(CompetenceEffectTest $competenceEffect): bool
 {
     return $competenceEffect->_applicationType == 2 || ($competenceEffect->_applicationType > 6
             & $competenceEffect->_applicationType < 13);
