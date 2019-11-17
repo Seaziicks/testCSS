@@ -3,8 +3,8 @@
 class CompetenceEffectTest
 {
     public $_idCompetenceEffect,
-        $_idCompetence,
         $_effectOrder,
+        $_idCompetence,
         $_actionType,
         $_effectType,
         $_applicationType,

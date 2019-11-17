@@ -10,9 +10,9 @@ $competenceEffectInfos = $bdd->query('SELECT ce.*, c.Niveau
 $reponse=array();
 while($effect=$competenceEffectInfos->fetch(PDO::FETCH_ASSOC)){
     $reponse = $effect;
-    $reponse['pourcentage'] = $reponse['pourcentage'] == 0 ? false : true;
 }
-
+$reponse['pourcentage'] = $reponse['pourcentage'] == 0 ? false : true;
+$reponse['linkedEffect'] = $reponse['linkedEffect'] == 0 ? false : true;
 
 function EnJson($arr , $format = 0){
     header('Content-type: application/json;charset=utf-8'); //Setting the page Content-type
