@@ -91,8 +91,11 @@ class CompetenceTest
 			$_Valeur_Temporaire2,
 			$_Statistique_Temporaire1;
 
+	/* @var $_Personnage PersonnageTest */
     public $_Personnage;
+    /* @var $_Effects CompetenceEffectTest[] */
     public $_Effects = [];
+    /* @var $_db PDO */
     public $_db;
 
 	public function __construct(array $donnees, PersonnageTest $Personnage, $db)

@@ -161,7 +161,11 @@ class EffectTest
     public function setNumberOfTurnOfDifferedEffect($numberOfTurnOfDifferedEffect)
     {
         $this->_numberOfTurnOfDifferedEffect = (int)$numberOfTurnOfDifferedEffect;
-        $this->_numberOfTurnOfDifferedEffect = $numberOfTurnOfDifferedEffect;
+    }
+
+    public function getElement($elementName, $index){
+        $retour = '_'.ucfirst($elementName).''.$index;
+        return $this->$retour;
     }
 
     public function useEffect(PDO $bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect)

@@ -3,11 +3,16 @@
 
 class Rang
 {
+    /* @var $_competences CompetenceTest[] */
     public $_competences = [];
+    /* @var $_personnage PersonnageTest */
     public $_personnage;
     public $_ligneNumber;
+    /* @var $_specialite Specialite */
     public $_specialite;
     public $_ligne = [];
+    /* @var $_db PDO */
+    public $_db;
 
     public function __construct(PersonnageTest $personnage, $specialite, int $ligneNumber,  $db)
     {
@@ -23,7 +28,7 @@ class Rang
 								FROM arbres 
 								WHERE ID_Personnage = '.$this->_personnage->_Id_Personnage.'
 								AND Rang = '.$this->_ligneNumber.'
-								AND Spécialité = \''.$this->_specialite.'\'');									// Je récupère toutes les compétences de voleur, triées par Spécialité, puis Rang, puis Ordre.
+								AND Spécialité = \''.$this->_specialite->_libelle.'\'');									// Je récupère toutes les compétences de voleur, triées par Spécialité, puis Rang, puis Ordre.
         $this->_ligne = $competences->fetch(PDO::FETCH_NUM);
         $competenceManager = new CompetenceManager($this->_db);
 

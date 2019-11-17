@@ -3,10 +3,14 @@
 
 class Arbre
 {
-
+    /* @var $_specialitesLibelles string[] */
     public $_specialitesLibelles = [];
+    /* @var $_specialites Specialite[] */
     public $_specialites = [];
+    /* @var $_personnage PersonnageTest */
     public $_personnage;
+    /* @var $_db PDO */
+    private $_db;
 
     public function __construct(PersonnageTest $personnage,  $db)
     {

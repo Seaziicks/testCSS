@@ -15,6 +15,7 @@ class EffectTestManager
 
     public function add(EffectTest $effects)
     {
+        $sql= '';
         try {
 
             // set the PDO error mode to exception
@@ -30,6 +31,7 @@ class EffectTestManager
             echo $sql . "<br>" . $e->getMessage();
         }
         $this->_db = null;
+        /*
         $policy = [
             'EffectType' => $effects->_EffectType,
             'EffectValueMin' => $effects->_EffectValueMin,
@@ -41,6 +43,7 @@ class EffectTestManager
             'NumberOfTurn' => $effects->_NumberOfTurn,
             'NumberOfFight' => $effects->_NumberOfFight,
         ];
+        */
     }
 
     public function get($id)

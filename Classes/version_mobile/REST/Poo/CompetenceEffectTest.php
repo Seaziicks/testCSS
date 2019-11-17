@@ -30,6 +30,7 @@ class CompetenceEffectTest
         $_numberOfAccumulation,
         $_linkedEffect;
 
+    /* @var $_Personnage PersonnageTest */
     public $_Personnage;
 
     public function __construct(array $donnees, PersonnageTest $Personnage)
@@ -268,6 +269,7 @@ class CompetenceEffectTest
                 return $this->_Personnage->getTotalRessource();
                 break;
         }
+        return null;
     }
 
     public function getCalcul()
@@ -341,6 +343,7 @@ class CompetenceEffectTest
             return $this->dealDamagesWithBonusCombat($bonusCombat, $actionType);
         elseif ($actionType == 5)
             return $this->dealHealWithBonusCombat($bonusCombat);
+        return null;
     }
 
     public function getBonusCombatStatistique(string $statistique, BonusCombat $bonusCombat)
@@ -357,6 +360,7 @@ class CompetenceEffectTest
                 return $bonusCombat->_Intelligence;
                 break;
         }
+        return null;
     }
 
     public function setPersonnage(PersonnageTest $Personnage)
@@ -364,10 +368,8 @@ class CompetenceEffectTest
         $this->_Personnage = $Personnage;
     }
 
-    public function appliquerEffetCompetenceAvecBonusGeneraux($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, int $indexCible)
+    public function appliquerEffetCompetenceAvecBonusGeneraux(PDO $bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver)
     {
-        // index cible sert à savoir, en cas d'effets liés dont des "effet cible unique", si c'est la cible sur laquelle appliquer les "effet cible unique" liés.
-        // => S'appliquera uniquement sur la cible 0.
         switch (true) {
             case $this->_actionType == 1: // Damages Physical & Magical
             case $this->_actionType == 2:
@@ -390,7 +392,7 @@ class CompetenceEffectTest
                 $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
                 $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
                 $effectiveDamages = max(0, $receiver->calculateNonDifferedDamages($damageAfterReduction, $bonusCombatReceiver));
-                $lifeSteal = max(0, floor($receiver->calculateReducedDamages($receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatReceiver), $bonusCombatReceiver) * 0.2));
+                $lifeSteal = max(0, floor($receiver->calculateReducedDamages($receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatReceiver, $bonusCombatReceiver), $bonusCombatReceiver) * 0.2));
                 $remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
                 $remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
                 $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
@@ -405,15 +407,19 @@ class CompetenceEffectTest
                 $healBoostReceiver = max(0, $receiver->calculateHealWithBonusCombat($healBoostLauncher, $bonusCombatReceiver));
                 $lifePoint = min(($receiver->getTotalVitalité() + $bonusCombatReceiver->_Vitalite) * 2, $receiver->_PDV_Actuel + $healBoostReceiver);
                 $sql = "UPDATE personnage SET PDV_Actuel = " . $lifePoint . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
+                $bdd->exec($sql);
                 break;
             case $this->_actionType == 6: // Shield
-                $BouclierTotal = max(0, $receiver->_Bouclier - $this->EffectValueMin);
+                $bonusShield = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
+                $BouclierTotal = max(0, $receiver->_Bouclier + $bonusShield);
                 $sql = "UPDATE personnage SET Bouclier = " . $BouclierTotal . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
+                $bdd->exec($sql);
                 break;
             case $this->_actionType > 6 : // Tous les effets
+                $effectValue = $this->dealWithBonusCombat($bonusCombatLauncher, $this->_actionType);
                 $sql = "INSERT INTO effectapplied (ActionType,EffectType,EffectValueMin ,EffectValueMax,ID_Competence,IDLauncher,
                                                 IDReceiver,NumberOfUse,NumberOfTurn,NumberOfFight)
-            VALUES (" . $this->_actionType . "," . $this->_effectType . "," . $this->_EffectValueMin . "," . $this->_EffectValueMax . ",
+            VALUES (" . $this->_actionType . "," . $this->_effectType . "," . $effectValue . "," . $effectValue . ",
                     " . $this->_idCompetence . "," . $launcher->_Id_Personnage . "," . $receiver->_Id_Personnage . ",
                     " . $this->_numberOfUse . ", " . $this->_numberOfTurn . "," . $this->_numberOfFight . ")";
                 // use exec() because no results are returned
@@ -422,7 +428,7 @@ class CompetenceEffectTest
         }
     }
 
-    public function canBeUsed(int $idPersonnage, CompetenceManager $competenceManager, array $receivers): boolean
+    public function canBeUsed(int $idPersonnage, CompetenceManager $competenceManager, array $receivers): bool
     {
         if ($this->_applicationType < 7)
             return true;
@@ -440,17 +446,18 @@ class CompetenceEffectTest
             return $this->accumulativeUse($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
         } else if ($this->_applicationType == 10 || $this->_applicationType == 16 || $this->_applicationType == 21) {
             // Cas des différents "après accumulation successives".
-            $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);
+            $previousUses = $competenceManager->getPreviousCharacterUses($idPersonnage);
             return $this->successiveUses($previousUses);
         } else if ($this->_applicationType == 11 || $this->_applicationType == 17) {
             // Cas des différents "après accumulation successives sur cibles uniques".
-            $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);
+            $previousUses = $competenceManager->getPreviousCharacterUses($idPersonnage);
             return $this->successiveUses($previousUses) && $this->uniqueTarget($previousUses, $receivers[0]);
         } else if ($this->_applicationType == 12 || $this->_applicationType == 18 || $this->_applicationType == 22) {
             // Cas des différents "après accumulation successives sur cibles distinctes".
-            $previousUses = $competenceManager->getPreviousCharacterUses($this->_idCompetence, $idPersonnage);
+            $previousUses = $competenceManager->getPreviousCharacterUses($idPersonnage);
             return $this->successiveUses($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
         }
+        return null;
     }
 
     /*
@@ -459,12 +466,12 @@ class CompetenceEffectTest
      *      => Donc à l'utilisation en cours. Ce qui veut dire, que je n'ai pas besoin de le valider, étant donné que je suis dans l'effet de la compétence en question.
      *      => Aurait pu être renomé en quelque chose comme numberOfUseToExec.
      */
-    public function accumulativeUse(array $previousUses): boolean
+    public function accumulativeUse(array $previousUses): bool
     {
         return count($previousUses) == $this->_numberOfAccumulation - 1;
     }
 
-    public function successiveUses(array $previousUses): boolean
+    public function successiveUses(array $previousUses): bool
     {
         $index = 0;
         while ($previousUses[$index]['idCompetence'] == $this->_idCompetence && $index < $this->_numberOfAccumulation - 1 && $index < count($previousUses)) {
@@ -475,7 +482,7 @@ class CompetenceEffectTest
         return true;
     }
 
-    public function uniqueTarget(array $previousUses, $actualTarget): boolean
+    public function uniqueTarget(array $previousUses, $actualTarget): bool
     {
         $index = 0;
         while ($previousUses[$index]['idReceiver '] == $actualTarget && $index < $this->_numberOfAccumulation - 1 && $index < count($previousUses)) {
@@ -487,7 +494,7 @@ class CompetenceEffectTest
         return true;
     }
 
-    public function distinctTargets(array $previousUses, $actualTarget): boolean
+    public function distinctTargets(array $previousUses, $actualTarget): bool
     {
         $index = 0;
         $arrayTargets = array();

@@ -4,7 +4,9 @@
 class Specialite
 {
     public $_rangsIndex = [4,3,2,1,0];
+    /* @var $_rangs Rang[] */
     public $_rangs = [];
+    /* @var $_personnage PersonnageTest */
     public $_personnage;
     public $_libelle;
 

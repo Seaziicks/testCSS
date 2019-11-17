@@ -1,6 +1,7 @@
 <?php
 class EquipementPortesManager
 {
+    /* @var $_db PDO */
     private $_db; // Instance de PDO
 
     public function __construct($db)

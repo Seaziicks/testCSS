@@ -399,7 +399,7 @@ class PersonnageTest
             * (1 - $bonusCombatReceiver->_DiffererDegatsPourcentage - $bonusCombatReceiver->_DiffererDegatsPourcentageToTheEndOfEffect));
     }
 
-    public function triggerEffectReceivingCompetence($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, boolean $before)
+    public function triggerEffectReceivingCompetence($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, bool $before)
     {
         $effectsTestManager = new EffectTestManager($bdd);
         if ($before) {
@@ -423,7 +423,7 @@ class PersonnageTest
         }
     }
 
-    public function triggerEffectReceivingAttack($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, boolean $before)
+    public function triggerEffectReceivingAttack($bdd, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver, CompetenceEffectTest $competenceEffect, bool $before)
     {
         $effectsTestManager = new EffectTestManager($bdd);
         if ($before) {
