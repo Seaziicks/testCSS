@@ -9,7 +9,7 @@ class Rang
     public $_personnage;
     public $_ligneNumber;
     /* @var $_specialite string */
-    public $_specialite;
+    public $_specialiteLibelle;
     public $_ligne = [];
     /* @var $_db PDO */
     public $_db;
@@ -19,7 +19,7 @@ class Rang
         $this->_db = $db;
         $this->_personnage = $personnage;
         $this->_ligneNumber = $ligneNumber;
-        $this->_specialite = $specialite;
+        $this->_specialiteLibelle = $specialite;
         $this->getCompetences();
     }
 
@@ -28,7 +28,7 @@ class Rang
 								FROM arbres 
 								WHERE ID_Personnage = '.$this->_personnage->_Id_Personnage.'
 								AND Rang = '.$this->_ligneNumber.'
-								AND Spécialité = \''.$this->_specialite.'\'');									// Je récupère toutes les compétences de voleur, triées par Spécialité, puis Rang, puis Ordre.
+								AND Spécialité = \''.$this->_specialiteLibelle.'\'');									// Je récupère toutes les compétences de voleur, triées par Spécialité, puis Rang, puis Ordre.
         $this->_ligne = $competences->fetch(PDO::FETCH_NUM);
         $competenceManager = new CompetenceManager($this->_db);
 
