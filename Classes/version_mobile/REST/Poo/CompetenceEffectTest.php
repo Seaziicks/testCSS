@@ -392,7 +392,7 @@ class CompetenceEffectTest
                 $damageAfterArmor = $receiver->calculateDamagesReducedByArmor($damageAfterRedirection, $bonusCombatLauncher, $bonusCombatReceiver);
                 $damageAfterReduction = $receiver->calculateReducedDamages($damageAfterArmor, $bonusCombatReceiver);
                 $effectiveDamages = max(0, $receiver->calculateNonDifferedDamages($damageAfterReduction, $bonusCombatReceiver));
-                $lifeSteal = max(0, floor($receiver->calculateReducedDamages($receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatReceiver, $bonusCombatReceiver), $bonusCombatReceiver) * 0.2));
+                $lifeSteal = max(0, floor($receiver->calculateReducedDamages($receiver->calculateDamagesReducedByArmor($initialDamages, $bonusCombatLauncher, $bonusCombatReceiver), $bonusCombatReceiver) * 0.2));
                 $remainingShield = max(0, $receiver->_Bouclier - $effectiveDamages);
                 $remainingHP = max(0, $receiver->_PDV_Actuel - max(0, $effectiveDamages - $receiver->_Bouclier));
                 $sql = "UPDATE personnage SET PDV_Actuel = " . $remainingHP . ", Bouclier = " . $remainingShield . " WHERE Id_Personnage = " . $receiver->_Id_Personnage;
