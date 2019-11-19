@@ -9,11 +9,10 @@ spl_autoload_register('chargerClasse');
 
 session_start(); // On appelle session_start() APRÈS avoir enregistré l'autoload.
 
+include('../BDD.php');
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
-$db = new PDO('mysql:host=localhost;dbname=modifications(zone tampon);charset=utf8', 'root', '');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
-
-$manager = new CompetenceManager($db);
+$manager = new CompetenceManager($bdd);
 
 $previousTargets = $manager->getPreviousCompetenceUses($_GET['idCompetence'], $_GET['idLauncher']);
 
