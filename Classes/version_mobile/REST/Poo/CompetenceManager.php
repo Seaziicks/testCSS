@@ -62,7 +62,7 @@ class CompetenceManager
 								AND idLauncher = ' . $idLauncher . '
 								ORDER BY turnUse DESC, idCompetenceUse DESC');                                    // Je récupère toutes les utilisations de cette compétence, ordonnées par ordre d'arrivée.
         $previousTargets = array();
-        while ($competenceUse = $competenceUses->fetch()) {
+        while ($competenceUse = $competenceUses->fetch(PDO::FETCH_ASSOC)) {
             array_push($previousTargets, $competenceUse);
         }
 
@@ -77,7 +77,7 @@ class CompetenceManager
 								ORDER BY turnUse DESC, idCompetenceUse DESC');                                    // Je récupère toutes les utilisations de compétence, ordonnées par ordre d'arrivée.
 
         $previousCompetencesAndTargets = array();
-        while ($competenceUse = $competenceUses->fetch()) {
+        while ($competenceUse = $competenceUses->fetch(PDO::FETCH_ASSOC)) {
             array_push($previousCompetencesAndTargets, $competenceUse);
         }
 
