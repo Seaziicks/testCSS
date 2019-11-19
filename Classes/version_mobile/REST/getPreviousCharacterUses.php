@@ -9,6 +9,9 @@ spl_autoload_register('chargerClasse');
 
 session_start(); // On appelle session_start() APRÈS avoir enregistré l'autoload.
 
+/// Paramétrage de l'entête HTTP (pour la réponse au Client)
+header("Content-Type:application/json ; Access-Control-Allow-Origin:*");
+
 include('../BDD.php');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
