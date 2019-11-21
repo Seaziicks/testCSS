@@ -111,3 +111,17 @@ Technicité :
         Ils sont d'abord déduit des dégâts, et ensuite, ils s'appliquent dans les Personnage->TriggerEffectReceivingCompetence.
         Donc le lanceur voit juste ses dégâts diminués, et le receveur voit juste les effets qui s'activent, mais les deux ne sont pas traités en même temps.
             => Cela oblige à faire les calculs pour l'un comme pour l'autre.
+
+
+
+
+Cas de réflexion :
+    Partie PHP :
+
+
+
+    Cas Angular :
+        entityManagement => Partie de gestion de l'affichage d'état en fonction des CompetenceEffect.
+            Vu comment s'est déroulé le développement de la partie PHP, si la compétence a plusieurs effets, il faut faire plusieurs sélections, sauf si les CompetenceEffect sont liés.
+                => il faut donc jouer tous les effets liés, puis les autres effets un par un.
+            Il faudrait peut-être rajouter un champ de texte en haut pour indiquer quel effet est en train d'être joué, et combien de target peuvent être sélectionnées

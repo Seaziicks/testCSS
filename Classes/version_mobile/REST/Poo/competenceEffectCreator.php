@@ -6,7 +6,8 @@ session_start(); // On appelle session_start() APRÈS avoir enregistré l'autolo
 // On enregistre notre autoload.
 function chargerClasse($classname)
 {
-    require $classname.'.php';
+    $uselessIntervalToBaitPhpStormCheckBecauseItsBuging = $classname . '.php';
+    require $uselessIntervalToBaitPhpStormCheckBecauseItsBuging;
 }
 include("BDD.php");
 
@@ -40,7 +41,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
 <html lang="fr">
 <head>
     <style>
-
+        /*
         .alignement{
             display: flex;
             flex-flow : row  wrap;
@@ -63,6 +64,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
         .db-description{
             width : 100%;
         }
+        */
         form{
             color : white;
         }
@@ -86,6 +88,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
         label span{
             width : 20%;
         }
+        /*
         .limite{
             width : 100%;
             text-align : center;
@@ -98,6 +101,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
             margin : auto;
             padding-left:1.3%;
         }
+        */
         .personnages div{
             float : left;
             width:20%;
@@ -105,6 +109,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
         input[type="number"]{
             width : 11%;
         }
+        /*
         .valeur{
             color: #bda6db;
         }
@@ -155,6 +160,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
         .button1:active{
             background-color: #555555;
         }
+        */
     </style>
     <link rel="stylesheet" href="modification_competence.css" type="text/css" media="screen"/>
     <title></title>
@@ -167,7 +173,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
     <div class="original">
         <div>
             Original :	<br/><br/><br/><span class="competence"><?= $competence['Libellé'];?></span><br/><br/><?php include('modification_competence_original.php');include('effets.php'); ?>
-            <?php if (!empty($competence['Exemple'])){ ?><br/><br/></br><div class="exemple"><i><?= $competence['Exemple']; ?> </i></div><?php }?>
+            <?php if (!empty($competence['Exemple'])){ ?><br/><br/><br/><div class="exemple"><i><?= $competence['Exemple']; ?> </i></div><?php }?>
         </div>
     </div>
 
@@ -176,7 +182,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
             Modification
             <br/><br/>
             <form action="" method="post">
-                Numéro de compétence : <input type="number" name="Id_Competence" value="<?= $competence['Id_Competence'];?>"style="width:40px" onload="this.select()" autofocus>
+                <label for="Id_Competence">Numéro de compétence : </label><input type="number" id="Id_Competence" name="Id_Competence" value="<?= $competence['Id_Competence'];?>" style="width:40px" onload="this.select()" autofocus>
                 <input type="submit" name="inscription" value="Compétence">
             </form>
 
@@ -190,9 +196,9 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
 
 
                 <span  class="titre_section">Caractéristiques</span><br/><br/><br/>
-                effectOrder =>  <input type="number" style="text-align : center;"name="neweffectOrder" id="neweffectOrder" rows=1 cols=36 > </input>
-                idCompetence => <input type="number" name="newidCompetence" id="newidCompetence" rows=3 cols=36 > </input><br/>
-                actionType =>   <select type="number" name="newactionType" id="newactionType" style="width:185px">
+                <label for="neweffectOrder">effectOrder =>  </label><input type="number" style="text-align : center;" name="neweffectOrder" id="neweffectOrder">
+                <label for="newidCompetence">idCompetence => </label><input type="number" name="newidCompetence" id="newidCompetence"><br/>
+                <label for="newactionType">actionType =>   </label><select name="newactionType" id="newactionType" style="width:185px">
                                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type d'action </option>
                                     <?= optionWithSpace(1, "Dommage physique", 3); ?>
                                     <?= optionWithSpace(2, "Dommage Magique", 3); ?>
@@ -232,7 +238,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(36, "EffetDebutTour", 3); ?>
                                     <?= optionWithSpace(37, "EffetFinTour", 3); ?>
                                 </select><br/>
-                effectType =>   <select type="number" name="neweffectType" id="neweffectType" style="width:175px"><br/>
+                <label for="neweffectType">effectType =>  </label><select  name="neweffectType" id="neweffectType" style="width:175px"><br/>
                                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type d'effet </option>
                                     <?= optionWithSpace(1, "DegatsFlat", 3); ?>
                                     <?= optionWithSpace(2, "DegatsPourcentage", 3); ?>
@@ -278,7 +284,7 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(42, "DiffererDegatsPourcentage", 3); ?>
                                 </select><br/>
 
-                modeApplication => <select type="number" name="newmodeApplication" style="text-align : center; width : 270px;" id="newmodeApplication">
+                <label for="newmodeApplication">modeApplication => </label><select name="newmodeApplication" style="text-align : center; width : 270px;" id="newmodeApplication">
                                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type d'application de l'effet </option>
                                     <?= optionWithSpace(1, "Sois même", 3); ?>
                                     <?= optionWithSpace(2, "Cible unique", 3); ?>
@@ -303,22 +309,22 @@ $competencePoo = $competencePooManager->get($_POST['Id_Competence'], $personnage
                                     <?= optionWithSpace(21, "Effet sur précédentes cibles après M accumulation successives", 3); ?>
                                     <?= optionWithSpace(22, "Effet sur précédentes cibles après M accumulation successives sur cibles distinctes", 3); ?>
                                 </select>
-                niveauRequis => <input type="number" name="newniveauRequis" id="newniveauRequis" rows=3 cols=36 > </input><br/>
-                typeCalcul => <select onchange="changeTypeCalcul()" type="number" name="newtypeCalcul" style="text-align : center; width : 190px;" id="newtypeCalcul" rows=1 cols=15 >
+                <label for="newniveauRequis">niveauRequis => </label><input type="number" name="newniveauRequis" id="newniveauRequis"><br/>
+                <label for="newtypeCalcul">typeCalcul => </label><select onchange="changeTypeCalcul()" name="newtypeCalcul" style="text-align : center; width : 190px;" id="newtypeCalcul">
                     <option disabled="disabled" selected="selected" value="-1"> Choisissez le type de calcul </option>
                     <?= optionWithSpace(1, "Une caractéristique", 3); ?>
                     <?= optionWithSpace(2, "Deux caractéristiques", 3); ?>
                 </select><br/>
-                calcul1A => <input type="number" name="newcalcul1A" id="newcalcul1A" rows=3 cols=36 > </input>
-                calcul1B => <input type="number" name="newcalcul1B" id="newcalcul1B" style="width:50px"><br/>
-                calcul2A => <input type="number" name="newcalcul2A" id="newcalcul2A" style="width:50px">
-                calcul2B => <input type="number" name="newcalcul2B" id="newcalcul2B" style="width:50px"><br/>
-                amplitude => <input type="number" name="newamplitude" id="newamplitude" rows=3 cols=36 > </input>
-                nombreAmplitude => <input type="number" name="newnombreAmplitude" id="newnombreAmplitude" style="width:50px"><br/>
-                statistique1 => <input name="newstatistique1" id="newstatistique1" style="width:50px">
-                statistique2 => <input name="newstatistique2" id="newstatistique2" style="width:50px">
-                impact => <input name="newimpact" id="newimpact" rows=3 cols=36 > </input><br/>
-                pourcentage	 => <input name="newpourcentage" id="newpourcentage" rows=3 cols=36 > </input><br/>
+                <label for="newcalcul1A">calcul1A => </label><input type="number" name="newcalcul1A" id="newcalcul1A">
+                <label for="newcalcul1B">calcul1B => </label><input type="number" name="newcalcul1B" id="newcalcul1B" style="width:50px"><br/>
+                <label for="newcalcul2A">calcul2A => </label><input type="number" name="newcalcul2A" id="newcalcul2A" style="width:50px">
+                <label for="newcalcul2B">calcul2B => </label><input type="number" name="newcalcul2B" id="newcalcul2B" style="width:50px"><br/>
+                <label for="newamplitude">amplitude => </label><input type="number" name="newamplitude" id="newamplitude">
+                <label for="newnombreAmplitude">nombreAmplitude => </label><input type="number" name="newnombreAmplitude" id="newnombreAmplitude" style="width:50px"><br/>
+                <label for="newstatistique1">statistique1 => </label><input name="newstatistique1" id="newstatistique1" style="width:50px">
+                <label for="newstatistique2">statistique2 => </label><input name="newstatistique2" id="newstatistique2" style="width:50px">
+                <label for="newimpact">impact => </label><input name="newimpact" id="newimpact"><br/>
+                <label for="newpourcentage">pourcentage	 => </label><input name="newpourcentage" id="newpourcentage"><br/>
 
                 <input id="Modification_demandee" name="Modification_demandee" type="hidden" value="ok">
                 <input name="Id_Competence" value="<?= $competence['Id_Competence'];?>" type="hidden">
@@ -350,12 +356,12 @@ function optionWithSpace($value, string $text, int $nbSpace) {
 
 <script>
     function changeTypeCalcul() {
-        if(document.getElementById('typeCalcul').options[document.getElementById('typeCalcul').selectedIndex].value == 1) {
+        if(parseInt(document.getElementById('typeCalcul').options[document.getElementById('typeCalcul').selectedIndex].value) === 1) {
             document.getElementById('calcul2A').disabled = true;
             document.getElementById('calcul2B').disabled = true;
             document.getElementById('calcul2A').value = '';
             document.getElementById('calcul2B').value = '';
-        } else if (document.getElementById('typeCalcul').options[document.getElementById('typeCalcul').selectedIndex].value == 2) {
+        } else if (parseInt(document.getElementById('typeCalcul').options[document.getElementById('typeCalcul').selectedIndex].value) === 2) {
             document.getElementById('calcul2A').disabled = false;
             document.getElementById('calcul2B').disabled = false;
         }
