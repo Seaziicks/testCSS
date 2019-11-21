@@ -27,7 +27,9 @@ class CompetenceEffectTest
         $_numberOfTurn,
         $_numberOfFight,
         $_numberOfTarget,
+        $_accumulationType,
         $_numberOfAccumulation,
+        $_successiveAccumulation,
         $_linkedEffect;
 
     /* @var $_Personnage PersonnageTest */
@@ -223,19 +225,30 @@ class CompetenceEffectTest
         $this->_numberOfFight = (int)$numberOfFight;
     }
 
-    public function setLinkedEffect($linkedEffect)
-    {
-        $this->_linkedEffect = (boolean)$linkedEffect;
-    }
-
     public function setNumberOfTarget($numberOfTarget)
     {
         $this->_numberOfTarget = (int)$numberOfTarget;
     }
 
+    public function setAccumulationType($accumulationType)
+    {
+        $this->_accumulationType = (int)$accumulationType;
+    }
+
     public function setNumberOfAccumulation($numberOfAccumulation)
     {
         $this->_numberOfAccumulation = (int)$numberOfAccumulation;
+    }
+
+    public function setSuccessiveAccumulation($successiveAccumulation)
+    {
+        $this->_successiveAccumulation = (boolean)$successiveAccumulation;
+    }
+
+
+    public function setLinkedEffect($linkedEffect)
+    {
+        $this->_linkedEffect = (boolean)$linkedEffect;
     }
 
     public function getStatistique(int $index)
@@ -458,6 +471,43 @@ class CompetenceEffectTest
             return $this->successiveUses($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
         }
         return null;
+    }
+
+
+    public function canBeUsedBis(int $idPersonnage, CompetenceManager $competenceManager, array $receivers): bool
+    {
+        if ($this->_numberOfAccumulation > 0 && $this->_accumulationType != 0) {
+            if($this->_successiveAccumulation) {
+                if ($this->_accumulationType == 1) {
+                    // Cas des différents "après accumulation successives".
+                    $previousUses = $competenceManager->getPreviousCharacterUses($idPersonnage);
+                    return $this->successiveUses($previousUses);
+                } elseif ($this->_accumulationType == 2) {
+                    // Cas des différents "après accumulation successives sur cibles uniques".
+                    $previousUses = $competenceManager->getPreviousCharacterUses($idPersonnage);
+                    return $this->successiveUses($previousUses) && $this->uniqueTarget($previousUses, $receivers[0]);
+                } elseif ($this->_accumulationType == 3) {
+                    // Cas des différents "après accumulation successives sur cibles distinctes".
+                    $previousUses = $competenceManager->getPreviousCharacterUses($idPersonnage);
+                    return $this->successiveUses($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
+                }
+                } else {
+                if($this->_accumulationType == 1) {
+                    // Cas des différents "après accumulation".
+                    $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
+                    return $this->accumulativeUse($previousUses);
+                } elseif ($this->_accumulationType == 2) {
+                    // Cas des différents "après accumulation sur cible unique".
+                    $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
+                    return $this->accumulativeUse($previousUses) && $this->uniqueTarget($previousUses, $receivers[0]);
+                }elseif ($this->_accumulationType == 3) {
+                    // Cas des différents "après accumulation sur cible distinctes".
+                    $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
+                    return $this->accumulativeUse($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
+                }
+            }
+        } else
+            return true;
     }
 
     /*
