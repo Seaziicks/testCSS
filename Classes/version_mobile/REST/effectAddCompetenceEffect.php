@@ -12,6 +12,7 @@ while($effect=$competenceEffectInfos->fetch(PDO::FETCH_ASSOC)){
     $reponse = $effect;
 }
 $reponse['pourcentage'] = $reponse['pourcentage'] == 0 ? false : true;
+$reponse['successiveAccumulation'] = $reponse['successiveAccumulation'] == 0 ? false : true;
 $reponse['linkedEffect'] = $reponse['linkedEffect'] == 0 ? false : true;
 
 function EnJson($arr , $format = 0){

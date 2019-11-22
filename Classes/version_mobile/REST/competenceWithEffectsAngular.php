@@ -38,5 +38,8 @@ $effectsInfos = $bdd->query('SELECT *
 $response['Effects'] = array();
 
 while($effect = $effectsInfos->fetch(PDO::FETCH_ASSOC)) {
+    $effect['pourcentage'] = $effect['pourcentage'] == 0 ? false : true;
+    $effect['successiveAccumulation'] = $effect['successiveAccumulation'] == 0 ? false : true;
+    $effect['linkedEffect'] = $effect['linkedEffect'] == 0 ? false : true;
     array_push($response['Effects'], $effect);
 }

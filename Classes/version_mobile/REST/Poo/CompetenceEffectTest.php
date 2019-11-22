@@ -440,7 +440,7 @@ class CompetenceEffectTest
                 break;
         }
     }
-
+/*
     public function canBeUsed(int $idPersonnage, CompetenceManager $competenceManager, array $receivers): bool
     {
         if ($this->_applicationType < 7)
@@ -472,9 +472,9 @@ class CompetenceEffectTest
         }
         return null;
     }
+*/
 
-
-    public function canBeUsedBis(int $idPersonnage, CompetenceManager $competenceManager, array $receivers): bool
+    public function canBeUsed(int $idPersonnage, CompetenceManager $competenceManager, array $receivers): bool
     {
         if ($this->_numberOfAccumulation > 0 && $this->_accumulationType != 0) {
             if($this->_successiveAccumulation) {
@@ -491,7 +491,7 @@ class CompetenceEffectTest
                     $previousUses = $competenceManager->getPreviousCharacterUses($idPersonnage);
                     return $this->successiveUses($previousUses) && $this->distinctTargets($previousUses, $receivers[0]);
                 }
-                } else {
+            } else {
                 if($this->_accumulationType == 1) {
                     // Cas des différents "après accumulation".
                     $previousUses = $competenceManager->getPreviousCompetenceUses($this->_idCompetence, $idPersonnage);
