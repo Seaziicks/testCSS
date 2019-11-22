@@ -12,9 +12,10 @@ TODO :
     - Implémenter la mort/KO des perso
         => !!! Enlever les effets de redirection de dégâts quand cela arrive !!!
     - Mettre en place les groupe et sous-groupe relatifs au entités, pour pouvoir trier plus aisément les entités.
-    - !!! (Angular) Mettre à jouter les différentes parties modifiées (Competence, CompetenceEffect, Personnage, BonusCombat !!!
-    - Bien plus tard, mais tenter de mettre en place une nouvelle gestion des équipements, ou au moins des armes, pour faire des armes qui soignent.
+    - !!! (Angular) Mettre à jouter les différentes parties modifiées (Competence, CompetenceEffect, Personnage, BonusCombat) !!!
     - (PHP & Angular) Gérer les effets de rebonds, à savoir transmettre dans l'utilisation de l'effet l'index de la cible, pour faire les réduction associées.
+    - Faire la parti execute() de NewCompetenceComponent. La décision actuelle est de traiter les effets liés en premier, puis tous les efets 1 par 1.
+    - Bien plus tard, mais tenter de mettre en place une nouvelle gestion des équipements, ou au moins des armes, pour faire des armes qui soignent.
 
 Probably TODO :
     - Faire des effets liés (avec des cibles partagées). Les "effet cible unique" prennent toujours la première cible (cible 0) dans ce genre de cas,
@@ -127,6 +128,11 @@ Cas de réflexion :
                 => il faut donc jouer tous les effets liés, puis les autres effets un par un.
             Il faudrait peut-être rajouter un champ de texte en haut pour indiquer quel effet est en train d'être joué, et combien de target peuvent être sélectionnées en précisant l'effet en cours.
             Algorithme :
+                Lors de la sélection :
+                    SI ce sont les effets liés ALORS
+                        SI il y a plusieurs effets liés cible unique lançable ALORS
+
+                    SINON
 
 
 
