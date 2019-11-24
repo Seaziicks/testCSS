@@ -127,12 +127,20 @@ Cas de réflexion :
             Vu comment s'est déroulé le développement de la partie PHP, si la compétence a plusieurs effets, il faut faire plusieurs sélections, sauf si les CompetenceEffect sont liés.
                 => il faut donc jouer tous les effets liés, puis les autres effets un par un.
             Il faudrait peut-être rajouter un champ de texte en haut pour indiquer quel effet est en train d'être joué, et combien de target peuvent être sélectionnées en précisant l'effet en cours.
+            Il faut dérouler les effets un par un dane EntityManagement
             Algorithme :
                 Lors de la sélection :
                     SI ce sont les effets liés ALORS
                         SI il y a plusieurs effets liés cible unique lançable ALORS
 
                     SINON
+
+
+
+                    !!!! (Angular) Faire un tableau de tableaux, pour stocker toutes les cibles. Ensuite, permettre de se balader dans les différents effets (précédent/suivant). !!!
+                        => Essayer de gérer les effets les uns après les autres.
+                        => Voir comment répartir cela, mais normalement, une competence n'a qu'un nombre défini d'effet, donc on peut tout mettre d'un seul coup dans la fonction entityManagement.
+                            Tout sera alors stocké, et on pourra se balader facilement entre les différentes sélection d'effet.
 
 
 
