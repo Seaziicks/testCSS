@@ -1,6 +1,5 @@
 .idea/
 .idea
-**/BDD.php
 .htaccess
 **/.htaccess
 BDD.php
