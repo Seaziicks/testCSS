@@ -11,7 +11,6 @@ body, div,span{
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 	line-height: 1;
 }
@@ -32,7 +31,6 @@ body > div {
 
 main{
 	height : 100%;
-	
 }
 
 .centrer{
@@ -44,7 +42,7 @@ main{
 	left: 0;	
 	height : 40%;
 	max-width : 100%;
-	padding : 0 0% 0 14%;
+	padding : 0 0 0 14%;
 }
 
 .aligner{
@@ -56,7 +54,7 @@ main{
 }
 .arbres{
 	min-width : 100%;
-	max-height : 50%;
+	height : 80%;
 	margin-top : 0;
 	top : 0;
 }
@@ -90,7 +88,7 @@ div img {
 	text-align : center;
 	font-size : 100px;
 	color : #0066cc;
-	font-family : AvenueduVapoteur;
+	font-family: AvenueduVapoteur, serif;
 }
 
 .a{
@@ -112,9 +110,11 @@ div img {
 }
 .image {
 	width : 20%;
-
 }
-
+.downpage {
+	height : 60%;
+	margin-top: auto;
+}
 
 
 
