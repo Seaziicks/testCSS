@@ -26,9 +26,9 @@ $manager = new PersonnageManager($bdd);
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="../../equipement.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="../../../equipement.css" type="text/css" media="screen"/>
 
-        <link rel="stylesheet" href="../../../css.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="../../../../css.css" type="text/css" media="screen"/>
 
         <link rel="stylesheet" href="../../../../Demoniste/css.css" type="text/css" media="screen"/>
     </head>

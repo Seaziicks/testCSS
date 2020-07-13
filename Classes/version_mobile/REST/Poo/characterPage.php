@@ -48,6 +48,8 @@ f.submit();
 
     <link rel="stylesheet" href="equipement.css" type="text/css" media="screen"/>
 
+    <link href="../membre.css" rel="stylesheet" type="text/css"/>
+
     <link rel="stylesheet" href="css.css" type="text/css" media="screen"/>
     <!--Get the css fil from the character folder. Every " " (space) has been replaced by "_" in the folder name, that's why their is a str_replace
     Same is done for accents : "é" -> "e"-->

@@ -812,6 +812,11 @@ class Competence
         $this->_Personnage = $Personnage;
     }
 
+    public function getImage()
+    {
+        return 'Characters/'.$this->_Image;
+    }
+
 
     public function getDescriptionComplete()
     {

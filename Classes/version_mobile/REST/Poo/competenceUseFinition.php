@@ -2,13 +2,12 @@
 // On enregistre notre autoload.
 function chargerClasse($classname)
 {
-    $uselessIntervalToBaitPhpStormCheckBecauseItsBuging = $classname . '.php';
-    if (is_file('Poo/Poo/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
-        require 'Poo/Poo/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
-    elseif (is_file('Poo/Poo/Manager/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
-        require 'Poo/Poo/Manager/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
-    elseif (is_file('Poo/Poo/Classes/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
-        require 'Poo/Poo/Classes/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
+    if (is_file('Poo/'.$classname.'.php'))
+        require 'Poo/'.$classname.'.php';
+    elseif (is_file('Poo/Manager/'.$classname.'.php'))
+        require 'Poo/Manager/'.$classname.'.php';
+    elseif (is_file('Poo/Classes/'.$classname.'.php'))
+        require 'Poo/Classes/'.$classname.'.php';
 }
 
 spl_autoload_register('chargerClasse');

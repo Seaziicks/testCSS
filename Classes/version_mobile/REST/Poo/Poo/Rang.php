@@ -90,7 +90,7 @@ class Rang
                         <div class="cadre ">
 
                             <div <?php /* $dégradé=$competence['Niveau']*10; echo 'style="-webkit-mask: linear-gradient(to top,white '.$dégradé.'%, rgba(255,255,255,0.15) '.$dégradé.'%)"';*/ ?>>
-                                <img alt="ImageCompetence"  src="<?= $competencetoDisplay->_Image; ?>">
+                                <img alt="ImageCompetence"  src="<?= $competencetoDisplay->getImage(); ?>">
                             </div>
 
                             <span>
