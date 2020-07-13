@@ -2,7 +2,12 @@
 // On enregistre notre autoload.
 function chargerClasse($classname)
 {
-  require $classname.'.php';
+    if (is_file('Poo/'.$classname.'.php'))
+        require 'Poo/'.$classname.'.php';
+    elseif (is_file('Poo/Manager/'.$classname.'.php'))
+        require 'Poo/Manager/'.$classname.'.php';
+    elseif (is_file('Poo/Classes/'.$classname.'.php'))
+        require 'Poo/Classes/'.$classname.'.php';
 }
 
 spl_autoload_register('chargerClasse');
@@ -10,10 +15,10 @@ spl_autoload_register('chargerClasse');
 session_start(); // On appelle session_start() APRÈS avoir enregistré l'autoload.
 
 
-$db = new PDO('mysql:host=localhost;dbname=modifications(zone tampon);charset=utf8', 'root', '');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
+include('BDD.php');
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
-$manager = new PersonnageManager($db);
+$manager = new PersonnageManager($bdd);
 
  $perso = $manager->get(6);
 

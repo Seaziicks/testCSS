@@ -1,0 +1,58 @@
+body{
+	background: url("Fond/thumb-1920-311674.jpg") no-repeat center fixed;
+	background-size: cover;
+	background-position:right top;	flex-flow : row  wrap;
+}
+.test:hover>div>span{
+	border: 5px inset grey/*#C48A13*/;
+}
+.aligner table{
+	background-color : rgba(0, 0, 0, 0.5);	
+	border: 3px solid #19460B;
+}
+.titre {
+	font-size : 22px;	font-family: Luminari;
+	color : #2B7513;
+	padding-bottom : 15px;
+}
+.aligner table:hover {
+	background-color : rgba(0, 0, 0, 0.75);	
+	border: 3px solid #50923C;
+}
+
+.blanc {
+	background-color : rgba(22, 46, 15, 0.75);
+	min-width : 75px;
+	min-height : 40px;
+	text-align : center;
+	color : #A7A0A0;
+}
+
+
+#menu a{
+	color : #286813;
+}
+
+
+
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(62,167,28, 1);
+  }
+ 
+  100% {
+      -webkit-box-shadow: 0 0 0 100px rgba(62,167,28, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(62,167,28, 1);
+    box-shadow: 0 0 0 rgba(62,167,28, 1);
+  }
+  
+  100% {
+      -moz-box-shadow: 0 0 25px rgba(62,167,28, 0.9);
+      box-shadow: 0 0 25px rgba(62,167,28, 0.9);
+  }
+}

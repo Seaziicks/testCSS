@@ -3,7 +3,12 @@
 function chargerClasse($classname)
 {
     $uselessIntervalToBaitPhpStormCheckBecauseItsBuging = $classname . '.php';
-    require $uselessIntervalToBaitPhpStormCheckBecauseItsBuging;
+    if (is_file('Poo/Poo/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
+        require 'Poo/Poo/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
+    elseif (is_file('Poo/Poo/Manager/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
+        require 'Poo/Poo/Manager/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
+    elseif (is_file('Poo/Poo/Classes/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
+        require 'Poo/Poo/Classes/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
 }
 
 spl_autoload_register('chargerClasse');
@@ -16,7 +21,7 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une ale
 $turn = $_POST['turn'];
 
 $personnageManager = new PersonnageManager($bdd);
-/* @var $launcher PersonnageTest */
+/* @var $launcher Personnage */
 $launcher = $personnageManager->get($_POST['idLauncher']);
 $bonusCombatManager = new BonusCombatManager($bdd);
 $bonusCombatLauncher = $bonusCombatManager->get($launcher->_Id_Personnage);
@@ -105,7 +110,7 @@ foreach ($effects as $effect) {
 $indexReceiversList = 1; // Commence à 1 car le 0 est réservé à la list de cibles des effets liés.
 $linkedTargetsDone = array(); // Liste des cibles effets liés déjà affectées par les effets avant/après
 $effectWithSpecialApplicationTypeHasBeenLaunched = false;
-/* @var $competenceEffect CompetenceEffectTest */
+/* @var $competenceEffect CompetenceEffect */
 foreach ($competenceEffects as $competenceEffect) {
     if ($competenceEffect->_linkedEffect) {
         $receivers = $receiversLists[0];
@@ -121,7 +126,7 @@ foreach ($competenceEffects as $competenceEffect) {
         for ($indexCible = 0; $indexCible < count($receivers); $indexCible++) {
             if ((isCibleUnique($competenceEffect) && $indexCible == 0)
                 || (!isCibleUnique($competenceEffect) && $indexCible < $competenceEffect->_numberOfTarget)) {
-                /* @var $receiver PersonnageTest */
+                /* @var $receiver Personnage */
                 $receiver = $receivers[$indexCible];
                 /* @var $bonusCombatReceiver BonusCombat */
                 $bonusCombatReceiver = $bonusCombatReceivers[$indexCible];
@@ -208,7 +213,7 @@ function linkedTargetDone($linkedTargetList, $linkedTarget)
     return array_search($linkedTarget, $linkedTargetList);
 }
 
-function addTargetToCompetenceUse(PDO $bdd, CompetenceTest $competence, PersonnageTest $launcher, PersonnageTest $receiver, int $turnUse)
+function addTargetToCompetenceUse(PDO $bdd, Competence $competence, Personnage $launcher, Personnage $receiver, int $turnUse)
 {
     $sql = "INSERT INTO competenceeffectuse (idCompetence, idLauncher, idReceiver, turnUse)
             VALUES (" . $competence->_Id_Competence . ", " . $launcher->_Id_Personnage . ",
@@ -218,14 +223,14 @@ function addTargetToCompetenceUse(PDO $bdd, CompetenceTest $competence, Personna
     $bdd->exec($sql);
 }
 
-function clearTargets(PDO $bdd, CompetenceTest $competence)
+function clearTargets(PDO $bdd, Competence $competence)
 {
     $sql = "DELETE FROM competenceeffectuse
                 WHERE idCompetence = " . $competence->_Id_Competence . "";
     $bdd->exec($sql);
 }
 
-function isCibleUnique(CompetenceEffectTest $competenceEffect): bool
+function isCibleUnique(CompetenceEffect $competenceEffect): bool
 {
     return $competenceEffect->_applicationType == 2 || ($competenceEffect->_applicationType > 6
             & $competenceEffect->_applicationType < 13);

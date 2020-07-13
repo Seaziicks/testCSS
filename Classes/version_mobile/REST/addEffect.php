@@ -2,7 +2,12 @@
 // On enregistre notre autoload.
 function chargerClasse($classname)
 {
-    require 'Poo/' . $classname . '.php';
+    if (is_file('Poo/Poo/'.$classname.'.php'))
+        require 'Poo/Poo/'.$classname.'.php';
+    elseif (is_file('Poo/Poo/Manager/'.$classname.'.php'))
+        require 'Poo/Poo/Manager/'.$classname.'.php';
+    elseif (is_file('Poo/Poo/Classes/'.$classname.'.php'))
+        require 'Poo/Poo/Classes/'.$classname.'.php';
 }
 
 spl_autoload_register('chargerClasse');
@@ -67,7 +72,6 @@ switch ($http_method) {
     /// Cas de la méthode POST
     case "POST" :
         try {
-            $sql;
             $effects = json_decode($_GET['Effect']);
             // print_r(json_decode($_GET['Effect'])->EffectType);
             // set the PDO error mode to exception
@@ -151,11 +155,11 @@ switch ($http_method) {
             $effects = json_decode($_GET['Effect']);
             // print_r(json_decode($_GET['Effect'])->EffectType);
             // set the PDO error mode to exception
-            $personnageManager = new PersonnageManager($db);
+            $personnageManager = new PersonnageManager($bdd);
             $perso = $personnageManager->get($effects->IDReceiver);
             $perso->_Bonus_Armure;
 
-            $bonusCombatManager = new BonusCombatManager($db);
+            $bonusCombatManager = new BonusCombatManager($bdd);
             $bonusCombat = $bonusCombatManager->get($effects->IDReceiver);
 
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -205,7 +209,7 @@ switch ($http_method) {
         break;
 }
 
-function calculerReductionDegats(PersonnageTest $perso, BonusCombat $bonusCombat, int $EffectValueMin): int
+function calculerReductionDegats(Personnage $perso, BonusCombat $bonusCombat, int $EffectValueMin): int
 {
     return $EffectValueMin - floor(($perso->_Bonus_Armure + $bonusCombat->_ArmureFlat) * $bonusCombat->_ArmurePourcentage);
 }

@@ -110,10 +110,10 @@ foreach ($array_expression as $key => $value){
 
 		if ($ID_<?=$key?> > 0)
 		{
-			$db = new PDO('mysql:host=localhost;dbname=modifications(zone tampon);charset=utf8', 'root', '');
-			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
+			include('BDD.php');
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
-			$manager = new EquipementManager($db);
+			$manager = new EquipementManager($bdd);
 
 			$equipement = $manager->get($ID_<?=$key?>);
 			$this->_<?=$key?> = $equipement;

@@ -7,7 +7,12 @@ session_start(); // On appelle session_start() APRÈS avoir enregistré l'autolo
 function chargerClasse($classname)
 {
     $uselessIntervalToBaitPhpStormCheckBecauseItsBuging = $classname . '.php';
-    require $uselessIntervalToBaitPhpStormCheckBecauseItsBuging;
+    if (is_file('Poo/Poo/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
+        require 'Poo/Poo/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
+    elseif (is_file('Poo/Poo/Manager/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
+        require 'Poo/Poo/Manager/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
+    elseif (is_file('Poo/Poo/Classes/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php'))
+        require 'Poo/Poo/Classes/'.$uselessIntervalToBaitPhpStormCheckBecauseItsBuging.'.php';
 }
 include("BDD.php");
 

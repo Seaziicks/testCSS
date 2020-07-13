@@ -6,21 +6,27 @@ body,div,span{
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;	line-height: 1;
-}
+	vertical-align: baseline;
+	line-height: 1;
+}
+
 body > div, body > main,.footer{ /*le ous les div(s) dans le body*/
 	display: flex; /*affichage en mode flex*/
 	flex-flow : row  wrap; /* le flux des flex est affiché en ligne et emiplés (s'il n'y a pas assez de palce)*/	
-}
+}
+
 body > div > nav {
 	order: 1;  flex: 0 1 100%; text-align : center;
-}
+}
+
 body > main{
 	max-width : 91.03%;
-}
+}
+
 body > main > div {
 	order: 2;  flex: 0 1 25.62%;
-}
+}
+
 #menu ul  {
 	padding:0;
 	margin:0;
@@ -31,7 +37,8 @@ body > main > div {
 	min-height : 35px;
 	z-index : 1000;
 	
-}
+}
+
 #menu ul li {
 	display: inline-block;
 	padding-top : 10px;
@@ -40,19 +47,24 @@ body > main > div {
 	min-width : 15.51%;
 	text-align : center;
 	height : 25px;
-}
+}
+
 #menu a{
 	color : #DF2424;
-}
+}
+
 #menu a:link, main a{ 
  text-decoration:none;
-}
+}
+
 #menu a:hover:link{
 	text-decoration: underline;
-}
+}
+
 .actuel{
 	background : #383737;
-}
+}
+
 
 
 
@@ -71,35 +83,48 @@ body > main > div {
   /*z-index: 1;           /* image au dessus */
   position: relative;   /* pour prise en compte z-index */
   width: 2.5em;           /* largeur à ajuster suivant le besoin */ 
-}
+}
+
+
 .cadre {
 	line-height: 1em;     /* pour centrage vertical */
 	margin : auto;
 	background-color : rgba(0, 0, 0,0.75);
-}
-
-.test{	border: 1.5px solid grey;
+}
+
+
+
+.test{
+	border: 1.5px solid grey;
 	background-color : rgba(0, 0, 0,0.15);
-}
-
+}
+
+
+
 .test:hover{
 	border: 1.5px solid #B4B2B2;
-}
-
+}
+
+
+
 .test:hover >div>span{
 	left: 2.9em;            /* position égale à la largeur de l'image */
 	visibility: visible;
 	border-radius : 2.3px;
 	border: 3px solid #D14011;
-}
+}
+
 .cadre2 {
   position: relative;   /* pour servir de référent */
   width: 2.5em;          /* largeur à ajuster suivant le besoin */
   line-height: 1em;     /* pour centrage vertical */
   margin : auto;
   height : 2.6em;
-}
-
+}
+
+
+
+
 .cadre>span {
   position: absolute;   /* positionnement hors flux */
             /* décalage à gauche toute */
@@ -113,10 +138,28 @@ body > main > div {
   z-index: 100;      /* */
   top : -3px;      /* */
   color : #C48A13;      /* */
-}.voir{	position : relative;}
-.voir:hover .formule{	visibility: visible;
-	z-index : 1000;}.formule{	visibility: hidden;	position: absolute;	background-color : rgba(0, 0, 0, 0.8);	border-radius : 2.3px;	margin : 0;	padding : 0;	left : 0;	text-align : left;	border: 1px inset #DE680C}
-
+}
+
+.voir{
+	position : relative;
+}
+.voir:hover .formule{
+	visibility: visible;
+	z-index : 1000;
+}
+.formule{
+	visibility: hidden;
+	position: absolute;
+	background-color : rgba(0, 0, 0, 0.8);
+	border-radius : 2.3px;
+	margin : 0;
+	padding : 0;
+	left : 0;
+	text-align : left;
+	border: 1px inset #DE680C
+}
+
+
 
 
 
@@ -139,7 +182,8 @@ body > main > div {
 	height : 80%;
 	max-width : 100%;
 	padding : 11% 0% 0 14%;
-}
+}
+
 .aligner{
 }
 
@@ -147,7 +191,8 @@ body > main > div {
 
 
 
-/* Général au footer */.footer{
+/* Général au footer */
+.footer{
 	height : 20%;
 	min-width : 100%;
 	background-color : rgba(50,50,50, 0.85);
@@ -220,7 +265,10 @@ body > main > div {
 }
 .exemple{
 	color : #1344CB;
-}.force{	color : #853d35;}
+}
+.force{
+	color : #853d35;
+}
 .intelligence{
 	color : #B40404;
 }
@@ -329,8 +377,7 @@ body > main > div {
     }
 }
 
-.nonactivé{
-	opacity: 0.42;
+.nonactivé {
 	user-select: none; // Default
 	-webkit-user-select: none; // For Webkit
 	-khtml-user-select: none;

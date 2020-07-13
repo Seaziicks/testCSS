@@ -1,0 +1,49 @@
+﻿body{
+	background: url("Fond/bloggif_5a3d16393e574.jpeg") no-repeat center fixed ;
+	background-size: cover;	flex-flow : row  wrap;
+}.test:hover>div>span{
+	border: 5px inset #6504A5/*#C48A13*/;
+}.aligner table{
+	background-color : rgba(0, 0, 0, 0.65);	
+	border: 3px solid #371962;
+}
+
+.titre {
+	font-size : 24px;
+	text-decoration : underline;
+	font-weight: bold;
+	color : #552D8C;
+	padding-bottom : 15px;
+}
+.aligner table:hover {
+	background-color : rgba(0, 0, 0, 0.85);	
+	border: 3px solid #58348B;
+}
+
+#menu a{
+	color : #692BBE;
+}
+
+
+
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(105,43,190, 1);
+  }
+ 
+  100% {
+      -webkit-box-shadow: 0 0 0 100px rgba(105,43,190, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(105,43,190, 1);
+    box-shadow: 0 0 0 rgba(105,43,190, 1);
+  }
+  
+  100% {
+      -moz-box-shadow: 0 0 25px rgba(105,43,190, 0.9);
+      box-shadow: 0 0 25px rgba(105,43,190, 0.9);
+  }
+}

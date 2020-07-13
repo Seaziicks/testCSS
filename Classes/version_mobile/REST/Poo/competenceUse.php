@@ -24,27 +24,27 @@ Programme lancerCompetence
         $receiver = $receivers[indexCible];
         $bonusCombatReceiver = $bonusCombatReceivers[$indexCible];
 
-        foreach($EffetsAvantAction as (EffectTest) $beforeActionEffect)
+        foreach($EffetsAvantAction as (Effect) $beforeActionEffect)
             *** $beforeEffect->useEffect($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach($EffetsAvantCompetence as (EffectTest) $beforeCompetenceEffect)
+        foreach($EffetsAvantCompetence as (Effect) $beforeCompetenceEffect)
             *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach(EffetAvantDegats as (EffectTest) $beforeActionEffect)
+        foreach(EffetAvantDegats as (Effect) $beforeActionEffect)
             *** $beforeEffect->useEffect($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach(EffetAvantDegatsPhysiques as (EffectTest) $beforeCompetenceEffect)
+        foreach(EffetAvantDegatsPhysiques as (Effect) $beforeCompetenceEffect)
             *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach(EffetAvantDegatsMagiques as (EffectTest) $beforeCompetenceEffect)
+        foreach(EffetAvantDegatsMagiques as (Effect) $beforeCompetenceEffect)
             *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach(EffetAvantSoin as (EffectTest) $beforeCompetenceEffect)
+        foreach(EffetAvantSoin as (Effect) $beforeCompetenceEffect)
         *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
         $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, true);
 
-        foreach($competenceEffects as (CompetenceEffectTest) $competenceEffect)
+        foreach($competenceEffects as (CompetenceEffect) $competenceEffect)
             if($competence->_Niveau >= $competenceEffect->_NiveauRequis)
                *** $competenceEffect->appliquerEffetCompetenceAvecBonusGeneraux($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver); ***
             }
@@ -52,22 +52,22 @@ Programme lancerCompetence
 
         $receiver->triggerEffectReceivingAction($bdd, $launcher, $receiver, $bonusCombatLauncher, $bonusCombatReceiver, $competenceEffect, false);
 
-        foreach($EffetsAprèsAction as (EffectTest) $beforeActionEffect)
+        foreach($EffetsAprèsAction as (Effect) $beforeActionEffect)
             *** $beforeEffect->useEffect($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach($EffetsAprèsCompetence as (EffectTest) $beforeCompetenceEffect)
+        foreach($EffetsAprèsCompetence as (Effect) $beforeCompetenceEffect)
             *** $beforeEffect->useEffect($beforeCompetenceEffect), $receiver, $bonusCombatReceiver; ***
 
-        foreach(EffetAprèsDegats as (EffectTest) $beforeActionEffect)
+        foreach(EffetAprèsDegats as (Effect) $beforeActionEffect)
             *** $beforeEffect->useEffect($beforeActionEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach(EffetAprèsDegatsPhysiques as (EffectTest) $beforeCompetenceEffect)
+        foreach(EffetAprèsDegatsPhysiques as (Effect) $beforeCompetenceEffect)
             *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach(EffetAprèsDegatsMagiques as (EffectTest) $beforeCompetenceEffect)
+        foreach(EffetAprèsDegatsMagiques as (Effect) $beforeCompetenceEffect)
             *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
 
-        foreach(EffetAprèsSoin as (EffectTest) $beforeCompetenceEffect)
+        foreach(EffetAprèsSoin as (Effect) $beforeCompetenceEffect)
             *** $beforeEffect->useEffect($beforeCompetenceEffect, $receiver, $bonusCombatReceiver); ***
     }
 
@@ -140,7 +140,7 @@ foreach($effects as $effect) {
 }
 
 ------------------------------
-Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux($bdd, CompetenceEffectTest $competenceEffect, PersonnageTest $launcher, PersonnageTest $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver);
+Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux($bdd, CompetenceEffect $competenceEffect, Personnage $launcher, Personnage $receiver, BonusCombat $bonusCombatLauncher, BonusCombat $bonusCombatReceiver);
 
 
     switch ($competenceEffect->_actionType) {
@@ -202,7 +202,7 @@ Raffinage 1.2 : appliquerEffetCompetenceAvecBonusGeneraux($bdd, CompetenceEffect
 
 
 ------------------------------
-Raffinage 1.3 : ->useEffect($bdd, EffectTest $effect, PersonnageTest $receiver, BonusCombat $bonusCombatReceiver);
+Raffinage 1.3 : ->useEffect($bdd, Effect $effect, Personnage $receiver, BonusCombat $bonusCombatReceiver);
 
     switch(true) {
         case $effect->_EffectType <= 30:

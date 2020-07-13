@@ -24,7 +24,7 @@ $pmactuel=$statistique['PM_Actuel'];
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Statistiques bonus dues aux équipements*/
 $BonusStats =$bdd->query('SELECT o.*
-								FROM equipements AS e, personnage AS p, objets as o 
+								FROM equiper AS e, personnage AS p, objets as o 
 								WHERE e.Id_Personnage = p.Id_Personnage
 								AND p.Libellé = \'' . $personnage . '\'
 								and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambières,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)

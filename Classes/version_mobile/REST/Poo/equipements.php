@@ -74,40 +74,41 @@
 											AND o.Id_Objet='.$ok[''.$actuel.''].'
 											');
 
-					$okok=$objet->fetch();
-					
+					$fetchedObject = $objet->fetch();
+
+
 					?>
 					
-			<li class="d3-item item-slot-id-<?php echo $actuel;?> rarity-<?php echo $okok['Rareté'];?>"> <!-- todo: two-handed weapon tag -->
+			<li class="d3-item item-slot-id-<?php echo $actuel;?> rarity-<?php echo $fetchedObject['Rareté'];?>"> <!-- todo: two-handed weapon tag -->
 				<a class="item-slot-container">
 					<div class="tooltip-hover" data-tooltip-href="//www.diablofans.com/items/5847-rathmas-skull-helm?build=49508" data-item-id="5847"></div>
 					<span class="item-container"><span class="item-effect"></span></span>
-					<span class="image"><img src="../images/items/<?php echo $okok['Image'];?>" <?php if($okok['NombreMain']==2 and $actuel=='Offhand'){echo 'style="opacity : 0.4;"';}?>></span>
+					<span class="image"><img src="../images/items/<?php echo $fetchedObject['Image'];?>" <?php if($fetchedObject['NombreMain']==2 and $actuel=='Offhand'){echo 'style="opacity : 0.4;"';}?>></span>
 					<div class="touch-tip">
 
 						<div class="diablo-fans-tooltip item-tooltip">
 							<div class="db-tooltip">
 								<ul class="db-summary">
-									<li class="db-title rarity-<?php echo $okok['Rareté'];?> db-header">
-										<span><?php echo $okok['Nom'];?></span>
+									<li class="db-title rarity-<?php echo $fetchedObject['Rareté'];?> db-header">
+										<span><?php echo $fetchedObject['Nom'];?></span>
 									</li>
 								</ul>
-								<div class="db-image rarity-<?php echo $okok['Rareté'];?>">
-									<img src="../images/items/<?php echo $okok['Image'];?>">
+								<div class="db-image rarity-<?php echo $fetchedObject['Rareté'];?>">
+									<img src="../images/items/<?php echo $fetchedObject['Image'];?>">
 								</div>
 								<div class="db-description" style="width : 100%;">
-									<small class="rarity-<?php echo $okok['Rareté'];?>"><?php echo $okok['Type']; if($okok['Emplacement']=='Arme'){echo ' à '.$okok['NombreMain'].' mains';} ?><span class="niveauObj" <?php if($okok['Niveau']>$niveau){echo 'style="color : red;"';}?>> Niveau : <?php echo $okok['Niveau'];?></span></small>
+									<small class="rarity-<?php echo $fetchedObject['Rareté'];?>"><?php echo $fetchedObject['Type']; if($fetchedObject['Emplacement']=='Arme'){echo ' à '.$fetchedObject['NombreMain'].' mains';} ?><span class="niveauObj" <?php if($fetchedObject['Niveau']>$personnage->_Niveau){echo 'style="color : red;"';}?>> Niveau : <?php echo $fetchedObject['Niveau'];?></span></small>
 									<ul class="db-summary">
 										<li class="primary-stat">
 											<?php 
-											if ($okok['Statistique_Principale']=='Armure'){
+											if ($fetchedObject['Statistique_Principale']=='Armure'){
 												?>
-											<span><?php echo $okok['Val'];?></span> <small><?php echo $okok['Statistique_Principale'];?></small>
+											<span><?php echo $fetchedObject['Val'];?></span> <small><?php echo $fetchedObject['Statistique_Principale'];?></small>
 											
 											<?php
 											}else{
 												?>
-												<span><?php echo $okok['Val'];?> - <?php echo $okok['Val2'];?></span><small><?php echo $okok['Statistique_Principale'];?></small>
+												<span><?php echo $fetchedObject['Val'];?> - <?php echo $fetchedObject['Val2'];?></span><small><?php echo $fetchedObject['Statistique_Principale'];?></small>
 											<?php
 											}
 											
@@ -117,8 +118,8 @@
 										
 											
 											<?php 
-										if(!isset($okok['NombreMain']) or $okok['NombreMain']==1 or $actuel!='Offhand'){
-											if($okok['Rareté']>1){
+										if(!isset($fetchedObject['NombreMain']) or $fetchedObject['NombreMain']==1 or $actuel!='Offhand'){
+											if($fetchedObject['Rareté']>1){
 													
 													?>
 													<li class="primary-stat">Primary Stats</li>
@@ -126,63 +127,63 @@
 												<li class="grouped-stats">
 													<ul>
 														<li class="stat ">
-														<?php if ($okok['PropriétéMagique1']=='Critical Hit Chance Increased by' or $okok['PropriétéMagique1']=='Critical Hit Damages Increased by')
+														<?php if ($fetchedObject['PropriétéMagique1']=='Critical Hit Chance Increased by' or $fetchedObject['PropriétéMagique1']=='Critical Hit Damages Increased by')
 															{ 
-																echo $okok['PropriétéMagique1'];?> <span class="value">+<?php echo $okok['Valeur1'];?>%</span><?php
+																echo $fetchedObject['PropriétéMagique1'];?> <span class="value">+<?php echo $fetchedObject['Valeur1'];?>%</span><?php
 															}
 															else{
-																?><span class="value">+<?php echo $okok['Valeur1'];?></span> <?php echo $okok['PropriétéMagique1'];
+																?><span class="value">+<?php echo $fetchedObject['Valeur1'];?></span> <?php echo $fetchedObject['PropriétéMagique1'];
 															}
 															?>
 														</li>
 														<li class="stat ">
 															<?php 
-															if (isset ($okok['PropriétéMagique2'])){
-																if ($okok['PropriétéMagique2']=='Critical Hit Chance Increased by' or $okok['PropriétéMagique2']=='Critical Hit Damages Increased by')
+															if (isset ($fetchedObject['PropriétéMagique2'])){
+																if ($fetchedObject['PropriétéMagique2']=='Critical Hit Chance Increased by' or $fetchedObject['PropriétéMagique2']=='Critical Hit Damages Increased by')
 																{ 
-																	echo $okok['PropriétéMagique2'];?> <span class="value">+<?php echo $okok['Valeur2'];?>%</span><?php
+																	echo $fetchedObject['PropriétéMagique2'];?> <span class="value">+<?php echo $fetchedObject['Valeur2'];?>%</span><?php
 																}
 																else{
-																	?><span class="value">+<?php echo $okok['Valeur2'];?></span> <?php echo $okok['PropriétéMagique2'];
+																	?><span class="value">+<?php echo $fetchedObject['Valeur2'];?></span> <?php echo $fetchedObject['PropriétéMagique2'];
 																}
 															}
 															?>
 														</li>
 														<li class="stat ">
 															<?php 
-															if($okok['Rareté']>3){
+															if($fetchedObject['Rareté']>3){
 															
-																	if ($okok['PropriétéMagique3']=='Critical Hit Chance Increased by' or $okok['PropriétéMagique3']=='Critical Hit Damages Increased by')
+																	if ($fetchedObject['PropriétéMagique3']=='Critical Hit Chance Increased by' or $fetchedObject['PropriétéMagique3']=='Critical Hit Damages Increased by')
 																	{ 
-																		echo $okok['PropriétéMagique3'];?> <span class="value">+<?php echo $okok['Valeur3'];?>%</span><?php
+																		echo $fetchedObject['PropriétéMagique3'];?> <span class="value">+<?php echo $fetchedObject['Valeur3'];?>%</span><?php
 																	}
 																	else{
-																		?><span class="value">+<?php echo $okok['Valeur3'];?></span> <?php echo $okok['PropriétéMagique3'];
+																		?><span class="value">+<?php echo $fetchedObject['Valeur3'];?></span> <?php echo $fetchedObject['PropriétéMagique3'];
 																	}
 																	?>
 																</li>
 																<li class="stat ">
 																	<?php 
-																	if (isset($okok['PropriétéMagique4'])){
-																		if ($okok['PropriétéMagique4']=='Sockets'){
-																			?> <span>Sockets (<span class="value"><?php echo $okok['Valeur4'];?></span>)</span><?php
+																	if (isset($fetchedObject['PropriétéMagique4'])){
+																		if ($fetchedObject['PropriétéMagique4']=='Sockets'){
+																			?> <span>Sockets (<span class="value"><?php echo $fetchedObject['Valeur4'];?></span>)</span><?php
 																		}
-																		elseif ($okok['PropriétéMagique4']=='Critical Hit Chance Increased by' or $okok['PropriétéMagique4']=='Critical Hit Damages Increased by')
+																		elseif ($fetchedObject['PropriétéMagique4']=='Critical Hit Chance Increased by' or $fetchedObject['PropriétéMagique4']=='Critical Hit Damages Increased by')
 																		{ 
-																			echo $okok['PropriétéMagique4'];?> <span class="value">+<?php echo $okok['Valeur4'];?>%</span><?php
+																			echo $fetchedObject['PropriétéMagique4'];?> <span class="value">+<?php echo $fetchedObject['Valeur4'];?>%</span><?php
 																		}
 																		else{
-																			?><span class="value">+<?php echo $okok['Valeur4'];?></span> <?php echo $okok['PropriétéMagique4'];
+																			?><span class="value">+<?php echo $fetchedObject['Valeur4'];?></span> <?php echo $fetchedObject['PropriétéMagique4'];
 																		}
 																	}
 																?>
 																</li>
 														
 															<?php 
-																if($okok['Rareté']==5){?>
+																if($fetchedObject['Rareté']==5){?>
 																<li class="primary-stat">Secondary Stats</li>
 																	<li class="passive ">
-																			<?php echo $okok['Pouvoir_Spécial1'];?> <span class="value"><?php echo $okok['Valeur_Pouvoir_Special']; ?></span> <?php echo $okok['Pouvoir_Spécial2'];?>
+																			<?php echo $fetchedObject['Pouvoir_Spécial1'];?> <span class="value"><?php echo $fetchedObject['Valeur_Pouvoir_Special']; ?></span> <?php echo $fetchedObject['Pouvoir_Spécial2'];?>
 																	</li>
 															 
 																<?php
@@ -194,12 +195,12 @@
 												
 												<?php 
 												
-												if($okok['Rareté']==6){
+												if($fetchedObject['Rareté']==6){
 														
 														
 													$set=$bdd->query('SELECT p.*
 																	FROM panoplie AS p
-																	WHERE p.Id_Panoplie='.$okok['Id_Panoplie'].'
+																	WHERE p.Id_Panoplie='.$fetchedObject['Id_Panoplie'].'
 																	');
 													$panoplie=$set->fetch();
 													
@@ -207,7 +208,7 @@
 																	FROM equiper AS e, personnage AS p, equipement as o 
 																	WHERE e.Id_Personnage = p.Id_Personnage
 																	AND p.Libellé = \'' . $personnage . '\'
-																	AND o.id_panoplie='.$okok['Id_Panoplie'].'
+																	AND o.id_panoplie='.$fetchedObject['Id_Panoplie'].'
 																	and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambières,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
 																	');
 													$nb=$nombre->fetch();
@@ -227,7 +228,7 @@
 																		
 																		for($i=0;$i<$nb['count(*)'];$i++){
 																			?>
-																	 </li><li class="set set-item <?php if($okok['Nom']==$nomobjet[$i][0]){echo 'item-name';}?>"> 
+																	 </li><li class="set set-item <?php if($fetchedObject['Nom']==$nomobjet[$i][0]){echo 'item-name';}?>"> 
 																		<?php echo $nomobjet[$i][0];?>
 																	 </li><li class="set">
 																		<?php } ?>
@@ -261,7 +262,7 @@
 					$objet->closeCursor();
 					
 					
-					$okok=null;
+					$fetchedObject = null;
 				}
 				$Coiffe->closeCursor();
 			}
