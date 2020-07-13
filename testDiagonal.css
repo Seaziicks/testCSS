@@ -1,0 +1,149 @@
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  background-color : red;
+}
+/*
+.polygon-clip-rhomboid {
+  float: left;
+  shape-outside: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+  clip-path: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+}
+
+.polygon-clip-rhomboid img {
+	shape-outside: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+	clip-path: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+}
+
+.polygon-each:hover a:not(:hover) img{
+  transition: .3s ease-in-out;
+   -webkit-filter: grayscale(1) blur(0.5px);
+   z-index : 1;
+   opacity : 0.3;
+}
+*/
+.polygon-clip-rhomboid {
+	float: left;
+	-webkit-clip-path: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+	clip-path: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+	-webkit-clip-path: url("#polygon-clip-rhomboid");
+	clip-path: url("#polygon-clip-rhomboid");
+	shape-outside: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+}
+
+
+
+
+img#penetrator {
+      width: 50%;
+      margin-left: -12%;
+      float: left;
+      clip-path: url(#delta);
+      -webkit-clip-path: polygon(24% 0, 24% 100%, 100% 54%);
+      clip-path: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+      shape-outside: polygon(0% 100%, 30% 0%, 100% 0%, 70% 100%);
+    }
+
+svg#svgpath { 
+      width: 0; 
+      height: 0;
+    }
+
+main {
+  margin: auto;
+  width: 80%;
+}
+
+/*
+https://www.trainingdragon.co.uk/blog/diagonal-columns-css
+*/
+
+.container{
+    margin:100px auto;
+    width: 80%;
+    max-width: 1200px;
+    border:1px solid red;
+    height: 650;
+    overflow: hidden;
+}
+
+.col{
+    float:right;
+    width: 33.333333%;
+    height: 800px;
+    color:#F9F9F9;
+    box-shadow:  8px 0px 5px rgba(0,0,0,0.4);
+    overflow:hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.bg{
+    display:block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 150%;
+    height: 100%;
+    margin:0px 0px 0px -20%;
+}
+.img1{background-image: url("https://baichoo.fr/Classes/Voleur/Fond/bloggif_5a430e8bc1a66.jpeg");}
+.img2{background-image: url("https://baichoo.fr/Classes/Demoniste/Fond/bloggif_5a430eb060fd8.jpeg");}
+.img3{background-image: url("https://baichoo.fr/Classes/Manipulateur_de_Sang/Fond/380121c8fa69507989a966917af86695.jpg");}
+
+.colInner{
+    transform:rotate(-10deg);
+}
+
+.text {
+	margin-left : 50%;
+	margin-top : -150px;
+}
+
+.col {
+    transform: rotate(10deg);
+}
+
+.container{
+    /* background: linear-gradient(to right, #405e66 0%,#405e66 50%,#524d45 50%,#524d45 100%); */
+	/* background-color : white; */
+
+}
+
+.col {
+    margin-top:-100px;
+}
+.colInner{
+    margin-top: 150px;
+}
+
+.colLeft .colText{padding-left:15%;}
+.col.colRight{box-shadow: none;position: relative;left:7px;}
+
+.container {
+    /*...*/
+    overflow: hidden;
+    position: relative;
+}
+.colLeft{
+    position:absolute;left:-7%;width: 40%;
+}
+
+.container:hover a:not(:hover) .bg{
+  transition: .3s ease-in-out;
+   -webkit-filter: grayscale(1) blur(0.5px);
+   z-index : 1;
+   opacity : 0.3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
