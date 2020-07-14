@@ -4,18 +4,31 @@ class EquipementPortes
 {
 
     public $_Id_Personnage,
+        /* @var $_Coiffe Equipement */
         $_Coiffe,
+        /* @var $_Epaules Equipement */
         $_Epaules,
+        /* @var $_Gants Equipement */
         $_Gants,
+        /* @var $_Torse Equipement */
         $_Torse,
+        /* @var $_Brassard Equipement */
         $_Brassard,
+        /* @var $_Ceinture Equipement */
         $_Ceinture,
-        $_Jambières,
+        /* @var $_Jambieres Equipement */
+        $_Jambieres,
+        /* @var $_Bottes Equipement */
         $_Bottes,
+        /* @var $_Amulette Equipement */
         $_Amulette,
+        /* @var $_Anneau1 Equipement */
         $_Anneau1,
+        /* @var $_Anneau2 Equipement */
         $_Anneau2,
+        /* @var $_Arme Equipement */
         $_Arme,
+        /* @var $_Offhand Equipement */
         $_Offhand;
 
     /* @var $_db PDO */
@@ -29,6 +42,29 @@ class EquipementPortes
         $this->_manager = new EquipementManager($this->_db);
         $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
         $this->hydrate($donnees);
+    }
+
+    public function constructEmpty() {
+        $this->_Id_Personnage = null;
+        $this->_Coiffe = null;
+        $this->_Epaules = null;
+        $this->_Gants = null;
+        $this->_Torse = null;
+        $this->_Brassard = null;
+        $this->_Ceinture = null;
+        $this->_Jambieres = null;
+        $this->_Bottes = null;
+        $this->_Amulette = null;
+        $this->_Anneau1 = null;
+        $this->_Anneau2 = null;
+        $this->_Arme = null;
+        $this->_Offhand = null;
+    }
+
+    public function setFromEmpty(Equipement $equipement)
+    {
+        $param = '_'.ucfirst(strtolower($equipement->_Type));
+        $this->$param = $equipement;
     }
 
     public function setId_Personnage($Id_Personnage)
@@ -100,13 +136,13 @@ class EquipementPortes
         }
     }
 
-    public function setJambières($ID_Jambières)
+    public function setJambieres($ID_Jambieres)
     {
-        $ID_Jambières = (int)$ID_Jambières;
+        $ID_Jambieres = (int)$ID_Jambieres;
 
-        if ($ID_Jambières > 0) {
-            $equipement = $this->_manager->get($ID_Jambières);
-            $this->_Jambières = $equipement;
+        if ($ID_Jambieres > 0) {
+            $equipement = $this->_manager->get($ID_Jambieres);
+            $this->_Jambieres = $equipement;
         }
     }
 
@@ -222,7 +258,7 @@ class EquipementPortes
      *          - BonusArmure
      *          - BonusReussite
      */
-    public function getAllBonuses()
+    private function getAllBonuses()
     {
         return $this->getBonuses(['Force', 'Agilite', 'Intelligence', 'Vitalite', 'Ressource', 'Armure', 'Reussite']);
     }
@@ -254,7 +290,7 @@ class EquipementPortes
         }
 
         $bonus = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
+        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambieres', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
         foreach ($equipements as $equipement) {
             // On récupère le nom de l'attribut correspondant : _Coiffe pour Coiffe, etc.
             $param = '_' . $equipement;
@@ -271,172 +307,18 @@ class EquipementPortes
         return $bonus;
     }
 
-    public function getBonusForce()
+    public function getEquipementPortesAsArray()
     {
-        $bonusForce = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
-        foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $param = '_' . $equipement;
-
-            // On appelle le setter.
-            if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
-                    $bonusForce += $this->$param->getBonusForce();
-                }
-            }
-        }
-        return $bonusForce;
+        return array($this->_Coiffe, $this->_Epaules, $this->_Gants, $this->_Torse,
+            $this->_Brassard, $this->_Ceinture, $this->_Jambieres, $this->_Bottes, $this->_Amulette, $this->_Anneau1,
+            $this->_Anneau2, $this->_Arme, $this->_Offhand);
     }
 
-    public function getBonusAgilite()
+    public function isEmpty(Equipement $equipement) : bool
     {
-        return $this->getBonusAgilité();
+        $equipementType = '_'.$equipement->_Type;
+        return is_null($this->$equipementType);
     }
-
-    public function getBonusAgilité()
-    {
-        $bonusAgilité = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
-        foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $param = '_' . $equipement;
-
-            // On appelle le setter.
-            if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
-                    $bonusAgilité += $this->$param->getBonusAgilité();
-                }
-            }
-        }
-
-        return $bonusAgilité;
-    }
-
-    public function getBonusIntelligence()
-    {
-        $bonusIntelligence = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
-        foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $param = '_' . $equipement;
-
-            // On appelle le setter.
-            if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
-                    $bonusIntelligence += $this->$param->getBonusIntelligence();
-                }
-            }
-        }
-
-        return $bonusIntelligence;
-    }
-
-    public function getBonusVitalite()
-    {
-        return $this->getBonusVitalité();
-    }
-
-    public function getBonusVitalité()
-    {
-        $bonusVitalité = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
-        foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $param = '_' . $equipement;
-
-            // On appelle le setter.
-            if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
-                    $bonusVitalité += $this->$param->getBonusVitalité();
-                }
-            }
-        }
-
-        return $bonusVitalité;
-    }
-
-    public function getBonusArmure()
-    {
-        $bonusArmure = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
-        foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $param = '_' . $equipement;
-
-            // On appelle le setter.
-            if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
-                    $bonusArmure += $this->$param->getBonusArmure();
-                }
-            }
-        }
-
-        return $bonusArmure;
-    }
-
-    public function getBonusMana()
-    {
-        $bonusMana = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
-        foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $param = '_' . $equipement;
-
-            // On appelle le setter.
-            if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
-                    $bonusMana += $this->$param->getBonusMana();
-                }
-            }
-        }
-
-        return $bonusMana;
-    }
-
-    public function getBonusRessource()
-    {
-        $bonusRessource = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
-        foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $param = '_' . $equipement;
-
-            // On appelle le setter.
-            if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
-                    $bonusRessource += $this->$param->getBonusRessource();
-                }
-            }
-        }
-
-        return $bonusRessource;
-    }
-
-    public function getBonusReussite()
-    {
-        return $this->getBonusRéussite();
-    }
-
-    public function getBonusRéussite()
-    {
-        $bonusRéussite = 0;
-        $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambières', 'Bottes', 'Amulette', 'Anneau1', 'Anneau2', 'Arme', 'Offhand'];
-        foreach ($equipements as $equipement) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $param = '_' . $equipement;
-
-            // On appelle le setter.
-            if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
-                    $bonusRéussite += $this->$param->getBonusRéussite();
-                }
-            }
-        }
-
-        return $bonusRéussite;
-    }
-
 
     public function hydrate(array $donnees)
     {

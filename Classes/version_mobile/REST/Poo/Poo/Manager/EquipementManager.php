@@ -20,7 +20,7 @@ class EquipementManager
 
     }
 
-    public function get($id)
+    public function get($id) : Equipement
     {
         $id = (int)$id;
         $q = $this->_db->query('SELECT * FROM equipement WHERE Id_Objet = ' . $id);
@@ -38,7 +38,7 @@ class EquipementManager
 								FROM equiper AS e, personnage AS p, equipement as o 
 								WHERE e.Id_Personnage = p.Id_Personnage
 								AND p.Id_Personnage = ' . $id . '
-								and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambières,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
+								and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambieres,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
 								');                                    // Je récupère tous les équipements d'un personnage.
 
         while ($donnees = $equipements->fetch(PDO::FETCH_ASSOC)) {

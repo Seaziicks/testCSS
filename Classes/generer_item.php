@@ -52,7 +52,7 @@ switch($rareté){
 
 $niveau=7;
 
-$équipements=array('Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambières','Bottes','Amulette','Anneau','Dague','Baguette','Faux','Epée courte','Massue','Epée','Lance','Fléau','Hache');
+$équipements=array('Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambieres','Bottes','Amulette','Anneau','Dague','Baguette','Faux','Epée courte','Massue','Epée','Lance','Fléau','Hache');
 
 
 $équipement = $équipements[array_rand($équipements, 1)];
@@ -396,7 +396,7 @@ if($rareté>=2){
 																WHERE e.Id_Personnage = p.Id_Personnage
 																AND p.Libellé = \'' . $personnage . '\'
 																AND o.id_panoplie='.$okok['Id_Panoplie'].'
-																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambières,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
+																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambieres,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
 																');
 												$nb=$nombre->fetch();
 																?>

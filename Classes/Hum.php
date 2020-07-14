@@ -181,7 +181,7 @@ document.getElementById('to_hide').style.display = 'none';
 		<OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement']=='Coiffe'){echo 'selected';}?>>Coiffe
 		<OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement']=='Epaules'){echo 'selected';}?>>Epaules
 		<OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement']=='Gants'){echo 'selected';}?>>Gants
-		<OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement']=='Jambières'){echo 'selected';}?>>Jambières
+		<OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement']=='Jambieres'){echo 'selected';}?>>Jambières
 		<OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement']=='Torse'){echo 'selected';}?>>Torse
 		<OPTION disabled>
 		<OPTION class="optionGroup" label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement']=='Bijoux'){echo 'selected';}?>>Bijoux
@@ -347,7 +347,7 @@ for($k=0;$k<count($nbobjets);$k++){
 		}else if(!empty($_POST['équipement']) and in_array($_POST['équipement'],['Equipements','Armes','Bijoux','Main gauche'])){
 			switch($_POST['équipement']){
 				case 'Equipements':
-					$provisoire=array('Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambières','Bottes');
+					$provisoire=array('Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambieres','Bottes');
 					$équipement=$provisoire[array_rand($provisoire, 1)];
 					break;
 				case 'Armes':
@@ -364,7 +364,7 @@ for($k=0;$k<count($nbobjets);$k++){
 					break;
 			}
 		}else{
-			$équipements=array('Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambières','Bottes','Amulette','Anneau','Arme','Offhand');
+			$équipements=array('Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambieres','Bottes','Amulette','Anneau','Arme','Offhand');
 
 			$armes=array('Dague','Baguette','Faux','Epée courte','Massue','Epée','Lance','Fléau','Hache');
 			
@@ -512,10 +512,10 @@ for($k=0;$k<count($nbobjets);$k++){
 				$emplacement='Armure';
 				$nbimage=11;
 				break;
-			case 'Jambières':
+			case 'Jambieres':
 				$statistique_principale='Armure';
 				$val=max(round(pow($niveau,1.13)*pow($rareté,1.02)/27,1),0.2);
-				$type='Jambières';
+				$type='Jambieres';
 				$emplacement='Armure';
 				$nbimage=6;
 				break;
@@ -621,7 +621,7 @@ for($k=0;$k<count($nbobjets);$k++){
 		if($rareté==2){
 			if(in_array($équipement,['Coiffe','Epaules','Ceinture','Amulette']) or ($type=='Arme' and $équipement!='Fléau')){
 				$nom=$équipement.' normale';
-			}else if(in_array($équipement,['Jambières','Bottes'])){
+			}else if(in_array($équipement,['Jambieres','Bottes'])){
 				$nom=$équipement.' normales';
 			}else{
 				$nom=$équipement.' normal';
@@ -680,7 +680,7 @@ for($k=0;$k<count($nbobjets);$k++){
 					$valeur2=round($niveau*$niveau/16);
 						
 				}
-				if(in_array($équipement,['Jambières','Bottes'])){
+				if(in_array($équipement,['Jambieres','Bottes'])){
 				$nom=$équipement.' magiques';
 				}else{
 					$nom=$équipement.' magique';
@@ -704,7 +704,7 @@ for($k=0;$k<count($nbobjets);$k++){
 					$propriété_magique3=$propriétés_magiques_secondaires[$i];
 					$valeur3=round($niveau*$niveau/11);	
 				}
-				if(in_array($équipement,['Jambières','Bottes'])){
+				if(in_array($équipement,['Jambieres','Bottes'])){
 				$nom=$équipement.' rares';
 				}else{
 					$nom=$équipement.' rare';
@@ -739,7 +739,7 @@ for($k=0;$k<count($nbobjets);$k++){
 					}
 					$propriété_magique4=$propriétés_magiques_secondaires[$i];
 					$valeur4=round($niveau*$niveau/8);	
-				if(in_array($équipement,['Jambières','Bottes'])){
+				if(in_array($équipement,['Jambieres','Bottes'])){
 				$nom=$équipement.' légendaires';
 				}else{
 					$nom=$équipement.' légendaire';
@@ -804,7 +804,7 @@ ${'inventaire'.$placement}=array(
 	'Torse' =>null,
 	'Brassard' =>null,
 	'Ceinture' =>null,
-	'Jambières' =>null,
+	'Jambieres' =>null,
 	'Bottes' =>null,
 	'Amulette' =>null,
 	'Anneau1' =>null,
@@ -836,7 +836,7 @@ for($i=1;$i<=$témoin;$i++){
 			'Torse' =>null,
 			'Brassard' =>null,
 			'Ceinture' =>null,
-			'Jambières' =>null,
+			'Jambieres' =>null,
 			'Bottes' =>null,
 			'Amulette' =>null,
 			'Anneau1' =>null,
@@ -868,7 +868,7 @@ for($l=1;$l<=$placement;$l++){
 	$Equipement4='Torse';
 	$Equipement5='Brassard';
 	$Equipement6='Ceinture';
-	$Equipement7='Jambières';
+	$Equipement7='Jambieres';
 	$Equipement8='Bottes';
 	$Equipement9='Amulette';
 	$Equipement10='Anneau1';
@@ -1025,7 +1025,7 @@ for($l=1;$l<=$placement;$l++){
 																WHERE e.Id_Personnage = p.Id_Personnage
 																AND p.Libellé = \'' . $personnage . '\'
 																AND o.id_panoplie='.$okok['Id_Panoplie'].'
-																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambières,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
+																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambieres,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
 																');
 												$nb=$nombre->fetch();
 																?>

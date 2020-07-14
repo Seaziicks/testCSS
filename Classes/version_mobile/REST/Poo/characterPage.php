@@ -46,14 +46,14 @@ f.submit();
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="equipement.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/equipement.css" type="text/css" media="screen"/>
 
     <link href="../membre.css" rel="stylesheet" type="text/css"/>
 
-    <link rel="stylesheet" href="css.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
     <!--Get the css fil from the character folder. Every " " (space) has been replaced by "_" in the folder name, that's why their is a str_replace
     Same is done for accents : "é" -> "e"-->
-    <link rel="stylesheet" href="<?=str_replace(array(" ", "é"), array("_", "e"), $personnage->_Libellé)?>/css.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="Characters/<?=str_replace(array(" ", "é"), array("_", "e"), $personnage->_Libellé)?>/css.css" type="text/css" media="screen"/>
 
     <link rel="stylesheet" href="../Police/Luminari/style.css">
 

@@ -19,7 +19,7 @@ class EquipementPortesManager
 
     }
 
-    public function get($id)
+    public function get($id) : Equipement
     {
         $id = (int) $id;
         $q = $this->_db->query('SELECT * FROM equipement WHERE Id_Objet = '.$id);
@@ -28,6 +28,12 @@ class EquipementPortesManager
         return new Equipement($donnees);
     }
 
+    public function getEmpty() : EquipementPortes
+    {
+        $equipement = new EquipementPortes(array(), $this->_db);
+        $equipement->constructEmpty();
+        return $equipement;
+    }
 
     public function getListForCharacter($id)
     {
@@ -36,7 +42,7 @@ class EquipementPortesManager
         //$equipements =$this->_db->query('SELECT o.*
 		//						FROM equiper AS e, equipement as o
         //						WHERE e.Id_Personnage = '.$id.'
-        //						and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambières,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
+        //						and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambieres,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
         //						');									// Je récupère tous les équipements d'un personnage.
         //while ($donnees = $equipements->fetch(PDO::FETCH_ASSOC))
         //{
@@ -52,7 +58,7 @@ class EquipementPortesManager
 
         $equipementsTestFetch = $equipementsTest->fetch(PDO::FETCH_ASSOC);
 
-        $tests = ['Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambières','Bottes','Amulette','Anneau1','Anneau2','Arme','Offhand'];
+        $tests = ['Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambieres','Bottes','Amulette','Anneau1','Anneau2','Arme','Offhand'];
 
         foreach($tests as $test){
             if(isset($equipementsTestFetch[''.$test])) {

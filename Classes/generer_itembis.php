@@ -228,7 +228,7 @@ switch($rareté){
 
 
 
-$équipements=array('Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambières','Bottes','Amulette','Anneau','Arme','Arme');
+$équipements=array('Coiffe','Epaules','Gants','Torse','Brassard','Ceinture','Jambieres','Bottes','Amulette','Anneau','Arme','Arme');
 
 $armes=array('Dague','Baguette','Faux','Epée courte','Massue','Epée','Lance','Fléau','Hache');
 
@@ -342,10 +342,10 @@ switch($équipement){
 		$type='Ceinture';
 		$emplacement='Armure';
 		break;
-	case 'Jambières':
+	case 'Jambieres':
 		$statistique_principale='Armure';
 		$val=0.2;
-		$type='Jambières';
+		$type='Jambieres';
 		$emplacement='Armure';
 		break;
 	case 'Bottes':
@@ -716,7 +716,7 @@ if($rareté>=2){
 																WHERE e.Id_Personnage = p.Id_Personnage
 																AND p.Libellé = \'' . $personnage . '\'
 																AND o.id_panoplie='.$okok['Id_Panoplie'].'
-																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambières,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
+																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambieres,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
 																');
 												$nb=$nombre->fetch();
 																?>
