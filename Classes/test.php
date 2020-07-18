@@ -466,7 +466,7 @@
                     </a>
                 </li>
                 
-                <li class="d3-item item-slot-id-Jambières
+                <li class="d3-item item-slot-id-Jambieres
                     rarity-6"> <!-- todo: two-handed weapon tag -->
                     <a class="item-slot-container">
                         <div class="tooltip-hover" data-tooltip-href="//www.diablofans.com/items/5850-rathmas-skeletal-legplates?build=49508" data-item-id="5850"></div>
