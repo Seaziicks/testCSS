@@ -972,7 +972,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
                                                     $set = $bdd->query('SELECT p.*
 																FROM panoplie AS p
-																WHERE p.Id_Panoplie=' . $okok['Id_Panoplie'] . '
+																WHERE p.Id_Panoplie=' . $equipementToDisplay['Id_Panoplie'] . '
 																');
                                                     $panoplie = $set->fetch();
 
@@ -980,7 +980,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 																FROM equiper AS e, personnage AS p, equipement as o 
 																WHERE e.Id_Personnage = p.Id_Personnage
 																AND p.Id_Personnage = ' . $personnageID . '
-																AND o.id_panoplie=' . $okok['Id_Panoplie'] . '
+																AND o.id_panoplie=' . $equipementToDisplay['Id_Panoplie'] . '
 																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambieres,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
 																');
                                                     $nb = $nombre->fetch();

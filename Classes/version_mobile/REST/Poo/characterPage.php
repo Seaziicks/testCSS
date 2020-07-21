@@ -16,7 +16,7 @@ function chargerClasse($classname)
 include('BDD.php');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
-$idPersonnage = $_POST['characterID'];
+$idPersonnage = isset($_POST['characterID']) ? $_POST['characterID'] : 1;
 
 $managerPersonnage = new PersonnageManager($bdd);
 
