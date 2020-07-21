@@ -7,7 +7,6 @@
 	<th>
 	
 	</th>
-	
 	<th >
 		PDV : <b id="PDV<?php echo $personnage->_Libellé;?>" ondblclick="inlineMod(<?php echo $personnage->_Id_Personnage ?>, this, 'PDV_Actuel', 'nombre','personnage')"><?php echo $personnage->_PDV_Actuel ?> </b> / <b><?php echo ($personnage->_Vitalité+$personnage->_Bonus_Vitalité)*2 ?> </b>
 	</th>
