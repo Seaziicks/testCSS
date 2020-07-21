@@ -139,4 +139,5 @@ if (isset($_SESSION['pseudo'])) {
     }
     $recherche->closeCursor();
 }
+echo 'Ok.';
 echo '<SCRIPT>window.close()</SCRIPT>';
