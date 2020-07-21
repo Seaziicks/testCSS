@@ -17,4 +17,6 @@ echo 5+($intelligence/3);
 
 echo $competence['Description'];
 
+echo 'Je suis un test';
+
 ?>
