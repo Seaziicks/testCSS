@@ -60,8 +60,6 @@
     }
 
     function chooseResult(result) { // Choisi un des résultats d'une requête et gère tout ce qui y est attaché
-        alert(result.firstChild.innerText);
-        alert(result.firstChild.textContent);
         searchElement.value = previousValue = result.firstChild.textContent; // On change le contenu du champ de recherche et on enregistre en tant que précédente valeur
         results.style.display = 'none'; // On cache les résultats
         result.className = ''; // On supprime l'effet de focus
@@ -72,24 +70,28 @@
 
     searchElement.addEventListener('keyup', function (e) {
         // alert(document.getElementById('search').value);
-		let divs = results.getElementsByTagName('div');
-        if ((e.key === "Up" || e.key === "ArrowUp") && selectedResult > -1) { // Si la touche pressée est la flèche "haut"
-            divs[selectedResult--].className = '';
+		divs = results.querySelectorAll("#results>div");
+        if (e.keyCode == 38 && selectedResult > -1) { // Si la touche pressée est la flèche "haut"
+            divs[selectedResult--].classList.remove('result_focus');
             if (selectedResult > -1)  // Cette condition évite une modification de childNodes[-1], qui n'existe pas, bien entendu
-                divs[selectedResult].className = 'result_focus';
-        } else if ((e.key === "Down" || e.key === "ArrowDown") && selectedResult < divs.length - 1) { // Si la touche pressée est la flèche "bas"
+                divs[selectedResult].classList.add('result_focus');
+        } else if (e.keyCode == 40 && selectedResult < divs.length - 1) { // Si la touche pressée est la flèche "bas"
             results.style.display = 'block'; // On affiche les résultats
             if (selectedResult > -1)  // Cette condition évite une modification de childNodes[-1], qui n'existe pas, bien entendu
-                divs[selectedResult].className = '';
-            divs[++selectedResult].className = 'result_focus';
-        } else if ((e.key === "Enter") && selectedResult > -1) { // Si la touche pressée est "Entrée"
+                divs[selectedResult].classList.remove('result_focus');
+            divs[++selectedResult].classList.add('result_focus');
+        } else if (e.keyCode == 13 && selectedResult > -1) { // Si la touche pressée est "Entrée"
             chooseResult(divs[selectedResult]);
         } else if (searchElement.value !== previousValue) { // Si le contenu du champ de recherche a changé
-
             previousValue = searchElement.value;
             if (previousRequest && previousRequest.readyState < XMLHttpRequest.DONE)
                 previousRequest.abort(); // Si on a toujours une requête en cours, on l'arrête
-            previousRequest = getResults(previousValue); // On stocke la nouvelle requête
+            if(previousValue.length > 0)
+                previousRequest = getResults(previousValue); // On stocke la nouvelle requête
+            else {
+                results.innerHTML = '';
+                results.style.display = 'none'; // On cache les résultats
+            }
             selectedResult = -1; // On remet la sélection à "zéro" à chaque caractère écrit
         }
     });
