@@ -2,34 +2,41 @@
 
 include('BDD.php');
 
-$competences = $bdd->query('SELECT DISTINCT Libellé,Image,min(Cout_En_PA)
-			FROM competence
-			group by Libellé,Cout_En_PA
-			ORDER BY Libellé');                                    // Je récupère toutes les compétences.
+$newString = '%';
+for ( $i = 0 ; $i < strlen($_GET['s']) ; $i++) {
+    $newString .= $_GET['s'][$i].'%';
+}
 
-$data = $competences->fetchAll();
+$competences = $bdd->query('SELECT DISTINCT Libellé, Image, min(Cout_En_PA) as PA
+								FROM competence
+                                WHERE Libellé LIKE \''.$newString.'\'
+								group by Libellé, Cout_En_PA
+								ORDER BY Libellé');                                    // Je récupère toutes les compétences qui macth la recherche.
+
+$data = $competences->fetchAll(PDO::FETCH_ASSOC);
 $dataLen = count($data);
-
 sort($data); // On trie les compétences dans l'ordre alphabétique
-
+// print("<pre>".print_r($data,true)."</pre>");
 $results = array(); // Le tableau où seront stockés les résultats de la recherche
 
 // La boucle ci-dessous parcourt tout le tableau $data, jusqu'à un maximum de 10 résultats
 $j = 0;
 $nb_results_voulus = 19;
 for ($i = 0; $i < $dataLen && count($results) < $nb_results_voulus; $i++) {
-    if (stripos($data[$i][0], $_GET['s']) === 0) { // Si le nom de la competence commence par les mêmes caractères que la recherche
-        $results[$j]['Competence'] = $data[$i][0];
-        $results[$j]['Image'] = $data[$i][1];
-        $results[$j]['PA'] = $data[$i][2];
+    if (strlen($data[$i]['Libellé']) > 0 && stripos($data[$i]['Libellé'], $_GET['s']) === 0) { // Si le nom de la competence commence par les mêmes caractères que la recherche
+        $competence['Competence'] = $data[$i]['Libellé'];
+        $competence['Image'] = $data[$i]['Image'];
+        $competence['PA'] = $data[$i]['PA'];
+        array_push($results, $competence);
         $j++;
     }
 }
 for ($i = 0; $i < $dataLen && count($results) < $nb_results_voulus; $i++) {
-    if (stripos($data[$i][0], $_GET['s'])) { // Si le nom de la competence contient les caracteres de la recherche
-        $results[$j]['Competence'] = $data[$i][0];
-        $results[$j]['Image'] = $data[$i][1];
-        $results[$j]['PA'] = $data[$i][2];
+    if (strlen($data[$i]['Libellé']) > 0 && gettype(array_search($data[$i]['Libellé'], array_column($results, 'Competence'))) == 'boolean') { // Si le nom de la competence commence par les mêmes caractères que la recherche
+        $competence['Competence'] = $data[$i]['Libellé'];
+        $competence['Image'] = $data[$i]['Image'];
+        $competence['PA'] = $data[$i]['PA'];
+        array_push($results, $competence);
         $j++;
     }
 }
@@ -37,11 +44,11 @@ for ($i = 0; $i < $dataLen && count($results) < $nb_results_voulus; $i++) {
 function EnJson($arr, $format = 0)
 {
     header('Content-type: application/json;charset=utf-8'); //Setting the page Content-type
-    if ($format) 
+    if ($format)
         return json_encode($arr, 448);
-    else 
+    else
         return json_encode($arr);
-    
+
 }
 
 echo EnJson($results, true);
