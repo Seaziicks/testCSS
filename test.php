@@ -19,5 +19,5 @@ echo $competence['Description'];
 
 echo 'Je suis un test';
 
-
+echo 'Je suis un test 2';
 ?>
