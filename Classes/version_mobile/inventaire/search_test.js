@@ -93,6 +93,9 @@
                 results.style.display = 'none'; // On cache les résultats
             }
             selectedResult = -1; // On remet la sélection à "zéro" à chaque caractère écrit
+        } else if (e.keyCode == 27) {
+            results.innerHTML = '';
+            results.style.display = 'none'; // On cache les résultats
         }
     });
 })();
