@@ -1,12 +1,12 @@
-<?php
+﻿<?php
 
 include('BDD.php');
 
-$sqlPattern = '%';
-for ($i = 0; $i < strlen($_GET['pattern']); $i++) {
-    $sqlPattern .= $_GET['pattern'][$i] . '%';
+$sqlPattern = "%";
+for ($i = 0; $i < mb_strlen($_GET['pattern']); $i++) {
+    $sqlPattern .= mb_substr($_GET['pattern'], $i, 1, 'UTF-8')."%"; // In order to handle UTF-8, specially french accents ("é", "è", etc ...)
 }
-$caseSensitive = $_GET['caseSensitive'];
+$caseSensitive = isset($_GET['caseSensitive']) ? $_GET['caseSensitive'] : 'false';
 
 $competences = $bdd->query('SELECT DISTINCT Libellé, Image, min(Cout_En_PA) as PA
 								FROM competence
@@ -35,8 +35,6 @@ for ($i = 0; $i < $dataLen && count($results) < $nb_results_voulus; $i++) {
     }
 }
 for ($i = 0; $i < $dataLen && count($results) < $nb_results_voulus; $i++) {
-    // print("\n\n".$data[$i]['Libellé']." => ");
-    // print((boolean)like_match($sqlPattern, $data[$i]['Libellé'], filter_var($_GET['caseSensitive'], FILTER_VALIDATE_BOOLEAN))."\n\n");
     if (strlen($data[$i]['Libellé']) > 0
         && array_search($data[$i]['Libellé'], array_column($results, 'Competence')) === FALSE
         && like_match($sqlPattern, $data[$i]['Libellé'], filter_var($caseSensitive,FILTER_VALIDATE_BOOLEAN))) { // Si le nom de la competence commence par les mêmes caractères que la recherche
