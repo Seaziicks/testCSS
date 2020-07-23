@@ -7,8 +7,9 @@ session_start();
 
 <head>
 
-	<link rel="stylesheet" href="css.css" type="text/css" media="screen"/>
-	<link rel="stylesheet" href="test.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="css/test.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/menu.css" type="text/css" media="screen"/>
 	<script type="text/javascript" src="inlinemod.js"></script>
 	<script type="text/javascript" src="inlinemod2.js"></script>
 	<script type="text/javascript" src="cooldown.js"></script>

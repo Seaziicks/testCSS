@@ -171,39 +171,7 @@ body>div{
 
 
 
-#menu ul  {
-	padding:0;
-	margin:0;
-	min-width : 100%;
-	position : fixed;
-	background-color : #1A1919;
-	opacity: 1;
-	min-height : 25px;
-	z-index : 1000;
-	max-height : 3.7%;
-}
 
-#menu ul li {
-	display: inline-block;
-	padding-top : 10px;
-	margin-bottom : 0 ;
-	min-height: 5%;
-	min-width : 32.51%;
-	text-align : center;
-	height : 25px;
-}
-
-#menu a{
-	color : #DF2424;
-}
-
-#menu a:link, main a{ 
- text-decoration:none;
-}
-
-#menu a:hover:link{
-	text-decoration: underline;
-}
 
 .actuel{
 	background : #383737;

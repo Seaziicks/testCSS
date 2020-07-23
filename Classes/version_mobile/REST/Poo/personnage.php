@@ -23,7 +23,7 @@
 	
 	<tr> <td><span class="intelligence"> Intelligence </span></td> 
 		<td><span class="intelligence" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Intelligence', 'nombre','personnage')"><?= $personnage->_Intelligence; ?> </span>+ <span class="intelligence"><?= $personnage->_Bonus_Intelligence?></span> (<span class="intelligence"><?= $personnage->getTotalIntelligence();?></span>)</td>
-		<?php if($personnage=='Magmaticien'){$pointsCompétenceUtilisés--; /*Car j'ai "Jet de Lave" et "Canalisation" en sort de base.*/}?>
+		<?php if($personnage->_Id_Personnage==6){ $pointsCompétenceUtilisés=modificationPointsDeCompetence($pointsCompétenceUtilisés); }?>
 		<td> Points de compétence : <span class="<?php if(($personnage->_Niveau+floor(($personnage->_Niveau)/6))-$pointsCompétenceUtilisés>0){echo "pointsdispo";}elseif(($personnage->_Niveau+floor(($personnage->_Niveau)/6))-$pointsCompétenceUtilisés<0){echo "red";}?>"><?= ($personnage->_Niveau+floor(($personnage->_Niveau)/6))-$pointsCompétenceUtilisés ?>  </span></td>
 		<td> <span class="<?= $personnage->_Type_Ressource;?>"><?= $personnage->_Type_Ressource;?> </span></td>
 		<td><?php if (!empty($personnage->_Type_Ressource)){?><span class="<?= $personnage->_Type_Ressource;?>" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Ressource', 'nombre','personnage')"> <?= $personnage->_Ressource ?> </span>+ <span class="<?= $personnage->_Type_Ressource;?>"><?= $personnage->_Bonus_Ressource?></span> (<span class="<?= $personnage->_Type_Ressource;?>"><?= $personnage->getTotalRessource()?></span>)<?php } ?></td>
@@ -31,7 +31,7 @@
 	
 	<tr> <td><span class="agilité"> Agilité </span></td> 
 		<td><span class="agilité" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Agilité', 'nombre','personnage')"> <?= $personnage->_Agilité ?></span> + <span class="agilité"><?= $personnage->_Bonus_Agilité?></span> (<span class="agilité"><?= $personnage->getTotalAgilité() ?></span>)</td>
-		<td> <!--   test ... <!--?php echo $testcompetence['merde']; if(empty($testcompetence)){echo "raté!".$nbpointstestretourn;} ?-->   </td> 
+		<td>  </td>
 		<td> <span class="réussite">Réussite </span></td> 
 		<td><span class="réussite"><?= ($personnage->_Réussite + $personnage->_Bonus_Réussite)?></span> (<span class="réussite" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Réussite', 'nombre','personnage')"><?= $personnage->_Réussite ?> </span> + <span class="réussite"><?= $personnage->_Bonus_Réussite?></span>)</td>
 	</tr>
@@ -49,4 +49,14 @@
 	</tr>
 
 </table>
-
+<?php
+function modificationPointsDeCompetence(Personnage $personnage, int $pointsCompetenceUtilises) : int {
+    switch ($personnage->_Id_Personnage) {
+        case 6:
+            /*bCar Magmaticien a "Jet de Lave" et "Canalisation" en sort de base. */
+            return $pointsCompetenceUtilises - 1;
+        default:
+            return $pointsCompetenceUtilises;
+    }
+}
+?>

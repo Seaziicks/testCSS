@@ -47,7 +47,7 @@
                 if (parsedResponse[i]['Image']) {
                     const divImage = divNom.appendChild(document.createElement('div'));
                     const img = divImage.appendChild(document.createElement('img'));
-                    img.src = '../../' + parsedResponse[i]['Image'];
+                    img.src = 'Characters\\' + parsedResponse[i]['Image'];
                     img.id = 'Image_recherche_' + i;
                     divImage.classList.add('Image_recherche');
                 }

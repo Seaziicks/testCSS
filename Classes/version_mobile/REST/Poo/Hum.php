@@ -21,6 +21,7 @@ function chargerClasse($classname)
     <link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/test.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/creation_item.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/menu.css" type="text/css" media="screen"/>
     <script type="text/javascript" src="inlinemod.js"></script>
     <script type="text/javascript" src="inlinemod2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -159,7 +160,7 @@ function chargerClasse($classname)
     </style>
 </head>
 <body>
-<?php include("TestMenu.php"); ?>
+<?php include('menu.php');?>
 <div class="limite">
 
     <form method="post" action="">
