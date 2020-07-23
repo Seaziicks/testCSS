@@ -15,9 +15,10 @@
 
 <body>
 
-    <input id="search" type="text" autocomplete="off" />
-
+    <input id="search" type="text" autocomplete="off" autofocus/>
+    <input id="caseSensitive" type="checkbox" data-toggle="popover" title="Case Sensitive"/>
     <div id="results"></div>
+
 
 </body>
 </html>

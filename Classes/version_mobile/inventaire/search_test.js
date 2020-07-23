@@ -4,20 +4,27 @@
         results = document.getElementById('results'),
         selectedResult = -1, // Permet de savoir quel résultat est sélectionné : -1 signifie "aucune sélection"
         previousRequest, // On stocke notre précédente requête dans cette variable
-        previousValue = searchElement.value; // On fait de même avec la précédente valeur
+        previousValue = searchElement.value, // On fait de même avec la précédente valeur
+        caseSensitive = document.getElementById('caseSensitive');
 
 
-    function getResults(keywords) { // Effectue une requête et récupère les résultats
+    function getResults() { // Effectue une requête et récupère les résultats
+        let keywords = searchElement.value;
+        if (keywords.length > 0) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', './nouveau_test.php?pattern=' + encodeURIComponent(keywords)
+                + '&caseSensitive=' + caseSensitive.checked);
 
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', './nouveau_test.php?s=' + encodeURIComponent(keywords));
-
-        xhr.addEventListener('readystatechange', function () {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)
-                displayResults(xhr.responseText);
-        });
-        xhr.send(null);
-        return xhr;
+            xhr.addEventListener('readystatechange', function () {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)
+                    displayResults(xhr.responseText);
+            });
+            xhr.send(null);
+            return xhr;
+        } else {
+            results.innerHTML = '';
+            results.style.display = 'none'; // On cache les résultats
+        }
 
     }
 
@@ -80,22 +87,33 @@
             if (selectedResult > -1)  // Cette condition évite une modification de childNodes[-1], qui n'existe pas, bien entendu
                 divs[selectedResult].classList.remove('result_focus');
             divs[++selectedResult].classList.add('result_focus');
-        } else if (e.code === "Enter" && selectedResult > -1) { // Si la touche pressée est "Entrée"
+        } else if ((e.code === "Enter" || e.code === "NumpadEnter") && selectedResult > -1) { // Si la touche pressée est "Entrée"
             chooseResult(divs[selectedResult]);
         } else if (searchElement.value !== previousValue) { // Si le contenu du champ de recherche a changé
             previousValue = searchElement.value;
             if (previousRequest && previousRequest.readyState < XMLHttpRequest.DONE)
                 previousRequest.abort(); // Si on a toujours une requête en cours, on l'arrête
-            if(previousValue.length > 0)
-                previousRequest = getResults(previousValue); // On stocke la nouvelle requête
-            else {
-                results.innerHTML = '';
-                results.style.display = 'none'; // On cache les résultats
-            }
+            previousRequest = getResults(); // On stocke la nouvelle requête
             selectedResult = -1; // On remet la sélection à "zéro" à chaque caractère écrit
         } else if (e.code === "Escape") {
             results.innerHTML = '';
             results.style.display = 'none'; // On cache les résultats
+            selectedResult = -1;
         }
     });
+
+    caseSensitive.addEventListener('change', function () {
+        getResults();
+    });
+    caseSensitive.addEventListener('keydown', function (e) {
+        if (e.code === "Tab" && (document.activeElement === caseSensitive)) { // Si la touche pressée est la flèche "Tabulation"
+            e.preventDefault();
+            searchElement.focus(); // On donne le focus à la recherche
+        } else if (e.code === "Escape") {
+            results.innerHTML = '';
+            results.style.display = 'none'; // On cache les résultats
+            selectedResult = -1;
+        }
+    });
+
 })();

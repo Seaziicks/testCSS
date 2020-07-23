@@ -2,14 +2,15 @@
 
 include('BDD.php');
 
-$newString = '%';
-for ($i = 0; $i < strlen($_GET['s']); $i++) {
-    $newString .= $_GET['s'][$i] . '%';
+$sqlPattern = '%';
+for ($i = 0; $i < strlen($_GET['pattern']); $i++) {
+    $sqlPattern .= $_GET['pattern'][$i] . '%';
 }
+$caseSensitive = $_GET['caseSensitive'];
 
 $competences = $bdd->query('SELECT DISTINCT Libellé, Image, min(Cout_En_PA) as PA
 								FROM competence
-                                WHERE Libellé LIKE \'' . $newString . '\'
+                                WHERE Libellé LIKE \'' . $sqlPattern . '\'
 								group by Libellé, Cout_En_PA
 								ORDER BY Libellé');                                    // Je récupère toutes les compétences qui macth la recherche.
 
@@ -23,7 +24,9 @@ $results = array(); // Le tableau où seront stockés les résultats de la reche
 $j = 0;
 $nb_results_voulus = 19;
 for ($i = 0; $i < $dataLen && count($results) < $nb_results_voulus; $i++) {
-    if (strlen($data[$i]['Libellé']) > 0 && stripos($data[$i]['Libellé'], $_GET['s']) === 0) { // Si le nom de la competence commence par les mêmes caractères que la recherche
+    if (strlen($data[$i]['Libellé']) > 0
+        && stripos($data[$i]['Libellé'], $_GET['pattern']) === 0
+        && like_match($sqlPattern, $data[$i]['Libellé'], filter_var($caseSensitive,FILTER_VALIDATE_BOOLEAN))) { // Si le nom de la competence commence par les mêmes caractères que la recherche
         $competence['Competence'] = $data[$i]['Libellé'];
         $competence['Image'] = $data[$i]['Image'];
         $competence['PA'] = $data[$i]['PA'];
@@ -32,13 +35,32 @@ for ($i = 0; $i < $dataLen && count($results) < $nb_results_voulus; $i++) {
     }
 }
 for ($i = 0; $i < $dataLen && count($results) < $nb_results_voulus; $i++) {
-    if (strlen($data[$i]['Libellé']) > 0 && gettype(array_search($data[$i]['Libellé'], array_column($results, 'Competence'))) == 'boolean') { // Si le nom de la competence commence par les mêmes caractères que la recherche
+    // print("\n\n".$data[$i]['Libellé']." => ");
+    // print((boolean)like_match($sqlPattern, $data[$i]['Libellé'], filter_var($_GET['caseSensitive'], FILTER_VALIDATE_BOOLEAN))."\n\n");
+    if (strlen($data[$i]['Libellé']) > 0
+        && array_search($data[$i]['Libellé'], array_column($results, 'Competence')) === FALSE
+        && like_match($sqlPattern, $data[$i]['Libellé'], filter_var($caseSensitive,FILTER_VALIDATE_BOOLEAN))) { // Si le nom de la competence commence par les mêmes caractères que la recherche
         $competence['Competence'] = $data[$i]['Libellé'];
         $competence['Image'] = $data[$i]['Image'];
         $competence['PA'] = $data[$i]['PA'];
         array_push($results, $competence);
         $j++;
     }
+}
+
+/**
+ * SQL Like operator in PHP.
+ * Returns TRUE if match else FALSE.
+ * @param string $pattern
+ * @param string $subject
+ * @param bool $isCaseSensitive
+ * @return bool
+ */
+function like_match($pattern, $subject, $isCaseSensitive)
+{
+    $pattern = str_replace('%', '.*', preg_quote($pattern, '/'));
+    $caseSensitive = $isCaseSensitive ? '' : 'i';
+    return (bool) preg_match("/^{$pattern}$/$caseSensitive", $subject);
 }
 
 function EnJson($arr, $format = 0)
