@@ -70,17 +70,17 @@
 
     searchElement.addEventListener('keyup', function (e) {
         // alert(document.getElementById('search').value);
-		divs = results.querySelectorAll("#results>div");
-        if (e.keyCode == 38 && selectedResult > -1) { // Si la touche pressée est la flèche "haut"
+        let divs = results.querySelectorAll("#results>div");
+        if (e.code === "ArrowUp" && selectedResult > -1) { // Si la touche pressée est la flèche "haut"
             divs[selectedResult--].classList.remove('result_focus');
             if (selectedResult > -1)  // Cette condition évite une modification de childNodes[-1], qui n'existe pas, bien entendu
                 divs[selectedResult].classList.add('result_focus');
-        } else if (e.keyCode == 40 && selectedResult < divs.length - 1) { // Si la touche pressée est la flèche "bas"
+        } else if (e.code === "ArrowDown" && selectedResult < divs.length - 1) { // Si la touche pressée est la flèche "bas"
             results.style.display = 'block'; // On affiche les résultats
             if (selectedResult > -1)  // Cette condition évite une modification de childNodes[-1], qui n'existe pas, bien entendu
                 divs[selectedResult].classList.remove('result_focus');
             divs[++selectedResult].classList.add('result_focus');
-        } else if (e.keyCode == 13 && selectedResult > -1) { // Si la touche pressée est "Entrée"
+        } else if (e.code === "Enter" && selectedResult > -1) { // Si la touche pressée est "Entrée"
             chooseResult(divs[selectedResult]);
         } else if (searchElement.value !== previousValue) { // Si le contenu du champ de recherche a changé
             previousValue = searchElement.value;
@@ -93,7 +93,7 @@
                 results.style.display = 'none'; // On cache les résultats
             }
             selectedResult = -1; // On remet la sélection à "zéro" à chaque caractère écrit
-        } else if (e.keyCode == 27) {
+        } else if (e.code === "Escape") {
             results.innerHTML = '';
             results.style.display = 'none'; // On cache les résultats
         }
