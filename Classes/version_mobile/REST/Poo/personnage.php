@@ -23,7 +23,7 @@
 	
 	<tr> <td><span class="intelligence"> Intelligence </span></td> 
 		<td><span class="intelligence" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Intelligence', 'nombre','personnage')"><?= $personnage->_Intelligence; ?> </span>+ <span class="intelligence"><?= $personnage->_Bonus_Intelligence?></span> (<span class="intelligence"><?= $personnage->getTotalIntelligence();?></span>)</td>
-		<?php if($personnage->_Id_Personnage==6){ $pointsCompétenceUtilisés=modificationPointsDeCompetence($pointsCompétenceUtilisés); }?>
+		<?php if($personnage->_Id_Personnage==6){ $pointsCompétenceUtilisés=modificationPointsDeCompetence($personnage, $pointsCompétenceUtilisés); }?>
 		<td> Points de compétence : <span class="<?php if(($personnage->_Niveau+floor(($personnage->_Niveau)/6))-$pointsCompétenceUtilisés>0){echo "pointsdispo";}elseif(($personnage->_Niveau+floor(($personnage->_Niveau)/6))-$pointsCompétenceUtilisés<0){echo "red";}?>"><?= ($personnage->_Niveau+floor(($personnage->_Niveau)/6))-$pointsCompétenceUtilisés ?>  </span></td>
 		<td> <span class="<?= $personnage->_Type_Ressource;?>"><?= $personnage->_Type_Ressource;?> </span></td>
 		<td><?php if (!empty($personnage->_Type_Ressource)){?><span class="<?= $personnage->_Type_Ressource;?>" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Ressource', 'nombre','personnage')"> <?= $personnage->_Ressource ?> </span>+ <span class="<?= $personnage->_Type_Ressource;?>"><?= $personnage->_Bonus_Ressource?></span> (<span class="<?= $personnage->_Type_Ressource;?>"><?= $personnage->getTotalRessource()?></span>)<?php } ?></td>
