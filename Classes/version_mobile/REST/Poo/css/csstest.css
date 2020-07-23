@@ -1,0 +1,210 @@
+﻿body{
+	overflow : hidden;
+	background-image : url("images/the_elder_scrolls_v_skyrim_by_artfall-d4w0bgn.jpg") ;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+body, div,span{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	line-height: 1;
+}
+
+body > div > nav {
+	order: 1;  flex: 0 1 100%; text-align : center;
+}
+
+body div, body > main  { /*le ous les div(s) dans le body*/
+	display: flex; /*affichage en mode flex*/
+	flex-flow : row  wrap; /* le flux des flex est affiché en ligne et emiplés (s'il n'y a pas assez de palce)*/	
+}
+
+body > div {
+	order: 2;  flex: 0 1 30%;
+	float : left;
+}
+
+main{
+	height : 100%;
+}
+
+.centrer{
+	position : absolute;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;	
+	height : 40%;
+	max-width : 100%;
+	padding : 0 0 0 14%;
+}
+
+.aligner{
+}
+
+.lien{
+	height : 100%;
+	width : 100%;
+}
+.arbres{
+	min-width : 100%;
+	height : 80%;
+	margin-top : 0;
+	top : 0;
+}
+.remphaut{
+	height : 14.5%;
+	visibility : hidden;
+}
+
+
+div img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	-webkit-filter: grayscale(0.5);
+	opacity : 0.7;
+}
+
+.image:hover img {
+	transform: scale(1.02);
+	-webkit-filter: grayscale(0);
+	opacity : 1;
+}
+.arbres:hover div:hover{
+	z-index : 10;
+}
+
+
+.titre{
+	min-width : 100%;
+	text-align : center;
+	font-size : 100px;
+	color : #0066cc;
+	font-family: AvenueduVapoteur, serif;
+}
+
+.a{
+	width : 100%;
+}
+
+.arbres:hover div:not(:hover) img{
+   -webkit-filter: grayscale(1) blur(0.5px);
+   z-index : 1;
+   opacity : 0.3;
+}
+.nom, tr{
+	min-width : 100%;
+}
+.nom td{
+	width : 20%;
+	text-align : center;
+	font-size : 30px;
+}
+.image {
+	width : 20%;
+}
+.downpage {
+	height : 60%;
+	margin-top: auto;
+}
+
+
+
+
+
+
+
+@font-face {
+    font-family: 'AvenueduVapoteur';
+    src: url('Police/Avenue_du_Vapoteur/Avenue du Vapoteur.ttf');
+}
+
+
+
+.voleur{
+	color : red;
+}
+
+.demoniste{
+	color : #692BBE;
+}
+
+.nain{
+	color : #7B241C;
+}
+
+.paladin{
+	color : gold;
+}
+
+.manipulateurdesang{
+	color : red;
+}
+
+
+
+
+
+/* Pour cacher la pub de webhostapp, qui empèche de modifier certaines valeurs présentes dans le footer*/
+body>div{
+    visibility : hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#menu ul  {
+	padding:0;
+	margin:0;
+	min-width : 100%;
+	position : fixed;
+	background-color : #1A1919;
+	opacity: 1;
+	min-height : 25px;
+	z-index : 1000;
+	max-height : 3.7%;
+}
+
+#menu ul li {
+	display: inline-block;
+	padding-top : 10px;
+	margin-bottom : 0 ;
+	min-height: 5%;
+	min-width : 32.51%;
+	text-align : center;
+	height : 25px;
+}
+
+#menu a{
+	color : #DF2424;
+}
+
+#menu a:link, main a{ 
+ text-decoration:none;
+}
+
+#menu a:hover:link{
+	text-decoration: underline;
+}
+
+.actuel{
+	background : #383737;
+}

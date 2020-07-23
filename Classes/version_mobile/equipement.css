@@ -377,7 +377,7 @@ ul, menu, dir {
     background: url(../../images/items/item-bg-rarity-4.png) no-repeat;
 }
 .rarity-4 {
-    color: ##9b8e3c!important;
+    color: #9b8e3c!important;
 }
 
 
@@ -553,7 +553,7 @@ ul, ol {
 
 .diablo-fans-tooltip.item-tooltip .db-image img {
     z-index: 7;
-	height: 75;
+	height: 75px;
 }
 
 img {
@@ -644,7 +644,7 @@ a.item-slot-container:hover .touch-tip,a.item-slot-container:hover .diablo-fans-
 
 .diablo-fans-tooltip.item-tooltip .db-description li:not(.inner) {
     margin-top: 5px;
-	font-size : 12;
+	font-size : 12px;
 }
 .diablo-fans-tooltip.item-tooltip .db-description .primary-stat {
     color: #FFF;

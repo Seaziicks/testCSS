@@ -21,7 +21,13 @@ $http_method = $_SERVER['REQUEST_METHOD'];
 switch ($http_method){
     /// Cas de la méthode GET
     case "GET" :
-        include('competenceAddCompetenceEffect.php');
+        $competencesInfos = $bdd->query('SELECT DISTINCT c.Libellé, c.Id_Competence, c.Image
+								FROM competence c
+								WHERE Id_Competence = ' . $_GET['id'] . ' ');
+        $reponse;
+        while($competence=$competencesInfos->fetch(PDO::FETCH_ASSOC)){
+            $reponse = $competence;
+        }
         $matchingData=$reponse;
 
         /// Envoi de la réponse au Client

@@ -12,20 +12,20 @@ $personnagesInfos = $bdd->query('SELECT Id_Personnage, Libellé, Image, iconImag
 					
 					
 					
-    $réponse = [];
-	while($réponseWitoutCamelCase=$personnagesInfos->fetch(PDO::FETCH_ASSOC)){
+    $reponse = [];
+	while($reponseWitoutCamelCase=$personnagesInfos->fetch(PDO::FETCH_ASSOC)){
 
-        $réponseCamelCase['Id_Personnage'] = $réponseWitoutCamelCase['Id_Personnage'];
-        $réponseCamelCase['Libelle'] = $réponseWitoutCamelCase['Libellé'];
-        $réponseCamelCase['Image'] = $réponseWitoutCamelCase['Image'];
-        $réponseCamelCase['iconImage'] = $réponseWitoutCamelCase['iconImage'];
-        $réponseCamelCase['Niveau'] = $réponseWitoutCamelCase['Niveau'];
-        $réponseCamelCase['team'] = $réponseWitoutCamelCase['team'];
-        $réponseCamelCase['initiative'] = $réponseWitoutCamelCase['initiative'];
-        $réponseCamelCase['isAlive'] = intval($réponseWitoutCamelCase['PDV_Actuel']) == 0 ? false : true;
-        $réponseCamelCase['DegatsRecus']=$réponseWitoutCamelCase['DegatsRecus'];
-        $réponseCamelCase['Bouclier']=$réponseWitoutCamelCase['Bouclier'];
+        $reponseCamelCase['Id_Personnage'] = $reponseWitoutCamelCase['Id_Personnage'];
+        $reponseCamelCase['Libelle'] = $reponseWitoutCamelCase['Libellé'];
+        $reponseCamelCase['Image'] = $reponseWitoutCamelCase['Image'];
+        $reponseCamelCase['iconImage'] = $reponseWitoutCamelCase['iconImage'];
+        $reponseCamelCase['Niveau'] = $reponseWitoutCamelCase['Niveau'];
+        $reponseCamelCase['team'] = $reponseWitoutCamelCase['team'];
+        $reponseCamelCase['initiative'] = $reponseWitoutCamelCase['initiative'];
+        $reponseCamelCase['isAlive'] = intval($reponseWitoutCamelCase['PDV_Actuel']) == 0 ? false : true;
+        $reponseCamelCase['DegatsRecus']=$reponseWitoutCamelCase['DegatsRecus'];
+        $reponseCamelCase['Bouclier']=$reponseWitoutCamelCase['Bouclier'];
 
-        array_push($réponse, $réponseCamelCase);
+        array_push($reponse, $reponseCamelCase);
     }
 ?>

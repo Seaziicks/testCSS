@@ -1,7 +1,7 @@
 <?php
 
 ?>   <!--form action="applyEffectRest.php" method="post" class="form-example"-->
-    <form action="https://sitefac.000webhostapp.com/Classes/version_mobile/REST/applyEffectRest.php" method="post" class="form-example">
+    <form action="./applyEffectRest.php" method="post" class="form-example">
         <div class="form-example">
             <label for="EffectType">EffectType: </label>
             <input type="number" name="EffectType" id="EffectType" required>
