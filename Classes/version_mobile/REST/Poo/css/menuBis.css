@@ -9,7 +9,7 @@
 }
 
 .websiteIcon img{
-    max-width : 2.35vw;
+    width : 2.35vw;
 }
 
 .navbar, .page-footer{
@@ -36,11 +36,11 @@
 
 @media only screen and (max-width: 1200px) {
     .websiteIcon {
-        font-size: 13px;
+        font-size: 80%;
         font-family: GWTwoFont, serif;
     }
     .websiteIcon img{
-        width : 55px;
+        width : 35%;
     }
 
     .nav-item {
