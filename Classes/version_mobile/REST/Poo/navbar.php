@@ -3,7 +3,7 @@ include("BDD.php");
 $personnages = $bdd->query('SELECT * FROM personnage');
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #000000;">
-    <a class="navbar-brand websiteIcon" href="#">
+    <a class="navbar-brand websiteIcon" href=".">
         <img src="css/images/scroll-quill.png" class="d-inline-block" alt="">
         Uncommitted Quest
     </a>
