@@ -27,8 +27,8 @@ $arbre = new Arbre($personnage, $bdd);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <?php include('css/BootstrapCSSImport.php');?>
     <link rel="stylesheet" href="css/equipement.css" type="text/css" media="screen"/>
-    <link href="../membre.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
     <!--Get the css fil from the character folder. Every " " (space) has been replaced by "_" in the folder name, that's why their is a str_replace
     Same is done for accents : "é" -> "e"-->
@@ -45,13 +45,15 @@ $arbre = new Arbre($personnage, $bdd);
             });
         });
     </script>
-    <title>Test</title>
+    <title>Uncommitted Quest</title>
+    <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
+    <link rel="icon" href="css/images/scroll-quill.png"/>
 </head>
 
 <body>
 
 
-<?php include("TestMenu.php"); ?>
+<?php include("navbar.php"); ?>
 
 <main class="centrer">
 
@@ -69,14 +71,15 @@ $pntsCmptnc = $bdd->query('SELECT DISTINCT sum(c.Niveau) as pntsCmptnc
 $pointsCompetenceUtilises = $pntsCmptnc->fetch();
 $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
 ?>
-<div class="footer"><div class="resistant"><?php include("barre_membre.php");?></div> <?php include('personnage.php');?> </div>
+<div class="footer"><div class="resistant"></div> <?php include('personnage.php');?> </div>
 
 
 
 <?php include("equipements.php"); ?>
 
 
-<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.
+<?php include('footer.php');
+include('css/BootstrapJSImport.php');?>
 </body>
 
 </html>

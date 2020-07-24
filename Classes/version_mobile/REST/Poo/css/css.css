@@ -26,6 +26,14 @@ body > main > div {
 	order: 2;  flex: 0 1 25.62%;
 }
 
+/* When we are under 1200px width */
+@media only screen and (max-width: 1201px) {
+	body > main > div {
+		order: 2;
+		flex: 0 1 51%;
+	}
+}
+
 #menu ul  {
 	padding:0;
 	margin:0;
@@ -178,9 +186,8 @@ body > main > div {
 
 .centrer{
 	margin: auto;
-	height : 80%;
 	max-width : 100%;
-	padding : 11% 0 0 14%;
+	padding : 11% 0 11% 14%;
 }
 
 .aligner{
@@ -195,8 +202,6 @@ body > main > div {
 	height : 20%;
 	min-width : 100%;
 	background-color : rgba(50,50,50, 0.85);
-	position : absolute;
-	bottom :0;
 	text-align : center;
 }
 
@@ -213,7 +218,6 @@ body > main > div {
 
 .footer  table {
 	text-align : center;
-	width : 60%;
 	height : 90%;
 	margin : auto;
 }
@@ -398,7 +402,6 @@ body > main > div {
 	background-color : rgba(46,46,46,1);
 	padding-top : 1px;
 	margin-top: 1px;
-	position : absolute;
 	width : 100%;
 }
 

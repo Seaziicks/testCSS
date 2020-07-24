@@ -1,38 +1,53 @@
-#menu ul  {
-    padding:0;
-    margin:0;
-    min-width : 100%;
-    position : fixed;
-    background-color : #1A1919;
-    opacity: 1;
-    min-height : 25px;
-    z-index : 1000;
-    max-height : 3.7%;
+@font-face {
+    font-family: 'GWTwoFont';
+    src: url('Police/GuildWars2/GWTwoFont.ttf');
 }
+.websiteIcon {
+    font-family: GWTwoFont, serif;
+    color : wheat;
+}
+.navbar {
+    z-index: 5;
+}
+.navbar-nav .dropdown-menu {
+    background-color: #0c5460;
+}
+.navbar-nav .dropdown-menu a {
+    color : wheat;
+}
+.navbar-nav .dropdown-menu a:hover {
+    background-color: #0f6674;
+}
+.page-footer {
+    background-color: #000000;
+}
+.navbar .nav-item .dropdown-menu .dropdown-item {
+    width : auto;
+}
+/* When we are over 1200px width */
+@media only screen and (min-width: 1200px) {
+    /*
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+    */
+    .websiteIcon {
+        font-size: 1.1vw;
+    }
+    .websiteIcon img{
+        width : 2.35vw;
+    }
 
-#menu ul li {
-    display: inline-block;
-    padding-top : 10px;
-    margin-bottom : 0 ;
-    min-height: 5%;
-    min-width : 24.8%;
-    text-align : center;
-    height : 25px;
+    .nav-item {
+        font-size: 0.85vw;
+    }
 }
-
-#menu a{
-    color : #DF2424;
-}
-
-#menu a:link, main a{
-    text-decoration:none;
-}
-
-#menu a:hover:link{
-    text-decoration: underline;
-}
-#menu {
-    position: fixed;
-    top: 0;
-    width: 100%;
+/* When we are under 1200px width */
+@media only screen and (max-width: 1201px) {
+    .websiteIcon img{
+        width: 35px;
+    }
+    .navbar .nav-item .dropdown-menu .dropdown-item {
+        font-size: 13.5px;
+    }
 }
