@@ -38,11 +38,9 @@
     .websiteIcon {
         font-size: 15px;
         font-family: GWTwoFont, serif;
-        color : wheat;
     }
     .websiteIcon img{
-        max-width : 2.35vw;
-        min-width : 35px;
+        width : 35px;
     }
 
     .nav-item {
