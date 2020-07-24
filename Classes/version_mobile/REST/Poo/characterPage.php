@@ -66,8 +66,8 @@ $pntsCmptnc = $bdd->query('SELECT DISTINCT sum(c.Niveau) as pntsCmptnc
                         FROM arbres a, competence c
                         WHERE c.id_competence in (Colonne1,Colonne2,Colonne3,Colonne4,Colonne5,Colonne6,Colonne7,Colonne8,Colonne9)
                         AND a.ID_Personnage = '.$personnage->_Id_Personnage.'');
-$pointsCompétenceUtilisés = $pntsCmptnc->fetch();
-$pointsCompétenceUtilisés = $pointsCompétenceUtilisés['pntsCmptnc'];
+$pointsCompetenceUtilises = $pntsCmptnc->fetch();
+$pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
 ?>
 <div class="footer"><div class="resistant"><?php include("barre_membre.php");?></div> <?php include('personnage.php');?> </div>
 
