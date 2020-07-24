@@ -34,16 +34,39 @@
     font-size: 0.85vw;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1200px) {
     .websiteIcon {
-        font-size: 15px;
+        font-size: 13px;
         font-family: GWTwoFont, serif;
     }
     .websiteIcon img{
-        width : 35px;
+        width : 55px;
     }
 
     .nav-item {
-        font-size: 1.5vw;
+        font-size: 12px;
+    }
+    .navbar-expand-lg {
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .navbar-expand-lg .navbar-collapse {
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -ms-flex-preferred-size: auto;
+        /* flex-basis: auto; */
+    }
+    .navbar-expand-lg .navbar-nav {
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: absolute;
     }
 }
