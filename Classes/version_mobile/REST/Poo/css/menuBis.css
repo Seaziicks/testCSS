@@ -42,14 +42,10 @@
 }
 /* When we are under 1200px width */
 @media only screen and (max-width: 1201px) {
-    .websiteIcon {
-        font-size: 80%;
-    }
     .websiteIcon img{
         width: 35px;
     }
-
-    .nav-item {
-        font-size: 12px;
+    .dropdown-item {
+        font-size: 13.5px;
     }
 }
