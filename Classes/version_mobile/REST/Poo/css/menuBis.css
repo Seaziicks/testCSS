@@ -4,11 +4,12 @@
 }
 .websiteIcon {
     font-size: 1.1vw;
+    font-family: GWTwoFont, serif;
+    color : wheat;
 }
 
 .websiteIcon img{
     max-width : 2.35vw;
-    min-width : 45px;
 }
 
 .navbar, .page-footer{
@@ -18,9 +19,6 @@
 
 .dropdown:hover > .dropdown-menu {
     display: block;
-}
-.navbar-nav .dropdown:hover, .navbar-nav .dropdown, .navbar-nav .dropdown-menu  {
-    transition: all 0.4s 0.4s;
 }
 
 .navbar-nav .dropdown-menu {
@@ -34,4 +32,20 @@
 }
 .nav-item {
     font-size: 0.85vw;
+}
+
+@media only screen and (max-width: 500px) {
+    .websiteIcon {
+        font-size: 15px;
+        font-family: GWTwoFont, serif;
+        color : wheat;
+    }
+    .websiteIcon img{
+        max-width : 2.35vw;
+        min-width : 35px;
+    }
+
+    .nav-item {
+        font-size: 1.5vw;
+    }
 }

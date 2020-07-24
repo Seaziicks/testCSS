@@ -14,7 +14,7 @@
 <body>
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #000000;">
-        <a class="navbar-brand websiteIcon" href="#" style="font-family: GWTwoFont, serif; color : wheat">
+        <a class="navbar-brand websiteIcon" href="#">
             <img src="css/images/scroll-quill.png" class="d-inline-block" alt="">
             Quest Paradise
         </a>
