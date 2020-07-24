@@ -3,24 +3,12 @@
     src: url('Police/GuildWars2/GWTwoFont.ttf');
 }
 .websiteIcon {
-    font-size: 1.1vw;
     font-family: GWTwoFont, serif;
     color : wheat;
 }
-
-.websiteIcon img{
-    width : 2.35vw;
+.navbar {
+    z-index: 5;
 }
-
-.navbar, .page-footer{
-    width : 100%;
-    height : 7.5%;
-}
-
-.dropdown:hover > .dropdown-menu {
-    display: block;
-}
-
 .navbar-nav .dropdown-menu {
     background-color: #0c5460;
 }
@@ -30,43 +18,42 @@
 .navbar-nav .dropdown-menu a:hover {
     background-color: #0f6674;
 }
-.nav-item {
-    font-size: 0.85vw;
+.page-footer {
+    width: 100%;
+    height : 7.5%;
 }
-
-@media only screen and (max-width: 1200px) {
+/* When we are over 1200px width */
+@media only screen and (min-width: 1200px) {
+    /*
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+    */
     .websiteIcon {
-        font-size: 80%;
-        font-family: GWTwoFont, serif;
+        font-size: 1.1vw;
     }
     .websiteIcon img{
-        width : 35%;
+        width : 2.35vw;
+    }
+
+    .nav-item {
+        font-size: 0.85vw;
+    }
+}
+/* When we are under 1200px width */
+@media only screen and (max-width: 1201px) {
+    .websiteIcon {
+        font-size: 80%;
+    }
+    .websiteIcon img{
+        width: 35px;
     }
 
     .nav-item {
         font-size: 12px;
     }
-    .navbar-expand-lg {
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-    }
-    .navbar-expand-lg .navbar-collapse {
-        display: -ms-flexbox!important;
-        display: flex!important;
-        -ms-flex-preferred-size: auto;
-        /* flex-basis: auto; */
-    }
-    .navbar-expand-lg .navbar-nav {
-        -ms-flex-direction: row;
-        flex-direction: row;
-    }
-    .navbar-expand-lg .navbar-nav .nav-link {
-        padding-right: .5rem;
-        padding-left: .5rem;
-    }
-    .navbar-expand-lg .navbar-nav .dropdown-menu {
+    .navbar {
         position: absolute;
+        width: 100%;
     }
 }

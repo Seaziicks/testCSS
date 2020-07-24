@@ -13,12 +13,14 @@
 </head>
 <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #000000;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
         <a class="navbar-brand websiteIcon" href="#">
             <img src="css/images/scroll-quill.png" class="d-inline-block" alt="">
             Quest Paradise
         </a>
-
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
@@ -58,6 +60,9 @@
             </form>
         </div>
     </nav>
+
+
+
     <main>
         <div class="background-div"> </div>
             <div class="bg-text page-middle">
