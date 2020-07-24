@@ -12,7 +12,7 @@
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #000000;">
         <a class="navbar-brand" href="#" style="font-family: GWTwoFont, serif; color : wheat">
-            <img src="css/images/scroll-quill.png" width="45" height="45" class="d-inline-block " alt="">
+            <img src="css/images/scroll-quill.png" class="d-inline-block websiteIcon" alt="">
             Quest Paradise
         </a>
 
@@ -23,7 +23,7 @@
                         Personnages
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="zoomIn" data-hover="dropdown">
-                        <a class="dropdown-item" href="#">Arbes</a>
+                        <a class="dropdown-item" href="#">Arbres</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Voleur</a>
                         <a class="dropdown-item" href="#">Paladin</a>
