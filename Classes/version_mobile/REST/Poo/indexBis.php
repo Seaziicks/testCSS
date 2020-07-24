@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #000000;">
         <a class="navbar-brand websiteIcon" href="#">
             <img src="css/images/scroll-quill.png" class="d-inline-block" alt="">
             Quest Paradise
