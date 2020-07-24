@@ -1,18 +1,21 @@
 <html lang="fr">
 <head>
+    <!-- ===================    CSS    =================== -->
+    <link rel="stylesheet" href="css/lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/menuBis.css" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/lib/bootstrap/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css" type="text/css" media="screen"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title style="color : wheat">Quest Paradise</title>
+
+    <!-- ===================    Page    =================== -->
+    <titleQuest Paradise</title>
     <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
     <link rel="icon" href="css/images/scroll-quill.png"/>
 </head>
 <body>
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #000000;">
-        <a class="navbar-brand" href="#" style="font-family: GWTwoFont, serif; color : wheat">
-            <img src="css/images/scroll-quill.png" class="d-inline-block websiteIcon" alt="">
+        <a class="navbar-brand websiteIcon" href="#" style="font-family: GWTwoFont, serif; color : wheat">
+            <img src="css/images/scroll-quill.png" class="d-inline-block" alt="">
             Quest Paradise
         </a>
 
@@ -57,8 +60,8 @@
     </nav>
     <main>
         <div class="background-div"> </div>
-            <div class="bg-text">
-                <h1 style="font-family: GWTwoFont, serif; font-size: 120px; color : wheat">Quest Paradise</h1>
+            <div class="bg-text page-middle">
+                <h1>Quest Paradise</h1>
                 <p>Baichoo Esteban</p>
             </div>
 
@@ -76,8 +79,9 @@
     <!-- Footer -->
 
 
-<script src="css/lib/jquery/jquery.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="css/lib/jquery/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="css/lib/bootstrap/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="css/lib/jquery/jquery.min.js"></script>
+<!-- Development version -->
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+<script src="css/lib/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
