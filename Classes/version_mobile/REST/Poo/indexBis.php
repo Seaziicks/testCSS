@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- ===================    Page    =================== -->
-    <titleQuest Paradise</title>
+    <title>Quest Paradise</title>
     <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
     <link rel="icon" href="css/images/scroll-quill.png"/>
 </head>

@@ -7,7 +7,8 @@
 }
 
 .websiteIcon img{
-    width : 2.35vw;
+    max-width : 2.35vw;
+    min-width : 45px;
 }
 
 .navbar, .page-footer{
