@@ -27,6 +27,7 @@ $arbre = new Arbre($personnage, $bdd);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <!-- ===================    CSS    =================== -->
     <?php include('css/BootstrapCSSImport.php');?>
     <link rel="stylesheet" href="css/equipement.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
@@ -36,7 +37,6 @@ $arbre = new Arbre($personnage, $bdd);
     <link rel="stylesheet" href="../Police/Luminari/style.css">
     <script type="text/javascript" src="inlinemod.js"></script>
     <script type="text/javascript" src="inlinemod2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         // Function allowing admin to remove property that hidden unreached competence effects.
         $(document).ready(function(){
@@ -45,6 +45,7 @@ $arbre = new Arbre($personnage, $bdd);
             });
         });
     </script>
+    <!-- ===================    Page    =================== -->
     <title>Uncommitted Quest</title>
     <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
     <link rel="icon" href="css/images/scroll-quill.png"/>

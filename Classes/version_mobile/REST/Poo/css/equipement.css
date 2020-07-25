@@ -1,18 +1,9 @@
-﻿body{
-	background-color : #2E2E2E;
-}
-
-div {
-    display: block;
-}
-
-.niveauObj{
+﻿.niveauObj{
 	float : right;
 }
 
 .mobile-item-wrapper {
     margin: -6px -6px 16px 0;
-	margin-left : 23%;
 }
 
 .mobile-item-wrapper.d3-class-necromancer .mobile-item-selection {
@@ -20,7 +11,6 @@ div {
 }
 
 .mobile-item-wrapper .mobile-item-selection {
-    width: 314px;
     height: 444px;
     margin: 0 auto;
     background: url(../images/build/mobile-build-barbarian.png) no-repeat;

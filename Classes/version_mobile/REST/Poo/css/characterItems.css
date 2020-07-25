@@ -1,0 +1,34 @@
+.mobile-item-wrapper {
+    width: 314px;
+    margin: 0;
+}
+
+/* ---------------------------------------------------
+    characterItems STYLE
+----------------------------------------------------- */
+#characterItems {
+    flex-grow: 2; /* default 0 */
+    width: 314px;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#characterItems.active {
+    width : 0;
+    overflow: hidden;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #characterItems {
+        margin-left: -250px;
+    }
+
+    #characterItems.active {
+        margin-left: 0;
+    }
+}
