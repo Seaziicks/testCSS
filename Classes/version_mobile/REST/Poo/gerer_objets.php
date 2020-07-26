@@ -9,9 +9,9 @@ session_start();
 
 	<link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
 	<link rel="stylesheet" href="css/test.css" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="css/menu.css" type="text/css" media="screen"/>
-	<script type="text/javascript" src="inlinemod.js"></script>
-	<script type="text/javascript" src="inlinemod2.js"></script>
+    <link rel="stylesheet" href="css/navbar.css" type="text/css" media="screen"/>
+	<script type="text/javascript" src="js/inlinemod.js"></script>
+	<script type="text/javascript" src="js/inlinemod2.js"></script>
 	<script type="text/javascript" src="cooldown.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	

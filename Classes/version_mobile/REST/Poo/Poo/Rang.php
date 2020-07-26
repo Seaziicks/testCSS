@@ -129,5 +129,120 @@ class Rang
         <?php
     }
 
+    public function displaySimpleRang() {
+        ?>
+
+        <tr>
+            <td class="blanc"> <?php switch ($this->_ligneNumber){ case "0" : echo "Débutant"; break;case '1' : echo 'Apprenti'; break;case '2' : echo "Confirmé"; break;case "3" : echo "Maître"; break;case "4" : echo "God Tier"; break;} ?> </td>
+
+            <?php
+            for ($indexCompetence = 0; $indexCompetence < count($this->_ligne) ; $indexCompetence++) 																	// Tant que la compétence en cours est de même rang que la précédente, je l'implémente au tableau.
+            {
+                if (!is_null($this->_ligne[$indexCompetence]))
+                {
+
+                    $indexFindCompetence = 0;
+                    // Look for the competence in $this->_competences[] that match the current Id_Competence in $this->_ligne[]
+                    while(intval($this->_competences[$indexFindCompetence]->_Id_Competence) != intval($this->_ligne[$indexCompetence])) {
+                        $indexFindCompetence++;
+                    }
+                    $competencetoDisplay = $this->_competences[$indexFindCompetence];
+
+                    if($competencetoDisplay->_Id_Competence == 0)												// Si la compétence est une case de remplissage.
+                    {
+                        ?><td class="cadre2"> </td><?php
+                    }
+                    else																			// Sinon, créer la case de la compétence correspondante.
+                    {
+                        $colspan=1;
+                        while ($this->_ligne[$indexCompetence] == $this->_ligne[$indexCompetence + 1])											// Gestion du Colspan. Tant que la compétence dans la casee suivante est la même que celle de la case en cours.
+                        {
+                            $colspan = $colspan + 1;													// J'ajoute 1 au colspan, et je passe à la case suivante.
+                            $indexCompetence++;
+                        }
+                        ?>										<!-- Création de la cellule du tableau-->
+
+                        <td <?php if($colspan > 1){ echo "colspan=$colspan";} ?>  class="test <?php if($competencetoDisplay->_Niveau > 0) {echo 'pulse';}?>" style="text-align : center" >
+
+                            <div class="cadre ">
+
+                                <div <?php /* $dégradé=$competence['Niveau']*10; echo 'style="-webkit-mask: linear-gradient(to top,white '.$dégradé.'%, rgba(255,255,255,0.15) '.$dégradé.'%)"';*/ ?>>
+                                    <img alt="ImageCompetence"  src="<?= $competencetoDisplay->getImage(); ?>">
+                                </div>
+                            </div>
+                        </td>
+                        <?php
+                    }
+                }
+            }
+            ?>
+        </tr>
+        <?php
+    }
+
+    public function getSimpleRangAsHTML($characterID, $componentToDisplay = '') : string
+    {
+        $simpleRangAsHTML = "<tr>
+            <td class=\"blanc\">";
+        switch ($this->_ligneNumber){
+            case "0" :
+                $simpleRangAsHTML .= "Débutant";
+                break;
+            case "1" :
+                $simpleRangAsHTML .= "Apprenti";
+                break;
+            case "2" :
+                $simpleRangAsHTML .= "Confirmé";
+                break;
+            case "3" :
+                $simpleRangAsHTML .= "Maître";
+                break;
+            case "4" :
+                $simpleRangAsHTML .= "God Tier";
+                break;
+        }
+        $simpleRangAsHTML .= " </td>";
+        for ($indexCompetence = 0; $indexCompetence < count($this->_ligne) ; $indexCompetence++) 																	// Tant que la compétence en cours est de même rang que la précédente, je l'implémente au tableau.
+        {
+            if (!is_null($this->_ligne[$indexCompetence]))
+            {
+
+                $indexFindCompetence = 0;
+                // Look for the competence in $this->_competences[] that match the current Id_Competence in $this->_ligne[]
+                while(intval($this->_competences[$indexFindCompetence]->_Id_Competence) != intval($this->_ligne[$indexCompetence])) {
+                    $indexFindCompetence++;
+                }
+                $competencetoDisplay = $this->_competences[$indexFindCompetence];
+
+                if($competencetoDisplay->_Id_Competence == 0)												// Si la compétence est une case de remplissage.
+                {
+                    $simpleRangAsHTML .= "<td class=\"cadre2\"> </td>";
+                }
+                else																			// Sinon, créer la case de la compétence correspondante.
+                {
+                    $colspan=1;
+                    while ($this->_ligne[$indexCompetence] == $this->_ligne[$indexCompetence + 1])											// Gestion du Colspan. Tant que la compétence dans la casee suivante est la même que celle de la case en cours.
+                    {
+                        $colspan = $colspan + 1;													// J'ajoute 1 au colspan, et je passe à la case suivante.
+                        $indexCompetence++;
+                    }
+                    $simpleRangAsHTML .= "<!-- Création de la cellule du tableau-->
+                    <td onclick=\"displayCompetenceToDiv(".$competencetoDisplay->_Id_Competence.",".$characterID.",'".$componentToDisplay."')\"";
+                    if($colspan > 1){ $simpleRangAsHTML .= " colspan=$colspan\"";} $simpleRangAsHTML .= " class=\"test"; if($competencetoDisplay->_Niveau > 0) {$simpleRangAsHTML .= " pulse";}$simpleRangAsHTML .= "\" style=\"text-align : center\" >
+
+                        <div class=\"cadre \">
+
+                            <div"; /* $simpleRangAsHTML .= "$dégradé=$competence['Niveau']*10; echo 'style=\"-webkit-mask: linear-gradient(to top,white '.$dégradé.'%, rgba(255,255,255,0.15) '.$dégradé.'%)\"';*/$simpleRangAsHTML .= ">
+                                <img alt=\"ImageCompetence\"  src=\"".$competencetoDisplay->getImage()."\">
+                            </div>
+                        </div>
+                    </td>";
+
+                }
+            }
+        }
+        $simpleRangAsHTML .= "</tr>";
+        return $simpleRangAsHTML;
+    }
 
 }

@@ -6,8 +6,9 @@
     font-family: GWTwoFont, serif;
     color : wheat;
 }
-.navbar {
-    z-index: 5;
+.navbar, .page-footer {
+    z-index: 2000;
+    width: 100%;
 }
 .navbar-nav .dropdown-menu {
     background-color: #0c5460;
@@ -32,21 +33,25 @@
     }
     */
     .websiteIcon {
-        font-size: 1.1vw;
+        font-size: 21px;
     }
     .websiteIcon img{
-        width : 2.35vw;
+        width : 45px;
     }
 
     .nav-item {
-        font-size: 0.85vw;
+        font-size: 16px;
     }
 }
 /* When we are under 1200px width */
-@media only screen and (max-width: 1201px) {
+@media only screen and (max-width: 1200px) {
     .websiteIcon img{
         width: 35px;
     }
+    .navbar .nav-item {
+        font-size: 14.5px;
+    }
+
     .navbar .nav-item .dropdown-menu .dropdown-item {
         font-size: 13.5px;
     }

@@ -35,8 +35,8 @@ $arbre = new Arbre($personnage, $bdd);
     Same is done for accents : "é" -> "e"-->
     <link rel="stylesheet" href="Characters/<?=str_replace(array(" ", "é"), array("_", "e"), $personnage->_Libellé)?>/css.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="../Police/Luminari/style.css">
-    <script type="text/javascript" src="inlinemod.js"></script>
-    <script type="text/javascript" src="inlinemod2.js"></script>
+    <script type="text/javascript" src="js/inlinemod.js"></script>
+    <script type="text/javascript" src="js/inlinemod2.js"></script>
     <script>
         // Function allowing admin to remove property that hidden unreached competence effects.
         $(document).ready(function(){

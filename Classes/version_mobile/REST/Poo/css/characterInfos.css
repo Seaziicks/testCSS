@@ -6,24 +6,37 @@
 /* ---------------------------------------------------
     characterInfos STYLE
 ----------------------------------------------------- */
-.sidebar-header {
+#characterInfos .sidebar-header {
     width: 250px;
+    padding: 20px;
+    text-align: center;
 }
-.wrapper {
-    display: flex;
-    width: 100%;
-}
+
 
 #characterInfos {
     font-family: 'Poppins', sans-serif;
     flex-grow: 4; /* default 0 */
-    width: 350px;
+    width: 300px;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
 }
 
 #characterInfos.active {
+    width : 0;
+    overflow: hidden;
+}
+#characterInfos .characterStatistique, #characterInfos .characterStatistique table, #characterInfos .sidebar-header, #characterInfos .sidebar-header h3 {
+    transition: all 0.3s;
+}
+
+#characterInfos.active .characterStatistique, #characterInfos.active .characterStatistique table{
+    width : 0;
+    overflow: hidden;
+    display : none
+}
+
+#characterInfos.active .sidebar-header, #characterInfos.active .sidebar-header h3 {
     width : 0;
     overflow: hidden;
 }
@@ -107,22 +120,6 @@
 #characterInfos a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
-}
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-#content {
-    padding: 40px;
-    min-height: 100vh;
-    transition: all 0.3s;
-    flex-grow: 4; /* default 0 */
-
-}
-
-#content.active {
-    width: 100%;
 }
 
 /* ---------------------------------------------------

@@ -48,4 +48,39 @@ class Specialite
         <?php
     }
 
+    public function displaySimpleSpecialite()
+    {
+        ?>
+
+        <div class="aligner">
+            <table>
+                <td colspan=100 style="text-align : center">
+                    <div class="titre"> <?= $this->_libelle; ?> </div>
+                </td>
+                <?php
+                foreach ($this->_rangs as $rang) {
+                    $rang->displaySimpleRang();
+                }
+                ?>
+            </table>
+        </div>
+
+        <?php
+    }
+
+    public function getSimpleSpecialiteAsHTML($characterID, $componentToDisplay = ''): string
+    {
+        $simpleSpecialiteAsHTML = "<div class=\"aligner\">
+            <table>
+                <td colspan=100 style=\"text-align : center\">
+                    <div class=\"titre\">$this->_libelle</div>
+                </td>";
+                foreach ($this->_rangs as $rang) {
+                    $simpleSpecialiteAsHTML .= $rang->getSimpleRangAsHTML($characterID, $componentToDisplay);
+                }
+            $simpleSpecialiteAsHTML .="</table>
+        </div>";
+        return $simpleSpecialiteAsHTML;
+    }
+
 }

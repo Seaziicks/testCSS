@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <link rel="stylesheet" type="text/css" href="css/search.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <meta charset="utf-8"/>
     <title>TP : Un système d'auto-complétion</title>
 </head>
@@ -19,4 +19,4 @@
 </body>
 </html>
 
-<script type="text/javascript" src="search_test.js"></script>
+<script type="text/javascript" src="js/search_test.js"></script>

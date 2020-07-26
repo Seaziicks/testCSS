@@ -1,0 +1,61 @@
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width : 100%;
+    /*min-height: 100vh;*/
+    transition: all 0.3s;
+    flex-grow: 1500; /* default 0 */
+
+}
+
+#content.active {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.container-fluid {
+    padding : 40px;
+    margin : 0;
+    width:auto;
+}
+
+/* ---------------------------------------------------
+    Tests
+----------------------------------------------------- */
+body {
+    display: flex;
+}
+.wrapper {
+    display: flex;
+    height: 85.7%;
+}
+.navbar {
+    padding : 0;
+}
+
+.navbar * {
+    padding: .5rem 1rem;
+}
+
+.page-footer {
+    height : 5%;
+    margin-top: auto;
+}
+.page-footer div {
+    height : 5%;
+    margin-bottom: 0!important;
+}
+

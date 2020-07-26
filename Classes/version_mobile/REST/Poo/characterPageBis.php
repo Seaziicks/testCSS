@@ -16,7 +16,7 @@ function chargerClasse($classname)
 include('BDD.php');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
-$idPersonnage = isset($_POST['characterID']) ? $_POST['characterID'] : 1;
+$idPersonnage = isset($_POST['characterID']) ? $_POST['characterID'] : 6;
 
 $managerPersonnage = new PersonnageManager($bdd);
 
@@ -39,12 +39,17 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
     <!--Get the css fil from the character folder. Every " " (space) has been replaced by "_" in the folder name, that's why their is a str_replace
     Same is done for accents : "é" -> "e"-->
     <link rel="stylesheet" href="css/equipement.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/characterPage.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/characterInfos.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/characterItems.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/competenceTree.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/characterCompetence.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="Characters/Magmaticien/css.css" type="text/css" media="screen"/>
 
 
-    <script type="text/javascript" src="inlinemod.js"></script>
-    <script type="text/javascript" src="inlinemod2.js"></script>
+
+    <script type="text/javascript" src="js/display.js"></script>
+    <script type="text/javascript" src="js/displayCompetence.js"></script>
     <!-- ===================    Page    =================== -->
     <title>Uncommitted Quest</title>
     <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
@@ -65,21 +70,19 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
                 <svg class="svg-inline--fa fa-align-left fa-w-14" style="height: 1em; width: 0.875em; vertical-align: text-bottom" aria-hidden="true" data-prefix="fas" data-icon="align-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
                     <path fill="currentColor" d="M288 44v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16V44c0-8.837 7.163-16 16-16h256c8.837 0 16 7.163 16 16zM0 172v40c0 8.837 7.163 16 16 16h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16zm16 312h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm256-200H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16z"></path>
                 </svg>
-                <span style="vertical-align: sub;">Informations</span>
+                <span style="vertical-align: sub;">Statistiques & Arbre</span>
             </button>
             <button type="button" id="characterItemsCollapse" class="btn btn-info" style="float: right">
-                <span style="vertical-align: sub;">Informations</span>
+                <span style="vertical-align: sub;">Equipements</span>
                 <svg class="svg-inline--fa fa-align-left fa-w-14" style="height: 1em; width: 0.875em; vertical-align: text-bottom" aria-hidden="true" data-prefix="fas" data-icon="align-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
                     <path fill="currentColor" d="M288 44v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16V44c0-8.837 7.163-16 16-16h256c8.837 0 16 7.163 16 16zM0 172v40c0 8.837 7.163 16 16 16h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16zm16 312h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm256-200H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16z"></path>
                 </svg>
             </button>
         </div>
-        <main class="centrer">
-
-            <?php
-            $arbre->displayArbre();
-            ?>
-
+        <main class="centrer" id="mainDisplayCompetenceTree">
+        </main>
+        <main>
+            <div id="mainDisplayCompetence"></div>
         </main>
 
         <?php
@@ -90,9 +93,6 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
         $pointsCompetenceUtilises = $pntsCmptnc->fetch();
         $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
         ?>
-
-
-        <?php include("equipements.php"); ?>
     </div>
     <?php include("characterItems.php"); ?>
 </div>
@@ -109,6 +109,10 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
         });
         $('#characterItemsCollapse').on('click', function () {
             $('#characterItems').toggleClass('active');
+        });
+        $('#divItemDisplay').on('focusout', function () {
+            alert("ok");
+            document.getElementById('divItemDisplay').innerHTML='';
         });
     });
 </script>

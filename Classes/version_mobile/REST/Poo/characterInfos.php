@@ -11,7 +11,8 @@
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <?php
                 foreach ($arbre->_specialitesLibelles as $specialiteName) { ?>
-                    <li>
+                    <li onclick="displayCompetenceTreeToDiv(<?= "'".$specialiteName[0]."',". $personnage->_Id_Personnage ?>,
+                            'mainDisplayCompetence', 'mainDisplayCompetenceTree')">
                         <a href="#"><?= $specialiteName[0]; ?></a>
                     </li>
                 <?php } ?>
@@ -60,6 +61,8 @@
                                 class="intelligence"><?= $personnage->_Bonus_Intelligence ?></span> (<span
                                 class="intelligence"><?= $personnage->getTotalIntelligence(); ?></span>)
                     </td>
+                </tr>
+                <tr>
                     <td>
                         <span class="<?= $personnage->_Type_Ressource; ?>"><?= $personnage->_Type_Ressource; ?> </span>
                     </td>

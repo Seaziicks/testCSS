@@ -88,4 +88,36 @@ class CompetenceManager
     {
         $this->_db = $db;
     }
+
+    public function getCompetenceAsHTML($id, Personnage $Personnage)
+    {
+        $competencetoDisplay = $this->get($id, $Personnage);
+        $competenceAsHTML = "";
+        $competenceAsHTML .="<span>
+								<span class=\"competence\">$competencetoDisplay->_Libellé</span><br/><br/>
+                                <div class=\"entete\"><i>$competencetoDisplay->_Entete</i></div>
+									<br> Niveau actuel de la compétence : <b <?= $competencetoDisplay->_Niveau;?></b>
+									<br>
+									<br>
+									<span class=\"couts\">
+										Coût en <span class=\"PA\">PA</span> : <span class=\"PA\">$competencetoDisplay->_Cout_En_PA</span>";
+										if (!is_null($competencetoDisplay->_Ressource)){
+                                            if($competencetoDisplay->_Ressource=='Canon de lumière'){
+                                                $ressourcecomp = 'canon';
+                                            }else{
+                                                $ressourcecomp = $competencetoDisplay->_Ressource;
+                                            }
+                                            $competenceAsHTML .= "<br>Coût en <span class=\"$ressourcecomp\">$competencetoDisplay->_Ressource</span> : <span class=\"$ressourcecomp\">$competencetoDisplay->_Cout_En_Ressource</span><br>";
+                                        }
+                                    $competenceAsHTML .= "</span>";
+									if (!is_null($competencetoDisplay->_Ressource)){$competenceAsHTML .= "<br>";} $competenceAsHTML .= "<!-- Obligé de faire ça, parce que le \"float : left\" gène sinon ... Mais bon,osef !-->
+                                    <br><br>";
+                                    $competenceAsHTML .= $competencetoDisplay->getNewDescriptionCompleteAsHTML(); //$competencetoDisplay->getEffects();
+                                    $competenceAsHTML .= $competencetoDisplay->getLeveledEffectsDescriptionsAsHTML();
+                                    if (!empty($competencetoDisplay->_Exemple)){
+                                        $competenceAsHTML .= "<br/><br/><br/><div class=\"exemple\"><i>$competencetoDisplay->_Exemple </i></div>";
+                                    }
+                        $competenceAsHTML .= "</span>";
+        return $competenceAsHTML;
+    }
 }

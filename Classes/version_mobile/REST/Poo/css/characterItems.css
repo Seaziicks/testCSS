@@ -1,6 +1,6 @@
 .mobile-item-wrapper {
     width: 314px;
-    margin: 0;
+    margin: auto;
 }
 
 /* ---------------------------------------------------
@@ -8,7 +8,7 @@
 ----------------------------------------------------- */
 #characterItems {
     flex-grow: 2; /* default 0 */
-    width: 314px;
+    width: 351px;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
