@@ -411,13 +411,13 @@ body > div{ /*le ous les div(s) dans le body*/
 .intelligence{
 	color : #B40404;
 }
-.agilité{
+.agilite{
 	color : #3ADF00;
 }
 .mana{
 	color : #00BFFF;
 }
-.réussite{
+.reussite{
 	color : gold;
 }
 .inventaire{
@@ -435,7 +435,7 @@ body > div{ /*le ous les div(s) dans le body*/
 	float : left;
 	text-align: left;
 }
-.Dé{
+.De{
 	color : #C48A13;
 }
 

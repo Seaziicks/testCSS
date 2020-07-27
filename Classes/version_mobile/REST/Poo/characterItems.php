@@ -1,6 +1,6 @@
 <!-- Sidebar  -->
 <nav id="characterItems" class="active">
-    <div class="mobile-item-wrapper d3-class-necromancer">
+    <div class="mobile-item-wrapper d3-class-necromancer" id="mobile-item-wrapper">
         <ul class="mobile-item-selection">
 
             <?php

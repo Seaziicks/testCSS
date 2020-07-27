@@ -1,17 +1,24 @@
-body {
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+.global-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-flow: column;
+}
+
+.wrapper {
+    flex: 2;
+    display: flex;
     overflow: hidden;
 }
 
-main {
-    height: 94.04%;
-}
-
-main > .background-div {
+main .background-div {
     background-image: url("images/the_elder_scrolls_v_skyrim_by_artfall-d4w0bgn.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 100%;
     width: 100%;
     filter: blur(2.5px);
     transform: scale(1.01);
@@ -43,6 +50,14 @@ main > .background-div {
 .page-middle p {
     font-size: 0.9vw;
     color: white;
+}
+
+
+.navbar {
+    padding : 0;
+}
+.navbar * {
+    padding : .5rem 1rem;
 }
 
 @media only screen and (max-width: 1200px) {

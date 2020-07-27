@@ -32,11 +32,11 @@
             <td><?php if (!empty($personnage->_Type_Ressource)){?><span class="<?= $personnage->_Type_Ressource;?>" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Ressource', 'nombre','personnage')"> <?= $personnage->_Ressource ?> </span>+ <span class="<?= $personnage->_Type_Ressource;?>"><?= $personnage->_Bonus_Ressource?></span> (<span class="<?= $personnage->_Type_Ressource;?>"><?= $personnage->getTotalRessource()?></span>)<?php } ?></td>
         </tr>
 
-        <tr> <td><span class="agilité"> Agilité </span></td>
-            <td><span class="agilité" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Agilité', 'nombre','personnage')"> <?= $personnage->_Agilité ?></span> + <span class="agilité"><?= $personnage->_Bonus_Agilité?></span> (<span class="agilité"><?= $personnage->getTotalAgilité() ?></span>)</td>
+        <tr> <td><span class="agilite"> Agilité </span></td>
+            <td><span class="agilite" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Agilité', 'nombre','personnage')"> <?= $personnage->_Agilité ?></span> + <span class="agilite"><?= $personnage->_Bonus_Agilité?></span> (<span class="agilite"><?= $personnage->getTotalAgilité() ?></span>)</td>
             <td>  </td>
-            <td> <span class="réussite">Réussite </span></td>
-            <td><span class="réussite"><?= ($personnage->_Réussite + $personnage->_Bonus_Réussite)?></span> (<span class="réussite" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Réussite', 'nombre','personnage')"><?= $personnage->_Réussite ?> </span> + <span class="réussite"><?= $personnage->_Bonus_Réussite?></span>)</td>
+            <td> <span class="reussite">Réussite </span></td>
+            <td><span class="reussite"><?= ($personnage->_Réussite + $personnage->_Bonus_Réussite)?></span> (<span class="reussite" ondblclick="inlineMod(<?= $personnage->_Id_Personnage; ?>, this, 'Réussite', 'nombre','personnage')"><?= $personnage->_Réussite ?> </span> + <span class="reussite"><?= $personnage->_Bonus_Réussite?></span>)</td>
         </tr>
 
         <tr> <td> - </td> <td> - </td> <td> </td> <td> - </td> <td> - </td> </tr>

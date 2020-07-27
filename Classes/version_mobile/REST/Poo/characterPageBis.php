@@ -29,16 +29,16 @@ $pntsCmptnc = $bdd->query('SELECT DISTINCT sum(c.Niveau) as pntsCmptnc
                         AND a.ID_Personnage = ' . $personnage->_Id_Personnage . '');
 $pointsCompetenceUtilises = $pntsCmptnc->fetch();
 $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
-
 ?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <!-- ===================    CSS    =================== -->
     <?php include('css/BootstrapCSSImport.php'); ?>
+    <link rel="stylesheet" href="css/equipement.css" type="text/css" media="screen"/>
     <!--Get the css fil from the character folder. Every " " (space) has been replaced by "_" in the folder name, that's why their is a str_replace
     Same is done for accents : "é" -> "e"-->
-    <link rel="stylesheet" href="css/equipement.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="Characters/<?=str_replace(array(" ", "é"), array("_", "e"), $personnage->_Libellé)?>/css.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/characterPage.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/characterInfos.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/characterItems.css" type="text/css" media="screen"/>
@@ -47,9 +47,8 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
     <link rel="stylesheet" href="Characters/Magmaticien/css.css" type="text/css" media="screen"/>
 
 
-
+    <!-- ===================    Js    =================== -->
     <script type="text/javascript" src="js/display.js"></script>
-    <script type="text/javascript" src="js/displayCompetence.js"></script>
     <!-- ===================    Page    =================== -->
     <title>Uncommitted Quest</title>
     <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
@@ -57,10 +56,7 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
 </head>
 
 <body>
-
-
-
-
+<div class="global-wrapper">
 <?php include("navbar.php"); ?>
 <div class="wrapper">
     <?php include("characterInfos.php"); ?>
@@ -98,7 +94,7 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
 </div>
 <?php include('footer.php');?>
 
-
+</div>
 <?php include('css/BootstrapJSImport.php'); ?>
 
 <script type="text/javascript">
@@ -110,11 +106,15 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
         $('#characterItemsCollapse').on('click', function () {
             $('#characterItems').toggleClass('active');
         });
-        $('#divItemDisplay').on('focusout', function () {
-            alert("ok");
-            document.getElementById('divItemDisplay').innerHTML='';
-        });
     });
+
+    window.addEventListener('click', function(e){
+        if (!document.getElementById('divItemDisplay').contains(e.target) && !document.getElementById('mobile-item-wrapper').contains(e.target)){
+            // Clicked outside the box
+            document.getElementById('divItemDisplay').innerHTML = '';
+        }
+    });
+
 </script>
 <script>
     // Function allowing admin to remove property that hidden unreached competence effects.

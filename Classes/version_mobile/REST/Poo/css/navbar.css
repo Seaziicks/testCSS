@@ -7,8 +7,7 @@
     color : wheat;
 }
 .navbar, .page-footer {
-    z-index: 2000;
-    width: 100%;
+    z-index: 100;
 }
 .navbar-nav .dropdown-menu {
     background-color: #0c5460;
@@ -25,6 +24,13 @@
 .navbar .nav-item .dropdown-menu .dropdown-item {
     width : auto;
 }
+
+.navbar {
+    padding : 0;
+}
+.navbar * {
+    padding : .5rem 1rem;
+}
 /* When we are over 1200px width */
 @media only screen and (min-width: 1200px) {
     /*
@@ -40,7 +46,7 @@
     }
 
     .nav-item {
-        font-size: 16px;
+        font-size: 16px;.
     }
 }
 /* When we are under 1200px width */

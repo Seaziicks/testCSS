@@ -7,7 +7,6 @@
     characterInfos STYLE
 ----------------------------------------------------- */
 #characterInfos .sidebar-header {
-    width: 250px;
     padding: 20px;
     text-align: center;
 }
@@ -16,24 +15,16 @@
 #characterInfos {
     font-family: 'Poppins', sans-serif;
     flex-grow: 4; /* default 0 */
-    width: 300px;
+    width: 370px;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
+    overflow: hidden;
 }
 
 #characterInfos.active {
     width : 0;
     overflow: hidden;
-}
-#characterInfos .characterStatistique, #characterInfos .characterStatistique table, #characterInfos .sidebar-header, #characterInfos .sidebar-header h3 {
-    transition: all 0.3s;
-}
-
-#characterInfos.active .characterStatistique, #characterInfos.active .characterStatistique table{
-    width : 0;
-    overflow: hidden;
-    display : none
 }
 
 #characterInfos.active .sidebar-header, #characterInfos.active .sidebar-header h3 {
@@ -142,6 +133,10 @@
     #characterInfosCollapse span {
         display: none;
     }
+
+    #characterItemsCollapse span {
+        display: none;
+    }
 }
 
 
@@ -150,4 +145,9 @@
 ----------------------------------------------------- */
 .characterStatistique table{
     width: 100%;
+}
+/* In order to avoid the css bug of hyper height table because its container is growing */
+.characterStatistique li {
+    max-height: 370px;
+    overflow: hidden;
 }

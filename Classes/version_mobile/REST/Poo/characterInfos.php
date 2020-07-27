@@ -75,17 +75,17 @@
                 </tr>
 
                 <tr>
-                    <td><span class="agilité"> Agilité </span></td>
-                    <td><span class="agilité"> <?= $personnage->_Agilité ?></span> + <span
-                                class="agilité"><?= $personnage->_Bonus_Agilité ?></span> (<span
-                                class="agilité"><?= $personnage->getTotalAgilité() ?></span>)
+                    <td><span class="agilite"> Agilité </span></td>
+                    <td><span class="agilite"> <?= $personnage->_Agilité ?></span> + <span
+                                class="agilite"><?= $personnage->_Bonus_Agilité ?></span> (<span
+                                class="agilite"><?= $personnage->getTotalAgilité() ?></span>)
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="réussite">Réussite </span></td>
-                    <td><span class="réussite"><?= ($personnage->_Réussite + $personnage->_Bonus_Réussite) ?></span>
-                        (<span class="réussite"><?= $personnage->_Réussite ?> </span> + <span
-                                class="réussite"><?= $personnage->_Bonus_Réussite ?></span>)
+                    <td><span class="reussite">Réussite </span></td>
+                    <td><span class="reussite"><?= ($personnage->_Réussite + $personnage->_Bonus_Réussite) ?></span>
+                        (<span class="reussite"><?= $personnage->_Réussite ?> </span> + <span
+                                class="reussite"><?= $personnage->_Bonus_Réussite ?></span>)
                     </td>
                 </tr>
                 </tbody>
