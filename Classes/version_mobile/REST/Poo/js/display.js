@@ -99,8 +99,18 @@ function displayCompetenceToDiv(idCompetence, characterID, componentIDToDisplayI
 
             let componentToDisplayIn = document.getElementById(componentIDToDisplayIn);
             // On les places dans l'element qui correcpond
-            componentToDisplayIn.innerHTML = "";
+            componentToDisplayIn.innerHTML = '';
             componentToDisplayIn.innerHTML = data.competenceAsHTML;
+            document.getElementById('wrapperDisplayCompetence').classList.add("active");
+
+            let deleteCompetenceDisplay = document.createElement('span');
+            deleteCompetenceDisplay.innerHTML = "✖";
+            deleteCompetenceDisplay.classList.add('deleteCompetenceDisplay');
+            deleteCompetenceDisplay.addEventListener('click',function () {
+                document.getElementById('wrapperDisplayCompetence').classList.remove("active");
+                componentToDisplayIn.innerHTML = '';
+            })
+            componentToDisplayIn.insertBefore(deleteCompetenceDisplay, componentToDisplayIn.firstChild);
         }
     }
 

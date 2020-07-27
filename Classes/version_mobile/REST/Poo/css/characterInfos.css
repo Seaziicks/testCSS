@@ -16,8 +16,12 @@
     font-family: 'Poppins', sans-serif;
     flex-grow: 4; /* default 0 */
     width: 370px;
-    background: #7386D5;
-    color: #fff;
+    /*background: lightslategrey;*/
+    background-color: rgba(0, 0, 0, 0.7);
+    border-top: 3px solid #F5DEB3;
+    border-right: 3px solid #F5DEB3;
+    border-bottom: 3px solid #F5DEB3;
+    color: #DEB887;
     transition: all 0.3s;
     overflow: hidden;
 }
@@ -43,7 +47,6 @@
 }
 
 #characterInfos ul p {
-    color: #fff;
     padding: 10px;
 }
 
@@ -54,15 +57,16 @@
 }
 
 #characterInfos ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #0c5460;
+    background: #DEB887;
 }
-
+/*
 #characterInfos ul li.active>a,
 #characterInfos a[aria-expanded="true"] {
     color: #fff;
     background: #6d7fcc;
 }
+*/
 
 #characterInfos a,
 #characterInfos a:hover,
@@ -87,7 +91,6 @@
 #characterInfos ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
 }
 
 #characterInfos ul.CTAs {
@@ -145,9 +148,10 @@
 ----------------------------------------------------- */
 .characterStatistique table{
     width: 100%;
+    color: #DEB887;
 }
 /* In order to avoid the css bug of hyper height table because its container is growing */
 .characterStatistique li {
-    max-height: 370px;
+    max-height: 350px;
     overflow: hidden;
 }

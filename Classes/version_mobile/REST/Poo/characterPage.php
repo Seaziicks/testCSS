@@ -46,7 +46,6 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
     <link rel="stylesheet" href="css/characterItems.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/competenceTree.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/characterCompetence.css" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="Characters/Magmaticien/css.css" type="text/css" media="screen"/>
 
 
     <!-- ===================    Js    =================== -->
@@ -59,6 +58,7 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
 </head>
 
 <body>
+<div class="background-image"></div>
 <div class="global-wrapper">
     <?php include("navbar.php"); ?>
     <div class="wrapper">
@@ -81,7 +81,7 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
             </div>
             <main class="centrer" id="mainDisplayCompetenceTree">
             </main>
-            <main>
+            <main id="wrapperDisplayCompetence">
                 <div id="mainDisplayCompetence"></div>
             </main>
 

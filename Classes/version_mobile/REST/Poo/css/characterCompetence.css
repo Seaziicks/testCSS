@@ -1,3 +1,19 @@
-#mainDisplayCompetence {
-    background-color: #7386D5;
+#wrapperDisplayCompetence {
+    background-color: rgba(0, 0, 0, 0.7);
+    color : #C48A13;
+}
+
+#wrapperDisplayCompetence.active {
+    padding : 40px;
+    border-top: 3px solid #F5DEB3;
+    border-bottom: 3px solid #F5DEB3;
+}
+
+#wrapperDisplayCompetence > div {
+    position : relative;
+}
+
+.deleteCompetenceDisplay {
+    color: red;
+    float: right;
 }

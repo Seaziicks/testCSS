@@ -1,13 +1,29 @@
+body {
+    background-color: #F5F5F5;
+}
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-
 #content {
     width : 100%;
     /*min-height: 100vh;*/
     transition: all 0.3s;
     flex-grow: 1500; /* default 0 */
+    min-height: max-content;
+}
 
+.background-image {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    display: block;
+    background-image: url('images/the_elder_scrolls_v_skyrim_by_artfall-d4w0bgn.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(2.5px);
+    height: 100%;
 }
 
 #content.active {
@@ -21,6 +37,7 @@
 .wrapper {
     display: flex;
     width: 100%;
+    z-index: 1;
 }
 
 .container-fluid {
