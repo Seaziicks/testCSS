@@ -1,7 +1,3 @@
-*, *::after, *::before {
-    box-sizing: inherit;
-}
-
 .global-wrapper {
     display: flex;
     min-height: 100vh;

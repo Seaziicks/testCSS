@@ -51,6 +51,7 @@ $pointsCompetenceUtilises = $pointsCompetenceUtilises['pntsCmptnc'];
 
     <!-- ===================    Js    =================== -->
     <script type="text/javascript" src="js/display.js"></script>
+
     <!-- ===================    Page    =================== -->
     <title>Uncommitted Quest</title>
     <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->

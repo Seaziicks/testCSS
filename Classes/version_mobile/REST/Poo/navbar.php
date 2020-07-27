@@ -52,7 +52,7 @@ $personnages = $bdd->query('SELECT * FROM personnage');
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Auto-complétion</a>
+                <a class="nav-link" href="search_test.php">Auto-complétion</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

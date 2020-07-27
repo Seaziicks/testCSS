@@ -2,6 +2,16 @@
     font-family: 'GWTwoFont';
     src: url('Police/GuildWars2/GWTwoFont.ttf');
 }
+/* ---------------------------------------------------
+    Sinon l'icone est toute petite.
+----------------------------------------------------- */
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+/* ---------------------------------------------------
+    Real content
+----------------------------------------------------- */
 .websiteIcon {
     font-family: GWTwoFont, serif;
     color : wheat;
@@ -46,7 +56,7 @@
     }
 
     .nav-item {
-        font-size: 16px;.
+        font-size: 16px;
     }
 }
 /* When we are under 1200px width */
