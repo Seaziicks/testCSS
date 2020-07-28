@@ -5,8 +5,8 @@
 
 #wrapperDisplayCompetence.active {
     padding : 40px;
-    border-top: 3px solid #F5DEB3;
-    border-bottom: 3px solid #F5DEB3;
+    border-top: 1px solid #F5DEB3;
+    border-bottom: 1px solid #F5DEB3;
 }
 
 #wrapperDisplayCompetence > div {

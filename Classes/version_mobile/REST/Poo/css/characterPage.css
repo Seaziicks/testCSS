@@ -13,7 +13,7 @@ body {
     /*min-height: 100vh;*/
     transition: all 0.3s;
     flex-grow: 1500; /* default 0 */
-    min-height: max-content;
+    height: max-content;
 }
 
 .background-image {
