@@ -3,7 +3,12 @@
 // On enregistre notre autoload.
 function chargerClasse($classname)
 {
-    require 'Poo/'.$classname.'.php';
+    if (is_file('Poo/Poo/'.$classname.'.php'))
+        require 'Poo/Poo/'.$classname.'.php';
+    elseif (is_file('Poo/Poo/Manager/'.$classname.'.php'))
+        require 'Poo/Poo/Manager/'.$classname.'.php';
+    elseif (is_file('Poo/Poo/Classes/'.$classname.'.php'))
+        require 'Poo/Poo/Classes/'.$classname.'.php';
 }
 
 spl_autoload_register('chargerClasse');
