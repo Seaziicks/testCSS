@@ -16,4 +16,5 @@
 .deleteCompetenceDisplay {
     color: red;
     float: right;
+    cursor: pointer;
 }
