@@ -1,5 +1,8 @@
 body {
     background-color: #F5F5F5;
+    /* Forced to do that for firefox. Otherwise, displaying CompetenceTree make the web page scrollable to the right,
+    by increasing largely its size. I don't know why ...  */
+    overflow-x: hidden;
 }
 
 /* ---------------------------------------------------
