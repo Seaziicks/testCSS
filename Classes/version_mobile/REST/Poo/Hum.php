@@ -17,7 +17,7 @@ function chargerClasse($classname)
 <html lang="fr">
 
 <head>
-    <title>RP - Créateur d'objets</title>
+    <?php include('./css/BootstrapCSSImport.php') ?>
     <link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/test.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/creation_item.css" type="text/css" media="screen"/>
@@ -25,6 +25,11 @@ function chargerClasse($classname)
     <script type="text/javascript" src="js/inlinemod.js"></script>
     <script type="text/javascript" src="js/inlinemod2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- ===================    Page    =================== -->
+    <title>Uncommitted Quest - Item creation</title>
+    <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
+    <link rel="icon" href="css/images/scroll-quill.png"/>
 
     <style>
 
@@ -160,7 +165,7 @@ function chargerClasse($classname)
     </style>
 </head>
 <body>
-<?php include('menu.php');?>
+<?php include('navbar.php');?>
 <div class="limite">
 
     <form method="post" action="">
@@ -1110,7 +1115,8 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 }
 
 ?>
-
+<?php include("./footer.php") ?>
+<?php include("./css/BootstrapJSImport.php") ?>
 </body>
 
 </html>	

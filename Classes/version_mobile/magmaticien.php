@@ -2,7 +2,7 @@
 session_start();
 ?>
 
-<html xmlns="//www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<html xml:lang="fr" lang="fr">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Magmaticien</title>
@@ -31,7 +31,7 @@ session_start();
 
 		// Recherche du rang de l'utilisateur pour savoir si la demande en cours doit être accomplie.
 	if(isset($_SESSION['pseudo'])){
-		$recherche = $bdd->query('SELECT * FROM membres WHERE pseudo="'.$_SESSION['pseudo'].'"') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
+		$recherche = $bdd->query('SELECT * FROM membres WHERE pseudo=\''.$_SESSION['pseudo'].'\'') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
 
 		$data = $recherche->fetch(); //On les mets sous forme string
 
@@ -45,69 +45,22 @@ session_start();
 
                 <div class="site-content">
                     <div class="container">
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-                        <?php 
-						
-						
-						
-						
-						
-						include('personnage.php');
+
+                        <?php
+                        include('personnage.php');
 						include('sorts.php');
 						echo '<br><br>';
 						include('description.php');
 						echo '<br><br>';
 						include("equipement.php");
 						include('inventaire/inventaire.php');
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+
 						?>
 						<script type="text/javascript" src="statistiques.js"></script>
 						<script type="text/javascript" src="inlinemod.js"></script>
 						<script type="text/javascript" src="inlinemod2.js"></script>
 						<script type="text/javascript" src="competence.js"></script>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+
                     </div>
                 </div>
 
@@ -115,7 +68,6 @@ session_start();
             </div>
         </div>
 
-        
         <script type="text/javascript" src="menu.js"></script>
 		<div class="footer"></div>
     </body>

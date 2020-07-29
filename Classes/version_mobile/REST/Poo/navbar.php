@@ -46,7 +46,7 @@ $personnages = $bdd->query('SELECT * FROM personnage');
                     Equipements
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="zoomIn" data-hover="dropdown">
-                    <a class="dropdown-item" href="#">Générateur</a>
+                    <a class="dropdown-item" href="Hum.php">Générateur</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Gestionnaire</a>
                 </div>
