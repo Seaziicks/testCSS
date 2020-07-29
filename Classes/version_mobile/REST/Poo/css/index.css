@@ -1,3 +1,6 @@
+/* ---------------------------------------------------
+    Global
+----------------------------------------------------- */
 .global-wrapper {
     display: flex;
     min-height: 100vh;
@@ -48,13 +51,9 @@ main .background-div {
     color: white;
 }
 
-
-.navbar {
-    padding : 0;
-}
-.navbar * {
-    padding : .5rem 1rem;
-}
+/* ---------------------------------------------------
+    Under 1200px
+----------------------------------------------------- */
 
 @media only screen and (max-width: 1200px) {
     .page-middle h1 {

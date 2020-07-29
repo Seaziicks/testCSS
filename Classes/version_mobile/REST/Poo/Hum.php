@@ -17,155 +17,28 @@ function chargerClasse($classname)
 <html lang="fr">
 
 <head>
-    <?php include('./css/BootstrapCSSImport.php') ?>
+    <!-- ===================    CSS    =================== -->
+    <?php include('css/BootstrapCSSImport.php'); ?>
     <link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/test.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/creation_item.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/navbar.css" type="text/css" media="screen"/>
-    <script type="text/javascript" src="js/inlinemod.js"></script>
-    <script type="text/javascript" src="js/inlinemod2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/createObject.css" type="text/css" media="screen"/>
+
+    <!-- ===================    Js    =================== -->
 
     <!-- ===================    Page    =================== -->
     <title>Uncommitted Quest - Item creation</title>
     <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
     <link rel="icon" href="css/images/scroll-quill.png"/>
 
-    <style>
-
-        .alignement {
-            display: flex;
-            flex-flow: row wrap;
-            width: 365px;
-        <!-- 19 % --> color: white;
-            top: 0;
-            float: left;
-            margin-bottom: 50px;
-            border: 0.5px blue dashed;
-        }
-
-        .mobile-item-wrapper {
-            margin: 0;
-        }
-
-        .caca {
-            width: 100%;
-            height: 100px;;
-            margin-left: 5px;
-            color: white;
-        }
-
-        .db-description {
-            width: 100%;
-        }
-
-        form {
-            color: white;
-        }
-
-
-        input[type="radio"]:checked + label img {
-            filter: saturate(250%);
-        }
-
-        input[type="radio"] {
-            transform: scale(0, 0);
-
-        }
-
-        form img {
-            width: 7%;
-        }
-
-        label {
-            text-align: center;
-        }
-
-        label span {
-            width: 20%;
-        }
-
-        .limite {
-            width: 100%;
-            text-align: center;
-            background-color: white;
-            margin-top: 35px;
-        }
-
-        .personnages {
-            width: 43.5%;
-            text-align: center;
-            margin: auto;
-            padding-left: 1.3%;
-        }
-
-        .personnages div {
-            float: left;
-            width: 20%;
-        }
-
-        input[type="number"] {
-            width: 11%;
-        }
-
-        .valeur {
-            color: #bda6db;
-        }
-
-        .personnagebis {
-            margin: auto;
-            color: white;
-        }
-
-        .Equipement {
-            position: relative;
-        }
-
-        .mobile-item-wrapper {
-            margin: auto;
-        }
-
-
-        .optionGroup {
-            font-weight: bold;
-            font-style: italic;
-            padding-top: 5px
-        }
-
-        .optionChild {
-            padding-left: 15px;
-            font-size: 90%;
-        }
-
-        .button {
-            border: none;
-            color: white;
-            padding: 7px 10px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .button:active {
-            box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        .button1 {
-            background-color: #555555;
-        }
-
-        .button1:hover {
-            color: black;
-            background-color: #e7e7e7;
-        }
-
-        .button1:active {
-            background-color: #555555;
-        }
-    </style>
 </head>
 <body>
+<div class="background-image"></div>
+<div class="global-wrapper">
 <?php include('navbar.php');?>
+    <div class="wrapper">
+
 <div class="limite">
 
     <form method="post" action="">
@@ -209,130 +82,140 @@ function chargerClasse($classname)
         </div>
         <br><br><br>
         <div class="limite">
-            Qualités des objets :<br>
-            <input name="Nombre_Gris" type="number" min="0" placeholder="Mauvaises factures"
-                   value="<?php if (isset($_POST['Nombre_Gris'])) {
-                       echo $_POST['Nombre_Gris'];
-                   } ?>">
-            <input name="Nombre_Blanc" type="number" min="0" placeholder="Normaux"
-                   value="<?php if (isset($_POST['Nombre_Blanc'])) {
-                       echo $_POST['Nombre_Blanc'];
-                   } ?>">
-            <input name="Nombre_Bleu" type="number" min="0" placeholder="Magiques"
-                   value="<?php if (isset($_POST['Nombre_Bleu'])) {
-                       echo $_POST['Nombre_Bleu'];
-                   } ?>">
-            <input name="Nombre_Jaune" type="number" min="0" placeholder="Rares"
-                   value="<?php if (isset($_POST['Nombre_Jaune'])) {
-                       echo $_POST['Nombre_Jaune'];
-                   } ?>">
-            <input name="Nombre_Orange" type="number" min="0" placeholder="Légendaires"
-                   value="<?php if (isset($_POST['Nombre_Orange'])) {
-                       echo $_POST['Nombre_Orange'];
-                   } ?>">
-            <script>function hide() {
-                    document.getElementById('to_hide').style.display = 'none';
-                }
-            </script>
-            <SELECT name="équipement" size="1" id="caracteristique">
-                <OPTION disabled <?php if (empty($_POST['équipement'])) {
-                    echo 'selected';
-                } ?>> Item selectionnable
-                <OPTION>
-                <OPTION class="optionGroup"
-                        label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Equipements') {
-                    echo 'selected';
-                } ?>>Equipements
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bottes') {
-                    echo 'selected';
-                } ?>> Bottes
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Brassard') {
-                    echo 'selected';
-                } ?>>Brassard
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Ceinture') {
-                    echo 'selected';
-                } ?>>Ceinture
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Coiffe') {
-                    echo 'selected';
-                } ?>>Coiffe
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epaules') {
-                    echo 'selected';
-                } ?>>Epaules
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Gants') {
-                    echo 'selected';
-                } ?>>Gants
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Jambieres') {
-                    echo 'selected';
-                } ?>>Jambieres
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Torse') {
-                    echo 'selected';
-                } ?>>Torse
-                <OPTION disabled>
-                <OPTION class="optionGroup"
-                        label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bijoux') {
-                    echo 'selected';
-                } ?>>Bijoux
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Amulette') {
-                    echo 'selected';
-                } ?>>Amulette
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Anneau') {
-                    echo 'selected';
-                } ?>>Anneau
-                <OPTION disabled>
-                <OPTION class="optionGroup"
-                        label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Armes') {
-                    echo 'selected';
-                } ?>>Armes
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Baguette') {
-                    echo 'selected';
-                } ?>>Baguette
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Dague') {
-                    echo 'selected';
-                } ?>>Dague
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epée') {
-                    echo 'selected';
-                } ?>>Epée
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epée courte') {
-                    echo 'selected';
-                } ?>>Epée courte
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Faux') {
-                    echo 'selected';
-                } ?>>Faux
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Fléau') {
-                    echo 'selected';
-                } ?>>Fléau
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Hache') {
-                    echo 'selected';
-                } ?>>Hache
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Lance') {
-                    echo 'selected';
-                } ?>>Lance
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Massue') {
-                    echo 'selected';
-                } ?>>Massue
-                <OPTION disabled>
-                <OPTION class="optionGroup"
-                        label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Main gauche') {
-                    echo 'selected';
-                } ?>>Main gauche
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bouclier') {
-                    echo 'selected';
-                } ?>>Bouclier
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Ciboire') {
-                    echo 'selected';
-                } ?>>Ciboire
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Talisman démoniaque') {
-                    echo 'selected';
-                } ?>>Talisman démoniaque
-            </SELECT>
+                <div class="multipleInputs">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="">Qualités des objets</span>
+                    </div>
+                    <input type="number" name="Nombre_Gris" class="form-control"  min="0" max="20" placeholder="Mauvaises factures"
+                    value="<?php if (isset($_POST['Nombre_Gris'])) {
+                        echo $_POST['Nombre_Gris'];
+                    } ?>"">
+                    <input type="number" name="Nombre_Blanc" class="form-control"  min="0" max="20" placeholder="Normaux"
+                    value="<?php if (isset($_POST['Nombre_Blanc'])) {
+                        echo $_POST['Nombre_Blanc'];
+                    } ?>"">
+                    <input type="number" name="Nombre_Bleu" class="form-control"  min="0" max="20" placeholder="Magiques"
+                    value="<?php if (isset($_POST['Nombre_Bleu'])) {
+                        echo $_POST['Nombre_Bleu'];
+                    } ?>"">
+                    <input type="number" name="Nombre_Jaune" class="form-control"  min="0" max="20" placeholder="Rares"
+                    value="<?php if (isset($_POST['Nombre_Jaune'])) {
+                        echo $_POST['Nombre_Jaune'];
+                    } ?>"">
+                    <input type="number" name="Nombre_Orange" class="form-control"  min="0" max="20" placeholder="Légendaires"
+                    value="<?php if (isset($_POST['Nombre_Orange'])) {
+                        echo $_POST['Nombre_Orange'];
+                    } ?>"">
 
-            <input name="Niveau" type="number" min="0" placeholder="Niveau" value="<?php if (isset($_POST['Niveau'])) {
-                echo $_POST['Niveau'];
-            } ?>">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Equipement</label>
+                    </div>
+                    <select class="custom-select" name="équipement" size="1" id="caracteristique">
+                    <option disabled <?php if (empty($_POST['équipement'])) {
+                        echo 'selected';
+                    } ?>> Item selectionnable
+                    <option>
+
+                    <option class="optionGroup"
+                            label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Equipements') {
+                        echo 'selected';
+                    } ?>>Equipements
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bottes') {
+                        echo 'selected';
+                    } ?>> Bottes
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Brassard') {
+                        echo 'selected';
+                    } ?>>Brassard
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Ceinture') {
+                        echo 'selected';
+                    } ?>>Ceinture
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Coiffe') {
+                        echo 'selected';
+                    } ?>>Coiffe
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epaules') {
+                        echo 'selected';
+                    } ?>>Epaules
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Gants') {
+                        echo 'selected';
+                    } ?>>Gants
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Jambieres') {
+                        echo 'selected';
+                    } ?>>Jambieres
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Torse') {
+                        echo 'selected';
+                    } ?>>Torse
+                    <option disabled>
+                    <option class="optionGroup"
+                            label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bijoux') {
+                        echo 'selected';
+                    } ?>>Bijoux
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Amulette') {
+                        echo 'selected';
+                    } ?>>Amulette
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Anneau') {
+                        echo 'selected';
+                    } ?>>Anneau
+                    <option disabled>
+                    <option class="optionGroup"
+                            label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Armes') {
+                        echo 'selected';
+                    } ?>>Armes
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Baguette') {
+                        echo 'selected';
+                    } ?>>Baguette
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Dague') {
+                        echo 'selected';
+                    } ?>>Dague
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epée') {
+                        echo 'selected';
+                    } ?>>Epée
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epée courte') {
+                        echo 'selected';
+                    } ?>>Epée courte
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Faux') {
+                        echo 'selected';
+                    } ?>>Faux
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Fléau') {
+                        echo 'selected';
+                    } ?>>Fléau
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Hache') {
+                        echo 'selected';
+                    } ?>>Hache
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Lance') {
+                        echo 'selected';
+                    } ?>>Lance
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Massue') {
+                        echo 'selected';
+                    } ?>>Massue
+                    <option disabled>
+                    <option class="optionGroup"
+                            label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Main gauche') {
+                        echo 'selected';
+                    } ?>>Main gauche
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bouclier') {
+                        echo 'selected';
+                    } ?>>Bouclier
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Ciboire') {
+                        echo 'selected';
+                    } ?>>Ciboire
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Talisman démoniaque') {
+                        echo 'selected';
+                    } ?>>Talisman démoniaque
+                </select>
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Niveau</span>
+                </div>
+                <input name="Niveau" type="number" class="form-control" min="0" placeholder="Niveau" value="<?php if (isset($_POST['Niveau'])) {
+                    echo $_POST['Niveau'];
+                } ?>">
+            </div>
         </div>
+    </div>
         <br>
         <div>
-            <input type="submit" value="Valider"/>
+            <input type="submit" class="btn btn-outline-success" value="Valider"/>
         </div>
     </form>
 
@@ -362,7 +245,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
     Vous devez générer au moins 1 item. <br>
     <?php
 } else if (isset($_POST['Nombre_Gris']) and isset($_POST['Nombre_Blanc']) and isset($_POST['Nombre_Bleu']) and isset($_POST['Nombre_Jaune']) and isset($_POST['Nombre_Orange']) and isset($_POST['radio-choice'])) {
-
+    ?> <div style="display: flex; flex-flow: row wrap; margin-left: 150px; margin-right: 200px"><?php
 
     $personnageID = $_POST['radio-choice'];
     $personnageManager = new PersonnageManager($bdd);
@@ -1115,6 +998,8 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 }
 
 ?>
+        </div>
+    </div>
 <?php include("./footer.php") ?>
 <?php include("./css/BootstrapJSImport.php") ?>
 </body>

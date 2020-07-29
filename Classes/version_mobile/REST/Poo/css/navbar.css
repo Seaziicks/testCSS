@@ -28,7 +28,7 @@
 .navbar-nav .dropdown-menu a:hover {
     background-color: #0f6674;
 }
-.page-footer {
+.navbar, .page-footer {
     background-color: #000000;
 }
 .navbar .nav-item .dropdown-menu .dropdown-item {
