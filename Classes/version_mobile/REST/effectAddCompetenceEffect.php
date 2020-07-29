@@ -2,7 +2,7 @@
 
 
 
-$competenceEffectInfos = $bdd->query('SELECT ce.*, c.Niveau 
+$competenceEffectInfos = $bdd->query('SELECT ce.*, c.Niveau as niveau
                                         FROM competenceeffect ce, competence c
                                         WHERE ce.idCompetenceEffect = '.$_GET['id'].'
                                         AND ce.idCompetence = c.Id_Competence');
