@@ -48,7 +48,7 @@ function displayItemToDiv(idItem, characterID, characterLevel, componentIDToDisp
     }
 
     //URL du script de sauvegarde auquel on passe la valeur ? modifier
-    XHR.open("GET", "Rest/itemRest?idItem=" + idItem + "&asHTML=" + true + "&characterID=" + characterID + "&characterLevel=" + characterLevel, true);
+    XHR.open("GET", "Rest/itemRest.php?idItem=" + idItem + "&asHTML=" + true + "&characterID=" + characterID + "&characterLevel=" + characterLevel, true);
 
     //On se sert de l'?v?nement OnReadyStateChange pour supprimer l'input et le replacer par son contenu
     XHR.onreadystatechange = function () {
@@ -87,7 +87,7 @@ function displayCompetenceToDiv(idCompetence, characterID, componentIDToDisplayI
     }
 
     //URL du script de sauvegarde auquel on passe la valeur ? modifier
-    XHR.open("GET", "Rest/competenceRest?idCompetence=" + idCompetence + "&asHTML=" + true + "&characterID=" + characterID, true);
+    XHR.open("GET", "Rest/competenceRest.php?idCompetence=" + idCompetence + "&asHTML=" + true + "&characterID=" + characterID, true);
 
     //On se sert de l'?v?nement OnReadyStateChange pour supprimer l'input et le replacer par son contenu
     XHR.onreadystatechange = function () {
@@ -136,7 +136,7 @@ function displayCompetenceTreeToDiv(treeName, characterID, componentToUpdateForC
     }
 
     //URL du script de sauvegarde auquel on passe la valeur ? modifier
-    XHR.open("GET", "Rest/simpleCompetenceTree?treeName=" + treeName + "&asHTML=" + true + "&characterID=" + characterID
+    XHR.open("GET", "Rest/simpleCompetenceTree.php?treeName=" + treeName + "&asHTML=" + true + "&characterID=" + characterID
         + "&componentToUpdateForCompetences=" + componentToUpdateForCompetences, true);
 
     //On se sert de l'?v?nement OnReadyStateChange pour supprimer l'input et le replacer par son contenu

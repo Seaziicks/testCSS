@@ -22,7 +22,7 @@
     background-color: rgba(127, 127, 127, 0.6);
     border-top: 3px solid #F5DEB3;
     border-left: 3px solid #F5DEB3;
-    border-bottom: 3px solid #F5DEB3;
+    border-bottom: 1px solid #F5DEB3;
     color: #fff;
     transition: all 0.3s;
 }

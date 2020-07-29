@@ -20,7 +20,7 @@
     background-color: rgba(0, 0, 0, 0.7);
     border-top: 3px solid #F5DEB3;
     border-right: 3px solid #F5DEB3;
-    border-bottom: 3px solid #F5DEB3;
+    border-bottom: 1px solid #F5DEB3;
     color: #DEB887;
     transition: all 0.3s;
     overflow: hidden;

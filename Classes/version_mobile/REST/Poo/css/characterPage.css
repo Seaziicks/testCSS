@@ -3,6 +3,8 @@ body {
     /* Forced to do that for firefox. Otherwise, displaying CompetenceTree make the web page scrollable to the right,
     by increasing largely its size. I don't know why ...  */
     overflow-x: hidden;
+    /* For Safari, otherwise, bodu only take 100 vh, and everything is fucked up*/
+    height: -webkit-max-content;
 }
 
 /* ---------------------------------------------------
@@ -13,7 +15,7 @@ body {
     /*min-height: 100vh;*/
     transition: all 0.3s;
     flex-grow: 1500; /* default 0 */
-    min-height: max-content;
+    height: max-content;
 }
 
 .background-image {
