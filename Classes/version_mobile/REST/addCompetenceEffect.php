@@ -95,9 +95,11 @@ switch ($http_method) {
 
 
                 $bdd->exec($sql);
+                $result = $bdd->query('SELECT * FROM competenceeffect WHERE idCompetenceEffect = . $competenceEffect[\'idCompetenceEffect\']');
+                $result->closeCursor();
                 $bdd = null;
                 http_response_code(200);
-                deliver_responseRest(200, "EffectCompetence modified", NULL);
+                deliver_responseRest(200, "EffectCompetence modified", $result->fetch(PDO::FETCH_ASSOC));
             }
         } catch
         (PDOException $e) {
