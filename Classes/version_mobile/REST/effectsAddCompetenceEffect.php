@@ -2,7 +2,7 @@
 
 
 
-$competenceEffectsInfos = $bdd->query('SELECT ce.*, c.Niveau 
+$competenceEffectsInfos = $bdd->query('SELECT ce.*, c.Niveau as niveau
                                         FROM competenceeffect ce, competence c
                                         WHERE ce.idCompetence = '.$_GET['id'].'
                                         AND ce.idCompetence = c.Id_Competence
@@ -10,7 +10,6 @@ $competenceEffectsInfos = $bdd->query('SELECT ce.*, c.Niveau
 
 $réponse=array();
 while($effect=$competenceEffectsInfos->fetch(PDO::FETCH_ASSOC)){
-
     array_push($réponse,$effect);
 }
 
