@@ -509,9 +509,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
             if ($rarete == 1) {
                 $nom = $equipement . ' de mauvaise facture';
-            }
-
-            if ($rarete == 2) {
+            } else if ($rarete == 2) {
                 if (in_array($equipement, ['Coiffe', 'Epaules', 'Ceinture', 'Amulette']) or ($type == 'Arme' and $equipement != 'Fléau')) {
                     $nom = $equipement . ' normale';
                 } else if (in_array($equipement, ['Jambieres', 'Bottes'])) {
@@ -520,10 +518,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     $nom = $equipement . ' normal';
                 }
                 $valeur1 = round($niveau * $niveau / 17);
-            }
-
-            if ($rarete >= 2) {
-
+            } else if ($rarete >= 2) {
 
                 if ($equipement == 'Dague') {
                     if (rand(0, 100) > 75) {
@@ -573,9 +568,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     } else {
                         $nom = $equipement . ' magique';
                     }
-                }
-
-                if ($rarete == 4) {
+                }else if ($rarete == 4) {
                     $valeur1 = round($niveau * $niveau / 10);
                     $i = rand(0, count($proprietes_magiques_secondaires) - 1);
                     while ($proprietes_magiques_secondaires[$i] == $propriete_magique1) {
@@ -597,9 +590,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     } else {
                         $nom = $equipement . ' rare';
                     }
-                }
-
-                if ($rarete == 5) {
+                }else if ($rarete == 5) {
                     //Valeur 1
                     $valeur1 = round($niveau * $niveau / 7);
 
@@ -646,7 +637,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     ${'valeur' . $c} = round(${'valeur' . $c} / 3);
                 }
             }
-
+            // On met un numéro aux anneaux. Ce numéro oscille entre 0 et 1 pour pouvoir en placer 2 par inventaire.
             if ($type == 'Anneau')
                 $type = 'Anneau' . $numeroanneau;
 
@@ -670,7 +661,6 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                 'PropriétéMagique4' => $propriete_magique4,
                 'Valeur4' => $valeur4
             );
-
             array_push($objectListToDisplay, new Equipement($objectToPush));
 
         }
@@ -710,10 +700,13 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 				<a class="item-slot-container">
 					<div class="tooltip-hover"
                          data-tooltip-href="//www.diablofans.com/items/5847-rathmas-skull-helm?build=49508"
-                         data-item-id="5847"></div>
+                         data-item-id="5847">
+
+                    </div>
 					<span class="item-container"><span class="item-effect"></span></span>
 					<span class="image"><img src="images/items/<?php echo $equipementToDisplay->_Image; ?>"
-                                             alt="Image de l'objet"></span>
+                                             alt="Image de l'objet">
+                    </span>
 					<div class="touch-tip">
 
 						<div class="diablo-fans-tooltip item-tooltip">
@@ -750,18 +743,14 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                                             ?>
 
 										</li>
+                                        <?php
+                                        if ($equipementToDisplay->_Rareté > 1) {
+                                            ?>
+                                        <li class="primary-stat">Primary Stats</li>
 
-
-											<?php
-
-                                            if ($equipementToDisplay->_Rareté > 1) {
-
-                                                ?>
-                                                <li class="primary-stat">Primary Stats</li>
-
-                                                <li class="grouped-stats">
-												<ul>
-													<li class="stat ">
+                                        <li class="grouped-stats">
+                                            <ul>
+                                                <li class="stat ">
 													<?php
                                                     if (isset($equipementToDisplay->_PropriétéMagique1)) {
                                                         if ($equipementToDisplay->_PropriétéMagique1 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique1 == 'Critical Hit Damages Increased by') {
@@ -778,86 +767,80 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                                                         }
                                                     }
                                                     ?>
-													</li>
-													<li class="stat ">
-														<?php
-                                                        if (isset($equipementToDisplay->_PropriétéMagique2)) {
-                                                            if ($equipementToDisplay->_PropriétéMagique2 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique2 == 'Critical Hit Damages Increased by') {
-                                                                echo $equipementToDisplay->_PropriétéMagique2; ?> <span
-                                                                        class="value">
-                                                                +<?php echo $equipementToDisplay->_Valeur2; ?>%</span><?php
+                                                </li>
+                                                <li class="stat ">
+                                                    <?php
+                                                    if (isset($equipementToDisplay->_PropriétéMagique2)) {
+                                                        if ($equipementToDisplay->_PropriétéMagique2 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique2 == 'Critical Hit Damages Increased by') {
+                                                            echo $equipementToDisplay->_PropriétéMagique2; ?> <span
+                                                                    class="value">
+                                                            +<?php echo $equipementToDisplay->_Valeur2; ?>%</span><?php
+                                                        } else {
+                                                            ?><span class="value">
+                                                            +<?php echo max(0, $equipementToDisplay->_Valeur2 - 1); ?></span>-
+
+
+
+                                                            <span class="value"><?php echo ceil($equipementToDisplay->_Valeur2 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique2;
+                                                        }
+                                                    }
+                                                    ?>
+                                                </li>
+                                                <li class="stat ">
+                                                    <?php
+                                                    if ($equipementToDisplay->_Rareté > 3){
+                                                    if (isset($equipementToDisplay->_PropriétéMagique3)) {
+                                                        if ($equipementToDisplay->_PropriétéMagique3 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique3 == 'Critical Hit Damages Increased by') {
+                                                            echo $equipementToDisplay->_PropriétéMagique3; ?> <span
+                                                                    class="value">
+                                                            +<?php echo $equipementToDisplay->_Valeur3; ?>%</span><?php
+                                                        } else {
+                                                            ?><span class="value">
+                                                            +<?php echo max(0, $equipementToDisplay->_Valeur3 - 1); ?></span>-
+
+                                                            <span class="value"><?php echo ceil($equipementToDisplay->_Valeur3 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique3;
+                                                        }
+                                                    }
+                                                    ?>
+                                                    </li>
+                                                    <li class="stat ">
+                                                        <?php
+                                                        if (isset($equipementToDisplay->_PropriétéMagique4)) {
+                                                            if ($equipementToDisplay->_PropriétéMagique4 == 'Sockets') {
+                                                                ?> <span>Sockets (<span
+                                                                        class="value"><?php echo $equipementToDisplay->_Valeur4; ?></span>)
+                                                                </span><?php
+                                                            } elseif ($equipementToDisplay->_PropriétéMagique4 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique4 == 'Critical Hit Damages Increased by') {
+                                                                echo $equipementToDisplay->_PropriétéMagique4; ?>
+                                                                <span class="value">
+                                                                +<?php echo $equipementToDisplay->_Valeur4; ?>%</span><?php
                                                             } else {
                                                                 ?><span class="value">
-                                                                +<?php echo max(0, $equipementToDisplay->_Valeur2 - 1); ?></span>-
+                                                                +<?php echo max(0, $equipementToDisplay->_Valeur4 - 1); ?></span>-
 
 
 
-                                                                <span class="value"><?php echo ceil($equipementToDisplay->_Valeur2 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique2;
+                                                                <span class="value"><?php echo ceil($equipementToDisplay->_Valeur4 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique4;
                                                             }
                                                         }
                                                         ?>
-													</li>
-													<li class="stat ">
-														<?php
-                                                        if ($equipementToDisplay->_Rareté > 3){
-                                                        if (isset($equipementToDisplay->_PropriétéMagique3)) {
-                                                            if ($equipementToDisplay->_PropriétéMagique3 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique3 == 'Critical Hit Damages Increased by') {
-                                                                echo $equipementToDisplay->_PropriétéMagique3; ?> <span
-                                                                        class="value">
-                                                                +<?php echo $equipementToDisplay->_Valeur3; ?>%</span><?php
-                                                            } else {
-                                                                ?><span class="value">
-                                                                +<?php echo max(0, $equipementToDisplay->_Valeur3 - 1); ?></span>-
-
-
-
-                                                                <span class="value"><?php echo ceil($equipementToDisplay->_Valeur3 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique3;
-                                                            }
-                                                        }
+                                                    </li>
+                                                    <?php
+                                                    if ($equipementToDisplay->_Rareté == 5) {
                                                         ?>
-															</li>
-															<li class="stat ">
-																<?php
-                                                                if (isset($equipementToDisplay->_PropriétéMagique4)) {
-                                                                    if ($equipementToDisplay->_PropriétéMagique4 == 'Sockets') {
-                                                                        ?> <span>Sockets (<span
-                                                                                class="value"><?php echo $equipementToDisplay->_Valeur4; ?></span>)
-                                                                        </span><?php
-                                                                    } elseif ($equipementToDisplay->_PropriétéMagique4 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique4 == 'Critical Hit Damages Increased by') {
-                                                                        echo $equipementToDisplay->_PropriétéMagique4; ?>
-                                                                        <span class="value">
-                                                                        +<?php echo $equipementToDisplay->_Valeur4; ?>%</span><?php
-                                                                    } else {
-                                                                        ?><span class="value">
-                                                                        +<?php echo max(0, $equipementToDisplay->_Valeur4 - 1); ?></span>-
+                                                        <li class="primary-stat">Secondary Stats</li>
+                                                        <li class="passive ">
+                                                                    Pouvoir Spécial à insérer.
+                                                            </li>
 
-
-
-                                                                        <span class="value"><?php echo ceil($equipementToDisplay->_Valeur4 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique4;
-                                                                    }
-                                                                }
-                                                                ?>
-															</li>
-
-														<?php
-                                                        if ($equipementToDisplay->_Rareté == 5) {
-                                                            ?>
-                                                            <li class="primary-stat">Secondary Stats</li>
-                                                            <li class="passive ">
-																		Pouvoir Spécial à insérer.
-																</li>
-
-                                                            <?php
-                                                        }
-                                                        }
-                                                        ?>
+                                                        <?php
+                                                    }
+                                                    }
+                                                    ?>
 												</ul>
 											</li>
-
 											<?php
-
                                                 if ($equipementToDisplay->_Rareté == 6) {
-
 
                                                     $set = $bdd->query('SELECT p.*
 																FROM panoplie AS p
@@ -877,54 +860,53 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                                                     <li class="grouped-stats">
 													<ul>
 													   <li class="set">
-																	<?php echo $panoplie['Nom']; ?>
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Skull Helm') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Skull Helm
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Spikes') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Spikes
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Ribcage Plate') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Ribcage Plate
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Skeletal Legplates') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Skeletal Legplates
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Ossified Sabatons') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Ossified Sabatons
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Macabre Vambraces') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Macabre Vambraces
-																 </li><li class="set">
-
-																	(<span class="set-num">2</span>) Set: <span
-                                                                    class="<?php if ($nb['count(*)'] > 1) {
-                                                                        echo 'value';
-                                                                    } ?>"><?php echo $panoplie['Effet1']; ?></span>
-																 </li><li class="set">
-																	(<span class="set-num">4</span>) Set: <span
-                                                                    class="<?php if ($nb['count(*)'] > 3) {
-                                                                        echo 'value';
-                                                                    } ?>"><?php echo $panoplie['Effet2']; ?></span>
-																 </li><li class="set">
-																	(<span class="set-num">6</span>) Set: <span
-                                                                    class="<?php if ($nb['count(*)'] > 5) {
-                                                                        echo 'value';
-                                                                    } ?>"><?php echo $panoplie['Effet3']; ?></span>
-																 </li>
+                                                           <?php echo $panoplie['Nom']; ?>
+                                                       </li>
+                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Skull Helm') {
+                                                            echo 'item-name';
+                                                        } ?>"> Rathma's Skull Helm
+                                                        </li>
+                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Spikes') {
+                                                            echo 'item-name';
+                                                        } ?>"> Rathma's Spikes
+                                                        </li>
+                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Ribcage Plate') {
+                                                            echo 'item-name';
+                                                        } ?>"> Rathma's Ribcage Plate
+                                                        </li>
+                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Skeletal Legplates') {
+                                                            echo 'item-name';
+                                                        } ?>"> Rathma's Skeletal Legplates
+                                                        </li>
+                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Ossified Sabatons') {
+                                                            echo 'item-name';
+                                                        } ?>"> Rathma's Ossified Sabatons
+                                                        </li>
+                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Macabre Vambraces') {
+                                                            echo 'item-name';
+                                                        } ?>"> Rathma's Macabre Vambraces
+                                                        </li>
+                                                        <li class="set">
+                                                            (<span class="set-num">2</span>) Set:
+                                                            <span class="<?php if ($nb['count(*)'] > 1) {
+                                                                echo 'value';
+                                                            } ?>"><?php echo $panoplie['Effet1']; ?>
+                                                            </span>
+                                                        </li>
+                                                        <li class="set">
+                                                            (<span class="set-num">4</span>) Set:
+                                                            <span class="<?php if ($nb['count(*)'] > 3) {
+                                                                echo 'value';
+                                                            } ?>"><?php echo $panoplie['Effet2']; ?>
+                                                            </span>
+                                                        </li>
+                                                        <li class="set">
+                                                            (<span class="set-num">6</span>) Set:
+                                                            <span class="<?php if ($nb['count(*)'] > 5) {
+                                                                echo 'value';
+                                                            } ?>"><?php echo $panoplie['Effet3']; ?>
+                                                            </span>
+                                                        </li>
 													</ul>
 												</li>
                                                     <?php
@@ -975,7 +957,6 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                                                value=<?php echo $equipementToDisplay->_Niveau; ?>>
 										<input type="hidden" name="Type"
                                                value=<?php echo $equipementToDisplay->_Type; ?>>
-
 
 										<input class="button button1" type="submit" value="Enregistrer l'objet"/>
 									</form>
