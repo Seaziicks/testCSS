@@ -693,6 +693,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
         <div class="mobile-item-wrapper d3-class-necromancer">
 			<ul class="mobile-item-selection">	<?php
                 foreach ($inventaire->getEquipementPortesAsArray() as $equipementToDisplay) {
+                    /* @var $equipementToDisplay Equipement */
                     // print_r($inventaire->getEquipementPortesAsArray());
                     if (isset($equipementToDisplay)) {
                         ?>

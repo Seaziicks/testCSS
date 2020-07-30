@@ -31,7 +31,7 @@ var XHR = null;
 
 //Fonction de sauvegarde des modifications apport?es
 
-function displayItemToDiv(idItem, characterID, characterLevel, componentIDToDisplayIn) {
+function displayItemToDiv(idItem, characterID, characterLevel, componentIDToDisplayIn, autoDisplayItem) {
     //Si l'objet existe d?j? on abandonne la requ?te et on le supprime
     if (XHR && XHR.readyState !== 0) {
         XHR.abort();
@@ -48,7 +48,7 @@ function displayItemToDiv(idItem, characterID, characterLevel, componentIDToDisp
     }
 
     //URL du script de sauvegarde auquel on passe la valeur ? modifier
-    XHR.open("GET", "Rest/itemRest.php?idItem=" + idItem + "&asHTML=" + true + "&characterID=" + characterID + "&characterLevel=" + characterLevel, true);
+    XHR.open("GET", "Rest/itemRest.php?idItem=" + idItem + "&asHTML=" + true + "&characterID=" + characterID + "&characterLevel=" + characterLevel + "&autoDisplayItem=" + autoDisplayItem, true);
 
     //On se sert de l'?v?nement OnReadyStateChange pour supprimer l'input et le replacer par son contenu
     XHR.onreadystatechange = function () {

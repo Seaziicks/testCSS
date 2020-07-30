@@ -26,9 +26,11 @@ switch ($http_method) {
     case "GET" :
 
         $ObjectManager = new EquipementManager($bdd);
+        $autoDisplay = isset($_GET['autoDisplayItem']) ? filter_var($_GET['autoDisplayItem'],FILTER_VALIDATE_BOOLEAN) : false;
+        //print(var_dump($autoDisplay));
 
         if (strtolower($_GET['asHTML']) == "true") {
-            $fetchedObject = $ObjectManager->getEquipementAsHTML($_GET['idItem'], $_GET['characterID'], $_GET['characterLevel']);
+            $fetchedObject = $ObjectManager->getEquipementAsHTMLByID($_GET['idItem'], $_GET['characterID'], $_GET['characterLevel'], $autoDisplay);
             $matchingData['itemAsHTML'] = $fetchedObject;
         } else {
             $fetchedObject = $ObjectManager->get($_GET['idItem']);

@@ -36,7 +36,7 @@
                     ?>
 
                     <li class="d3-item item-slot-id-<?php echo $currentObjectType; ?> rarity-<?php echo $fetchedObject->_Rareté; ?>"
-                        onclick="displayItemToDiv(<?=$fetchedObject->_Id_Objet.','.$personnage->_Id_Personnage.','.$personnage->_Niveau?>, 'divItemDisplay')">
+                        onclick="displayItemToDiv(<?=$fetchedObject->_Id_Objet.','.$personnage->_Id_Personnage.','.$personnage->_Niveau?>, 'divItemDisplay', 'true')">
                         <!-- TODO: two-handed weapon tag -->
                         <a class="item-slot-container">
                             <div class="tooltip-hover"
