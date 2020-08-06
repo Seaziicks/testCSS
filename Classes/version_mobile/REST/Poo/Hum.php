@@ -224,6 +224,7 @@ function chargerClasse($classname)
 <?php
 
 try {
+    $bdd = null;
     include("BDD.php");
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
@@ -288,6 +289,9 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
             $valeur2 = null;
             $valeur3 = null;
             $valeur4 = null;
+            $pouvoir_special1 = null;
+            $pouvoir_special2 = null;
+            $valeur_pouvoir_special = null;
 
             $couleursPossible = ['Gris', 'Blanc', 'Bleu', 'Jaune', 'Orange', 'Vert'];
             $couleur = $couleursPossible[$rarete - 1];
@@ -637,6 +641,8 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     ${'valeur' . $c} = round(${'valeur' . $c} / 3);
                 }
             }
+            if($rarete == 5)
+                $pouvoir_special1 = "Pouvoir Spécial à insérer";
             // On met un numéro aux anneaux. Ce numéro oscille entre 0 et 1 pour pouvoir en placer 2 par inventaire.
             if ($type == 'Anneau')
                 $type = 'Anneau' . $numeroanneau;
@@ -659,7 +665,10 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                 'PropriétéMagique3' => $propriete_magique3,
                 'Valeur3' => $valeur3,
                 'PropriétéMagique4' => $propriete_magique4,
-                'Valeur4' => $valeur4
+                'Valeur4' => $valeur4,
+                'Pouvoir_Spécial1' => $pouvoir_special1,
+                'Pouvoir_Spécial2' => $pouvoir_special2,
+                'Valeur_Pouvoir_Special' => $valeur_pouvoir_special
             );
             array_push($objectListToDisplay, new Equipement($objectToPush));
 
@@ -687,7 +696,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
             $equipementsPortesList[$indexEquipementsPortes]->setFromEmpty($equipementToPlace);
         }
     }
-
+    $EquipementManager = new EquipementManager($bdd);
     foreach ($equipementsPortesList as $inventaire) {
         ?><span class="alignement">
         <div class="mobile-item-wrapper d3-class-necromancer">
@@ -708,264 +717,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 					<span class="image"><img src="images/items/<?php echo $equipementToDisplay->_Image; ?>"
                                              alt="Image de l'objet">
                     </span>
-					<div class="touch-tip">
-
-						<div class="diablo-fans-tooltip item-tooltip">
-							<div class="db-tooltip">
-								<ul class="db-summary">
-									<li class="db-title rarity-<?php echo $equipementToDisplay->_Rareté; ?> db-header">
-										<span><?php echo $equipementToDisplay->_Nom; ?></span>
-									</li>
-								</ul>
-								<div class="db-image rarity-<?php echo $equipementToDisplay->_Rareté; ?>">
-									<img src="images/items/<?php echo $equipementToDisplay->_Image; ?>"
-                                         alt="Image de l'objet">
-								</div>
-								<div class="db-description" style="width : 100%;">
-									<small class="rarity-<?php echo $equipementToDisplay->_Rareté; ?>"><?php echo $equipementToDisplay->_Type; ?> <span
-                                                class="niveauObj"> Niveau : <?php echo $equipementToDisplay->_Niveau; ?></span></small>
-									<ul class="db-summary">
-										<li class="primary-stat">
-											<?php
-                                            if (isset($equipementToDisplay->_Statistique_Principale)) {
-                                                if ($equipementToDisplay->_Statistique_Principale == 'Armure' or $equipementToDisplay->_Statistique_Principale == 'Dégâts des sorts') {
-                                                    ?>
-                                                    <span><?php echo $equipementToDisplay->_Val; ?></span>
-                                                    <small><?php echo $equipementToDisplay->_Statistique_Principale; ?></small>
-
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <span><?php echo $equipementToDisplay->_Val; ?> - <?php echo $equipementToDisplay->_Val2; ?></span>
-                                                    <small><?php echo $equipementToDisplay->_Statistique_Principale; ?></small>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-
-										</li>
-                                        <?php
-                                        if ($equipementToDisplay->_Rareté > 1) {
-                                            ?>
-                                        <li class="primary-stat">Primary Stats</li>
-
-                                        <li class="grouped-stats">
-                                            <ul>
-                                                <li class="stat ">
-													<?php
-                                                    if (isset($equipementToDisplay->_PropriétéMagique1)) {
-                                                        if ($equipementToDisplay->_PropriétéMagique1 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique1 == 'Critical Hit Damages Increased by') {
-                                                            echo $equipementToDisplay->_PropriétéMagique1; ?> <span
-                                                                    class="value">
-                                                            +<?php echo $equipementToDisplay->_Valeur1; ?>%</span><?php
-                                                        } else {
-                                                            ?><span class="value">
-                                                            +<?php echo($equipementToDisplay->_Valeur1 - 1); ?></span>-
-
-
-
-                                                            <span class="value"><?php echo ceil($equipementToDisplay->_Valeur1 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique1;
-                                                        }
-                                                    }
-                                                    ?>
-                                                </li>
-                                                <li class="stat ">
-                                                    <?php
-                                                    if (isset($equipementToDisplay->_PropriétéMagique2)) {
-                                                        if ($equipementToDisplay->_PropriétéMagique2 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique2 == 'Critical Hit Damages Increased by') {
-                                                            echo $equipementToDisplay->_PropriétéMagique2; ?> <span
-                                                                    class="value">
-                                                            +<?php echo $equipementToDisplay->_Valeur2; ?>%</span><?php
-                                                        } else {
-                                                            ?><span class="value">
-                                                            +<?php echo max(0, $equipementToDisplay->_Valeur2 - 1); ?></span>-
-
-
-
-                                                            <span class="value"><?php echo ceil($equipementToDisplay->_Valeur2 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique2;
-                                                        }
-                                                    }
-                                                    ?>
-                                                </li>
-                                                <li class="stat ">
-                                                    <?php
-                                                    if ($equipementToDisplay->_Rareté > 3){
-                                                    if (isset($equipementToDisplay->_PropriétéMagique3)) {
-                                                        if ($equipementToDisplay->_PropriétéMagique3 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique3 == 'Critical Hit Damages Increased by') {
-                                                            echo $equipementToDisplay->_PropriétéMagique3; ?> <span
-                                                                    class="value">
-                                                            +<?php echo $equipementToDisplay->_Valeur3; ?>%</span><?php
-                                                        } else {
-                                                            ?><span class="value">
-                                                            +<?php echo max(0, $equipementToDisplay->_Valeur3 - 1); ?></span>-
-
-                                                            <span class="value"><?php echo ceil($equipementToDisplay->_Valeur3 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique3;
-                                                        }
-                                                    }
-                                                    ?>
-                                                    </li>
-                                                    <li class="stat ">
-                                                        <?php
-                                                        if (isset($equipementToDisplay->_PropriétéMagique4)) {
-                                                            if ($equipementToDisplay->_PropriétéMagique4 == 'Sockets') {
-                                                                ?> <span>Sockets (<span
-                                                                        class="value"><?php echo $equipementToDisplay->_Valeur4; ?></span>)
-                                                                </span><?php
-                                                            } elseif ($equipementToDisplay->_PropriétéMagique4 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique4 == 'Critical Hit Damages Increased by') {
-                                                                echo $equipementToDisplay->_PropriétéMagique4; ?>
-                                                                <span class="value">
-                                                                +<?php echo $equipementToDisplay->_Valeur4; ?>%</span><?php
-                                                            } else {
-                                                                ?><span class="value">
-                                                                +<?php echo max(0, $equipementToDisplay->_Valeur4 - 1); ?></span>-
-
-
-
-                                                                <span class="value"><?php echo ceil($equipementToDisplay->_Valeur4 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique4;
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </li>
-                                                    <?php
-                                                    if ($equipementToDisplay->_Rareté == 5) {
-                                                        ?>
-                                                        <li class="primary-stat">Secondary Stats</li>
-                                                        <li class="passive ">
-                                                                    Pouvoir Spécial à insérer.
-                                                            </li>
-
-                                                        <?php
-                                                    }
-                                                    }
-                                                    ?>
-												</ul>
-											</li>
-											<?php
-                                                if ($equipementToDisplay->_Rareté == 6) {
-
-                                                    $set = $bdd->query('SELECT p.*
-																FROM panoplie AS p
-																WHERE p.Id_Panoplie=' . $equipementToDisplay['Id_Panoplie'] . '
-																');
-                                                    $panoplie = $set->fetch();
-
-                                                    $nombre = $bdd->query('SELECT count(*)
-																FROM equiper AS e, personnage AS p, equipement as o 
-																WHERE e.Id_Personnage = p.Id_Personnage
-																AND p.Id_Personnage = ' . $personnageID . '
-																AND o.id_panoplie=' . $equipementToDisplay['Id_Panoplie'] . '
-																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambieres,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
-																');
-                                                    $nb = $nombre->fetch();
-                                                    ?>
-                                                    <li class="grouped-stats">
-													<ul>
-													   <li class="set">
-                                                           <?php echo $panoplie['Nom']; ?>
-                                                       </li>
-                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Skull Helm') {
-                                                            echo 'item-name';
-                                                        } ?>"> Rathma's Skull Helm
-                                                        </li>
-                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Spikes') {
-                                                            echo 'item-name';
-                                                        } ?>"> Rathma's Spikes
-                                                        </li>
-                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Ribcage Plate') {
-                                                            echo 'item-name';
-                                                        } ?>"> Rathma's Ribcage Plate
-                                                        </li>
-                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Skeletal Legplates') {
-                                                            echo 'item-name';
-                                                        } ?>"> Rathma's Skeletal Legplates
-                                                        </li>
-                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Ossified Sabatons') {
-                                                            echo 'item-name';
-                                                        } ?>"> Rathma's Ossified Sabatons
-                                                        </li>
-                                                        <li class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Macabre Vambraces') {
-                                                            echo 'item-name';
-                                                        } ?>"> Rathma's Macabre Vambraces
-                                                        </li>
-                                                        <li class="set">
-                                                            (<span class="set-num">2</span>) Set:
-                                                            <span class="<?php if ($nb['count(*)'] > 1) {
-                                                                echo 'value';
-                                                            } ?>"><?php echo $panoplie['Effet1']; ?>
-                                                            </span>
-                                                        </li>
-                                                        <li class="set">
-                                                            (<span class="set-num">4</span>) Set:
-                                                            <span class="<?php if ($nb['count(*)'] > 3) {
-                                                                echo 'value';
-                                                            } ?>"><?php echo $panoplie['Effet2']; ?>
-                                                            </span>
-                                                        </li>
-                                                        <li class="set">
-                                                            (<span class="set-num">6</span>) Set:
-                                                            <span class="<?php if ($nb['count(*)'] > 5) {
-                                                                echo 'value';
-                                                            } ?>"><?php echo $panoplie['Effet3']; ?>
-                                                            </span>
-                                                        </li>
-													</ul>
-												</li>
-                                                    <?php
-                                                    $nombre->closeCursor();
-                                                    $set->closeCursor();
-                                                }
-                                            }
-                                            ?>
-									</ul>
-
-									<br>
-									<form method="post" action="ajouter_objet.php" target=_blank>
-										<input type="hidden" name="Statistique_Principale"
-                                               value="<?php echo $equipementToDisplay->_Statistique_Principale; ?>">
-										<input type="hidden" name="Val" value=<?php echo $equipementToDisplay->_Val; ?>>
-										<input type="hidden" name="Val2"
-                                               value=<?php echo $equipementToDisplay->_Val2; ?>>
-										<input type="hidden" name="PropriétéMagique1"
-                                               value="<?php echo $equipementToDisplay->_PropriétéMagique1; ?>">
-										<input type="hidden" name="PropriétéMagique2"
-                                               value="<?php echo $equipementToDisplay->_PropriétéMagique2; ?>">
-										<input type="hidden" name="PropriétéMagique3"
-                                               value="<?php echo $equipementToDisplay->_PropriétéMagique3; ?>">
-										<input type="hidden" name="PropriétéMagique4"
-                                               value="<?php echo $equipementToDisplay->_PropriétéMagique4; ?>">
-										<input type="hidden" name="Valeur1"
-                                               value=<?php echo $equipementToDisplay->_Valeur1; ?>>
-										<input type="hidden" name="Valeur2"
-                                               value=<?php echo $equipementToDisplay->_Valeur2; ?>>
-										<input type="hidden" name="Valeur3"
-                                               value=<?php echo $equipementToDisplay->_Valeur3; ?>>
-										<input type="hidden" name="Valeur4"
-                                               value=<?php echo $equipementToDisplay->_Valeur4; ?>>
-
-										<input type="hidden" name="Nom"
-                                               value="<?php echo $equipementToDisplay->_Nom; ?>">
-										<input type="hidden" name="Image"
-                                               value=<?php echo $equipementToDisplay->_Image; ?>>
-										<input type="hidden" name="Couleur"
-                                               value=<?php echo $equipementToDisplay->_Couleur; ?>>
-										<input type="hidden" name="Rareté"
-                                               value=<?php echo $equipementToDisplay->_Rareté; ?>>
-										<input type="hidden" name="Type"
-                                               value=<?php echo $equipementToDisplay->_Type; ?>>
-										<input type="hidden" name="Emplacement"
-                                               value=<?php echo $equipementToDisplay->_Emplacement; ?>>
-										<input type="hidden" name="Niveau"
-                                               value=<?php echo $equipementToDisplay->_Niveau; ?>>
-										<input type="hidden" name="Type"
-                                               value=<?php echo $equipementToDisplay->_Type; ?>>
-
-										<input class="button button1" type="submit" value="Enregistrer l'objet"/>
-									</form>
-
-								</div>
-							</div>
-						</div>
-					</div>
+					<?= $EquipementManager->getEquipementAsHTML($equipementToDisplay, $personnageID, $personnage->_Niveau, false, true)?>
 				</a>
 			</li>
                         <?php

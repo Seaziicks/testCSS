@@ -57,14 +57,14 @@ class EquipementManager
         $this->_db = $db;
     }
 
-    public function getEquipementAsHTMLByID(int $id, int $personnageID, int $personnageLevel, bool $autoDisplayItem = false) : string
+    public function getEquipementAsHTMLByID(int $id, int $personnageID, int $personnageLevel, bool $autoDisplayItem = false, bool $hasToBeValidated = false) : string
     {
         $fetchedObject = $this->get($id);
         if($fetchedObject->_Emplacement =="Bijou") $fetchedObject->_Emplacement = $fetchedObject->_Type;
-        return $this->getEquipementAsHTML($fetchedObject, $personnageID, $personnageLevel, $autoDisplayItem);
+        return $this->getEquipementAsHTML($fetchedObject, $personnageID, $personnageLevel, $autoDisplayItem, $hasToBeValidated);
     }
 
-    public function getEquipementAsHTML(Equipement $fetchedObject, int $personnageID, int $personnageLevel, bool $autoDisplayItem = false) : string
+    public function getEquipementAsHTML(Equipement $fetchedObject, int $personnageID, int $personnageLevel, bool $autoDisplayItem = false, bool $hasToBeValidated = false) : string
     {
         $returnedHTMLItem = "<div class=\"touch-tip\"";
                             if($autoDisplayItem)
@@ -116,8 +116,10 @@ class EquipementManager
                                                                         <span class=\"value\">
                                                                         + $fetchedObject->_Valeur1%</span>";
                 } else {
-                    $returnedHTMLItem .= "<span class=\"value\">
-                                                                        + $fetchedObject->_Valeur1</span> $fetchedObject->_PropriétéMagique1";
+                    if($hasToBeValidated)
+                        $returnedHTMLItem .= "<span class=\"value\">+".max(0, $fetchedObject->_Valeur1 - 1)."</span>-<span class=\"value\">".ceil($fetchedObject->_Valeur1 * 1.25)."</span> $fetchedObject->_PropriétéMagique1";
+                    else
+                        $returnedHTMLItem .= "<span class=\"value\">+ $fetchedObject->_Valeur1</span> $fetchedObject->_PropriétéMagique1";
                 }
                 $returnedHTMLItem .= "</li>
                                                                 <li class=\"stat \">";
@@ -127,21 +129,25 @@ class EquipementManager
                                                                             <span class=\"value\">
                                                                             + $fetchedObject->_Valeur2%</span>";
                     } else {
-                        $returnedHTMLItem .= "<span class=\"value\">
-                                                                            + $fetchedObject->_Valeur2</span>$fetchedObject->_PropriétéMagique2";
+                        if($hasToBeValidated)
+                            $returnedHTMLItem .= "<span class=\"value\">+".max(0, $fetchedObject->_Valeur2 - 1)."</span>-<span class=\"value\">".ceil($fetchedObject->_Valeur2 * 1.25)."</span> $fetchedObject->_PropriétéMagique2";
+                        else
+                            $returnedHTMLItem .= "<span class=\"value\">+ $fetchedObject->_Valeur2</span> $fetchedObject->_PropriétéMagique2";
                     }
                 }
                 $returnedHTMLItem .= "</li>
-                                                                <li class=\"stat \">";
+                                        <li class=\"stat \">";
                 if ($fetchedObject->_Rareté > 3){
 
                     if ($fetchedObject->_PropriétéMagique3 == 'Critical Hit Chance Increased by' or $fetchedObject->_PropriétéMagique3 == 'Critical Hit Damages Increased by') {
                         $returnedHTMLItem .= "$fetchedObject->_PropriétéMagique3
-                                                                        <span class=\"value\">
-                                                                        + $fetchedObject->_Valeur3%</span>";
+                                        <span class=\"value\">
+                                        + $fetchedObject->_Valeur3%</span>";
                     } else {
-                        $returnedHTMLItem .= "<span class=\"value\">
-                                                                        + $fetchedObject->_Valeur3</span>$fetchedObject->_PropriétéMagique3";
+                        if($hasToBeValidated)
+                            $returnedHTMLItem .= "<span class=\"value\">+".max(0, $fetchedObject->_Valeur3 - 1)."</span>-<span class=\"value\">".ceil($fetchedObject->_Valeur3 * 1.25)."</span> $fetchedObject->_PropriétéMagique3";
+                        else
+                            $returnedHTMLItem .= "<span class=\"value\">+ $fetchedObject->_Valeur3</span> $fetchedObject->_PropriétéMagique3";
                     }
                     $returnedHTMLItem .= "</li>
                                                                 <li class=\"stat \">";
@@ -155,8 +161,10 @@ class EquipementManager
                                                                             <span class=\"value\">
                                                                             + $fetchedObject->_Valeur4%</span>";
                         } else {
-                            $returnedHTMLItem .= "<span class=\"value\">
-                                                                            + $fetchedObject->_Valeur4</span> $fetchedObject->_PropriétéMagique4";
+                            if($hasToBeValidated)
+                                $returnedHTMLItem .= "<span class=\"value\">+".max(0, $fetchedObject->_Valeur4 - 1)."</span>-<span class=\"value\">".ceil($fetchedObject->_Valeur4 * 1.25)."</span> $fetchedObject->_PropriétéMagique4";
+                            else
+                                $returnedHTMLItem .= "<span class=\"value\">+ $fetchedObject->_Valeur4</span> $fetchedObject->_PropriétéMagique4";
                         }
                     }
                     $returnedHTMLItem .= "</li>";
@@ -238,8 +246,54 @@ class EquipementManager
                 }
             }
         }
-        $returnedHTMLItem .= "</ul>
-                                        </div>
+        $returnedHTMLItem .= "</ul>";
+        if($hasToBeValidated) {
+            $returnedHTMLItem .= "<br>
+            <form method=\"post\" action=\"ajouter_objet.php\" target=_blank>
+                <input type=\"hidden\" name=\"Statistique_Principale\"
+                       value=\"$fetchedObject->_Statistique_Principale\">
+                <input type=\"hidden\" name=\"Val\" value=$fetchedObject->_Val>
+                <input type=\"hidden\" name=\"Val2\"
+                       value=$fetchedObject->_Val2>
+                <input type=\"hidden\" name=\"PropriétéMagique1\"
+                       value=\"$fetchedObject->_PropriétéMagique1\">
+                <input type=\"hidden\" name=\"PropriétéMagique2\"
+                       value=\"$fetchedObject->_PropriétéMagique2\">
+                <input type=\"hidden\" name=\"PropriétéMagique3\"
+                       value=\"$fetchedObject->_PropriétéMagique3\">
+                <input type=\"hidden\" name=\"PropriétéMagique4\"
+                       value=\"$fetchedObject->_PropriétéMagique4\">
+                <input type=\"hidden\" name=\"Valeur1\"
+                       value=$fetchedObject->_Valeur1>
+                <input type=\"hidden\" name=\"Valeur2\"
+                       value=$fetchedObject->_Valeur2>
+                <input type=\"hidden\" name=\"Valeur3\"
+                       value=$fetchedObject->_Valeur3>
+                <input type=\"hidden\" name=\"Valeur4\"
+                       value=$fetchedObject->_Valeur4>
+
+                <input type=\"hidden\" name=\"Nom\"
+                       value=\"$fetchedObject->_Nom\">
+                <input type=\"hidden\" name=\"Image\"
+                       value=$fetchedObject->_Image>
+                <input type=\"hidden\" name=\"Couleur\"
+                       value=$fetchedObject->_Couleur>
+                <input type=\"hidden\" name=\"Rareté\"
+                       value=$fetchedObject->_Rareté>
+                <input type=\"hidden\" name=\"Type\"
+                       value=$fetchedObject->_Type>
+                <input type=\"hidden\" name=\"Emplacement\"
+                       value=$fetchedObject->_Emplacement>
+                <input type=\"hidden\" name=\"Niveau\"
+                       value=$fetchedObject->_Niveau>
+                <input type=\"hidden\" name=\"Type\"
+                       value=$fetchedObject->_Type>
+
+                <input class=\"button button1\" type=\"submit\" value=\"Enregistrer l'objet\"/>
+            </form>";
+        }
+
+                                        $returnedHTMLItem .= "</div>
                                     </div>
                                 </div>
                             </div>";
