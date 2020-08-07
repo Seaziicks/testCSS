@@ -13,7 +13,7 @@
 			 /// Récupération des critères de recherche envoyés par le Client
 			 if (!empty($_GET['id'])){
 					include('combatEntities.php');
-					$matchingData = $réponse;
+					$matchingData = $reponse;
 			}
 			 /// Envoi de la réponse au Client
 			deliver_response(200, "Votre message", $matchingData);

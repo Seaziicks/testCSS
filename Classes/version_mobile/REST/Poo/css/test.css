@@ -6,6 +6,10 @@ div {
     display: block;
 }
 
+.item-tooltip {
+    font-family: initial;
+}
+
 .niveauObj{
 	float : right;
 }

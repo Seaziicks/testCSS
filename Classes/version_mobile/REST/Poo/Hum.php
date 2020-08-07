@@ -17,149 +17,28 @@ function chargerClasse($classname)
 <html lang="fr">
 
 <head>
-    <title>RP - Créateur d'objets</title>
+    <!-- ===================    CSS    =================== -->
+    <?php include('css/BootstrapCSSImport.php'); ?>
     <link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/test.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/creation_item.css" type="text/css" media="screen"/>
-    <script type="text/javascript" src="inlinemod.js"></script>
-    <script type="text/javascript" src="inlinemod2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/navbar.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/createObject.css" type="text/css" media="screen"/>
 
-    <style>
+    <!-- ===================    Js    =================== -->
 
-        .alignement {
-            display: flex;
-            flex-flow: row wrap;
-            width: 365px;
-        <!-- 19 % --> color: white;
-            top: 0;
-            float: left;
-            margin-bottom: 50px;
-            border: 0.5px blue dashed;
-        }
+    <!-- ===================    Page    =================== -->
+    <title>Uncommitted Quest - Item creation</title>
+    <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
+    <link rel="icon" href="css/images/scroll-quill.png"/>
 
-        .mobile-item-wrapper {
-            margin: 0;
-        }
-
-        .caca {
-            width: 100%;
-            height: 100px;;
-            margin-left: 5px;
-            color: white;
-        }
-
-        .db-description {
-            width: 100%;
-        }
-
-        form {
-            color: white;
-        }
-
-
-        input[type="radio"]:checked + label img {
-            filter: saturate(250%);
-        }
-
-        input[type="radio"] {
-            transform: scale(0, 0);
-
-        }
-
-        form img {
-            width: 7%;
-        }
-
-        label {
-            text-align: center;
-        }
-
-        label span {
-            width: 20%;
-        }
-
-        .limite {
-            width: 100%;
-            text-align: center;
-            background-color: white;
-            margin-top: 35px;
-        }
-
-        .personnages {
-            width: 43.5%;
-            text-align: center;
-            margin: auto;
-            padding-left: 1.3%;
-        }
-
-        .personnages div {
-            float: left;
-            width: 20%;
-        }
-
-        input[type="number"] {
-            width: 11%;
-        }
-
-        .valeur {
-            color: #bda6db;
-        }
-
-        .personnagebis {
-            margin: auto;
-            color: white;
-        }
-
-        .Equipement {
-            position: relative;
-        }
-
-        .mobile-item-wrapper {
-            margin: auto;
-        }
-
-
-        .optionGroup {
-            font-weight: bold;
-            font-style: italic;
-            padding-top: 5px
-        }
-
-        .optionChild {
-            padding-left: 15px;
-            font-size: 90%;
-        }
-
-        .button {
-            border: none;
-            color: white;
-            padding: 7px 10px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .button:active {
-            box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        .button1 {
-            background-color: #555555;
-        }
-
-        .button1:hover {
-            color: black;
-            background-color: #e7e7e7;
-        }
-
-        .button1:active {
-            background-color: #555555;
-        }
-    </style>
 </head>
 <body>
-<?php include("TestMenu.php"); ?>
+<div class="background-image"></div>
+<div class="global-wrapper">
+<?php include('navbar.php');?>
+    <div class="wrapper">
+
 <div class="limite">
 
     <form method="post" action="">
@@ -203,130 +82,140 @@ function chargerClasse($classname)
         </div>
         <br><br><br>
         <div class="limite">
-            Qualités des objets :<br>
-            <input name="Nombre_Gris" type="number" min="0" placeholder="Mauvaises factures"
-                   value="<?php if (isset($_POST['Nombre_Gris'])) {
-                       echo $_POST['Nombre_Gris'];
-                   } ?>">
-            <input name="Nombre_Blanc" type="number" min="0" placeholder="Normaux"
-                   value="<?php if (isset($_POST['Nombre_Blanc'])) {
-                       echo $_POST['Nombre_Blanc'];
-                   } ?>">
-            <input name="Nombre_Bleu" type="number" min="0" placeholder="Magiques"
-                   value="<?php if (isset($_POST['Nombre_Bleu'])) {
-                       echo $_POST['Nombre_Bleu'];
-                   } ?>">
-            <input name="Nombre_Jaune" type="number" min="0" placeholder="Rares"
-                   value="<?php if (isset($_POST['Nombre_Jaune'])) {
-                       echo $_POST['Nombre_Jaune'];
-                   } ?>">
-            <input name="Nombre_Orange" type="number" min="0" placeholder="Légendaires"
-                   value="<?php if (isset($_POST['Nombre_Orange'])) {
-                       echo $_POST['Nombre_Orange'];
-                   } ?>">
-            <script>function hide() {
-                    document.getElementById('to_hide').style.display = 'none';
-                }
-            </script>
-            <SELECT name="équipement" size="1" id="caracteristique">
-                <OPTION disabled <?php if (empty($_POST['équipement'])) {
-                    echo 'selected';
-                } ?>> Item selectionnable
-                <OPTION>
-                <OPTION class="optionGroup"
-                        label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Equipements') {
-                    echo 'selected';
-                } ?>>Equipements
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bottes') {
-                    echo 'selected';
-                } ?>> Bottes
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Brassard') {
-                    echo 'selected';
-                } ?>>Brassard
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Ceinture') {
-                    echo 'selected';
-                } ?>>Ceinture
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Coiffe') {
-                    echo 'selected';
-                } ?>>Coiffe
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epaules') {
-                    echo 'selected';
-                } ?>>Epaules
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Gants') {
-                    echo 'selected';
-                } ?>>Gants
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Jambieres') {
-                    echo 'selected';
-                } ?>>Jambieres
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Torse') {
-                    echo 'selected';
-                } ?>>Torse
-                <OPTION disabled>
-                <OPTION class="optionGroup"
-                        label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bijoux') {
-                    echo 'selected';
-                } ?>>Bijoux
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Amulette') {
-                    echo 'selected';
-                } ?>>Amulette
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Anneau') {
-                    echo 'selected';
-                } ?>>Anneau
-                <OPTION disabled>
-                <OPTION class="optionGroup"
-                        label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Armes') {
-                    echo 'selected';
-                } ?>>Armes
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Baguette') {
-                    echo 'selected';
-                } ?>>Baguette
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Dague') {
-                    echo 'selected';
-                } ?>>Dague
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epée') {
-                    echo 'selected';
-                } ?>>Epée
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epée courte') {
-                    echo 'selected';
-                } ?>>Epée courte
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Faux') {
-                    echo 'selected';
-                } ?>>Faux
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Fléau') {
-                    echo 'selected';
-                } ?>>Fléau
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Hache') {
-                    echo 'selected';
-                } ?>>Hache
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Lance') {
-                    echo 'selected';
-                } ?>>Lance
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Massue') {
-                    echo 'selected';
-                } ?>>Massue
-                <OPTION disabled>
-                <OPTION class="optionGroup"
-                        label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Main gauche') {
-                    echo 'selected';
-                } ?>>Main gauche
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bouclier') {
-                    echo 'selected';
-                } ?>>Bouclier
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Ciboire') {
-                    echo 'selected';
-                } ?>>Ciboire
-                <OPTION class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Talisman démoniaque') {
-                    echo 'selected';
-                } ?>>Talisman démoniaque
-            </SELECT>
+                <div class="multipleInputs">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="">Qualités des objets</span>
+                    </div>
+                    <input type="number" name="Nombre_Gris" class="form-control"  min="0" max="20" placeholder="Mauvaises factures"
+                    value="<?php if (isset($_POST['Nombre_Gris'])) {
+                        echo $_POST['Nombre_Gris'];
+                    } ?>"">
+                    <input type="number" name="Nombre_Blanc" class="form-control"  min="0" max="20" placeholder="Normaux"
+                    value="<?php if (isset($_POST['Nombre_Blanc'])) {
+                        echo $_POST['Nombre_Blanc'];
+                    } ?>"">
+                    <input type="number" name="Nombre_Bleu" class="form-control"  min="0" max="20" placeholder="Magiques"
+                    value="<?php if (isset($_POST['Nombre_Bleu'])) {
+                        echo $_POST['Nombre_Bleu'];
+                    } ?>"">
+                    <input type="number" name="Nombre_Jaune" class="form-control"  min="0" max="20" placeholder="Rares"
+                    value="<?php if (isset($_POST['Nombre_Jaune'])) {
+                        echo $_POST['Nombre_Jaune'];
+                    } ?>"">
+                    <input type="number" name="Nombre_Orange" class="form-control"  min="0" max="20" placeholder="Légendaires"
+                    value="<?php if (isset($_POST['Nombre_Orange'])) {
+                        echo $_POST['Nombre_Orange'];
+                    } ?>"">
 
-            <input name="Niveau" type="number" min="0" placeholder="Niveau" value="<?php if (isset($_POST['Niveau'])) {
-                echo $_POST['Niveau'];
-            } ?>">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Equipement</label>
+                    </div>
+                    <select class="custom-select" name="équipement" size="1" id="caracteristique">
+                    <option disabled <?php if (empty($_POST['équipement'])) {
+                        echo 'selected';
+                    } ?>> Item selectionnable
+                    <option>
+
+                    <option class="optionGroup"
+                            label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Equipements') {
+                        echo 'selected';
+                    } ?>>Equipements
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bottes') {
+                        echo 'selected';
+                    } ?>> Bottes
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Brassard') {
+                        echo 'selected';
+                    } ?>>Brassard
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Ceinture') {
+                        echo 'selected';
+                    } ?>>Ceinture
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Coiffe') {
+                        echo 'selected';
+                    } ?>>Coiffe
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epaules') {
+                        echo 'selected';
+                    } ?>>Epaules
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Gants') {
+                        echo 'selected';
+                    } ?>>Gants
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Jambieres') {
+                        echo 'selected';
+                    } ?>>Jambieres
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Torse') {
+                        echo 'selected';
+                    } ?>>Torse
+                    <option disabled>
+                    <option class="optionGroup"
+                            label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bijoux') {
+                        echo 'selected';
+                    } ?>>Bijoux
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Amulette') {
+                        echo 'selected';
+                    } ?>>Amulette
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Anneau') {
+                        echo 'selected';
+                    } ?>>Anneau
+                    <option disabled>
+                    <option class="optionGroup"
+                            label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Armes') {
+                        echo 'selected';
+                    } ?>>Armes
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Baguette') {
+                        echo 'selected';
+                    } ?>>Baguette
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Dague') {
+                        echo 'selected';
+                    } ?>>Dague
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epée') {
+                        echo 'selected';
+                    } ?>>Epée
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Epée courte') {
+                        echo 'selected';
+                    } ?>>Epée courte
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Faux') {
+                        echo 'selected';
+                    } ?>>Faux
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Fléau') {
+                        echo 'selected';
+                    } ?>>Fléau
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Hache') {
+                        echo 'selected';
+                    } ?>>Hache
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Lance') {
+                        echo 'selected';
+                    } ?>>Lance
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Massue') {
+                        echo 'selected';
+                    } ?>>Massue
+                    <option disabled>
+                    <option class="optionGroup"
+                            label="" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Main gauche') {
+                        echo 'selected';
+                    } ?>>Main gauche
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Bouclier') {
+                        echo 'selected';
+                    } ?>>Bouclier
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Ciboire') {
+                        echo 'selected';
+                    } ?>>Ciboire
+                    <option class="optionChild" <?php if (!empty($_POST['équipement']) and $_POST['équipement'] == 'Talisman démoniaque') {
+                        echo 'selected';
+                    } ?>>Talisman démoniaque
+                </select>
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Niveau</span>
+                </div>
+                <input name="Niveau" type="number" class="form-control" min="0" placeholder="Niveau" value="<?php if (isset($_POST['Niveau'])) {
+                    echo $_POST['Niveau'];
+                } ?>">
+            </div>
         </div>
+    </div>
         <br>
         <div>
-            <input type="submit" value="Valider"/>
+            <input type="submit" class="btn btn-outline-success" value="Valider"/>
         </div>
     </form>
 
@@ -335,6 +224,7 @@ function chargerClasse($classname)
 <?php
 
 try {
+    $bdd = null;
     include("BDD.php");
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
@@ -356,11 +246,12 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
     Vous devez générer au moins 1 item. <br>
     <?php
 } else if (isset($_POST['Nombre_Gris']) and isset($_POST['Nombre_Blanc']) and isset($_POST['Nombre_Bleu']) and isset($_POST['Nombre_Jaune']) and isset($_POST['Nombre_Orange']) and isset($_POST['radio-choice'])) {
-
+    ?> <div style="display: flex; flex-flow: row wrap; margin-left: 150px; margin-right: 200px"><?php
 
     $personnageID = $_POST['radio-choice'];
     $personnageManager = new PersonnageManager($bdd);
     $personnage = $personnageManager->get($personnageID);
+    $EquipementManager = new EquipementManager($bdd);
     include('personnagebis.php');
     include('equipements.php');
 
@@ -369,7 +260,6 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
 
     $numeroanneau = 0;
-    $temoin = 0;
     /* @var $objectListToDisplay Equipement[] */
     $objectListToDisplay = [];
 // For every type of rarity
@@ -378,7 +268,6 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
         // For every equipment of that type
         for ($j = 1; $j <= $nbobjets[$k]; $j++) {
 
-
             if (!empty($_POST['Niveau']))
                 $niveau = $_POST['Niveau'];
             else
@@ -386,19 +275,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
             $niveau = rand($niveau - floor($niveau / 7), $niveau + floor($niveau / 10));
 
-            $temoin += 1;
-
-            $statistique_principale = null;
-            $propriete_magique1 = null;
-            $propriete_magique2 = null;
-            $propriete_magique3 = null;
-            $propriete_magique4 = null;
-            $val = null;
-            $val2 = null;
-            $valeur1 = null;
-            $valeur2 = null;
-            $valeur3 = null;
-            $valeur4 = null;
+            $equipementToCreate = $EquipementManager->getEmpty();
 
             $couleursPossible = ['Gris', 'Blanc', 'Bleu', 'Jaune', 'Orange', 'Vert'];
             $couleur = $couleursPossible[$rarete - 1];
@@ -455,8 +332,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
             }
 
             $proprietes_magiques_secondaires = ['Agilité', 'Agilité', 'Force', 'Force', 'Intelligence', 'Intelligence', 'Vitalité', 'Vitalité', 'Mana', 'Canon de lumière', 'Critique'];
-
-
+            /*
             switch ($equipement) {
                 case 'Dague':
                     $statistique_principale = 'Dégâts par coup';
@@ -620,9 +496,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
             if ($rarete == 1) {
                 $nom = $equipement . ' de mauvaise facture';
-            }
-
-            if ($rarete == 2) {
+            } else if ($rarete == 2) {
                 if (in_array($equipement, ['Coiffe', 'Epaules', 'Ceinture', 'Amulette']) or ($type == 'Arme' and $equipement != 'Fléau')) {
                     $nom = $equipement . ' normale';
                 } else if (in_array($equipement, ['Jambieres', 'Bottes'])) {
@@ -631,10 +505,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     $nom = $equipement . ' normal';
                 }
                 $valeur1 = round($niveau * $niveau / 17);
-            }
-
-            if ($rarete >= 2) {
-
+            } else if ($rarete >= 2) {
 
                 if ($equipement == 'Dague') {
                     if (rand(0, 100) > 75) {
@@ -684,9 +555,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     } else {
                         $nom = $equipement . ' magique';
                     }
-                }
-
-                if ($rarete == 4) {
+                }else if ($rarete == 4) {
                     $valeur1 = round($niveau * $niveau / 10);
                     $i = rand(0, count($proprietes_magiques_secondaires) - 1);
                     while ($proprietes_magiques_secondaires[$i] == $propriete_magique1) {
@@ -708,9 +577,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     } else {
                         $nom = $equipement . ' rare';
                     }
-                }
-
-                if ($rarete == 5) {
+                }else if ($rarete == 5) {
                     //Valeur 1
                     $valeur1 = round($niveau * $niveau / 7);
 
@@ -757,33 +624,59 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                     ${'valeur' . $c} = round(${'valeur' . $c} / 3);
                 }
             }
-
+            if($rarete == 5)
+                $pouvoir_special1 = "Pouvoir Spécial à insérer";
+            // On met un numéro aux anneaux. Ce numéro oscille entre 0 et 1 pour pouvoir en placer 2 par inventaire.
             if ($type == 'Anneau')
                 $type = 'Anneau' . $numeroanneau;
 
-            $objectToPush = array(
-                'Rareté' => $rarete,
-                'Couleur' => $couleur,
-                'Nom' => $nom,
-                'Type' => $type,
-                'Image' => $image,
-                'Emplacement' => $emplacement,
-                'Statistique_Principale' => $statistique_principale,
-                'Val' => $val,
-                'Val2' => $val2,
-                'Niveau' => $niveau,
-                'PropriétéMagique1' => $propriete_magique1,
-                'Valeur1' => $valeur1,
-                'PropriétéMagique2' => $propriete_magique2,
-                'Valeur2' => $valeur2,
-                'PropriétéMagique3' => $propriete_magique3,
-                'Valeur3' => $valeur3,
-                'PropriétéMagique4' => $propriete_magique4,
-                'Valeur4' => $valeur4
-            );
+            // Reorganising magic property to always have same order.
+            $displayOrder = ['Intelligence', 'Force', 'Agilité', 'Vitalité', 'Mana', 'Critique', 'Canon de lumière'];
+            $changed = true;
+            while($changed) {
+                $changed = false;
+                for ($x = 2; $x <= 4; $x++) {
+                    $y = $x;
+                    $z = $y + 1;
+                    while ($z < 5 && array_search(${'propriete_magique' . $y}, $displayOrder) > array_search(${'propriete_magique' . $z}, $displayOrder)) {
+                       $tmp = ${'propriete_magique' . $z};
+                        ${'propriete_magique' . $z} = ${'propriete_magique' . $y};
+                        ${'propriete_magique' . $y} = $tmp;
 
-            array_push($objectListToDisplay, new Equipement($objectToPush));
+                        $tmp = ${'valeur' . $z};
+                        ${'valeur' . $z} = ${'valeur' . $y};
+                        ${'valeur' . $y} = $tmp;
+                        $y++;
+                        $z = $y + 1;
+                        $changed = true;
+                    }
 
+                }
+            }
+
+            $equipementToCreate->setRareté($rarete);
+            $equipementToCreate->setCouleur($couleur);
+            $equipementToCreate->setNom($nom);
+            $equipementToCreate->setType($type);
+            $equipementToCreate->setImage($image);
+            $equipementToCreate->setEmplacement($emplacement);
+            $equipementToCreate->setStatistique_Principale($statistique_principale);
+            $equipementToCreate->setVal($val);
+            $equipementToCreate->setVal2($val2);
+            $equipementToCreate->setNiveau($niveau);
+            $equipementToCreate->setPropriétéMagique1($propriete_magique1);
+            $equipementToCreate->setValeur1($valeur1);
+            $equipementToCreate->setPropriétéMagique2($propriete_magique2);
+            $equipementToCreate->setVal2($valeur2);
+            $equipementToCreate->setPropriétéMagique3($propriete_magique3);
+            $equipementToCreate->setValeur3($valeur3);
+            $equipementToCreate->setPropriétéMagique4($propriete_magique4);
+            $equipementToCreate->setValeur4($valeur4);
+            $equipementToCreate->setPouvoir_Spécial1(null);
+            $equipementToCreate->setPouvoir_Spécial2('');
+            $equipementToCreate->setValeur_Pouvoir_Special(null);
+            */
+            array_push($objectListToDisplay, $equipementToCreate->getRandomItem($equipement, $rarete, $niveau, $proprietes_magiques_primaires, $proprietes_magiques_secondaires, $numeroanneau));
         }
     }
 
@@ -808,12 +701,13 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
             $equipementsPortesList[$indexEquipementsPortes]->setFromEmpty($equipementToPlace);
         }
     }
-
+    $EquipementManager = new EquipementManager($bdd);
     foreach ($equipementsPortesList as $inventaire) {
         ?><span class="alignement">
         <div class="mobile-item-wrapper d3-class-necromancer">
 			<ul class="mobile-item-selection">	<?php
                 foreach ($inventaire->getEquipementPortesAsArray() as $equipementToDisplay) {
+                    /* @var $equipementToDisplay Equipement */
                     // print_r($inventaire->getEquipementPortesAsArray());
                     if (isset($equipementToDisplay)) {
                         ?>
@@ -821,280 +715,14 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 				<a class="item-slot-container">
 					<div class="tooltip-hover"
                          data-tooltip-href="//www.diablofans.com/items/5847-rathmas-skull-helm?build=49508"
-                         data-item-id="5847"></div>
+                         data-item-id="5847">
+
+                    </div>
 					<span class="item-container"><span class="item-effect"></span></span>
 					<span class="image"><img src="images/items/<?php echo $equipementToDisplay->_Image; ?>"
-                                             alt="Image de l'objet"></span>
-					<div class="touch-tip">
-
-						<div class="diablo-fans-tooltip item-tooltip">
-							<div class="db-tooltip">
-								<ul class="db-summary">
-									<li class="db-title rarity-<?php echo $equipementToDisplay->_Rareté; ?> db-header">
-										<span><?php echo $equipementToDisplay->_Nom; ?></span>
-									</li>
-								</ul>
-								<div class="db-image rarity-<?php echo $equipementToDisplay->_Rareté; ?>">
-									<img src="images/items/<?php echo $equipementToDisplay->_Image; ?>"
-                                         alt="Image de l'objet">
-								</div>
-								<div class="db-description" style="width : 100%;">
-									<small class="rarity-<?php echo $equipementToDisplay->_Rareté; ?>"><?php echo $equipementToDisplay->_Type; ?> <span
-                                                class="niveauObj"> Niveau : <?php echo $equipementToDisplay->_Niveau; ?></span></small>
-									<ul class="db-summary">
-										<li class="primary-stat">
-											<?php
-                                            if (isset($equipementToDisplay->_Statistique_Principale)) {
-                                                if ($equipementToDisplay->_Statistique_Principale == 'Armure' or $equipementToDisplay->_Statistique_Principale == 'Dégâts des sorts') {
-                                                    ?>
-                                                    <span><?php echo $equipementToDisplay->_Val; ?></span>
-                                                    <small><?php echo $equipementToDisplay->_Statistique_Principale; ?></small>
-
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <span><?php echo $equipementToDisplay->_Val; ?> - <?php echo $equipementToDisplay->_Val2; ?></span>
-                                                    <small><?php echo $equipementToDisplay->_Statistique_Principale; ?></small>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-
-										</li>
-
-
-											<?php
-
-                                            if ($equipementToDisplay->_Rareté > 1) {
-
-                                                ?>
-                                                <li class="primary-stat">Primary Stats</li>
-
-                                                <li class="grouped-stats">
-												<ul>
-													<li class="stat ">
-													<?php
-                                                    if (isset($equipementToDisplay->_PropriétéMagique1)) {
-                                                        if ($equipementToDisplay->_PropriétéMagique1 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique1 == 'Critical Hit Damages Increased by') {
-                                                            echo $equipementToDisplay->_PropriétéMagique1; ?> <span
-                                                                    class="value">
-                                                            +<?php echo $equipementToDisplay->_Valeur1; ?>%</span><?php
-                                                        } else {
-                                                            ?><span class="value">
-                                                            +<?php echo($equipementToDisplay->_Valeur1 - 1); ?></span>-
-
-
-
-                                                            <span class="value"><?php echo ceil($equipementToDisplay->_Valeur1 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique1;
-                                                        }
-                                                    }
-                                                    ?>
-													</li>
-													<li class="stat ">
-														<?php
-                                                        if (isset($equipementToDisplay->_PropriétéMagique2)) {
-                                                            if ($equipementToDisplay->_PropriétéMagique2 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique2 == 'Critical Hit Damages Increased by') {
-                                                                echo $equipementToDisplay->_PropriétéMagique2; ?> <span
-                                                                        class="value">
-                                                                +<?php echo $equipementToDisplay->_Valeur2; ?>%</span><?php
-                                                            } else {
-                                                                ?><span class="value">
-                                                                +<?php echo max(0, $equipementToDisplay->_Valeur2 - 1); ?></span>-
-
-
-
-                                                                <span class="value"><?php echo ceil($equipementToDisplay->_Valeur2 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique2;
-                                                            }
-                                                        }
-                                                        ?>
-													</li>
-													<li class="stat ">
-														<?php
-                                                        if ($equipementToDisplay->_Rareté > 3){
-                                                        if (isset($equipementToDisplay->_PropriétéMagique3)) {
-                                                            if ($equipementToDisplay->_PropriétéMagique3 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique3 == 'Critical Hit Damages Increased by') {
-                                                                echo $equipementToDisplay->_PropriétéMagique3; ?> <span
-                                                                        class="value">
-                                                                +<?php echo $equipementToDisplay->_Valeur3; ?>%</span><?php
-                                                            } else {
-                                                                ?><span class="value">
-                                                                +<?php echo max(0, $equipementToDisplay->_Valeur3 - 1); ?></span>-
-
-
-
-                                                                <span class="value"><?php echo ceil($equipementToDisplay->_Valeur3 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique3;
-                                                            }
-                                                        }
-                                                        ?>
-															</li>
-															<li class="stat ">
-																<?php
-                                                                if (isset($equipementToDisplay->_PropriétéMagique4)) {
-                                                                    if ($equipementToDisplay->_PropriétéMagique4 == 'Sockets') {
-                                                                        ?> <span>Sockets (<span
-                                                                                class="value"><?php echo $equipementToDisplay->_Valeur4; ?></span>)
-                                                                        </span><?php
-                                                                    } elseif ($equipementToDisplay->_PropriétéMagique4 == 'Critical Hit Chance Increased by' or $equipementToDisplay->_PropriétéMagique4 == 'Critical Hit Damages Increased by') {
-                                                                        echo $equipementToDisplay->_PropriétéMagique4; ?>
-                                                                        <span class="value">
-                                                                        +<?php echo $equipementToDisplay->_Valeur4; ?>%</span><?php
-                                                                    } else {
-                                                                        ?><span class="value">
-                                                                        +<?php echo max(0, $equipementToDisplay->_Valeur4 - 1); ?></span>-
-
-
-
-                                                                        <span class="value"><?php echo ceil($equipementToDisplay->_Valeur4 * 1.25); ?></span> <?php echo $equipementToDisplay->_PropriétéMagique4;
-                                                                    }
-                                                                }
-                                                                ?>
-															</li>
-
-														<?php
-                                                        if ($equipementToDisplay->_Rareté == 5) {
-                                                            ?>
-                                                            <li class="primary-stat">Secondary Stats</li>
-                                                            <li class="passive ">
-																		Pouvoir Spécial à insérer.
-																</li>
-
-                                                            <?php
-                                                        }
-                                                        }
-                                                        ?>
-												</ul>
-											</li>
-
-											<?php
-
-                                                if ($equipementToDisplay->_Rareté == 6) {
-
-
-                                                    $set = $bdd->query('SELECT p.*
-																FROM panoplie AS p
-																WHERE p.Id_Panoplie=' . $okok['Id_Panoplie'] . '
-																');
-                                                    $panoplie = $set->fetch();
-
-                                                    $nombre = $bdd->query('SELECT count(*)
-																FROM equiper AS e, personnage AS p, equipement as o 
-																WHERE e.Id_Personnage = p.Id_Personnage
-																AND p.Id_Personnage = ' . $personnageID . '
-																AND o.id_panoplie=' . $okok['Id_Panoplie'] . '
-																and o.Id_Objet in(e.Coiffe,e.Epaules,e.Gants,e.Torse,e.Brassard,e.Ceinture,e.Jambieres,e.Bottes,e.Amulette,e.Anneau1,e.Anneau2,e.Arme,e.Offhand)
-																');
-                                                    $nb = $nombre->fetch();
-                                                    ?>
-                                                    <li class="grouped-stats">
-													<ul>
-													   <li class="set">
-																	<?php echo $panoplie['Nom']; ?>
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Skull Helm') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Skull Helm
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Spikes') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Spikes
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Ribcage Plate') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Ribcage Plate
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Skeletal Legplates') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Skeletal Legplates
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Ossified Sabatons') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Ossified Sabatons
-																 </li><li
-                                                                class="set set-item <?php if ($equipementToDisplay->_Nom == 'Rathma\'s Macabre Vambraces') {
-                                                                    echo 'item-name';
-                                                                } ?>">
-																	Rathma's Macabre Vambraces
-																 </li><li class="set">
-
-																	(<span class="set-num">2</span>) Set: <span
-                                                                    class="<?php if ($nb['count(*)'] > 1) {
-                                                                        echo 'value';
-                                                                    } ?>"><?php echo $panoplie['Effet1']; ?></span>
-																 </li><li class="set">
-																	(<span class="set-num">4</span>) Set: <span
-                                                                    class="<?php if ($nb['count(*)'] > 3) {
-                                                                        echo 'value';
-                                                                    } ?>"><?php echo $panoplie['Effet2']; ?></span>
-																 </li><li class="set">
-																	(<span class="set-num">6</span>) Set: <span
-                                                                    class="<?php if ($nb['count(*)'] > 5) {
-                                                                        echo 'value';
-                                                                    } ?>"><?php echo $panoplie['Effet3']; ?></span>
-																 </li>
-													</ul>
-												</li>
-                                                    <?php
-                                                    $nombre->closeCursor();
-                                                    $set->closeCursor();
-                                                }
-                                            }
-                                            ?>
-									</ul>
-
-									<br>
-									<form method="post" action="ajouter_objet.php" target=_blank>
-										<input type="hidden" name="Statistique_Principale"
-                                               value="<?php echo $equipementToDisplay->_Statistique_Principale; ?>">
-										<input type="hidden" name="Val" value=<?php echo $equipementToDisplay->_Val; ?>>
-										<input type="hidden" name="Val2"
-                                               value=<?php echo $equipementToDisplay->_Val2; ?>>
-										<input type="hidden" name="PropriétéMagique1"
-                                               value="<?php echo $equipementToDisplay->_PropriétéMagique1; ?>">
-										<input type="hidden" name="PropriétéMagique2"
-                                               value="<?php echo $equipementToDisplay->_PropriétéMagique2; ?>">
-										<input type="hidden" name="PropriétéMagique3"
-                                               value="<?php echo $equipementToDisplay->_PropriétéMagique3; ?>">
-										<input type="hidden" name="PropriétéMagique4"
-                                               value="<?php echo $equipementToDisplay->_PropriétéMagique4; ?>">
-										<input type="hidden" name="Valeur1"
-                                               value=<?php echo $equipementToDisplay->_Valeur1; ?>>
-										<input type="hidden" name="Valeur2"
-                                               value=<?php echo $equipementToDisplay->_Valeur2; ?>>
-										<input type="hidden" name="Valeur3"
-                                               value=<?php echo $equipementToDisplay->_Valeur3; ?>>
-										<input type="hidden" name="Valeur4"
-                                               value=<?php echo $equipementToDisplay->_Valeur4; ?>>
-
-										<input type="hidden" name="Nom"
-                                               value="<?php echo $equipementToDisplay->_Nom; ?>">
-										<input type="hidden" name="Image"
-                                               value=<?php echo $equipementToDisplay->_Image; ?>>
-										<input type="hidden" name="Couleur"
-                                               value=<?php echo $equipementToDisplay->_Couleur; ?>>
-										<input type="hidden" name="Rareté"
-                                               value=<?php echo $equipementToDisplay->_Rareté; ?>>
-										<input type="hidden" name="Type"
-                                               value=<?php echo $equipementToDisplay->_Type; ?>>
-										<input type="hidden" name="Emplacement"
-                                               value=<?php echo $equipementToDisplay->_Emplacement; ?>>
-										<input type="hidden" name="Niveau"
-                                               value=<?php echo $equipementToDisplay->_Niveau; ?>>
-										<input type="hidden" name="Type"
-                                               value=<?php echo $equipementToDisplay->_Type; ?>>
-
-
-										<input class="button button1" type="submit" value="Enregistrer l'objet"/>
-									</form>
-
-								</div>
-							</div>
-						</div>
-					</div>
+                                             alt="Image de l'objet">
+                    </span>
+					<?= $EquipementManager->getEquipementAsHTML($equipementToDisplay, $personnageID, $personnage->_Niveau, false, true)?>
 				</a>
 			</li>
                         <?php
@@ -1103,13 +731,16 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                 }
                 ?>
             </ul>
-</div></span><?php
+        </div></span><?php
     }
 
 }
 
 ?>
-
+        </div>
+    </div>
+<?php include("./footer.php") ?>
+<?php include("./css/BootstrapJSImport.php") ?>
 </body>
 
 </html>	

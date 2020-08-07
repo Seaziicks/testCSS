@@ -1,0 +1,157 @@
+/*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+/* ---------------------------------------------------
+    characterInfos STYLE
+----------------------------------------------------- */
+#characterInfos .sidebar-header {
+    padding: 20px;
+    text-align: center;
+}
+
+
+#characterInfos {
+    font-family: 'Poppins', sans-serif;
+    flex-grow: 4; /* default 0 */
+    width: 370px;
+    /*background: lightslategrey;*/
+    background-color: rgba(0, 0, 0, 0.7);
+    border-top: 3px solid #F5DEB3;
+    border-right: 3px solid #F5DEB3;
+    border-bottom: 1px solid #F5DEB3;
+    color: #DEB887;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+#characterInfos.active {
+    width : 0;
+    overflow: hidden;
+}
+
+#characterInfos.active .sidebar-header, #characterInfos.active .sidebar-header h3 {
+    width : 0;
+    overflow: hidden;
+}
+
+#characterInfos .characterInfos-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+#characterInfos ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#characterInfos ul p {
+    padding: 10px;
+}
+
+#characterInfos ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#characterInfos ul li a:hover {
+    color: #0c5460;
+    background: #DEB887;
+}
+/*
+#characterInfos ul li.active>a,
+#characterInfos a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+*/
+
+#characterInfos a,
+#characterInfos a:hover,
+#characterInfos a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#characterInfos a[data-toggle="collapse"] {
+    position: relative;
+}
+
+#characterInfos .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+#characterInfos ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+}
+
+#characterInfos ul.CTAs {
+    padding: 20px;
+}
+
+#characterInfos ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#characterInfos a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+#characterInfos a.article,
+#characterInfos a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #characterInfos {
+        margin-left: -250px;
+    }
+    #characterInfos.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
+    #characterInfosCollapse span {
+        display: none;
+    }
+
+    #characterItemsCollapse span {
+        display: none;
+    }
+}
+
+
+/* ---------------------------------------------------
+    Character statistique table
+----------------------------------------------------- */
+.characterStatistique table{
+    width: 100%;
+    color: #DEB887;
+}
+/* In order to avoid the css bug of hyper height table because its container is growing */
+.characterStatistique li {
+    max-height: 350px;
+    overflow: hidden;
+}

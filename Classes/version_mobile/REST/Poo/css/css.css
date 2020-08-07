@@ -9,74 +9,6 @@ body,div,span{
 	line-height: 1;
 }
 
-body > div, body > main,.footer{ /*le ous les div(s) dans le body*/
-	display: flex; /*affichage en mode flex*/
-	flex-flow : row  wrap; /* le flux des flex est affiché en ligne et emiplés (s'il n'y a pas assez de palce)*/	
-}
-
-body > div > nav {
-	order: 1;  flex: 0 1 100%; text-align : center;
-}
-
-body > main{
-	max-width : 91.03%;
-}
-
-body > main > div {
-	order: 2;  flex: 0 1 25.62%;
-}
-
-#menu ul  {
-	padding:0;
-	margin:0;
-	min-width : 100%;
-	position : fixed;
-	background-color : #1A1919;
-	opacity: 1;
-	min-height : 35px;
-	z-index : 1000;
-	
-}
-
-#menu ul li {
-	display: inline-block;
-	padding-top : 10px;
-	margin-bottom : 0 ;
-	min-height: 5%;
-	min-width : 15.51%;
-	text-align : center;
-	height : 25px;
-}
-
-#menu a{
-	color : #DF2424;
-}
-
-#menu a:link, main a{ 
- text-decoration:none;
-}
-
-#menu a:hover:link{
-	text-decoration: underline;
-}
-
-.actuel{
-	background : #383737;
-}
-
-
-
-
-
-/* Général aux compétences, actives ou pas. */
-
-.blanc {
-	background-color : rgba(255, 255, 255, 0.75);
-	min-width : 75px;
-	text-align : center;
-	min-height : 2.5em;
-}
-
 
 .cadre img, .cadre {
   /*z-index: 1;           /* image au dessus */
@@ -89,28 +21,6 @@ body > main > div {
 	line-height: 1em;     /* pour centrage vertical */
 	margin : auto;
 	background-color : rgba(0, 0, 0,0.75);
-}
-
-
-
-.test{
-	border: 1.5px solid grey;
-	background-color : rgba(0, 0, 0,0.15);
-}
-
-
-
-.test:hover{
-	border: 1.5px solid #B4B2B2;
-}
-
-
-
-.test:hover >div>span{
-	left: 2.9em;            /* position égale à la largeur de l'image */
-	visibility: visible;
-	border-radius : 2.3px;
-	border: 3px solid #D14011;
 }
 
 .cadre2 {
@@ -178,9 +88,8 @@ body > main > div {
 
 .centrer{
 	margin: auto;
-	height : 80%;
 	max-width : 100%;
-	padding : 11% 0 0 14%;
+	padding : 11% 0 11% 14%;
 }
 
 .aligner{
@@ -195,8 +104,6 @@ body > main > div {
 	height : 20%;
 	min-width : 100%;
 	background-color : rgba(50,50,50, 0.85);
-	position : absolute;
-	bottom :0;
 	text-align : center;
 }
 
@@ -213,7 +120,6 @@ body > main > div {
 
 .footer  table {
 	text-align : center;
-	width : 60%;
 	height : 90%;
 	margin : auto;
 }
@@ -271,13 +177,13 @@ body > main > div {
 .intelligence{
 	color : #B40404;
 }
-.agilité{
+.agilite{
 	color : #3ADF00;
 }
 .mana{
 	color : #00BFFF;
 }
-.réussite{
+.reussite{
 	color : gold;
 }
 .inventaire{
@@ -295,7 +201,7 @@ body > main > div {
 	float : left;
 	text-align: left;
 }
-.Dé{
+.De{
 	color : #C48A13;
 }
 
@@ -398,7 +304,6 @@ body > main > div {
 	background-color : rgba(46,46,46,1);
 	padding-top : 1px;
 	margin-top: 1px;
-	position : absolute;
 	width : 100%;
 }
 

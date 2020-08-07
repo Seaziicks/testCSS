@@ -2,7 +2,12 @@
 .idea
 .htaccess
 **/.htaccess
-*/.htaccess
+*./htaccess
 BDD.php
 */BDD.php
 Classes/boite_noire/BDD.php
+Classes/version_mobile/REST/Poo/css/Police/test.*
+
+
+
+

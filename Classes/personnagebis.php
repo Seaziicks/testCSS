@@ -37,11 +37,11 @@
 		<td> <span class="mana"><?php echo $bonusressource+$ressource?></span> (<span class="mana" ondblclick="inlineMod(<?php echo $statistique['Id_Personnage'] ?>, this, 'Ressource', 'nombre','personnage')"> <?php echo $ressource ?> </span>+ <span class="mana"><?php echo $bonusressource?></span>)</td> 
 	</tr>
 	
-	<tr> <td><span class="agilité"> Agilité </span></td> 
-		<td> <span class="agilité"><?php echo $bonusagilité+$agilité?></span> (<span class="agilité" ondblclick="inlineMod(<?php echo $statistique['Id_Personnage'] ?>, this, 'Agilité', 'nombre','personnage')"> <?php echo $agilité ?></span> + <span class="agilité"><?php echo $bonusagilité?></span>)</td> 
+	<tr> <td><span class="agilite"> Agilité </span></td>
+		<td> <span class="agilite"><?php echo $bonusagilité+$agilité?></span> (<span class="agilite" ondblclick="inlineMod(<?php echo $statistique['Id_Personnage'] ?>, this, 'Agilité', 'nombre','personnage')"> <?php echo $agilité ?></span> + <span class="agilite"><?php echo $bonusagilité?></span>)</td>
 		<td> <!--   test ... <!--?php echo $testcompetence['merde']; if(empty($testcompetence)){echo "raté!".$nbpointstestretourn;} ?-->   </td> 
-		<td> <span class="réussite">Réussite </span></td> 
-		<td><span class="réussite"><?php echo $bonusréussite+$réussite?></span> (<span class="réussite" ondblclick="inlineMod(<?php echo $statistique['Id_Personnage'] ?>, this, 'Réussite', 'nombre','personnage')"><?php echo $réussite ?> </span> + <span class="réussite"><?php echo $bonusréussite?></span>)</td> 
+		<td> <span class="reussite">Réussite </span></td>
+		<td><span class="reussite"><?php echo $bonusréussite+$réussite?></span> (<span class="reussite" ondblclick="inlineMod(<?php echo $statistique['Id_Personnage'] ?>, this, 'Réussite', 'nombre','personnage')"><?php echo $réussite ?> </span> + <span class="reussite"><?php echo $bonusréussite?></span>)</td>
 	</tr>
 	
 	<tr> <td> - </td> <td> - </td> <td> </td> <td> - </td> <td> - </td> </tr>

@@ -996,6 +996,21 @@ class Competence
         //$this->getLeveledEffectsDescriptions();
     }
 
+    public function getNewDescriptionCompleteAsHTML() : string
+    {
+        $newDescriptionCompleteAsHTML = "";
+        foreach ($this->_Effects as $effect) {
+            if ($effect->getElement('typeCalcul') == 1) {
+                $newDescriptionCompleteAsHTML .= $this->getDescriptionOfType1AsHTML($effect);
+            } elseif ($effect->getElement('typeCalcul') == 2) {
+                $newDescriptionCompleteAsHTML .= $this->getDescriptionOfType2AsHTML($effect);
+            }
+        }
+        // TODO : Mettre en place les LeveledEffects, et faire le script hydrateDBWithNewCompetenceLeveledEffects.php.
+        //$this->getLeveledEffectsDescriptions();
+        return $newDescriptionCompleteAsHTML;
+    }
+
     public function getDescriptionOfType1(CompetenceEffect $effect)
     {
         echo $effect->getDescriptionBefore();
@@ -1136,6 +1151,136 @@ class Competence
         if (!empty($this->_Fin)) {
             echo '<br><br>' . $this->_Fin;
         }
+    }
+
+    public function getLeveledEffectsDescriptionsAsHTML()
+    {
+        $leveledEffectAsHTML = "";
+        $i = 1;
+        foreach ($this->_LeveledEffects as $effect) {
+        if ($this->_Niveau >= ($i * 3)) {
+            $leveledEffectAsHTML .= "<span class=\"activé\">";
+        } else {
+        // Hide more and more the unreached capacities. More far you are, more hidden the description will be.
+            $leveledEffectAsHTML .= "<span class=\"nonactivé\" style=\"opacity: ". pow(0.42, ($i - ($this->_Niveau / 3))) .";\">";
+            }
+            if (!empty($effect)) {
+                $leveledEffectAsHTML .= "<br><br>" . $effect->_descriptionBefore;
+                if (!is_null($effect->_typeCalcul)) {
+                    if ($effect->_typeCalcul == 1) {
+                        $leveledEffectAsHTML .= "<span class=\"$effect->_impact\">";
+                        $leveledEffectAsHTML .= $effect->getCalcul().$effect->getImpact(1);
+                    } elseif ($effect->_typeCalcul == 2) {
+                        $leveledEffectAsHTML .= "<span class=\"$effect->_impact\">";
+                        $leveledEffectAsHTML .= $effect->getCalcul2().$effect->getImpact(2);
+                    }
+                    $leveledEffectAsHTML .= $effect->_descriptionAfter;
+                    $leveledEffectAsHTML .= "</span><";
+                }
+            }
+            $leveledEffectAsHTML .= "</span>";
+            $i++;
+            }
+            if (!empty($this->_Fin)) {
+                $leveledEffectAsHTML .= "<br><br>" . $this->_Fin;
+            }
+            return $leveledEffectAsHTML;
+    }
+
+    public function getDescriptionOfType1AsHTML(CompetenceEffect $effect) : string
+    {
+        $descriptionOfType1AsHTML ="";
+        $descriptionOfType1AsHTML .= $effect->getDescriptionBefore();
+        $descriptionOfType1AsHTML .= "<span class=\"voir\"><span
+            class=\"$effect->_impact\"> ".$effect->getCalcul()." ".$effect->getImpact(1)."
+            </span><span class=\"formule\"><span class=\"$effect->_impact\">".$effect->getCalculElement('A');
+        if ($effect->getElement('pourcentage')) {
+            $descriptionOfType1AsHTML .= "%";
+        } $descriptionOfType1AsHTML .= "</span>";
+        if ($effect->getCalculElement('B') > 1) {
+            if ($effect->getElement('pourcentage')) {
+                $descriptionOfType1AsHTML .= "(<span class=\"$effect->_impact\">+1%</span>/".$effect->getCalculElement('B')."<span
+                class=\"".$effect->getElement('statistique1')."\">".$effect->getElement('statistique1')."</span>)</span></span>";
+            } else {
+                $descriptionOfType1AsHTML .= "(<span class=\"$effect->_impact\">+1</span>/".$effect->getCalculElement('B')."
+                <span class=\"".$effect->getElement('statistique1')."\">".$effect->getElement('statistique1')."</span>)</span></span>";
+            }
+        } else {
+            if ($effect->getElement('pourcentage')) {
+                $descriptionOfType1AsHTML .= "(<span
+                        class=\"$effect->_impact\">".$effect->getCalculElement('A')."+".round(1 / $effect->getCalculElement('B'))."%</span>/".$effect->getElement('statistique1').")</span></span>";
+            } else {
+                $descriptionOfType1AsHTML .= "(<span
+                        class=\"$effect->_impact\">".$effect->getCalculElement('A') ."+".round(1 / $effect->getCalculElement('B'))."</span>/".$effect->getElement('statistique1').")</span></span>";
+            }
+        }
+
+        if (!is_null($effect->getElement('amplitude'))) {
+            $descriptionOfType1AsHTML .= "<span class=\"". $effect->getElement('statistique1')."\">+
+                <span id=\"NombreAmplitude$effect->_effectOrder\"
+                      class=\"\">".$effect->getElement('nombreAmplitude')."</span>D
+                <span id=\"Amplitude$effect->_effectOrder\">".$effect->getElement('amplitude')."</span></span>";
+        }
+        // echo $this->getElement('Description',($effect->_effectOrder + 1));
+        $descriptionOfType1AsHTML .= $effect->getDescriptionAfter();
+        return $descriptionOfType1AsHTML;
+    }
+
+    public function getDescriptionOfType2AsHTML(CompetenceEffect $effect) : string
+    {
+        $descriptionOfType2AsHTML = "";
+        $descriptionOfType2AsHTML .= $effect->getDescriptionBefore();
+        $descriptionOfType2AsHTML .= "<span class=\"voir\"><span
+            class=\"$effect->_impact\"> ".$effect->getCalcul2()." ".$effect->getImpact(2)."
+            </span><span class=\"formule\"><span class=\"$effect->_impact\">".$effect->getCalculElement('A');
+        if ($effect->getElement('pourcentage')) {
+            $descriptionOfType2AsHTML .= "%";
+        } $descriptionOfType2AsHTML .= "</span>";
+        if ($effect->getCalculElement('B') > 1) {
+            if ($effect->getElement('pourcentage')) {
+                $descriptionOfType2AsHTML .= "(<span class=\"$effect->_impact\">+1%</span>/$effect->_impact\"><span
+                        class=\"".$effect->getElement('statistique1')."\">".$effect->getElement('statistique1')."</span>)";
+            } else {
+                $descriptionOfType2AsHTML .= "(<span class=\"$effect->_impact\">+1</span>/".$effect->getCalculElement('B')."
+                    <span
+                        class=\"".$effect->getElement('statistique1')."\">".$effect->getElement('statistique1')."</span>)";
+            }
+        } else {
+            if ($effect->getElement('pourcentage')) {
+                $descriptionOfType2AsHTML .= "(<span
+                        class=\"$effect->_impact\">".$effect->getCalculElement('A')."+".round(1 / $effect->getCalculElement('B'))."% </span>/".$effect->getElement('statistique1').")";
+            } else {
+                $descriptionOfType2AsHTML .= "(<span
+                        class=\"$effect->_impact\">".$effect->getCalculElement('A')."+".round(1 / $effect->getCalculElement('B'))."</span>/".$effect->getElement('statistique1').")";
+            }
+        }
+        if ($effect->getCalcul2Element('B') > 1) {
+            if ($effect->getElement('pourcentage')) {
+                $descriptionOfType2AsHTML .= "(<span class=\"$effect->_impact\">\">+1%</span>/".$effect->getCalcul2Element('B')."
+
+                <span class=\"".$effect->getElement('statistique2')."\">".$effect->getElement('statistique2')."</span>)</span></span>";
+            } else {
+                $descriptionOfType2AsHTML .= "(<span class=\"$effect->_impact\">+1</span>/".$effect->getCalcul2Element('B')."
+                <span class=\"".$effect->getElement('statistique2')."\">".$effect->getElement('statistique2')."</span>)</span></span>";
+            }
+        } else {
+            if ($effect->getElement('pourcentage')) {
+                $descriptionOfType2AsHTML .= "(<span
+                        class=\"$effect->_impact\">+".round(1 / $effect->getCalcul2Element('B'))."%</span>/".$effect->getElement('statistique2').")</span></span>";
+            } else {
+                $descriptionOfType2AsHTML .= "(<span
+                        class=\"$effect->_impact\">+".round(1 / $effect->getCalcul2Element('B'))."</span>/".$effect->getElement('statistique2').")</span></span>";
+            }
+        }
+        if (!is_null($effect->getElement('amplitude'))) {
+            $descriptionOfType2AsHTML .= "<span class=\"".$effect->getElement('statistique1')."\">+<span
+                        id=\"NombreAmplitude$effect->_effectOrder\"
+                        class=\"\">".$effect->getElement('nombreAmplitude')."</span>D<span
+                        id=\"Amplitude$effect->_effectOrder\">".$effect->getElement('amplitude')."</span></span>";
+        }
+        // echo $this->getElement('Description',($effect->_effectOrder + 1));
+        $descriptionOfType2AsHTML .= $effect->getDescriptionAfter();
+        return $descriptionOfType2AsHTML;
     }
 
 

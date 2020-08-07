@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'GWTwoFont';
+    src: url('Police/GuildWars2/GWTwoFont.ttf');
+}
+/* ---------------------------------------------------
+    Sinon l'icone est toute petite.
+----------------------------------------------------- */
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+/* ---------------------------------------------------
+    Real content
+----------------------------------------------------- */
+.websiteIcon {
+    font-family: GWTwoFont, serif;
+    color : wheat;
+}
+.navbar, .page-footer {
+    z-index: 100;
+}
+.navbar-nav .dropdown-menu {
+    background-color: #0c5460;
+}
+.navbar-nav .dropdown-menu a {
+    color : wheat;
+}
+.navbar-nav .dropdown-menu a:hover {
+    background-color: #0f6674;
+}
+.navbar, .page-footer {
+    background-color: #000000;
+}
+.navbar .nav-item .dropdown-menu .dropdown-item {
+    width : auto;
+}
+
+.navbar {
+    padding : 0;
+}
+.navbar * {
+    padding : .5rem 1rem;
+}
+/* When we are over 1200px width */
+@media only screen and (min-width: 1200px) {
+    /*
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+    */
+    .websiteIcon {
+        font-size: 21px;
+    }
+    .websiteIcon img{
+        width : 45px;
+    }
+
+    .nav-item {
+        font-size: 16px;
+    }
+}
+/* When we are under 1200px width */
+@media only screen and (max-width: 1200px) {
+    .websiteIcon img{
+        width: 35px;
+    }
+    .navbar .nav-item {
+        font-size: 14.5px;
+    }
+
+    .navbar .nav-item .dropdown-menu .dropdown-item {
+        font-size: 13.5px;
+    }
+}

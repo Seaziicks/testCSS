@@ -36,14 +36,32 @@ class Arbre
 
     public function displayArbre()
     {
-        ?>
-        <?php
         foreach ($this->_specialites as $specialite) {
             $specialite->displaySpecialite();
         }
-        ?>
+    }
 
-        <?php
+    public function displaySimpleArbre()
+    {
+        foreach ($this->_specialites as $specialite) {
+            $specialite->displaySimpleSpecialite();
+        }
+    }
+
+    public function getAllSimpleArbreAsHTML()  : string
+    {
+        $simpleArbreAsHTML = "";
+        foreach ($this->_specialites as $specialite) {
+            $simpleArbreAsHTML .= $specialite->getSimpleSpecialiteAsHTML();
+        }
+        return $simpleArbreAsHTML;
+    }
+
+    public function getSimpleArbreAsHTML($treeName, $characterID, $componentToDisplay = '')  : string
+    {
+        $simpleArbreAsHTML = "";
+        $simpleArbreAsHTML = $this->_specialites[array_search($treeName, array_column($this->_specialites, '_libelle'))]->getSimpleSpecialiteAsHTML($characterID, $componentToDisplay);
+        return $simpleArbreAsHTML;
     }
 
 }

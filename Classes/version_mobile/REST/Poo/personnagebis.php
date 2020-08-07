@@ -7,7 +7,6 @@
 	<th>
 	
 	</th>
-	
 	<th >
 		PDV : <b id="PDV<?php echo $personnage->_Libellé;?>" ondblclick="inlineMod(<?php echo $personnage->_Id_Personnage ?>, this, 'PDV_Actuel', 'nombre','personnage')"><?php echo $personnage->_PDV_Actuel ?> </b> / <b><?php echo ($personnage->_Vitalité+$personnage->_Bonus_Vitalité)*2 ?> </b>
 	</th>
@@ -37,11 +36,11 @@
 		<td> <span class="mana"><?php echo $personnage->_Bonus_Ressource+$personnage->_Ressource?></span> (<span class="mana" ondblclick="inlineMod(<?php echo $personnage->_Id_Personnage ?>, this, 'Ressource', 'nombre','personnage')"> <?php echo $personnage->_Ressource ?> </span>+ <span class="mana"><?php echo $personnage->_Bonus_Ressource?></span>)</td>
 	</tr>
 	
-	<tr> <td><span class="agilité"> Agilité </span></td> 
-		<td> <span class="agilité"><?php echo $personnage->_Bonus_Agilité+$personnage->_Agilité?></span> (<span class="agilité" ondblclick="inlineMod(<?php echo $personnage->_Id_Personnage ?>, this, 'Agilité', 'nombre','personnage')"> <?php echo $personnage->_Agilité ?></span> + <span class="agilité"><?php echo $personnage->_Bonus_Agilité?></span>)</td>
+	<tr> <td><span class="agilite"> Agilité </span></td>
+		<td> <span class="agilite"><?php echo $personnage->_Bonus_Agilité+$personnage->_Agilité?></span> (<span class="agilite" ondblclick="inlineMod(<?php echo $personnage->_Id_Personnage ?>, this, 'Agilité', 'nombre','personnage')"> <?php echo $personnage->_Agilité ?></span> + <span class="agilite"><?php echo $personnage->_Bonus_Agilité?></span>)</td>
 		<td> <!--   test ... <!--?php echo $testcompetence['merde; if(empty($testcompetence)){echo "raté!".$nbpointstestretourn;} ?-->   </td>
-		<td> <span class="réussite">Réussite </span></td> 
-		<td><span class="réussite"><?php echo $personnage->_Bonus_Réussite+$personnage->_Réussite?></span> (<span class="réussite" ondblclick="inlineMod(<?php echo $personnage->_Id_Personnage ?>, this, 'Réussite', 'nombre','personnage')"><?php echo $personnage->_Réussite ?> </span> + <span class="réussite"><?php echo $personnage->_Bonus_Réussite?></span>)</td>
+		<td> <span class="reussite">Réussite </span></td>
+		<td><span class="reussite"><?php echo $personnage->_Bonus_Réussite+$personnage->_Réussite?></span> (<span class="reussite" ondblclick="inlineMod(<?php echo $personnage->_Id_Personnage ?>, this, 'Réussite', 'nombre','personnage')"><?php echo $personnage->_Réussite ?> </span> + <span class="reussite"><?php echo $personnage->_Bonus_Réussite?></span>)</td>
 	</tr>
 	
 	<tr> <td> - </td> <td> - </td> <td> </td> <td> - </td> <td> - </td> </tr>

@@ -29,7 +29,6 @@
 											AND o.Id_Objet=' . $currentObjectID['' . $currentObjectType . ''] . '
 											');
                     $ObjectManager = new EquipementManager($bdd);
-                    $ObjectManager->get($currentObjectID[0]);
                     // $fetchedObject = $objet->fetch();
                     $fetchedObject = $ObjectManager->get($currentObjectID[0]);
 
