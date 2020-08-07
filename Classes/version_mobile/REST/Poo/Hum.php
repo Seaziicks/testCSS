@@ -251,6 +251,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
     $personnageID = $_POST['radio-choice'];
     $personnageManager = new PersonnageManager($bdd);
     $personnage = $personnageManager->get($personnageID);
+    $EquipementManager = new EquipementManager($bdd);
     include('personnagebis.php');
     include('equipements.php');
 
@@ -259,7 +260,6 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
 
     $numeroanneau = 0;
-    $temoin = 0;
     /* @var $objectListToDisplay Equipement[] */
     $objectListToDisplay = [];
 // For every type of rarity
@@ -268,7 +268,6 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
         // For every equipment of that type
         for ($j = 1; $j <= $nbobjets[$k]; $j++) {
 
-
             if (!empty($_POST['Niveau']))
                 $niveau = $_POST['Niveau'];
             else
@@ -276,22 +275,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
             $niveau = rand($niveau - floor($niveau / 7), $niveau + floor($niveau / 10));
 
-            $temoin += 1;
-
-            $statistique_principale = null;
-            $propriete_magique1 = null;
-            $propriete_magique2 = null;
-            $propriete_magique3 = null;
-            $propriete_magique4 = null;
-            $val = null;
-            $val2 = null;
-            $valeur1 = null;
-            $valeur2 = null;
-            $valeur3 = null;
-            $valeur4 = null;
-            $pouvoir_special1 = null;
-            $pouvoir_special2 = null;
-            $valeur_pouvoir_special = null;
+            $equipementToCreate = $EquipementManager->getEmpty();
 
             $couleursPossible = ['Gris', 'Blanc', 'Bleu', 'Jaune', 'Orange', 'Vert'];
             $couleur = $couleursPossible[$rarete - 1];
@@ -348,7 +332,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
             }
 
             $proprietes_magiques_secondaires = ['Agilité', 'Agilité', 'Force', 'Force', 'Intelligence', 'Intelligence', 'Vitalité', 'Vitalité', 'Mana', 'Canon de lumière', 'Critique'];
-
+            /*
             switch ($equipement) {
                 case 'Dague':
                     $statistique_principale = 'Dégâts par coup';
@@ -670,31 +654,29 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                 }
             }
 
-            $objectToPush = array(
-                'Rareté' => $rarete,
-                'Couleur' => $couleur,
-                'Nom' => $nom,
-                'Type' => $type,
-                'Image' => $image,
-                'Emplacement' => $emplacement,
-                'Statistique_Principale' => $statistique_principale,
-                'Val' => $val,
-                'Val2' => $val2,
-                'Niveau' => $niveau,
-                'PropriétéMagique1' => $propriete_magique1,
-                'Valeur1' => $valeur1,
-                'PropriétéMagique2' => $propriete_magique2,
-                'Valeur2' => $valeur2,
-                'PropriétéMagique3' => $propriete_magique3,
-                'Valeur3' => $valeur3,
-                'PropriétéMagique4' => $propriete_magique4,
-                'Valeur4' => $valeur4,
-                'Pouvoir_Spécial1' => $pouvoir_special1,
-                'Pouvoir_Spécial2' => $pouvoir_special2,
-                'Valeur_Pouvoir_Special' => $valeur_pouvoir_special
-            );
-            array_push($objectListToDisplay, new Equipement($objectToPush));
-
+            $equipementToCreate->setRareté($rarete);
+            $equipementToCreate->setCouleur($couleur);
+            $equipementToCreate->setNom($nom);
+            $equipementToCreate->setType($type);
+            $equipementToCreate->setImage($image);
+            $equipementToCreate->setEmplacement($emplacement);
+            $equipementToCreate->setStatistique_Principale($statistique_principale);
+            $equipementToCreate->setVal($val);
+            $equipementToCreate->setVal2($val2);
+            $equipementToCreate->setNiveau($niveau);
+            $equipementToCreate->setPropriétéMagique1($propriete_magique1);
+            $equipementToCreate->setValeur1($valeur1);
+            $equipementToCreate->setPropriétéMagique2($propriete_magique2);
+            $equipementToCreate->setVal2($valeur2);
+            $equipementToCreate->setPropriétéMagique3($propriete_magique3);
+            $equipementToCreate->setValeur3($valeur3);
+            $equipementToCreate->setPropriétéMagique4($propriete_magique4);
+            $equipementToCreate->setValeur4($valeur4);
+            $equipementToCreate->setPouvoir_Spécial1(null);
+            $equipementToCreate->setPouvoir_Spécial2('');
+            $equipementToCreate->setValeur_Pouvoir_Special(null);
+            */
+            array_push($objectListToDisplay, $equipementToCreate->getRandomItem($equipement, $rarete, $niveau, $proprietes_magiques_primaires, $proprietes_magiques_secondaires, $numeroanneau));
         }
     }
 
@@ -749,7 +731,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                 }
                 ?>
             </ul>
-</div></span><?php
+        </div></span><?php
     }
 
 }

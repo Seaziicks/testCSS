@@ -29,6 +29,13 @@ class EquipementManager
         return new Equipement($donnees);
     }
 
+    public function getEmpty() : Equipement
+    {
+        $equipement = new Equipement(array());
+        $equipement->constructEmpty();
+        return $equipement;
+    }
+
 
     public function getListForCharacter($id)
     {
