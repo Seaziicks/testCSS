@@ -349,7 +349,6 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
             $proprietes_magiques_secondaires = ['Agilité', 'Agilité', 'Force', 'Force', 'Intelligence', 'Intelligence', 'Vitalité', 'Vitalité', 'Mana', 'Canon de lumière', 'Critique'];
 
-
             switch ($equipement) {
                 case 'Dague':
                     $statistique_principale = 'Dégâts par coup';
@@ -646,6 +645,30 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
             // On met un numéro aux anneaux. Ce numéro oscille entre 0 et 1 pour pouvoir en placer 2 par inventaire.
             if ($type == 'Anneau')
                 $type = 'Anneau' . $numeroanneau;
+
+            // Reorganising magic property to always have same order.
+            $displayOrder = ['Intelligence', 'Force', 'Agilité', 'Vitalité', 'Mana', 'Critique', 'Canon de lumière'];
+            $changed = true;
+            while($changed) {
+                $changed = false;
+                for ($x = 2; $x <= 4; $x++) {
+                    $y = $x;
+                    $z = $y + 1;
+                    while ($z < 5 && array_search(${'propriete_magique' . $y}, $displayOrder) > array_search(${'propriete_magique' . $z}, $displayOrder)) {
+                       $tmp = ${'propriete_magique' . $z};
+                        ${'propriete_magique' . $z} = ${'propriete_magique' . $y};
+                        ${'propriete_magique' . $y} = $tmp;
+
+                        $tmp = ${'valeur' . $z};
+                        ${'valeur' . $z} = ${'valeur' . $y};
+                        ${'valeur' . $y} = $tmp;
+                        $y++;
+                        $z = $y + 1;
+                        $changed = true;
+                    }
+
+                }
+            }
 
             $objectToPush = array(
                 'Rareté' => $rarete,
