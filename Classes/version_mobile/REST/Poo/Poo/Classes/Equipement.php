@@ -182,7 +182,7 @@ class Equipement{
 	{
 	$Valeur1 = (int) $Valeur1;
 
-		if ($Valeur1 > 0)
+		if ($Valeur1 >= 0)
 		{
 			$this->_Valeur1 = $Valeur1;
 		}
@@ -200,7 +200,7 @@ class Equipement{
 	{
 	$Valeur2 = (int) $Valeur2;
 
-		if ($Valeur2 > 0)
+		if ($Valeur2 >= 0)
 		{
 			$this->_Valeur2 = $Valeur2;
 		}
@@ -218,7 +218,7 @@ class Equipement{
 	{
 	$Valeur3 = (int) $Valeur3;
 
-		if ($Valeur3 > 0)
+		if ($Valeur3 >= 0)
 		{
 			$this->_Valeur3 = $Valeur3;
 		}
@@ -236,7 +236,7 @@ class Equipement{
 	{
 	$Valeur4 = (int) $Valeur4;
 
-		if ($Valeur4 > 0)
+		if ($Valeur4 >= 0)
 		{
 			$this->_Valeur4 = $Valeur4;
 		}
@@ -316,7 +316,7 @@ class Equipement{
                 $this->_Val = floor(pow($niveau, 1.13) * pow($rarete, 1.02) / 7);
                 $this->_Val2 = floor(pow($niveau, 1.13) * pow($rarete, 1.02) / 4);
                 $this->_Type = 'Arme';
-                $emplacement = 'Arme';
+                $this->_Emplacement = 'Arme';
                 $nbimage = 7;
                 break;
             case 'Baguette':
@@ -590,20 +590,20 @@ class Equipement{
             }
         }
 
+        // echo $this->getProprieteMagique(1);
+        $methodGetPM = 'getProprieteMagique';
+        $methodGetV = 'getValeur';
+        // echo $this->$methodGet($c);
         for ($c = 1; $c <= 4; $c++) {
-            // echo $this->getProprieteMagique(1);
-            $methodGetPM = 'getProprieteMagique';
-            $methodGetV = 'getValeur';
-            // echo $this->$methodGet($c);
             $methodSet = 'setValeur'.$c;
             if ($this->$methodGetPM($c) == 'Vitalité') {
-                $this->$methodSet(round($this->$methodGetV($c) / 5));
-            } else if ($this->$methodGetPM($c) == 'Canon de lumière') {
-                $this->$methodSet(floor($this->$methodGetV($c) / 15));
+                $this->$methodSet((int) round($this->$methodGetV($c) / 5));
+            } else if ($this->$methodGetPM($c) == "Canon de lumière") {
+                $this->$methodSet((int) floor(($this->$methodGetV($c)) / 15));
             } else if ($this->$methodGetPM($c) == 'Critique') {
-                $this->$methodSet(floor($this->$methodGetV($c) / 10));
+                $this->$methodSet((int) floor($this->$methodGetV($c) / 10));
             } else if ($this->$methodGetPM($c) == 'Mana') {
-                $this->$methodSet(round($this->$methodGetV($c) / 3));
+                $this->$methodSet((int) round($this->$methodGetV($c) / 3));
             }
         }
         if($rarete == 5)
@@ -620,14 +620,19 @@ class Equipement{
             for ($x = 2; $x <= 4; $x++) {
                 $y = $x;
                 $z = $y + 1;
-                while ($z < 5 && array_search(${'this->_PropriétéMagique' . $y}, $displayOrder) > array_search(${'this->_PropriétéMagique' . $z}, $displayOrder)) {
-                    $tmp = ${'this->_PropriétéMagique' . $z};
-                    ${'this->_PropriétéMagique' . $z} = ${'this->_PropriétéMagique' . $y};
-                    ${'this->_PropriétéMagique' . $y} = $tmp;
+                while ($z < 5 && array_search($this->$methodGetPM($y), $displayOrder) > array_search($this->$methodGetPM($z), $displayOrder)) {
+                    $methodSetPMY = 'setPropriétéMagique'.$y;
+                    $methodSetPMZ = 'setPropriétéMagique'.$z;
+                    $methodSetVY = 'setValeur'.$y;
+                    $methodSetVZ = 'setValeur'.$z;
 
-                    $tmp = ${'valeur' . $z};
-                    ${'valeur' . $z} = ${'valeur' . $y};
-                    ${'valeur' . $y} = $tmp;
+                    $tmp = $this->$methodGetPM($z);
+                    $this->$methodSetPMZ($this->$methodGetPM($y));
+                    $this->$methodSetPMY($tmp);
+
+                    $tmp = $this->$methodGetV($z);
+                    $this->$methodSetVZ($this->$methodGetV($y));
+                    $this->$methodSetVY($tmp);
                     $y++;
                     $z = $y + 1;
                     $changed = true;
@@ -649,13 +654,13 @@ class Equipement{
         $this->setPropriétéMagique1($this->_PropriétéMagique1);
         $this->setValeur1($this->_Valeur1);
         $this->setPropriétéMagique2($this->_PropriétéMagique2);
-        $this->setVal2($this->_Valeur2);
+        $this->setValeur2($this->_Valeur2);
         $this->setPropriétéMagique3($this->_PropriétéMagique3);
         $this->setValeur3($this->_Valeur3);
         $this->setPropriétéMagique4($this->_PropriétéMagique4);
         $this->setValeur4($this->_Valeur4);
-        $this->setPouvoir_Spécial1(null);
-        $this->setPouvoir_Spécial2('');
+        $this->setPouvoir_Spécial1($pouvoir_special1);
+        $this->setPouvoir_Spécial2(null);
         $this->setValeur_Pouvoir_Special(null);
 
         return $this;
