@@ -106,8 +106,10 @@ class EquipementManager
             $returnedHTMLItem .="<span>$fetchedObject->_Val</span>
                                                         <small>$fetchedObject->_Statistique_Principale</small>";
         } else {
-            $returnedHTMLItem .= "<span>$fetchedObject->_Val - $fetchedObject->_Val2</span>
-                                                        <small>$fetchedObject->_Statistique_Principale</small>";
+            $returnedHTMLItem .= "<span>$fetchedObject->_Val";
+            if((isset($fetchedObject->_Val) && isset($fetchedObject->_Val2)) || !((isset($fetchedObject->_Val) || isset($fetchedObject->_Val2)))) $returnedHTMLItem .= " - $fetchedObject->_Val2";
+            $returnedHTMLItem .= "</span>
+            <small>$fetchedObject->_Statistique_Principale</small>";
         }
         $returnedHTMLItem .= "</li>";
 
