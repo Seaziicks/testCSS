@@ -358,7 +358,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
             $equipementsPortesList[$indexEquipementsPortes]->setFromEmpty($equipementToPlace);
         }
     }
-    $EquipementManager = new EquipementManager($bdd);
+
     foreach ($equipementsPortesList as $inventaire) {
         ?><span class="alignement">
         <div class="mobile-item-wrapper d3-class-necromancer">

@@ -307,6 +307,7 @@ class Equipement{
 
     public function getRandomItem(string $equipement, int $rarete, int $niveau, array $proprietes_magiques_primaires, array $proprietes_magiques_secondaires, int $numeroanneau) : Equipement
     {
+        $this->constructEmpty();
         $couleursPossible = ['Gris', 'Blanc', 'Bleu', 'Jaune', 'Orange', 'Vert'];
         $couleur = $couleursPossible[$rarete - 1];
 
@@ -473,17 +474,15 @@ class Equipement{
 
         if ($rarete == 1) {
             $this->_Nom = $equipement . ' de mauvaise facture';
-        } else if ($rarete == 2) {
-            if (in_array($equipement, ['Coiffe', 'Epaules', 'Ceinture', 'Amulette']) or ($this->_Type == 'Arme' and $equipement != 'Fléau')) {
+        } else if ($rarete >= 2) {
+            if (in_array($equipement, ['Coiffe', 'Ceinture', 'Amulette']) or ($this->_Type == 'Arme' and $equipement != 'Fléau')) {
                 $this->_Nom = $equipement . ' normale';
-            } else if (in_array($equipement, ['Jambieres', 'Bottes'])) {
+            } else if (in_array($equipement, ['Jambieres', 'Bottes', 'Epaules'])) {
                 $this->_Nom = $equipement . ' normales';
             } else {
                 $this->_Nom = $equipement . ' normal';
             }
             $this->_Valeur1 = round($niveau * $niveau / 17);
-        } else if ($rarete >= 2) {
-
             if ($equipement == 'Dague') {
                 if (rand(0, 100) > 75) {
                     $this->_PropriétéMagique1 = 'Intelligence';
@@ -525,14 +524,13 @@ class Equipement{
                     }
                     $this->_PropriétéMagique2 = $proprietes_magiques_secondaires[$i];
                     $this->_Valeur2 = round($niveau * $niveau / 16);
-
                 }
-                if (in_array($equipement, ['Jambieres', 'Bottes'])) {
+                if (in_array($equipement, ['Jambieres', 'Bottes', 'Epaules'])) {
                     $this->_Nom = $equipement . ' magiques';
                 } else {
                     $this->_Nom = $equipement . ' magique';
                 }
-            }else if ($rarete == 4) {
+            } else if ($rarete == 4) {
                 $this->_Valeur1 = round($niveau * $niveau / 10);
                 $i = rand(0, count($proprietes_magiques_secondaires) - 1);
                 while ($proprietes_magiques_secondaires[$i] == $this->_PropriétéMagique1) {
@@ -549,12 +547,12 @@ class Equipement{
                     $this->_PropriétéMagique3 = $proprietes_magiques_secondaires[$i];
                     $this->_Valeur3 = round($niveau * $niveau / 11);
                 }
-                if (in_array($equipement, ['Jambieres', 'Bottes'])) {
+                if (in_array($equipement, ['Jambieres', 'Bottes', 'Epaules'])) {
                     $this->_Nom = $equipement . ' rares';
                 } else {
                     $this->_Nom = $equipement . ' rare';
                 }
-            }else if ($rarete == 5) {
+            } else if ($rarete == 5) {
                 //Valeur 1
                 $this->_Valeur1 = round($niveau * $niveau / 7);
 
@@ -582,7 +580,7 @@ class Equipement{
                 }
                 $this->_PropriétéMagique4 = $proprietes_magiques_secondaires[$i];
                 $this->_Valeur4 = round($niveau * $niveau / 8);
-                if (in_array($equipement, ['Jambieres', 'Bottes'])) {
+                if (in_array($equipement, ['Jambieres', 'Bottes', 'Epaules'])) {
                     $this->_Nom = $equipement . ' légendaires';
                 } else {
                     $this->_Nom = $equipement . ' légendaire';
@@ -606,6 +604,7 @@ class Equipement{
                 $this->$methodSet((int) round($this->$methodGetV($c) / 3));
             }
         }
+        $pouvoir_special1 = null;
         if($rarete == 5)
             $pouvoir_special1 = "Pouvoir Spécial à insérer";
         // On met un numéro aux anneaux. Ce numéro oscille entre 0 et 1 pour pouvoir en placer 2 par inventaire.
@@ -620,7 +619,7 @@ class Equipement{
             for ($x = 2; $x <= 4; $x++) {
                 $y = $x;
                 $z = $y + 1;
-                while ($z < 5 && array_search($this->$methodGetPM($y), $displayOrder) > array_search($this->$methodGetPM($z), $displayOrder)) {
+                while ($z < 5 && array_search($this->$methodGetPM($y), $displayOrder) > array_search($this->$methodGetPM($z), $displayOrder) && array_search($this->$methodGetPM($z), $displayOrder) !== false) {
                     $methodSetPMY = 'setPropriétéMagique'.$y;
                     $methodSetPMZ = 'setPropriétéMagique'.$z;
                     $methodSetVY = 'setValeur'.$y;
@@ -640,6 +639,7 @@ class Equipement{
 
             }
         }
+
 
         $this->setRareté($rarete);
         $this->setCouleur($couleur);
@@ -670,17 +670,13 @@ class Equipement{
     {
         switch ($number) {
             case 1:
-                return $this->_PropriétéMagique1;
-                break;
+                return $this->_PropriétéMagique1 != null ? $this->_PropriétéMagique1 : '';
             case 2:
-                return $this->_PropriétéMagique2;
-                break;
+                return $this->_PropriétéMagique2 != null ? $this->_PropriétéMagique2 : '';
             case 3:
-                return $this->_PropriétéMagique3;
-                break;
+                return $this->_PropriétéMagique3 != null ? $this->_PropriétéMagique3 : '';
             case 4:
-                return $this->_PropriétéMagique4;
-                break;
+                return $this->_PropriétéMagique4 != null ? $this->_PropriétéMagique4 : '';
         }
     }
 
@@ -688,17 +684,13 @@ class Equipement{
     {
         switch ($number) {
             case 1:
-                return $this->_Valeur1;
-                break;
+                return $this->_Valeur1 != null ? $this->_Valeur1 : '';
             case 2:
-                return $this->_Valeur2;
-                break;
+                return $this->_Valeur2!= null ? $this->_Valeur2 : '';
             case 3:
-                return $this->_Valeur3;
-                break;
+                return $this->_Valeur3!= null ? $this->_Valeur3 : '';
             case 4:
-                return $this->_Valeur4;
-                break;
+                return $this->_Valeur4!= null ? $this->_Valeur4 : '';
         }
     }
 

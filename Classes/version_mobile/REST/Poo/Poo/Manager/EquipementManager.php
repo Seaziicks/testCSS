@@ -123,9 +123,9 @@ class EquipementManager
                                                                         <span class=\"value\">
                                                                         + $fetchedObject->_Valeur1%</span>";
                 } else {
-                    if($hasToBeValidated)
-                        $returnedHTMLItem .= "<span class=\"value\">+".max(0, $fetchedObject->_Valeur1 - 1)."</span>-<span class=\"value\">".ceil($fetchedObject->_Valeur1 * 1.25)."</span> $fetchedObject->_PropriétéMagique1";
-                    else
+                    if($hasToBeValidated) {
+                        $returnedHTMLItem .= "<span class=\"value\">+" . max(0, $fetchedObject->_Valeur1 - 1) . "</span>-<span class=\"value\">" . ceil($fetchedObject->_Valeur1 * 1.25) . "</span> $fetchedObject->_PropriétéMagique1";
+                    } else
                         $returnedHTMLItem .= "<span class=\"value\">+ $fetchedObject->_Valeur1</span> $fetchedObject->_PropriétéMagique1";
                 }
                 $returnedHTMLItem .= "</li>
@@ -136,9 +136,9 @@ class EquipementManager
                                                                             <span class=\"value\">
                                                                             + $fetchedObject->_Valeur2%</span>";
                     } else {
-                        if($hasToBeValidated)
-                            $returnedHTMLItem .= "<span class=\"value\">+".max(0, $fetchedObject->_Valeur2 - 1)."</span>-<span class=\"value\">".ceil($fetchedObject->_Valeur2 * 1.25)."</span> $fetchedObject->_PropriétéMagique2";
-                        else
+                        if($hasToBeValidated) {
+                            $returnedHTMLItem .= "<span class=\"value\">+" . max(0, $fetchedObject->_Valeur2 - 1) . "</span>-<span class=\"value\">" . ceil($fetchedObject->_Valeur2 * 1.25) . "</span> $fetchedObject->_PropriétéMagique2";
+                        } else
                             $returnedHTMLItem .= "<span class=\"value\">+ $fetchedObject->_Valeur2</span> $fetchedObject->_PropriétéMagique2";
                     }
                 }
