@@ -1,5 +1,9 @@
 <?php
+declare(strict_types=1);
 // On enregistre notre autoload.
+/**
+ * @param $classname
+ */
 function chargerClasse($classname)
 {
     if (is_file('Poo/Poo/'.$classname.'.php'))
@@ -23,7 +27,6 @@ $http_method = $_SERVER['REQUEST_METHOD'];
 switch ($http_method) {
     case "PUT" :
         try {
-            $sql;
             $competence = (array) json_decode($_GET['Competence']);
             foreach($competence as $key => $value) {
                 if(empty($value) || is_null($value)){
@@ -92,6 +95,11 @@ switch ($http_method) {
 }
 
 /// Envoi de la réponse au Client
+/**
+ * @param $status
+ * @param $status_message
+ * @param $data
+ */
 function deliver_responseRest($status, $status_message, $data)
 {
     /// Paramétrage de l'entête HTTP, suite

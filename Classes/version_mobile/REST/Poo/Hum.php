@@ -1,7 +1,11 @@
 <?php
+declare(strict_types=1);
 spl_autoload_register('chargerClasse');
 session_start();
 
+/**
+ * @param $classname
+ */
 function chargerClasse($classname)
 {
     if (is_file('Poo/' . $classname . '.php'))
@@ -225,17 +229,16 @@ function chargerClasse($classname)
 <?php
 
 try {
-    $bdd = null;
     include("BDD.php");
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
+} catch (Exception $error) {
+    die('Erreur : ' . $error->getMessage());
 }
 
 
 if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_POST['Nombre_Blanc']) and isset($_POST['Nombre_Bleu']) and isset($_POST['Nombre_Jaune']) and isset($_POST['Nombre_Orange'])) {
     ?><span style="color:white">Veuillez choisir un personnage !</span> <br> <?php
 
-} else if ((empty($_POST['Nombre_Gris']) and empty($_POST['Nombre_Blanc']) and empty($_POST['Nombre_Bleu']) and empty($_POST['Nombre_Jaune']) and empty($_POST['Nombre_Orange'])) and isset($_POST['radio-choice'])) {
+} elseif ((empty($_POST['Nombre_Gris']) and empty($_POST['Nombre_Blanc']) and empty($_POST['Nombre_Bleu']) and empty($_POST['Nombre_Jaune']) and empty($_POST['Nombre_Orange'])) and isset($_POST['radio-choice'])) {
     $personnageID = $_POST['radio-choice'];
     $personnageManager = new PersonnageManager($bdd);
     $personnage = $personnageManager->get($personnageID);
@@ -246,7 +249,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
         ?></div>
     Vous devez générer au moins 1 item. <br>
     <?php
-} else if (isset($_POST['Nombre_Gris']) and isset($_POST['Nombre_Blanc']) and isset($_POST['Nombre_Bleu']) and isset($_POST['Nombre_Jaune']) and isset($_POST['Nombre_Orange']) and isset($_POST['radio-choice'])) {
+} elseif (isset($_POST['Nombre_Gris']) and isset($_POST['Nombre_Blanc']) and isset($_POST['Nombre_Bleu']) and isset($_POST['Nombre_Jaune']) and isset($_POST['Nombre_Orange']) and isset($_POST['radio-choice'])) {
     ?> <div style="display: flex; flex-flow: row wrap; margin-left: 150px; margin-right: 200px"><?php
 
     $personnageID = $_POST['radio-choice'];
@@ -257,11 +260,11 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
     include('equipements.php');
 
 
-    $nbobjets = array($_POST['Nombre_Gris'], $_POST['Nombre_Blanc'], $_POST['Nombre_Bleu'], $_POST['Nombre_Jaune'], $_POST['Nombre_Orange']);
+    $nbobjets = [$_POST['Nombre_Gris'], $_POST['Nombre_Blanc'], $_POST['Nombre_Bleu'], $_POST['Nombre_Jaune'], $_POST['Nombre_Orange']];
 
 
     $numeroanneau = 0;
-    /* @var $objectListToDisplay Equipement[] */
+    /* @var Equipement[] $objectListToDisplay */
     $objectListToDisplay = [];
 // For every type of rarity
     for ($k = 0; $k < count($nbobjets); $k++) {
@@ -286,25 +289,25 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                 if (in_array($_POST['équipement'], ['Equipements', 'Armes', 'Bijoux', 'Main gauche'])) {
                     switch ($_POST['équipement']) {
                         case 'Equipements':
-                            $provisoire = array('Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambieres', 'Bottes');
+                            $provisoire = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambieres', 'Bottes'];
                             break;
                         case 'Armes':
-                            $provisoire = array('Dague', 'Baguette', 'Faux', 'Epée courte', 'Massue', 'Epée', 'Lance', 'Fléau', 'Hache');
+                            $provisoire = ['Dague', 'Baguette', 'Faux', 'Epée courte', 'Massue', 'Epée', 'Lance', 'Fléau', 'Hache'];
                             break;
                         case 'Bijoux':
-                            $provisoire = array('Amulette', 'Anneau');
+                            $provisoire = ['Amulette', 'Anneau'];
                             break;
                         case 'Main gauche':
-                            $provisoire = array('Bouclier', 'Talisman démoniaque', 'Ciboire');
+                            $provisoire = ['Bouclier', 'Talisman démoniaque', 'Ciboire'];
                             break;
                     }
                     $equipement = $provisoire[array_rand($provisoire)];
                 } else
                     $equipement = $_POST['équipement'];
             } else {
-                $equipements = array('Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambieres', 'Bottes', 'Amulette', 'Anneau', 'Arme', 'Offhand');
-                $armes = array('Dague', 'Baguette', 'Faux', 'Epée courte', 'Massue', 'Epée', 'Lance', 'Fléau', 'Hache');
-                $offhand = array('Bouclier', 'Talisman démoniaque', 'Ciboire');
+                $equipements = ['Coiffe', 'Epaules', 'Gants', 'Torse', 'Brassard', 'Ceinture', 'Jambieres', 'Bottes', 'Amulette', 'Anneau', 'Arme', 'Offhand'];
+                $armes = ['Dague', 'Baguette', 'Faux', 'Epée courte', 'Massue', 'Epée', 'Lance', 'Fléau', 'Hache'];
+                $offhand = ['Bouclier', 'Talisman démoniaque', 'Ciboire'];
 
                 $equipement = $equipements[array_rand($equipements, 1)];
 
@@ -338,7 +341,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
         }
     }
 
-    /* @var $equipementsPortesList EquipementPortes[] */
+    /* @var EquipementPortes[] $equipementsPortesList */
     $equipementsPortesList = [];
     $equipementPortesManager = new EquipementPortesManager($bdd);
 
@@ -365,7 +368,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
         <div class="mobile-item-wrapper d3-class-necromancer">
 			<ul class="mobile-item-selection">	<?php
                 foreach ($inventaire->getEquipementPortesAsArray() as $equipementToDisplay) {
-                    /* @var $equipementToDisplay Equipement */
+                    /* @var Equipement $equipementToDisplay */
                     // print_r($inventaire->getEquipementPortesAsArray());
                     if (isset($equipementToDisplay)) {
                         ?>

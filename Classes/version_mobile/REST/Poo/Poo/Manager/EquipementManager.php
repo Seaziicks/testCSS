@@ -1,26 +1,44 @@
 <?php
+declare(strict_types=1);
 
+/**
+ * Class EquipementManager
+ */
 class EquipementManager
 {
     /* @var $_db PDO */
     private $_db; // Instance de PDO
 
+    /**
+     * EquipementManager constructor.
+     * @param $db
+     */
     public function __construct($db)
     {
         $this->setDb($db);
     }
 
+    /**
+     * @param Equipement $perso
+     */
     public function add(Equipement $perso)
     {
 
     }
 
+    /**
+     * @param Equipement $perso
+     */
     public function delete(Equipement $perso)
     {
 
     }
 
-    public function get($id) : Equipement
+    /**
+     * @param int $id
+     * @return Equipement
+     */
+    public function get(int $id) : Equipement
     {
         $id = (int)$id;
         $q = $this->_db->query('SELECT * FROM equipement WHERE Id_Objet = ' . $id);
@@ -31,12 +49,16 @@ class EquipementManager
 
     public function getEmpty() : Equipement
     {
-        $equipement = new Equipement(array());
+        $equipement = new Equipement([]);
         $equipement->constructEmpty();
         return $equipement;
     }
 
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function getListForCharacter($id)
     {
         $listEquipements = [];
@@ -55,10 +77,16 @@ class EquipementManager
         return $listEquipements;
     }
 
+    /**
+     * @param Equipement $perso
+     */
     public function update(Equipement $perso)
     {
     }
 
+    /**
+     * @param PDO $db
+     */
     public function setDb(PDO $db)
     {
         $this->_db = $db;

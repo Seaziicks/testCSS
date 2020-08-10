@@ -1,5 +1,9 @@
 <?php
+declare(strict_types=1);
 
+/**
+ * Class Equipement
+ */
 class Equipement{
 	
 	public $_Id_Objet,

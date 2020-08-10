@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 include("BDD.php");
 $personnages = $bdd->query('SELECT * FROM personnage');
 ?>

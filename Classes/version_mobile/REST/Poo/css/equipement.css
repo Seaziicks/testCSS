@@ -23,7 +23,6 @@
 
 ul, ol {
     list-style: none;
-    list-style-image: none;
     margin: 0;
     padding: 0;
 }
@@ -34,7 +33,6 @@ li {
 }
 ul, ol {
     list-style: none;
-    list-style-image: none;
     margin: 0;
     padding: 0;
 }
@@ -44,8 +42,8 @@ ul, menu, dir {
     list-style-type: disc;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
     -webkit-padding-start: 40px;
 }
 
@@ -464,7 +462,6 @@ element.style {
 
 ul, ol {
     list-style: none;
-    list-style-image: none;
     margin: 0;
     padding: 0;
 }
