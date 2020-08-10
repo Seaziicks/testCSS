@@ -83,7 +83,7 @@ function chargerClasse($classname)
         <br><br><br>
         <div class="limite">
                 <div class="multipleInputs">
-                <div class="input-group">
+                <div class="input-group input-qualite-objets">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="">Qualités des objets</span>
                     </div>
@@ -107,11 +107,12 @@ function chargerClasse($classname)
                     value="<?php if (isset($_POST['Nombre_Orange'])) {
                         echo $_POST['Nombre_Orange'];
                     } ?>"">
-
+                </div>
+                <div class="input-group input-equipements-niveaux">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Equipement</label>
                     </div>
-                    <select class="custom-select" name="équipement" size="1" id="caracteristique">
+                    <select class="custom-select col-md-3" name="équipement" size="1" id="caracteristique">
                     <option disabled <?php if (empty($_POST['équipement'])) {
                         echo 'selected';
                     } ?>> Item selectionnable
@@ -207,7 +208,7 @@ function chargerClasse($classname)
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="">Niveau</span>
                 </div>
-                <input name="Niveau" type="number" class="form-control" min="0" placeholder="Niveau" value="<?php if (isset($_POST['Niveau'])) {
+                <input name="Niveau" type="number" class="form-control col-md-2" min="0" placeholder="Niveau" value="<?php if (isset($_POST['Niveau'])) {
                     echo $_POST['Niveau'];
                 } ?>">
             </div>

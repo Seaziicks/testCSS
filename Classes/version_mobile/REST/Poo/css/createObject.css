@@ -34,9 +34,6 @@
     width: 85%;
     margin: auto;
 }
-.input-group-prepend {
-    margin-left: 10px;
-}
 
 .touch-tip {
     position: absolute;
@@ -47,6 +44,30 @@
 .item-tooltip {
     position: relative;
     overflow: hidden;
+}
+
+.input-equipements-niveaux {
+    margin: auto;
+    width: max-content;
+    padding-top: 5px;
+}
+.input-equipements-niveaux select {
+    margin-right: 3px;
+}
+
+.input-qualite-objets input {
+    margin-right: 2px;
+}
+
+.btn-outline-perso {
+    color: #17a2b8;
+    border-color: #0c5460;
+}
+
+.btn-outline-info:hover {
+    color: #fff;
+    background-color: #0c5460;
+    border-color: #17a2b8;
 }
 
 /* ---------------------------------------------------
@@ -60,7 +81,10 @@
     top: 0;
     float: left;
     margin-bottom: 50px;
-    border: 0.5px blue dashed;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 0.5px solid lightgrey;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 .mobile-item-wrapper {
