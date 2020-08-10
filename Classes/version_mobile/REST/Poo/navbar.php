@@ -56,7 +56,7 @@ $personnages = $bdd->query('SELECT * FROM personnage');
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Connexion</button>
+            <button class="btn btn-outline-perso my-2 my-sm-0" type="submit">Connexion</button>
         </form>
     </div>
 </nav>

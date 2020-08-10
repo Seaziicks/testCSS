@@ -59,17 +59,6 @@
     margin-right: 2px;
 }
 
-.btn-outline-perso {
-    color: #17a2b8;
-    border-color: #0c5460;
-}
-
-.btn-outline-info:hover {
-    color: #fff;
-    background-color: #0c5460;
-    border-color: #17a2b8;
-}
-
 /* ---------------------------------------------------
     Old css, included directly in a <style> </style> in Hum.php
 ----------------------------------------------------- */

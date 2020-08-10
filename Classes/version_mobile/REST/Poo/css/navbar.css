@@ -41,7 +41,26 @@
 .navbar * {
     padding : .5rem 1rem;
 }
-/* When we are over 1200px width */
+
+
+/* ---------------------------------------------------
+    Button
+----------------------------------------------------- */
+.btn-outline-perso {
+    color: #17a2b8;
+    border-color: #0c5460;
+}
+
+.btn-outline-perso:hover {
+    color: #fff;
+    background-color: #0c5460;
+    border-color: #17a2b8;
+}
+
+
+/* ---------------------------------------------------
+    When we are over 1200px width
+----------------------------------------------------- */
 @media only screen and (min-width: 1200px) {
     /*
     .dropdown:hover > .dropdown-menu {
@@ -59,7 +78,10 @@
         font-size: 16px;
     }
 }
-/* When we are under 1200px width */
+
+/* ---------------------------------------------------
+    When we are under 1200px width
+----------------------------------------------------- */
 @media only screen and (max-width: 1200px) {
     .websiteIcon img{
         width: 35px;
