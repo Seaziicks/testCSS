@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"totale\">\r\n  <div><a routerLink=\"personnage/6\" id=\"Magmaticien\"><img src=\"../../../assets/FondEcran/demoniste.jpg\"></a></div>\r\n  <div><a routerLink=\"personnage/7\" id=\"Franklin\"><img src=\"../../../assets/FondEcran/voleur.jpg\"></a></div>\r\n  <div><a routerLink=\"personnage/8\" id=\"Centaure\"><img src=\"../../../assets/FondEcran/sang.jpg\"></a></div>\r\n  <div><a routerLink=\"personnage/9\" id=\"Assassin\"><img src=\"../../../assets/FondEcran/paladin.jpg\"></a></div>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"totale\">\r\n  <div><a routerLink=\"personnage/6\" id=\"Magmaticien\"><img src=\"assets/FondEcran/demoniste.jpg\"></a></div>\r\n  <div><a routerLink=\"personnage/7\" id=\"Franklin\"><img src=\"assets/FondEcran/voleur.jpg\"></a></div>\r\n  <div><a routerLink=\"personnage/8\" id=\"Centaure\"><img src=\"assets/FondEcran/sang.jpg\"></a></div>\r\n  <div><a routerLink=\"personnage/9\" id=\"Assassin\"><img src=\"assets/FondEcran/paladin.jpg\"></a></div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -937,7 +937,7 @@ let CompetenceAddCompetenceEffectComponent = class CompetenceAddCompetenceEffect
         this.image = item.Image;
     }
     getImage() {
-        return '../../assets/' + this.image;
+        return 'assets/' + this.image;
     }
     updateCompetence() {
         if (this.idEffect === -1) {
@@ -1677,7 +1677,7 @@ let PersonnageAddCompetenceEffectComponent = class PersonnageAddCompetenceEffect
         this.bouclier = item.Bouclier;
         this.ressource = item.Ressource;
         this.typeRessource = item.Type_Ressource;
-        this.icon = '../../assets/' + item.Libellé + '/Icon.png';
+        this.icon = 'assets/' + item.Libellé + '/Icon.png';
         this.bonusForce = item.BonusForce;
         this.bonusAgilite = item.BonusAgilite;
         this.bonusIntelligence = item.BonusIntelligence;
@@ -2833,7 +2833,7 @@ let CompetenceComponent = class CompetenceComponent {
         const newEntity = this.renderer.createElement('div');
         this.renderer.addClass(newEntity, 'ally');
         const newEntityImage = this.renderer.createElement('img');
-        this.renderer.setProperty(newEntityImage, 'src', '/assets/' + entity.iconImage);
+        this.renderer.setProperty(newEntityImage, 'src', 'assets/' + entity.iconImage);
         this.renderer.setProperty(newEntityImage, 'id', entity.Id_Personnage);
         if (!entity.isAlive) {
             this.renderer.addClass(newEntity, 'dead');
@@ -3532,7 +3532,7 @@ let NewCompetenceComponent = class NewCompetenceComponent {
         const newEntity = this.renderer.createElement('div');
         this.renderer.addClass(newEntity, 'ally');
         const newEntityImage = this.renderer.createElement('img');
-        this.renderer.setProperty(newEntityImage, 'src', '/assets/' + entity.iconImage);
+        this.renderer.setProperty(newEntityImage, 'src', 'assets/' + entity.iconImage);
         this.renderer.setProperty(newEntityImage, 'id', entity.Id_Personnage);
         if (!entity.isAlive) {
             this.renderer.addClass(newEntity, 'dead');
