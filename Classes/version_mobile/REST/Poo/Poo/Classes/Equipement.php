@@ -188,7 +188,7 @@ class Equipement{
 
 		if ($Valeur1 >= 0)
 		{
-			$this->_Valeur1 = $Valeur1;
+			$this->_Valeur1 = intval($Valeur1);
 		}
 	}
 
@@ -206,7 +206,7 @@ class Equipement{
 
 		if ($Valeur2 >= 0)
 		{
-			$this->_Valeur2 = $Valeur2;
+			$this->_Valeur2 = intval($Valeur2);
 		}
 	}
 
@@ -224,7 +224,7 @@ class Equipement{
 
 		if ($Valeur3 >= 0)
 		{
-			$this->_Valeur3 = $Valeur3;
+			$this->_Valeur3 = intval($Valeur3);
 		}
 	}
 
@@ -242,7 +242,7 @@ class Equipement{
 
 		if ($Valeur4 >= 0)
 		{
-			$this->_Valeur4 = $Valeur4;
+			$this->_Valeur4 = intval($Valeur4);
 		}
 	}
 
@@ -478,10 +478,10 @@ class Equipement{
 
         if ($rarete == 1) {
             $this->_Nom = $equipement . ' de mauvaise facture';
-        } else if ($rarete >= 2) {
+        } elseif ($rarete >= 2) {
             if (in_array($equipement, ['Coiffe', 'Ceinture', 'Amulette']) or ($this->_Type == 'Arme' and $equipement != 'Fléau')) {
                 $this->_Nom = $equipement . ' normale';
-            } else if (in_array($equipement, ['Jambieres', 'Bottes', 'Epaules'])) {
+            } elseif (in_array($equipement, ['Jambieres', 'Bottes', 'Epaules'])) {
                 $this->_Nom = $equipement . ' normales';
             } else {
                 $this->_Nom = $equipement . ' normal';
@@ -494,23 +494,23 @@ class Equipement{
                     $this->_PropriétéMagique1 = 'Agilité';
                 }
                 $this->_Emplacement = 'Arme';
-            } else if ($equipement == 'Baguette') {
+            } elseif ($equipement == 'Baguette') {
                 $this->_PropriétéMagique1 = 'Intelligence';
                 $this->_Emplacement = 'Arme';
-            } else if ($equipement == 'Faux') {
+            } elseif ($equipement == 'Faux') {
                 $this->_PropriétéMagique1 = 'Intelligence';
                 $this->_Emplacement = 'Arme';
-            } else if ($equipement == 'Epée courte') {
+            } elseif ($equipement == 'Epée courte') {
                 if (rand(0, 100) > 51) {
                     $this->_PropriétéMagique1 = 'Agilité';
                 } else {
                     $this->_PropriétéMagique1 = 'Force';
                 }
                 $this->_Emplacement = 'Arme';
-            } else if ($equipement == 'Massue' or $equipement == 'Epée' or $equipement == 'Lance' or $equipement == 'Fléau' or $equipement == 'Hache') {
+            } elseif ($equipement == 'Massue' or $equipement == 'Epée' or $equipement == 'Lance' or $equipement == 'Fléau' or $equipement == 'Hache') {
                 $this->_PropriétéMagique1 = 'Force';
                 $this->_Emplacement = 'Arme';
-            } else if ($equipement == 'Amulette' or $equipement == 'Anneau') {
+            } elseif ($equipement == 'Amulette' or $equipement == 'Anneau') {
                 $this->_PropriétéMagique1 = $proprietes_magiques_primaires[rand(0, count($proprietes_magiques_primaires) - 1)];
                 $this->_Emplacement = 'Bijou';
             } else {
@@ -534,7 +534,7 @@ class Equipement{
                 } else {
                     $this->_Nom = $equipement . ' magique';
                 }
-            } else if ($rarete == 4) {
+            } elseif ($rarete == 4) {
                 $this->_Valeur1 = round($niveau * $niveau / 10);
                 $i = rand(0, count($proprietes_magiques_secondaires) - 1);
                 while ($proprietes_magiques_secondaires[$i] == $this->_PropriétéMagique1) {
@@ -556,7 +556,7 @@ class Equipement{
                 } else {
                     $this->_Nom = $equipement . ' rare';
                 }
-            } else if ($rarete == 5) {
+            } elseif ($rarete == 5) {
                 //Valeur 1
                 $this->_Valeur1 = round($niveau * $niveau / 7);
 
@@ -599,13 +599,13 @@ class Equipement{
         for ($c = 1; $c <= 4; $c++) {
             $methodSet = 'setValeur'.$c;
             if ($this->$methodGetPM($c) == 'Vitalité') {
-                $this->$methodSet((int) round($this->$methodGetV($c) / 5));
-            } else if ($this->$methodGetPM($c) == "Canon de lumière") {
-                $this->$methodSet((int) floor(($this->$methodGetV($c)) / 15));
-            } else if ($this->$methodGetPM($c) == 'Critique') {
-                $this->$methodSet((int) floor($this->$methodGetV($c) / 10));
-            } else if ($this->$methodGetPM($c) == 'Mana') {
-                $this->$methodSet((int) round($this->$methodGetV($c) / 3));
+                $this->$methodSet(intval(round($this->$methodGetV($c) / 5)));
+            } elseif ($this->$methodGetPM($c) == "Canon de lumière") {
+                $this->$methodSet(intval(floor(($this->$methodGetV($c)) / 15)));
+            } elseif ($this->$methodGetPM($c) == 'Critique') {
+                $this->$methodSet(intval(floor($this->$methodGetV($c) / 10)));
+            } elseif ($this->$methodGetPM($c) == 'Mana') {
+                $this->$methodSet(intval(round($this->$methodGetV($c) / 3)));
             }
         }
         $pouvoir_special1 = null;
@@ -684,17 +684,17 @@ class Equipement{
         }
     }
 
-    public function getValeur(int $number) : string
+    public function getValeur(int $number) : ?int
     {
         switch ($number) {
             case 1:
-                return $this->_Valeur1 != null ? $this->_Valeur1 : '';
+                return $this->_Valeur1 != null ? intval($this->_Valeur1) : null;
             case 2:
-                return $this->_Valeur2!= null ? $this->_Valeur2 : '';
+                return $this->_Valeur2 != null ? intval($this->_Valeur2) : null;
             case 3:
-                return $this->_Valeur3!= null ? $this->_Valeur3 : '';
+                return $this->_Valeur3 != null ? intval($this->_Valeur3) : null;
             case 4:
-                return $this->_Valeur4!= null ? $this->_Valeur4 : '';
+                return $this->_Valeur4 != null ? intval($this->_Valeur4) : null;
         }
     }
 

@@ -239,7 +239,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
     ?><span style="color:white">Veuillez choisir un personnage !</span> <br> <?php
 
 } elseif ((empty($_POST['Nombre_Gris']) and empty($_POST['Nombre_Blanc']) and empty($_POST['Nombre_Bleu']) and empty($_POST['Nombre_Jaune']) and empty($_POST['Nombre_Orange'])) and isset($_POST['radio-choice'])) {
-    $personnageID = $_POST['radio-choice'];
+    $personnageID = intval($_POST['radio-choice']);
     $personnageManager = new PersonnageManager($bdd);
     $personnage = $personnageManager->get($personnageID);
     ?>
@@ -252,7 +252,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 } elseif (isset($_POST['Nombre_Gris']) and isset($_POST['Nombre_Blanc']) and isset($_POST['Nombre_Bleu']) and isset($_POST['Nombre_Jaune']) and isset($_POST['Nombre_Orange']) and isset($_POST['radio-choice'])) {
     ?> <div style="display: flex; flex-flow: row wrap; margin-left: 150px; margin-right: 200px"><?php
 
-    $personnageID = $_POST['radio-choice'];
+    $personnageID = intval($_POST['radio-choice']);
     $personnageManager = new PersonnageManager($bdd);
     $personnage = $personnageManager->get($personnageID);
     $EquipementManager = new EquipementManager($bdd);
@@ -276,8 +276,7 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
                 $niveau = $_POST['Niveau'];
             else
                 $niveau = $personnage->_Niveau;
-
-            $niveau = rand($niveau - floor($niveau / 7), $niveau + floor($niveau / 10));
+            $niveau = rand(intval( $niveau - floor($niveau / 7)), intval($niveau + floor($niveau / 10)));
 
             $equipementToCreate = $EquipementManager->getEmpty();
 
