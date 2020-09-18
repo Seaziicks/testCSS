@@ -11,6 +11,20 @@ class PersonnageManager
         $this->setDb($db);
     }
 
+    public function personnageExist($nomPersonnage)
+    {
+        $sql = 'SELECT *
+                    FROM personnage
+                    WHERE LOWER(nom) = LOWER(:nom)';
+
+        $userQuery = $this->_db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $userQuery->bindParam(':nom', $nomPersonnage, PDO::PARAM_STR);
+        $userQuery->execute();
+        $userFetched = $userQuery->fetch(PDO::FETCH_ASSOC);
+
+        return $userFetched ? true : false;
+    }
+
     public function getPersonnage($idPersonnage)
     {
         $idPersonnage = (int)$idPersonnage;
@@ -30,7 +44,8 @@ class PersonnageManager
         $personnageQuery = $this->_db->query('SELECT s.libelle, m.valeur
                                                         FROM personnage as p, monte as m, statistique as s
                                                         WHERE m.idPersonnage = '. $idPersonnage .'
-                                                        AND m.idStatistique = s.idStatistique');
+                                                        AND m.idStatistique = s.idStatistique
+                                                        AND m.idPersonnage = p.idPersonnage');
 
         while($personnageFetched = $personnageQuery->fetch(PDO::FETCH_ASSOC)) {
             $attribute = '_'.strtolower($personnageFetched['libelle']);
