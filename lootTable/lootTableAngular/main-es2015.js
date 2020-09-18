@@ -2138,7 +2138,7 @@ function GestionObjetComponent_ng_container_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx_r2.updatingObjetName && ctx_r2.updatingObjetID !== objet_r5.idObjet);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](objet_r5.nom);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r2.getNomSansBalise(objet_r5.nom));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", objet_r5.fauxNom);
 } }
@@ -2206,6 +2206,11 @@ class GestionObjetComponent {
     }
     selectObjet(idObjet) {
         this.objetCourantID = idObjet;
+    }
+    getNomSansBalise(objetNom) {
+        console.log(objetNom);
+        console.log(objetNom.replace(/<a href="http:\/\/([a-z]*.*?)">(.*?)<\/a>/g, '$2'));
+        return objetNom.replace(/<a href="http:\/\/([a-z]*.*?)">(.*?)<\/a>/g, '$2');
     }
 }
 GestionObjetComponent.ɵfac = function GestionObjetComponent_Factory(t) { return new (t || GestionObjetComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_personnage_service__WEBPACK_IMPORTED_MODULE_2__["PersonnageService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_objet_service__WEBPACK_IMPORTED_MODULE_3__["ObjetService"])); };
@@ -9567,8 +9572,9 @@ function PersonnageComponent_ng_container_12_span_4_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const objet_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](objet_r9.nom);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.getNomSansBalise(objet_r9.nom));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", objet_r9.fauxNom);
 } }
@@ -9683,6 +9689,11 @@ class PersonnageComponent {
             this.updatingObjetName = false;
             this.updatingObjetID = null;
         }, 2500);
+    }
+    getNomSansBalise(objetNom) {
+        console.log(objetNom);
+        console.log(objetNom.replace(/<a href="http:\/\/([a-z]*.*?)">(.*?)<\/a>/g, '$2'));
+        return objetNom.replace(/<a href="http:\/\/([a-z]*.*?)">(.*?)<\/a>/g, '$2');
     }
 }
 PersonnageComponent.ɵfac = function PersonnageComponent_Factory(t) { return new (t || PersonnageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_objet_service__WEBPACK_IMPORTED_MODULE_2__["ObjetService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_personnage_service__WEBPACK_IMPORTED_MODULE_3__["PersonnageService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_auth_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"])); };
@@ -10297,9 +10308,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_OBJET_COMPLET", function() { return URL_OBJET_COMPLET; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_PERSONNAGE", function() { return URL_PERSONNAGE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_STATISTIQUE", function() { return URL_STATISTIQUE; });
-// export let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
+let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
 // Production url
-let BASE_URL = '../lootTablePHP/Rest/';
+// export let BASE_URL = '../lootTablePHP/Rest/';
 let URL_DROP_CHANCE = 'dropChanceRest.php';
 let URL_DROP_CHANCE_BIS = 'dropChanceBisRest.php';
 let URL_MONSTRES = 'monstresRest.php';

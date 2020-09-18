@@ -4231,7 +4231,7 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](objet_r5.nom);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r2.getNomSansBalise(objet_r5.nom));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -4346,6 +4346,13 @@
           key: "selectObjet",
           value: function selectObjet(idObjet) {
             this.objetCourantID = idObjet;
+          }
+        }, {
+          key: "getNomSansBalise",
+          value: function getNomSansBalise(objetNom) {
+            console.log(objetNom);
+            console.log(objetNom.replace(/<a href="http:\/\/([a-z]*.*?)">(.*?)<\/a>/g, '$2'));
+            return objetNom.replace(/<a href="http:\/\/([a-z]*.*?)">(.*?)<\/a>/g, '$2');
           }
         }]);
 
@@ -19033,9 +19040,11 @@
         if (rf & 2) {
           var objet_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
+          var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](objet_r9.nom);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.getNomSansBalise(objet_r9.nom));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -19247,6 +19256,13 @@
               _this58.updatingObjetName = false;
               _this58.updatingObjetID = null;
             }, 2500);
+          }
+        }, {
+          key: "getNomSansBalise",
+          value: function getNomSansBalise(objetNom) {
+            console.log(objetNom);
+            console.log(objetNom.replace(/<a href="http:\/\/([a-z]*.*?)">(.*?)<\/a>/g, '$2'));
+            return objetNom.replace(/<a href="http:\/\/([a-z]*.*?)">(.*?)<\/a>/g, '$2');
           }
         }]);
 
@@ -20458,11 +20474,11 @@
 
       __webpack_require__.d(__webpack_exports__, "URL_STATISTIQUE", function () {
         return URL_STATISTIQUE;
-      }); // export let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
-      // Production url
+      });
 
+      var BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/'; // Production url
+      // export let BASE_URL = '../lootTablePHP/Rest/';
 
-      var BASE_URL = '../lootTablePHP/Rest/';
       var URL_DROP_CHANCE = 'dropChanceRest.php';
       var URL_DROP_CHANCE_BIS = 'dropChanceBisRest.php';
       var URL_MONSTRES = 'monstresRest.php';
