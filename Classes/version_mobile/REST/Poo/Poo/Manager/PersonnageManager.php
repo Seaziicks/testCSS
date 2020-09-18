@@ -83,7 +83,6 @@ class PersonnageManager
     public function update(Personnage $perso)
     {
 
-
         $q = $this->_db->prepare('UPDATE personnage SET Niveau = :Niveau, PA = :PA, PM = :PM, Force = :Force, Agilité = :Agilité, Intelligence = :Intelligence, Vitalité = :Vitalité, Ressource = :Ressource, Réussite = :Réussite, Charisme = :Charisme, Marchandage = :Marchandage, Intimidation = :Intimidation, Chance = :Chance WHERE Id_Personnage = :id');
 
         $q->bindValue(':Niveau', $perso->_Niveau, PDO::PARAM_INT);
