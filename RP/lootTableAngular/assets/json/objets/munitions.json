@@ -1,0 +1,30 @@
+{
+    "titles": [
+        "1d100",
+        "Arme",
+        "Prix de l’arme"
+    ],
+    "Chances": [
+        {
+            "lootChanceMin": 1,
+            "lootChanceMax": 20,
+            "name": "Billes (50)",
+            "price": 350,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 21,
+            "lootChanceMax": 50,
+            "name": "Carreaux (50)",
+            "price": 350,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 51,
+            "lootChanceMax": 100,
+            "name": "Flèches (50)",
+            "price": 350,
+            "currencyType": "po"
+        }
+    ]
+}

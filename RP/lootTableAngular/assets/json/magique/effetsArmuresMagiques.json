@@ -1,0 +1,2089 @@
+{
+    "weakAndSmall": [
+        {
+            "title": "Allié",
+            "description": [
+                "Un bouclier ayant cette propriété spéciale est décorée d'anneaux. Ces anneaux semblent se liés avec ceux d'autres boucliers d'allié quand ils sont mis côte à côte.",
+                "Le bonus d'altération d'un bouclier d'allié augmente de +1 pour chaque allié adjacent portant aussi un bouclier d'allié."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Allonge",
+            "description": [
+                "Une armure d'allonge défend son porteur contre les attaques éloignées. Elle confère un bonus de circonstance de +6 à la CA contre les attaques de corps à corps portées par des créatures non-adjacentes."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-armure-de-mage.htm\">armure de mage</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Ancrage",
+            "description": [
+                "Un personnage portant une armure ou un bouclier accompagné de cette propriété spéciale est quasiment indéracinable en combat. Il bénéficie en effet d'un bonus d'altération de +5 aux tests de caractéristique visant à résister aux tentatives de bousculade, de croc-en-jambe ou de renversement."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-force-de-taureau.htm\">force de taureau</a> ",
+                    " <span class=\"compobj\">Prix</span> +3 750 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Anti-impact",
+            "description": [
+                "Une armure anti-impact est conçue pour absorber les chocs importants. Elle ne protège pas contre les attaques des armes (sauf par son bonus à la classe d'armure), mais par contre les dégâts contondants qui affectent l'ensemble du corps (comme ceux d'une chute ou de la constriction) sont réduits de moitié."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 4 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, chute de plume ",
+                    " <span class=\"compobj\">Prix</span> +2 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Antiprojectiles",
+            "description": [
+                "Cette propriété ne peut être placée que sur un bouclier. Un bouclier antiprojectiles protège son porteur comme si celui-ci avait le don Parade de projectiles. Une fois par round, quand le personnage devrait normalement être touché par une arme à distance, le bouclier détourne le projectile. Le personnage doit voir venir l’attaque et ne pas être pris au dépourvu. Parer un projectile n’est pas considéré comme une action. Il est impossible de détourner les projectiles hors norme, comme un rocher lancé par un géant ou une flèche acide."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-bouclier.htm\">bouclier</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Astringente",
+            "description": [
+                "Le porteur d'une armure dotée de cette propriété ne subit pas d'hémorragies lorsqu'il est mourant ou souffre de blessures internes. Les blessures se referment automatiquement, empêchant de perdre d'autres points de vie et stabilisant l'état d'un personnage mourant. De plus, le porteur a 25% de chances de ne pas être affecté par les attaques visant à lui sucer le sang et qui réduisent la Constitution, comme la capacité d'absorption de sang d'un vampire ou d'une strige ou les effets d'une arme sanglante."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, le créateur doit avoir un degré de maîtrise de 10 en Premiers secours ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Brise-ligne",
+            "description": [
+                "Une armure brise-ligne semble avoir été faite de plusieurs armures, avec peu d'effort pour l'esthétique.",
+                "Son bonus d'altération augmente de +2 contre les attaques des créatures loyales. une créature qui charge un porteur d'une armure brise-ligne provoque pour lui une attaque d'opportunité."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> [Chaos] faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-protection-contre-la-loi.htm\">protection contre la loi</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Chauffante",
+            "description": [
+                "Cette armure en métal est d'un contact plutôt chaud, quel que soit l'environnement. Le porteur est protégé des températures basses comme par un sort d'endurance aux énergies destructives."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-endurance-aux-energies-destructives.htm\">endurance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +1 500 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Clignotement",
+            "description": [
+                "Sur commande, le personnage portant une armure accompagnée de cette propriété spéciale passe rapidement du plan Matériel au plan Éthéré. Ce pouvoir peut être activé 1 fois par jour et dure 1 minute."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 10 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-clignotement.htm\">clignotement</a> ",
+                    " <span class=\"compobj\">Prix</span> +15 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Confort",
+            "description": [
+                "Une armure accompagnée de cette propriété spéciale permet à celui qui la porte d'ignorer les effets de la chaleur et du froid. Le personnage peut donc évoluer sous des températures comprises entre -45° et +55° sans avoir à effectuer de jets de Vigueur. Son équipement est également protégé."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-endurance-aux-energies-destructives.htm\">endurance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +5 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Conseiller",
+            "description": [
+                "Les armures du conseiller sont généralement des armures légères. Elles sont souvent portées par des officiels qui supervisent les opérations.",
+                "une armure du conseiller confère un bonus d'aptitude de +2 aux tests de Diplomatie et Psychologie."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"enchen\">Enchantement</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 6 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-heroisme.htm\">héroïsme</a> ",
+                    " <span class=\"compobj\">Prix</span> +13 200 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Crépusculaire",
+            "description": [
+                "Très appréciée des lanceurs de sorts éladrins, cette armure devient partiellement intangible et translucide quand on l'enfile. En outre, elle présente des reflets qui ne sont pas sans rappeler les couleurs d'un coucher de soleil. L'armure crépusculaire réduit le risque d'échec des sorts profanes de 10 %."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Déplacement furtif",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Une armure de déplacement furtif est si bien huilée et fabriquée de telle façon qu’elle ne fait presque aucun bruit et qu’elle assourdit les bruits environnants. Le porteur bénéficie d’un bonus d’aptitude de +5 à ses tests de Déplacement silencieux. (Le malus d’armure aux tests s’applique normalement)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-silence.htm\">silence</a> ",
+                    " <span class=\"compobj\">Prix</span> +3 750 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Emplumé",
+            "description": [
+                "Les armures et les boucliers pourvus de cet enchantement semblent avoir été créés de milliers de plumes chatoyantes. Cette particularité n'a aucun effet sur le poids, les pénalités d'armure ou d'autres facteurs, L'enchantement permet au porteur de voler 5 minutes par jour avec une vitesse de 30 m (20 m si l'armure est intermédiaire ou lourde) et une manœuvrabilité bonne. La durée peut être découpée autant que le désir le porteur, mais chaque durée aussi petite soit-elle compte au minimum pour 1 round. Activer ou désactiver cet effet est une action simple purement mentale."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-vol.htm\">vol</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Endurance",
+            "description": [
+                "Une armure d'endurance confère à son porteur un bonus de résistance de +1 aux jets de Vigueur"
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance.htm\">résistance</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-endurance-de-l-ours.htm\">endurance de l’ours</a> ",
+                    " <span class=\"compobj\">Prix</span> +500 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Épines d’hamatula",
+            "description": [
+                "Toute créature frappant le porteur de cette armure avec une arme tenue à la main ou naturelle subit 1d8 points de dégâts tranchants et perçants à cause des épines. Ces dégâts ne s'appliquent pas aux assaillants munis d'armes à allonge comme les piques. Le porteur n'est pas blessé par les épines de son armure."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, épines d’hamatula ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Flou",
+            "description": [
+                "La silhouette du porteur de cette armure ou de ce bouclier est vague et imprécise. Cette distorsion lui confère un camouflage (20 % de chances que les attaques le ratent). Ceux qui ne voient pas le porteur ignorent l'effet, ce qui vaut aussi pour les créatures jouissant de vision lucide."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-flou.htm\">flou</a> ",
+                    " <span class=\"compobj\">Prix</span> +36 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Gluant",
+            "description": [
+                "Une armure ou un bouclier doté de cette propriété semble collant comme s'il était recouvert d'une gelée rouge encore gluante. Jusqu'à trois fois par jour, son porteur peut prononcer un mot de commande pour bénéficier de l'effet d'un sort de mucus de babau."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-mucus-de-babau.htm\">mucus de babau</a> ",
+                    " <span class=\"compobj\">Prix</span> +16 200 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Graisseuse",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Une armure graisseuse semble en permanence recouverte d’un film gras conférant un bonus d’aptitude de +5 aux tests d’Évasion de son porteur. (Le malus d’armure aux tests s’applique normalement)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 4 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-graisse.htm\">graisse</a> ",
+                    " <span class=\"compobj\">Prix</span> +3 750 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Hideux",
+            "description": [
+                "Une armure ou un bouclier avec cette propriété est décorée avec des os, des scalps, des viscères et autres horreurs. Une odeur putride émane de l'amure ou du bouclier.",
+                "Le porter d'une armure ou d'un bouclier hideux gagne un bonus d'aptitude de +4 à se tests d'Intimidation, mais subit un malus de -2 à ses tests de Diplomatie."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 4 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, le créateur doit avoir un degré de maîtrise de 5 en Intimidation ",
+                    " <span class=\"compobj\">Prix</span> +3570 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Immobile",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Un porteur d'une armure immobile est traité comme d'une taille supplémentaire face à une bousculade ou un renversement.",
+                "Un effet secondaire de cet enchantement est que l'armure pèse 10% de plus."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-agrandissement.htm\">agrandissement</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Masque",
+            "description": [
+                "Une armure ou un bouclier accompagné de cette propriété spéciale protège son porteur et son équipement des sorts et objets de Divination (comme la boule de cristal). Si le porteur est la cible d'une divination, l'auteur de celle-ci doit réussir un test de niveau de lanceur de sorts (DD 20)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-antidetection.htm\">antidétection</a> ",
+                    " <span class=\"compobj\">Prix</span> +45 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Nacrée",
+            "description": [
+                "Un bouclier ou une arme nacrée brille comme une perle. Elle est plus efficace contre les armes perforantes et confère un bonus d'altération à la CA supplémentaire de +2 contre les armes perforantes."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-armure-de-mage.htm\">armure de mage</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Ombre",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Une armure d’ombre est d’un noir de jais et la silhouette de son porteur semble se brouiller chaque fois qu’il tente de se cacher, ce qui se traduit par un bonus d’aptitude de +5 à ses tests de Discrétion. (Le malus d’armure aux tests s’applique normalement)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-invisibilite.htm\">invisibilité</a> ",
+                    " <span class=\"compobj\">Prix</span> +3 750 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Plongée",
+            "description": [
+                "Cette armure, souvent décorée de motifs de vagues, permet au personnage de respirer sous l'eau. Son porteur gagne également un bonus d'aptitude de +5 aux tests de Natation."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-respiration-aquatique.htm\">respiration aquatique</a> ",
+                    " <span class=\"compobj\">Prix</span> +21 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Pointes empoisonnées",
+            "description": [
+                "Cette propriété est identique à des pointes pour armure classiques, à la différence que celles-ci se rétractent dans des compartiments cachés de l'armure. Quand elles surgissent, en réponse à un mot de commande, elles infligent 1d6 points de dégâts perforants (comme des pointes pour armure normales) et le poison dont elles sont enduites provoque un affaiblissement temporaire de 1d3 points de Force, aussi bien en effet initial qu'en effet secondaire (DD 16)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"necro\">Nécromancie</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-empoisonnement.htm\">empoisonnement</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Protection fantomatique",
+            "description": [
+                "Une armure ou un bouclier pourvu de cette propriété permet au porteur de bénéficier du bonus d’altération de l’objet (mais pas de son bonus d’armure ou de bouclier) à la CA contre les attaques de contact intangibles (mais pas contre les autres attaques de contact)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-armure-de-mage.htm\">armure de mage</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Rafraichissante",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Une armure rafraichissante n'impose pas son malus normal de -4 aux jets de Vigueur pour résister aux effets de la chaleur"
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-endurance-aux-energies-destructives.htm\">endurance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> + 2 400 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Réaction ectoplasmique",
+            "description": [
+                "Une armure pourvue de cette propriété génère un choc d’énergie positive quand son porteur est touché par une attaque de contact au corps à corps intangible. Celle-ci inflige 1d6 points de dégâts à l’assaillant (pas de jet de sauvegarde). Cette propriété n’a aucun effet sur les créatures tangibles."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-reaction-ectoplasmique.htm\">réaction ectoplasmique</a> ",
+                    " <span class=\"compobj\">Prix</span> + 8 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Refroidissante",
+            "description": [
+                "Cette armure en métal est d'un contact plutôt frais, quel que soit l'environnement Le porteur est protégé des températures élevées comme par un sort à'endurance aux énergies destructives."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-endurance-aux-energies-destructives.htm\">endurance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> 1500 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance à l’acide",
+            "description": [
+                "Une armure (ou un bouclier) de résistance à l’acide est souvent d’un gris terme. Chaque fois que le porteur doit subir des dégâts d’acide, leur montant est réduit de 10 points (comme par le sort résistance aux énergies destructives)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +18 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance à l’électricité",
+            "description": [
+                "Une armure (ou un bouclier) de résistance à l’électricité est souvent bleutée et s’orne dans la plupart des cas d’un symbole de foudre ou de tempête. Chaque fois que le porteur doit subir des dégâts d’électricité, leur montant est réduit de 10 points (comme par le sort résistance aux énergies destructives)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +18 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au feu",
+            "description": [
+                "Une armure (ou un bouclier) de résistance au feu est souvent rougeâtre et s’orne dans la plupart des cas d’un symbole de dragon. Chaque fois que le porteur doit subir des dégâts de feu, leur montant est réduit de 10 points (comme par le sort résistance aux énergies destructives)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +18 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au froid",
+            "description": [
+                "Une armure (ou un bouclier) de résistance au froid est souvent blanc-bleu ou recouverte de fourrure ou de peaux d’animaux laineux. Chaque fois que le porteur doit subir des dégâts de froid, leur montant est réduit de 10 points (comme par le sort résistance aux énergies destructives)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +18 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au son",
+            "description": [
+                "Une armure (ou un bouclier) de résistance au son luit légèrement. Chaque fois que le porteur doit subir des dégâts de son, leur montant est réduit de 10 points (comme par le sort résistance aux énergies destructives)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 3 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +18 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Santé",
+            "description": [
+                "Un personnage portant une armure ou un bouclier accompagné de cette propriété spéciale est immunisé contre toutes les maladies, naturelles et magiques."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> faible ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-guerison-des-maladies.htm\">guérison des maladies</a> ",
+                    " <span class=\"compobj\">Prix</span> +11 250 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        }
+    ],
+    "moderate": [
+        {
+            "title": "Acidifié",
+            "description": [
+                "Une armure ou un bouclier acidifié est en permanence couverte d'une couche d'acide fumant. Le porteur ainsi que tout ce qu'il porte est immunisé à l'acide. Une armure acidifiée inflige 2d4 dégâts d'acide en situation de lutte à l'adversaire. Un simple contact ne suffit pas à infliger des dégâts. Il est possible d'infliger des dégâts à un objet, mais il faut un contact d'un round entier pour infliger 2d4 dégâts d'acide."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"evoca\">Évocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 6 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-fleche-acide-de-melf.htm\">flèche acide de Melf</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +4."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Affameur",
+            "description": [
+                "Une armure pourvue de cette propriété spéciale est ainsi nommée car plus d'un flagelleur mental en a fait les frais en perdant quelques tentacules. L'armure inclut une protection spéciale contre lès créatures qui tentent d'étreindre ou d'engloutir le porteur. Quand un ennemi tente un test de lutté contre lui, des lames aiguisés en jaillissent, infligeant 2d6 points de dégâts tranchants à l'assaillant. Ces lames se rétractent aussitôt qu'on lâche le porteur de l'armure. Dans le cas contraire, elles continuent d'infliger 2d6 points de dégâts par round, au tour de jeu du porteur. Elles infligent également ces dégâts à toute créature ayant englouti le personnage. Si ce dernier meurt, les lames deviennent inertes."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Amphibie",
+            "description": [
+                "Un élémentaire de l'Eau de taille G est asservi à l'armure, lui donnant une coloration d'un bleu laiteux. Le porteur de l'armure peut respirer sous l'eau comme s'il était sous l'effet d'un sort de respiration aquatique, et l'armure ne confère aucun malus aux tests de Natation. Deux fois par jour. l'utilisateur peut ordonner à l'armure de produire un effet d'extincfion des feux."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-asservissement-d-elementaire-1120.htm#1120\">Asservissement d’élémentaire</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-contrat-intermediaire.htm\">contrat intermédiaire</a> ",
+                    " <span class=\"compobj\">Prix</span> +86 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Ancrage suprême",
+            "description": [
+                "Comme ci-dessus, mais confère un bonus d'altération de +10 aux tests de caractéristique visant à résister à une tentative de bousculade, de croc-en-jambe ou de renversement."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 10 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-force-de-taureau.htm\">force de taureau</a> ",
+                    " <span class=\"compobj\">Prix</span> +15 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Angélique",
+            "description": [
+                "Cette armure (ou ce bouclier) est ornée de motifs célestes et autres représentations de plumes. L'objet augmente le bonus d'altération à la CA du porteur de +1 contre les attaquesportées par des créatures maléfiques. Il confère également à son utilisateur un bonus de sainteté de +4 aux jets de sauvegarde contre les sorts présentant le registre du Mal. Bien entendu, une créature maléfique qui enfile l'armure ou use du bouclier ne bénéficie pas de ces avantages."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-determination-de-phieran.htm\">détermination de Phiéran</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-rejet-du-mal.htm\">rejet du Mal</a>, le créateur doit être d’alignement bon ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Aquatique",
+            "description": [
+                "Les armures et les boucliers ainsi enchantés sont dotés de formes harmonieuses et paraissent légèrement teinté de vert. Ils permettent au porteur de se déplacer librement sou l'eau, sans qu'un test de Natation soit nécessaire. Les règles de noyade s’appliquent néanmoins toujours, à moins que l’objet soit également doté de l'enchantement respiration aquatique."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-liberte-de-mouvement.htm\">liberté de mouvement</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-respiration-aquatique.htm\">respiration aquatique</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2 (normal) ou +3 (avec respiration aquatique)."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Attaque",
+            "description": [
+                "Cette propriété ne peut être placée que sur un écu ou une rondache. Un bouclier d’attaque est conçu pour porter des coups de bouclier, et il inflige des dégâts correspondant à un bouclier de deux catégories de taille supérieures à sa taille réelle. (Par exemple, un écu de taille M inflige alors 1d8 points de dégâts et une rondache de taille M 1d6 points de dégâts.) Un bouclier d’attaque confère un bonus de +1 sur les jets d’attaque et de dégâts quand on l’utilise pour attaquer, et il compte comme une arme magique."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 8 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-force-de-taureau.htm\">force de taureau</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1.<br>."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Aveuglant",
+            "description": [
+                "Cette propriété ne peut être placée que sur un bouclier. Sur commande et jusqu’à deux fois par jour, un bouclier aveuglant peut générer une vive lumière. Toutes les créatures distantes de 6 mètres ou moins (à l’exception du porteur) doivent réussir un jet de Réflexes de DD 14 sous peine d’être aveuglées pendant 1d4 rounds."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"evoca\">Évocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-lumiere-brulante.htm\">lumière brûlante</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Branchies",
+            "description": [
+                "Cette propriété spéciale ne peut être placée que sur une armure. une armure à branchies possèdes des décoration autour du cou. Elles permet à une créature aquatique de respirer librement dans l'air."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-respiration-aerienne.htm\">respiration aérienne</a> ",
+                    " <span class=\"compobj\">Prix</span> + 7 500 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Brûlante",
+            "description": [
+                "Un élémentaire du Feu de taille G est asservi à cette armure, où semble couver une incandescence rougeoyante. Le porteur de cette armure gagne une résistance au froid de 10. Trois fois par jour, il peut ordonner à l'armure de prendre feu. Ces flammes ne blessent pas le porteur, mais toute créature qui le frappe avec une partie de son corps ou une arme tenue à la main subit 2d6 points de dégâts de feu, et prend également feu à moins de réussir un jet de Réflexes (DD 17). Les créatures qui portent des armes à allonge, comme des piques, ne sont pas sujettes à cet effet. Les flammes durent 11 rounds."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-asservissement-d-elementaire-1120.htm#1120\">Asservissement d’élémentaire</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-contrat-intermediaire.htm\">contrat intermédiaire</a> ",
+                    " <span class=\"compobj\">Prix</span> +90 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Charme",
+            "description": [
+                "Les armures et les boucliers ainsi enchantés sont conçus pour l’esthétique autant que la protection. La forme de l’objet accroît la prestance de son porteur. Un adversaire qui frappe ce dernier doit réussir un jet de sauvegarde (DD 13) ou être charmé. S'il adversaire a réussit son attaque, il reçoit un bonus de +4 à ce jet de sauvegarde."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"enchen\">Enchantement</span> modéré ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-charme-monstre.htm\">charme-monstre</a>."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Combat rituel",
+            "description": [
+                "Une armure de combat rituel apparaît douce au touché et est décoré de motif tribaux. Les puissant guerriers portent ces protections magique alors de combat rituel pour éviter les risques d'accident.",
+                "Une armure de combat rituel transforme les 4 premiers point de dégâts infligés par une attaque physique en dégâts non-létaux. Les effets d'une armure de combat rituel et d'un bouclier de combat rituel se cumulent."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modéré ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-peau-de-pierre.htm\">peau de pierre</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Défense démoniaque",
+            "description": [
+                "Cette armure augmente le bonus d’altération à la classe d’armure de +1 contre les attaques assénées par des créatures d’alignement bon, et de +2 contre les attaques venant d’Extérieurs d’alignement bon. De plus, elle confère un bonus de +1 aux jets de sauvegarde contre les sorts et les effets magiques générés par des créatures d’alignement bon, et un bonus de +2 aux jets de sauvegarde contre les sorts du Bien."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-rejet-du-bien.htm\">rejet du Bien</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-gardeciel.htm\">gardeciel</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Déplacement furtif supérieur",
+            "description": [
+                "Cette propriété est similaire à celle de déplacement furtif, mais elle confère un bonus d’aptitude de +10 aux tests de Déplacement silencieux."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 10 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-silence.htm\">silence</a> ",
+                    " <span class=\"compobj\">Prix</span> +15 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Déplacement furtif suprême",
+            "description": [
+                "Cette propriété est similaire à celle de déplacement furtif, mais elle confère un bonus d’aptitude de +15 aux tests de Déplacement silencieux."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 15 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-silence.htm\">silence</a> ",
+                    " <span class=\"compobj\">Prix</span> +33 750 po.<br>."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Déplacement xorn",
+            "description": [
+                "Cette propriété confère au porteur de l'armure les avantages du sort déplacement xorn pendant 9 rounds par jour (cette durée peut être décomposée en plusieurs fois)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-deplacement-xorn.htm\">déplacement xorn</a> ",
+                    " <span class=\"compobj\">Prix</span> +36 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Durable",
+            "description": [
+                "Une armure durable n'est pas affectée par les pouvoirs spéciaux la rouillant (comme le pouvoir d'un oxydeur) ou la dissolvant (comme l'effet de nombreuses vases). De plus, l'armure est immunisée aux dégâts d'acide. Cette protection ne s'étend pas à son porteur.",
+                "Seules les armures en métal peuvent profiter de ce pouvoir."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">Résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +500po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Empyréale",
+            "description": [
+                "Cette armure (ou ce bouclier) magnifiquement ouvragée, véritable objet de culte parmi les champions célestes du Bien, est généralement incrustée de pierres précieuses et ornée de représentations de puissants archons, éladrins ou guardinals. Le porteur peut transformer tout ou partie de son bonus d'altération en bonus de sainteté aux jets de sauvegarde. Il décide d'effectuer le transfert à son tour de jeu, l'effet perdurant alors jusqu'à son tour de jeu suivant. Quand une créature maléfique enfile une armure ou porte un bouclier de ce type, elle est fiévreuse (malus de -2 aux jets d'attaque, jets de sauvegarde, tests de caractéristique et tests de compétence), et ce tant qu'elle utilise l'objet (pas de jet de sauvegarde),"
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> et <span class=\"necro\">Nécromancie</span> |Bien] modérées ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-bouclier-de-la-foi.htm\">bouclier de la foi</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-enfievrement-du-mal.htm\">enfièvrement du Mal</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance.htm\">résistance</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Exaltée",
+            "description": [
+                "S'il est d'alignement bon, le porteur de cette armure immaculée ne subit que la moitié des dégâts infligés par les armes impies (+1d6 et non +2d6) et bénéficie d'une protection contre le Mal permanente. De plus, l'armure annule les dégâts maléfiques infligés par les armes naturelles, à distance ou au corps à corps maléfiques."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-protection-contre-le-mal.htm\">protection contre le Mal</a>, le créateur doit être d’alignement bon ",
+                    " <span class=\"compobj\">Prix</span> bonus de +3."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Flamme spirituelle",
+            "description": [
+                "Le porteur de cette armure est immunisé contre les sorts de mort, les effets de mort magique, l'absorption d'énergie et les effets liés à l'énergie négative (comme contact glacial ou un sort de blessure)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-protection-contre-la-mort.htm\">protection contre la mort</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +4."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Flottante",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Celle-ci n'apparait pas différemment dune autre armure, mais elle est plus légère. Son poids est divisé par deux et le malus d'armure aux tests de Natation n'est pas doublé. Elle reste gênante, et une armure intermédiaire ou lourde continue de ralentir son porteur."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-liberte-de-mouvement.htm\">liberté de mouvement</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Focalisé",
+            "description": [
+                "Un bouclier focalisé aide le personnage à anticiper les mouvements de l'ennemi lors du combat, à mieux percer a jour les feintes et mouvements semblables, et confère des avantages supplémentaires quand il combat contre une seule créature.",
+                "Un bouclier focalisé confère un bonus de circonstances de +10 aux tests de Psychologie opposés à des tests de Bluff effectués pour feinter. De plus, à chaque fois que son porteurn'est menacé que par une créature, le bonus du bouclier a la CA augmente de 1.",
+                "Cette propriété spéciale ne peut être appliquée qu'aux boucliers et non aux armures."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-bouclier.htm\">bouclier</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Force",
+            "description": [
+                "Le porteur de cette armure bénéficie d'un bonus d'altération de +2 ou de +4 en Force."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 12 ",
+                    " Création d’armes et d’armures magiques, force du taureau ",
+                    " <span class=\"compobj\">Prix</span> +8000 po (+2), +32 000 po (+4)."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Forme animale",
+            "description": [
+                "Une armure (ou un bouclier) de forme animale est décorée de motifs représentant des feuilles. Lorsque son porteur prend une forme animale (aptitude de classe de druide), il conserve son bonus d’armure (ou de bouclier), ainsi que le bonus d’altération correspondant. L’armure (ou le bouclier) n’est cependant alors pas visible."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-metamorphose-funeste.htm\">métamorphose funeste</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +3."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Glacis bleu",
+            "description": [
+                "Cette propriété peut être appliquée seulement à des armures métalliques qui gagnent alors une coloration bleu-noir une fois traitées. L'armure qui a subit ce traitement ne ternira jamais et sera définitivement immunisée aux attaques d'acide et de rouille. Le porteur de l'armure gagne aussi un bonus de circonstances de +5 sur ses jets de Discrétion. Ce bonus ne se cumule pas avec celui fournit par une cape d'elfe."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 12 ",
+                    " Création d’armés et armures magiques, jeteur de sorts de niveau 12+, degré de maîtrise de 5+ en Artisanat (Alchimie) ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Graisseuse supérieure",
+            "description": [
+                "Cette propriété est similaire à graisseuse, mais elle confère un bonus d’aptitude de +10 aux tests d’Évasion."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 10 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-graisse.htm\">graisse</a> ",
+                    " <span class=\"compobj\">Prix</span> +15 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Graisseuse suprême",
+            "description": [
+                "Cette propriété est similaire à graisseuse, mais elle confère un bonus d’aptitude de +15 aux tests d’Évasion."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 15 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-graisse.htm\">graisse</a> ",
+                    " <span class=\"compobj\">Prix</span> +33 750 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Guérison",
+            "description": [
+                "Quand un personnage portant une armure accompagnée de cette propriété spéciale est hors de combat ou mourant en raison d'un trop grand nombre de blessures reçues, l'objet lui rend automatiquement 20 points de vie (le porteur n'a pas besoin d'activer cette propriété). Ce pouvoir fonctionne 1 fois par jour."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"evoca\">Évocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-prevoyance.htm\">prévoyance</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-soins-moderes.htm\">soins modérés</a> ",
+                    " <span class=\"compobj\">Prix</span> +32 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Illithid",
+            "description": [
+                "Les armures pourvues de cette propriété sont relativement courantes dans les régions contrôlées par les illithids, mais peu connues dans le reste du monde. Les armures illithids sont parfois douées de conscience, évoluant et changeant presque imperceptiblement, même quand on ne les porte pas. Une armure illithid confère à celui qui la porte un bonus d'intuition de +1 à la CA. Ce bonus passe à +2 si l'intéressé est un psionique."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"divi\">Divination</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 8 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a> ou <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-psioniques-489.htm#489\">Création d’armes et armures psioniques</a>, créature psionique ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Image miroir",
+            "description": [
+                "Sur commande, 3 fois par jour, une armure ou un bouclier accompagné de cette propriété spéciale permet à son utilisateur de créer des images de lui-même, semblables à celles que produit le sort image miroir. Le pouvoir crée six images qui restent jusqu'à ce qu'on les frappe mais disparaissent quoiqu'il arrive au bout de 6 minutes."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 6 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-image-miroir.htm\">image miroir</a> ",
+                    " <span class=\"compobj\">Prix</span> +20 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Insensibilité au feu",
+            "description": [
+                "Cette armure annule la vulnérabilité au feu de son porteur. Par exemple, un géant du givre portant cette armure subit des dégâts normaux des attaques de feu."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-protection-contre-les-energies-destructives.htm\">protection contre les énergies destructives</a>, le créateur doit être du sous-type froid ",
+                    " <span class=\"compobj\">Prix</span> +24 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Insensibilité au froid",
+            "description": [
+                "Cette armure annule la vulnérabilité au froid de son porteur. Par exemple, un géant du feu portant cette armure subit des dégâts normaux des attaques de froid."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 5 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-protection-contre-les-energies-destructives.htm\">protection contre les énergies destructives</a>, le créateur doit être du sous-type Feu ",
+                    " <span class=\"compobj\">Prix</span> +24 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Insensibilité aux enchantements",
+            "description": [
+                "Un personnage portant une armure ou un bouclier accompagné de cette propriété spéciale est immunisé contre les trois premiers sorts d'Enchantement censés l'affecter chaque jour."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-annulation-d-enchantement.htm\">annulation d’enchantement</a> ",
+                    " <span class=\"compobj\">Prix</span> +50 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Interception de projectiles",
+            "description": [
+                "Cette propriété ne peut être placée que sur un bouclier. Sur commande, un bouclier d’interception de projectiles attire sur lui les armes à distance (armes de jets ou à projectiles) visant son porteur. Il lui confère donc un bonus de parade de +1 à la CA contre les armes à distance. De plus, toute arme de jet et tout projectile visant une cible située à 1,50 mètre ou moins du porteur de ce bouclier sont eux aussi attirés. L’attaque change alors automatiquement de cible pour viser le porteur (à moins qu’il ne dispose d’un abri total vis-à-vis de l’attaquant, ou que l’arme n’ait un bonus d’altération supérieur au bonus de bouclier de base du bouclier, auxquels cas rien ne se passe). Ce n’est pas sans désavantage, et notamment, les attaques à distance contre le porteur ne souffrent d’aucun risque d’échec, dû par exemple à un camouflage. Le porteur peut activer et désactiver les effets de cette propriété grâce à un mot de commande."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 8 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-bouclier-entropique.htm\">bouclier entropique</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Invocable",
+            "description": [
+                "Ce puissant enchantement permet au possesseur d'appeler à lui d’un simple mot de commande, son armure ou son bouclier. Il s'agit d'une action simple et, à la fin de celle-ci, l'armure est parfaitement ajustée sur le porteur, le boucher quant à lui apparaissant au (bon) bras de ce dernier. L'armure comme le bouclier semblent par ailleurs parfaitement normaux.",
+                "L'armure ou le bouclier doivent avoir été portés pendant au moins 4 heures consécutives pour être lié à leur possesseur."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " Création d’armes et d’armures magiques, <a href=\"http://www.gemmaline.com/sorts/sort-nom-teleportation.htm\">téléportation</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Invulnérabilité",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Une armure d’invulnérabilité confère à son porteur une réduction des dégâts de 5/magie."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée (et <span class=\"evoca\">Évocation</span> si l’on utilise miracle) ",
+                    " <span class=\"compobj\">NLS</span> 18 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-peau-de-pierre.htm\">peau de pierre</a>, et soit miracle, soit souhait ",
+                    " <span class=\"compobj\">Prix</span> bonus de +3."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Liberté",
+            "description": [
+                "Un personnage portant une armure accompagnée de cette propriété spéciale agit comme s'il jouissait d'un effet de liberté de mouvement continu."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-liberte-de-mouvement.htm\">liberté de mouvement</a> ",
+                    " <span class=\"compobj\">Prix</span> +60 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Lithofusion",
+            "description": [
+                "Un élémentaire de la Terre de taille G est asservi à cette armure, et des structures cristallines apparaissent à divers endroits de sa surface. Le porteur de l'armure gagne une réduction des dégâts de 5/— et peut utiliser fusion dans la pierre sur commande, trois fois par jour."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-asservissement-d-elementaire-1120.htm#1120\">Asservissement d’élémentaire</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-contrat-intermediaire.htm\">contrat intermédiaire</a> ",
+                    " <span class=\"compobj\">Prix</span> +80 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Malléable",
+            "description": [
+                "Une armure malléable permet à son porteur d'évoluer dans les espaces confinés des cavernes et des tunnels. Le personnage ignore la réduction de vitesse de déplacement due aux espaces confinés (une zone inférieure à son espace occupé mais au moins égal à la moitié de celui-ci) et aux espaces bas (inférieure à sa taille mais au moins égale à la moitié de celle-ci). De plus, il conserve son bonus de Dextérité à la CA (le cas échéant). Si l'espace en question est à la fois confiné et bas, une seule condition s'applique."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " Création d’armes et amures magiques, Coureur des tunnels ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Marchebois",
+            "description": [
+                "Une armure marchebois permet à son porteur d'entrer et de sortir d'un arbre par une action libre comme par le sort voyage par les arbres.",
+                "Ce pouvoir n'est utilisable que si le porteur a l’aptitude de Déplacement facilitée et est utilisable 3 fois par jour."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-voyage-par-les-arbres.htm\">voyage par les arbres</a> ",
+                    " <span class=\"compobj\">Prix</span> +9 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Menace",
+            "description": [
+                "Une armure ou un bouclier accompagné de cette propriété spéciale permet à son utilisateur de terrifier ses adversaires. Trois fois par jour, sur simple commande, le porteur devient effrayant, obligeant les adversaires situés dans un rayon de 9 mètres et ayant moins de dés de vie que lui à effectuer un jet de Volonté (DD 10 + 1/2 dés de vie du porteur + son modificateur de Charisme). Ceux qui le ratent sont paniqués pendant 10 rounds et se recroquevillent sur eux-mêmes s'ils sont acculés. Ceux qui le réussissent sont quant à eux secoués pendant 1 round, mais sont ensuite immunisés contre les utilisations de la propriété de cette même armure pendant 24 heures."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"necro\">Nécromancie</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, Sort sélectif, <a href=\"http://www.gemmaline.com/sorts/sort-nom-terreur.htm\">terreur</a> ",
+                    " <span class=\"compobj\">Prix</span> +60 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Mimétisme",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Une armure de mimétisme a l’air normale. Pourtant, sur commande, elle change de forme pour prendre l’aspect de vêtements. Même transformée, elle conserve toutes ses propriétés (y compris son poids). Seul le sort vision lucide révèle la véritable nature d’une armure de mimétisme transformée."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 10 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-deguisement.htm\">déguisement</a> ",
+                    " <span class=\"compobj\">Prix</span> +2 700 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Navigation",
+            "description": [
+                "Le porteur d'une armure accompagnée de cette propriété spéciale réussit automatiquement ses tests d'Équilibre (jusqu'à un DD 20) quand il est à bord d'un navire. Bien que son poids ne change pas, l'armure est légèrement flottante et confère au porteur un bonus de circonstances de +5 aux tests de Natation."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 6 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-pied-marin.htm\">pied marin</a>, le créateur doit avoir un degré de maîtrise de 5 en Natation ",
+                    " <span class=\"compobj\">Prix</span> .+20 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Ombre supérieure",
+            "description": [
+                "Cette propriété est similaire à celle d’ombre, mais elle confère un bonus d’aptitude de +10 aux tests de Discrétion."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 10 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-invisibilite.htm\">invisibilité</a> ",
+                    " <span class=\"compobj\">Prix</span> +15 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Ombre suprême",
+            "description": [
+                "Cette propriété est similaire à celle d’ombre, mais elle confère un bonus d’aptitude de +15 aux tests de Discrétion."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 15 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-invisibilite.htm\">invisibilité</a> ",
+                    " <span class=\"compobj\">Prix</span> +33 750 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Poids plume",
+            "description": [
+                "Les armures poids plume sont dé véritables œuvres d'art dont la conception inclut un savoir-faire psionique, des matériaux d'une qualité exceptionnelle et une science de l'ingénierie incroyable, le tout permettant de réduire leur poids de moitié. L'armure poids plume est donc une armure légère à part entière, si ce n'est que la protection qu'elle confère n'est pas affectée. Ainsi, une cuirasse +1 poids plume est une armure légère et peut être utilisée sans malus par tout personnage formé au port des armures légères."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 8 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a> ou <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-psioniques-489.htm#489\">Création d’armes et armures psioniques</a>, créature psionique ",
+                    " <span class=\"compobj\">Prix</span> bonus de +3 (bonus de +2 si utilisé sur une armure illithid)."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Protection contre la mort",
+            "description": [
+                "Une fois par jour, le porteur de cette armure peut ignorer un effet de mort dont il est la cible (ce qui inclut les sorts de mort, les effets de mort magique, l'absorption d'énergie et les effets d'énergie négative comme les sorts de blessure et contact glacial)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"necro\">Nécromancie</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-protection-contre-la-mort.htm\">protection contre la mort</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Protection des damnés",
+            "description": [
+                "’il est d’alignement mauvais, le porteur de cette armure ne subit que la moitié des dégâts infligés par les sorts et effets magiques qui sont particulièrement efficaces contres les créatures maléfiques, tels que le sort de châtiment sacré, le pouvoir de châtiment du Mal des paladins ou les dégâts supplémentaires occasionnés par une arme sainte."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-protection-contre-le-bien.htm\">protection contre le Bien</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Protège-nuée",
+            "description": [
+                "Une rune délicate est gravée autour de chaque couture et faille qui sont absolument nécessaires d'une armure protège-buée, protégeant son porteur contre l'intrusion de la vermine. Lorsqu'il est exposé à une attaque de nuée, les runes s'illuminent, bloquant les créatures qui tentent de pénétrer les défenses de l'armure.",
+                "Une armure protège-nuée confère une réduction de dégâts de 5/— contre les attaques des nuées. Elle confère de plus un bonus aux tests de Concentration et aux jets de sauvegarde contre l'effet de distraction d'une nuée égal au bonus d'armure de l'armure protège-nuée."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-repulsif.htm\">répulsif</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance à l’acide supérieure",
+            "description": [
+                "Cette propriété est similaire à celle de résistance à l’acide, mais elle absorbe 20 points de dégâts d’acide par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +42 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance à l’acide suprême",
+            "description": [
+                "Cette propriété est similaire à celle de résistance à l’acide, mais elle absorbe 30 points de dégâts d’acide par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +66 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance à l’électricité supérieure",
+            "description": [
+                "Cette propriété est similaire à celle de résistance à l’électricité, mais elle absorbe 20 points de dégâts d’électricité par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +42 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance à l’électricité suprême",
+            "description": [
+                "Cette propriété est similaire à celle de résistance à l’électricité, mais elle absorbe 30 points de dégâts d’électricité par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +66 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au feu supérieure",
+            "description": [
+                "Cette propriété est similaire à celle de résistance au feu, mais elle absorbe 20 points de dégâts de feu par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +42 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au feu suprême",
+            "description": [
+                "Cette propriété est similaire à celle de résistance au feu, mais elle absorbe 30 points de dégâts de feu par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +66 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au froid supérieure",
+            "description": [
+                "Cette propriété est similaire à celle de résistance au froid, mais elle absorbe 20 points de dégâts de froid par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +42 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au froid suprême",
+            "description": [
+                "Cette propriété est similaire à celle de résistance au froid, mais elle absorbe 30 points de dégâts de froid par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +66 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au son supérieure",
+            "description": [
+                "Cette propriété est similaire à celle de résistance au son, mais elle absorbe 20 points de dégâts de son par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 7 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +42 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance au son suprême",
+            "description": [
+                "Cette propriété est similaire à celle de résistance au son, mais elle absorbe 30 points de dégâts de son par attaque."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-aux-energies-destructives.htm\">résistance aux énergies destructives</a> ",
+                    " <span class=\"compobj\">Prix</span> +66 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Sacrée",
+            "description": [
+                "Une armure (ou un bouclier) équipée de cette propriété n'est d'utilité qu'auprès d'un porteur pourvu du pouvoir de renvoyer ou d'intimider les morts-vivants. L'objet augmente le niveau de son propriétaire de +2 pour ce qui est des tests de renvoi. Une armure (ou un bouclier) dotée de cette propriété relève toujours d'un dieu précis et arbore son symbole sacré."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 8 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, pouvoir de renvoi ou d’intimidation des morts-vivants ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Sanctuaire",
+            "description": [
+                "Trois fois par jour, sur commande, un personnage portant une armure ou un bouclier accompagné de cette propriété spéciale est protégé comme s'il jouissait d'un sort de sanctuaire (Volonté, DD 11, annule). L'effet dure 1 minute."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 10 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-sanctuaire.htm\">sanctuaire</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Sombre",
+            "description": [
+                "Une armure sombre est pensée pour se fondre dans l'environnement lorsqu'elle est regardée par la vision dans le noir. Son porteur gagne un bonus de circonstance de +5 aux tests de Discrétion pour se cacher de créatures disposant de la vision dans le noir. De plus, il gagne un camouflage lorsqu'il combat de telles créatures.",
+                "Ces effets ne sont pas actifs lorsque le porteur de l'armure sombre est dans une zone de lumière vive."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"illu\">Illusion</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 8 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-invisibilite.htm\">invisibilité</a> ",
+                    " <span class=\"compobj\">Prix</span> + 8 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Souplesse",
+            "description": [
+                "Cette armure semble plus légère et plus souple que les autres armures du même type. Bien que le poids réel reste inchangé, le bonus maximum de Dextérité est augmenté de +2 et la pénalité d'armure est réduite de 1."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 8 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-grace-feline.htm\">grâce féline</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Stoppe-hache",
+            "description": [
+                "Une armure stoppe-hache repousse les armes tranchantes comme les haches et les épées. Son porteur bénéficie d'une réduction des dégâts 5/contondant ou perforant.",
+                "Les propriétés spéciales stoppe-hache, stoppe-lance et stoppe-marteau se cumulent en type d'arme repoussée (on retire celles qui apparaissent plusieurs fois), mais pas en valeur de dégâts annulés. Par exemple, une armure stoppe-hache stoppe-lance fournit une réduction des dégâts 5/contondant."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-metamorphose-universelle.htm\">métamorphose universelle</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Stoppe-lance",
+            "description": [
+                "Une armure stoppe-lance repousse les armes perforantes comme les lances et les flèches. Son porteur bénéficie d'une réduction des dégâts 5,/contondant ou tranchant."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-metamorphose-universelle.htm\">métamorphose universelle</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Stoppe-marteau",
+            "description": [
+                "Une armure stoppe-marteau repousse les armes contondantes comme les marteaux et les masses d'armes. Son porteur bénéficie d'une réduction des dégâts 5/tranchant ou perforant."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-metamorphose-universelle.htm\">métamorphose universelle</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Tourbillon",
+            "description": [
+                "Un élémentaire de l'Air de taille G est asservi à cette armure, qui semble presque translucide. Quand le porteur de l'armure prononce un mot de commande, l'armure lui permet de voler à une vitesse de 18 mètres (manœuvrabilité bonne). Une fois par jour, le porteur peut se transformer. lui et tout son équipement, en un tourbillon, comme s il était un élémentaire de l'air de taille G, et rester sous cette forme pendant 4 rounds au maximum.",
+                "Les armures qui suivent possèdent systématiquement les propriétés détaillées dans leur description."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"invo\">Invocation</span> modérée ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-asservissement-d-elementaire-1120.htm#1120\">Asservissement d’élémentaire</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-contrat-intermediaire.htm\">contrat intermédiaire</a> ",
+                    " <span class=\"compobj\">Prix</span> +90 000 po."
+                ]
+            },
+            "ul": null,
+            "table": [
+                {
+                    "position": 9.0,
+                    "title": [
+                        [
+                            "Faible",
+                            "Intermédiaire",
+                            "Puissante",
+                            "Armure spéciale",
+                            "Prix de vente"
+                        ]
+                    ],
+                    "tr": [
+                        [
+                            "01–50",
+                            "01–25",
+                            "—",
+                            "Chemise de mailles en mithral",
+                            "1 100 po"
+                        ],
+                        [
+                            "51–80",
+                            "26–45",
+                            "—",
+                            "Harnois en peau de dragon",
+                            "3 300 po"
+                        ],
+                        [
+                            "81–100",
+                            "46–57",
+                            "—",
+                            "Cotte de mailles elfique",
+                            "4 150 po"
+                        ],
+                        [
+                            "—",
+                            "58–67",
+                            "—",
+                            "Armure de peau de rhinocéros",
+                            "5 165 po"
+                        ],
+                        [
+                            "—",
+                            "68–82",
+                            "01–10",
+                            "Cuirasse en adamantium",
+                            "10 200 po"
+                        ],
+                        [
+                            "—",
+                            "83–97",
+                            "11–20",
+                            "Harnois nain",
+                            "16 500 po"
+                        ],
+                        [
+                            "—",
+                            "98–100",
+                            "21–32",
+                            "Crevice de la seconde chance",
+                            "18 900 po"
+                        ],
+                        [
+                            "—",
+                            "—",
+                            "33–50",
+                            "Armure céleste",
+                            "22 400 po"
+                        ],
+                        [
+                            "—",
+                            "—",
+                            "51–60",
+                            "Harnois des profondeurs",
+                            "24 650 po"
+                        ],
+                        [
+                            "—",
+                            "—",
+                            "61–75",
+                            "Cuirasse de commandement",
+                            "25 400 po"
+                        ],
+                        [
+                            "—",
+                            "—",
+                            "76–90",
+                            "Harnois en mithral de vitesse",
+                            "26 500 po"
+                        ],
+                        [
+                            "—",
+                            "—",
+                            "91–100",
+                            "Armure démoniaque",
+                            "52 260 po"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
+    "strongAnfPowerful": [
+        {
+            "title": "Animé",
+            "description": [
+                "Cette propriété ne peut être placée que sur un bouclier. Sur commande, un bouclier animé flotte à moins de 60 centimètres de son propriétaire, le protégeant aussi bien que si celui-ci le tenait lui-même, bien qu’il ait les deux mains libres. Un personnage ne peut utiliser qu’un bouclier à la fois. Même un bouclier animé impose des désavantages, comme un malus d’armure aux tests, un risque d’échec des sorts profanes et un malus pour non formation."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 12 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-animation-d-objets.htm\">animation d’objets</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Bestiale",
+            "description": [
+                "Créées à l'origine par de puissants druides, les armures dotées de cette propriété spéciale sont particulièrement utiles aux personnages de cette classe. Lorsque le porteur d'une armure bestiale utilise son aptitude de forme animale, il peut dépenser une utilisation quotidienne supplémentaire de son aptitude pour l'amener à se transformer avec lui. Quand on l'utilise de la sorte, l'armure bestiale prend une configuration adaptée à la nouvelle forme du personnage au lieu de simplement se fondre dans son corps. Elle continue a conférer son bonus d'armure, a appliquer son malus d'armure aux tests, à ralentir la vitesse de déplacement du personnage, et fonctionne du reste comme une armure adaptée à la nouvelle forme. Le poids de l'armure augmente ou réduit afin de s'adapter à la nouvelle taille du porteur (et à sa forme, s'il prend une forme quadrupède), et peut par conséquent changer sa catégorie de charge par rapport à sa forme naturelle.",
+                "Si, dans sa forme naturelle, le personnage est formé au port du type de l'armure bestiale, il est toujours formé à son port une fois transformé, quelle que soit la forme qu'il prend.",
+                "Cette propriété spéciale ne peut être appliquée qu'aux armures, et non aux boucliers."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, boidacier ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Chanceux",
+            "description": [
+                "Une fois par semaine, le porteur d'une armure ou d'un bouclier chanceux peut demander à ce qu’un jet d’attaque effectué contre lui soit rejoué. À noter que l'armure ou le bouclier offre seulement une seconde chance, comme son nom l’indique, mais que le second résultat peut être pire que le premier (par exemple, en se traduisant par un coup critique). Le porteur doit se décider avant que les dégâts ne soient déterminés."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"enchen\">Enchantement</span> puissant ",
+                    " <span class=\"compobj\">NLS</span> 12 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-benediction.htm\">bénédiction</a> ",
+                    " <span class=\"compobj\">Prix</span> +2 500 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Contrôle des morts-vivants",
+            "description": [
+                "Une armure (ou un bouclier) de contrôle des morts-vivants semble être intégralement faite d’ossements. Cet effet décoratif n’a cependant aucune incidence sur la solidité de l’objet. Le porteur de cet objet peut contrôler jusqu’à 26 DV de morts-vivants par jour, comme s’il utilisait le sort contrôle des morts-vivants. Le personnage maintient son contrôle jusqu’à la prochaine aube."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"necro\">Nécromancie</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 13 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-controle-des-morts-vivants.htm\">contrôle des morts-vivants</a> ",
+                    " <span class=\"compobj\">Prix</span> +49 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Contrôle des vermines",
+            "description": [
+                "Le porteur d'une armure ou d'un bouclier accompagné dé cette propriété spéciale peut contrôler jusqu'à 26 DV de vermines par jour, sur le même principe que la propriété de contrôle de morts-vivants. À l'aube de chaque jour, le porteur perd le contrôle des vermines qui sont encore sous son influence. Les armures et boucliers jouissant de cette propriété semblent faits d'éléments de corps segmentés (par exemple, d'arachnides ou d'insectes) ; ce trait est purement décoratif et n'a aucun effet sur l'objet."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"enchen\">Enchantement</span> puissant ",
+                    " <span class=\"compobj\">NLS</span> 15 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-charme-monstre-de-groupe.htm\">charme-monstre de groupe</a> ",
+                    " <span class=\"compobj\">Prix</span> +49 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Défense",
+            "description": [
+                "Une armure (ou un bouclier) de défense génère un champ de force protégeant plus efficacement les organes vitaux du porteur. Quand ce dernier est victime d’un coup critique ou d’une attaque sournoise, il y a des chances pour que l’attaque inflige seulement des dégâts normaux."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 13 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, soit miracle, soit souhait limité ",
+                    " <span class=\"compobj\">Prix</span> variable (voir ci-dessus)."
+                ]
+            },
+            "ul": null,
+            "table": [
+                {
+                    "position": 1.0,
+                    "title": [
+                        [
+                            "Type de défense",
+                            "Chance que les dégâts soient normaux",
+                            "Modificateur au prix de base"
+                        ]
+                    ],
+                    "tr": [
+                        [
+                            "Légère",
+                            "25%",
+                            "Bonus de +1"
+                        ],
+                        [
+                            "Intermédiaire",
+                            "75%",
+                            "Bonus de +3"
+                        ],
+                        [
+                            "Lourde",
+                            "100%",
+                            "Bonus de +5"
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Dévoreuse de magie",
+            "description": [
+                "Ce type d'armure est habituellement orné de spirales et de gueules armées de crocs. Elle offre une résistance à la magie (13), mais les sorts qui prennent le porteur pour cible sont dévorés par la propriété de l'armure s'ils ne parviennent pas à passer outre la RM qu'elle confère. Le porteur bénéficie alors de 1d8 points de vie temporaires (jusqu'à un maximum de 8 points, quel que soit le nombre de sorts dévorés). Les points de vie temporaires ainsi glanés disparaissent au bout de 1 heure."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 16 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-a-la-magie.htm\">résistance à la magie</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-souhait-limite.htm\">souhait limité</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +3."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Drow",
+            "description": [
+                "Jadis, les armures drows étaient monnaie courante, mais elles sont passées de mode dans de nombreuses cités d'elfes noirs. Une armure drow confère un bonus de parade de +2 à la CA si le porteur se trouve au sein d'un node tellurien ou d'une zone de faezrzress. En dehors de telles zones, l'armure ne confère pas son bonus de parade mais fonctionne normalement.",
+                "Une armure drow exposée à la lumière du soleil doit réussir un jet de Vigueur (DD 8) sous peine de tomber en poussière. Un nouveau jet de sauvegarde (même DD) est nécessaire pour chaque journée d'exposition. Les armures protégées ou exposées à une lumière indirecte (par exemple, en intérieur) restent vulnérables, mais celles qui sont rangées dans un contenant chemisé de plomb sont en sécurité. Une armure drow enduite d'huile noire est immunisée contre les effets de la lumière du soleil"
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"evoca\">Évocation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 12 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-desintegration.htm\">désintégration</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-prevoyance.htm\">prévoyance</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Éthérée",
+            "description": [
+                "Cette propriété ne peut être placée que sur une armure. Sur commande et une fois par jour, une armure éthérée rend son porteur éthéré (voir le sort forme éthérée). Le personnage peut rester dans cet état aussi longtemps qu’il le souhaite, mais à partir du moment où il revient dans le plan Matériel, il lui faut attendre 24 heures pour pouvoir retourner dans le plan Éthéré."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 13 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-forme-etheree.htm\">forme éthérée</a> ",
+                    " <span class=\"compobj\">Prix</span> +49 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Immunité contre la transformation",
+            "description": [
+                "Le porteur de cette armure est immunisé contre les effets de transmutation susceptibles de modifier sa forme, ce qui inclut la métamorphose et la pétrification,  mais  également la désintégration (désintégration peut tuer le porteur mais ne transforme alors pas ses restes en poussière). Le porteur peut décider de laisser certains sorts franchir la protection que lui offre l'armure (pour se lancer des sorts de Transmutation, par exemple, ou pour bénéficier d'une métamorphose ou d'un agrandissement lancé par un allié)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 12 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-immunite-contre-les-sorts.htm\">immunité contre les sorts</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +5."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Maîtrise",
+            "description": [
+                "Une armure de maîtrise voit son bonus d'altération à la CA augmenté de +5. Cette augmentation du bonus d'altération ne s'applique pas pour calculer la solidité, les points de résistance ou tout autre effet dépendant du bonus d’altération de l'armure autre que la CA."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 15 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-panoplie-magique.htm\">Panoplie magique</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +5."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Mordante",
+            "description": [
+                "Une armure mordante est couverte de visage grimaçant. Ceux-ci représentent généralement des monstres ou personnes terrorisant la région où a été créée l'armure. Une armure mordante s'active automatique lorsque son porteur est en situation de lutte. Les visages s'animent alors, mordant l'adversaire. L'armure inflige 1d6 dégâts à chaque ennemi en situation de lutte avec son porteur. Ces dégâts sont considérés tranchant, perforant et contondant."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 11 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-animation-d-objets.htm\">animation d’objets</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +1."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Occulaire",
+            "description": [
+                "Une armure oculaire est décorée de plusieurs petits yeux. Le personnage gagne la vision à 360°, ce qui lui confère un bonus de +4 à ses jets de Détection et de Fouille. De plus, il ne peut plus être pris en tenaille"
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 15 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, oeil de mage ",
+                    " <span class=\"compobj\">Prix</span> bonus de +3."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Réfléchissant",
+            "description": [
+                "Cette propriété ne peut être placée que sur un bouclier. Un bouclier réfléchissant est lisse comme un miroir et on se voit parfaitement dedans. Une fois par jour, son porteur peut s’en servir pour retourner un sort à son lanceur (voir renvoi des sorts)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 14 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-renvoi-des-sorts.htm\">renvoi des sorts</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +5."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Représaille",
+            "description": [
+                "Une armure avec cette propriété spéciale est capable de frapper ceux qui ont durement frappé leur porteur. A chaque fois que le porteur subit 10 points de dégâts ou plus à cause d'une attaque au corps à corps, l'armure inflige 1d6 points de dégâts à celui qui a porté l'attaque. Si le porteur tombe à 0 points de vie ou moins suite à une attaque au corps à corps, l'armure inflige 3d6 points de dégâts à celui qui a porté l'attaque"
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"evoca\">Évocation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 9 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-symbole-de-douleur.htm\">symbole de douleur</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +3."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Résistance à la magie",
+            "description": [
+                "Une armure (ou un bouclier) de résistance à la magie confère à son porteur une résistance à la magie dont la valeur varie en fonction du modèle (13, 15, 17 ou 19)."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 15 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-resistance-a-la-magie.htm\">résistance à la magie</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +2 (RM 13), de +3 (RM 15), de +4 (RM 17) ou de +5 (RM 19)."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Spectral(e)",
+            "description": [
+                "Une armure (ou un bouclier) spectrale semble presque translucide. Son bonus d’armure (ou de bouclier) et son bonus d’altération sont tous deux pris en compte contre les attaques des créatures intangibles. L’armure (ou le bouclier) peut être utilisée normalement par les créatures intangibles, qui bénéficient de sa protection contre les attaques des créatures dotées d’un corps physique, tout en pouvant continuer de passer au travers des solides."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"transmu\">Transmutation</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 15 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, <a href=\"http://www.gemmaline.com/sorts/sort-nom-passage-dans-l-ether.htm\">passage dans l’éther</a> ",
+                    " <span class=\"compobj\">Prix</span> bonus de +3."
+                ]
+            },
+            "ul": null,
+            "table": null
+        },
+        {
+            "title": "Tolérance planaire",
+            "description": [
+                "Une armure ou un bouclier doté de cette propriété annule les effets naturels de tous les plans comme si son porteur était affecté par un sort de tolérance planaire."
+            ],
+            "infos": {
+                "data": [
+                    "<span class=\"abju\">Abjuration</span> puissante ",
+                    " <span class=\"compobj\">NLS</span> 8 ",
+                    " <a href=\"http://www.gemmaline.com/dons/dons-creation-d-armes-et-armures-magiques-22.htm#22\">Création d’armes et armures magiques</a>, tolérance planaire ",
+                    " <span class=\"compobj\">Prix</span> +25 000 po."
+                ]
+            },
+            "ul": null,
+            "table": null
+        }
+    ],
+    "unknown": []
+}

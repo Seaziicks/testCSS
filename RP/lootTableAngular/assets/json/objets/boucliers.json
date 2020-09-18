@@ -1,0 +1,51 @@
+{
+    "titles": [
+        "1d100",
+        "Bouclier",
+        "Prix du bouclier"
+    ],
+    "Chances": [
+        {
+            "lootChanceMin": 1,
+            "lootChanceMax": 65,
+            "name": "Écu en acier",
+            "price": 170,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 66,
+            "lootChanceMax": 75,
+            "name": "Écu en bois",
+            "price": 157,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 76,
+            "lootChanceMax": 80,
+            "name": "Pavois",
+            "price": 180,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 81,
+            "lootChanceMax": 85,
+            "name": "Rondache en acier",
+            "price": 159,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 86,
+            "lootChanceMax": 90,
+            "name": "Rondache en bois",
+            "price": 153,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 91,
+            "lootChanceMax": 100,
+            "name": "Targe",
+            "price": 165,
+            "currencyType": "po"
+        }
+    ]
+}

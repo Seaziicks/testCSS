@@ -1,0 +1,121 @@
+{
+    "titles": [
+        "1d100",
+        "Arme",
+        "Prix de l’arme"
+    ],
+    "Chances": [
+        {
+            "lootChanceMin": 1,
+            "lootChanceMax": 3,
+            "name": "Bâton",
+            "price": 600,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 4,
+            "lootChanceMax": 8,
+            "name": "Cimeterre",
+            "price": 315,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 9,
+            "lootChanceMax": 12,
+            "name": "Dague",
+            "price": 302,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 13,
+            "lootChanceMax": 22,
+            "name": "Épée à deux mains",
+            "price": 350,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 23,
+            "lootChanceMax": 32,
+            "name": "Épée bâtarde",
+            "price": 335,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 33,
+            "lootChanceMax": 37,
+            "name": "Épée courte",
+            "price": 310,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 38,
+            "lootChanceMax": 50,
+            "name": "Épée longue",
+            "price": 315,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 51,
+            "lootChanceMax": 60,
+            "name": "Grande hache",
+            "price": 320,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 61,
+            "lootChanceMax": 71,
+            "name": "Hache de guerre naine",
+            "price": 330,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 72,
+            "lootChanceMax": 75,
+            "name": "Kama",
+            "price": 302,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 76,
+            "lootChanceMax": 79,
+            "name": "Lance",
+            "price": 302,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 80,
+            "lootChanceMax": 83,
+            "name": "Masse d’armes légère",
+            "price": 305,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 84,
+            "lootChanceMax": 88,
+            "name": "Masse d’armes lourde",
+            "price": 312,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 89,
+            "lootChanceMax": 92,
+            "name": "Nunchaku",
+            "price": 302,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 93,
+            "lootChanceMax": 96,
+            "name": "Rapière",
+            "price": 320,
+            "currencyType": "po"
+        },
+        {
+            "lootChanceMin": 97,
+            "lootChanceMax": 100,
+            "name": "Siangham",
+            "price": 303,
+            "currencyType": "po"
+        }
+    ]
+}
