@@ -20458,11 +20458,11 @@
 
       __webpack_require__.d(__webpack_exports__, "URL_STATISTIQUE", function () {
         return URL_STATISTIQUE;
-      });
+      }); // export let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
+      // Production url
 
-      var BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/'; // Production url
-      // export let BASE_URL = '../lootTablePHP/Rest/';
 
+      var BASE_URL = '../lootTablePHP/Rest/';
       var URL_DROP_CHANCE = 'dropChanceRest.php';
       var URL_DROP_CHANCE_BIS = 'dropChanceBisRest.php';
       var URL_MONSTRES = 'monstresRest.php';
