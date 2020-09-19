@@ -519,6 +519,7 @@
           value: function ngOnInit() {
             var _this = this;
 
+            console.log(localStorage);
             this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (event) {
               return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"];
             })).subscribe(function (event) {
@@ -20821,11 +20822,11 @@
 
       __webpack_require__.d(__webpack_exports__, "URL_STATISTIQUE", function () {
         return URL_STATISTIQUE;
-      }); // export let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
-      // Production url
+      });
 
+      var BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/'; // Production url
+      // export let BASE_URL = '../lootTablePHP/Rest/';
 
-      var BASE_URL = '../lootTablePHP/Rest/';
       var URL_DROP_CHANCE = 'dropChanceRest.php';
       var URL_DROP_CHANCE_BIS = 'dropChanceBisRest.php';
       var URL_MONSTRES = 'monstresRest.php';
@@ -22686,20 +22687,26 @@
         _createClass(UserLoginComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
+            var _this74 = this;
+
             this.loginUserForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
               username: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].maxLength(19)]),
               password: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].minLength(9)])
             });
             console.log(this.router.url);
-            this.authService.checkUserInLocalStorage(this.http, this.router);
+            console.log(localStorage.getItem('userSession'));
 
-            if (this.authService.isAuth) {
-              this.message = null; // Usually you would use the redirect URL from the auth service.
-              // However to keep the example simple, we will always redirect to `/admin`.
+            if (!this.authService.isAuth && localStorage.getItem('userSession')) {
+              this.authService.checkUserInLocalStorageAsPromise(this.http).then(function (data) {
+                if (_this74.authService.isAuth) {
+                  _this74.message = null; // Usually you would use the redirect URL from the auth service.
+                  // However to keep the example simple, we will always redirect to `/admin`.
 
-              var redirectUrl = '/testPersonnage'; // Redirect the user
+                  var redirectUrl = '/testPersonnage'; // Redirect the user
 
-              console.log(this.router.url); // this.router.navigate([this.router.url]);
+                  console.log(_this74.router.url); // this.router.navigate([this.router.url]);
+                }
+              });
             }
           }
         }, {
@@ -22739,7 +22746,7 @@
         }, {
           key: "checkUsernameAvailability",
           value: function checkUsernameAvailability() {
-            var _this74 = this;
+            var _this75 = this;
 
             if (this.timerUsername) {
               clearTimeout(this.timerUsername);
@@ -22748,52 +22755,52 @@
 
             if (this.username.value.length > 0) {
               this.timerUsername = setTimeout(function () {
-                _this74.lookingForUsernameAvailability = true;
+                _this75.lookingForUsernameAvailability = true;
 
-                _this74.searchUsername();
+                _this75.searchUsername();
               }, 1500);
             }
           }
         }, {
           key: "searchUsername",
           value: function searchUsername() {
-            var _this75 = this;
+            var _this76 = this;
 
             console.log(this.authService);
             this.authService.checkUsernameAvailable(this.http, this.username.value).then(function (data) {
-              _this75.lookingForUsernameAvailability = false;
+              _this76.lookingForUsernameAvailability = false;
               console.log(data);
 
-              if (_this75.username.hasError('maxlength')) {
-                _this75.username.setErrors({
+              if (_this76.username.hasError('maxlength')) {
+                _this76.username.setErrors({
                   usernameUnknown: true,
                   maxlength: true
                 });
               } else {
-                _this75.username.setErrors({
+                _this76.username.setErrors({
                   usernameUnknown: true
                 });
               }
 
               setTimeout(function () {
-                _this75.usernameUnknown = true;
+                _this76.usernameUnknown = true;
               }, 10);
             })["catch"](function (data) {
-              _this75.lookingForUsernameAvailability = false;
+              _this76.lookingForUsernameAvailability = false;
               console.log(data);
               var response = data;
 
               if (response.status === 409) {
-                _this75.username.setErrors(null);
+                _this76.username.setErrors(null);
 
-                _this75.usernameUnknown = false;
+                _this76.usernameUnknown = false;
               }
             });
           }
         }, {
           key: "signIn",
           value: function signIn() {
-            var _this76 = this;
+            var _this77 = this;
 
             var username = document.getElementById('usernameUser').value;
             var password = document.getElementById('passwordUser').value;
@@ -22802,29 +22809,29 @@
             this.authService.signIn(this.http, username, password).then(function (data) {
               console.log(data);
 
-              if (_this76.authService.isAuth) {
+              if (_this77.authService.isAuth) {
                 localStorage.setItem('userSession', JSON.stringify({
                   username: username,
                   password: password
                 }));
-                _this76.message = null; // Usually you would use the redirect URL from the auth service.
+                _this77.message = null; // Usually you would use the redirect URL from the auth service.
                 // However to keep the example simple, we will always redirect to `/admin`.
 
                 var redirectUrl = '/testPersonnage'; // Redirect the user
 
-                _this76.router.navigate([redirectUrl]);
+                _this77.router.navigate([redirectUrl]);
               }
             }, function (data) {
               console.log(data);
 
-              if (!_this76.authService.isAuth) {
-                _this76.afficherMessageErreur('Utilisateur ou mot de passe incorrect.');
+              if (!_this77.authService.isAuth) {
+                _this77.afficherMessageErreur('Utilisateur ou mot de passe incorrect.');
               }
             })["catch"](function (data) {
               console.log(data);
 
-              if (!_this76.authService.isAuth) {
-                _this76.afficherMessageErreur('Utilisateur ou mot de passe incorrect.');
+              if (!_this77.authService.isAuth) {
+                _this77.afficherMessageErreur('Utilisateur ou mot de passe incorrect.');
               }
             });
           }

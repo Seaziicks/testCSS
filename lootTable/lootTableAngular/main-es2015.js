@@ -213,6 +213,7 @@ class AppComponent {
         this.title = 'LootTable';
     }
     ngOnInit() {
+        console.log(localStorage);
         this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(event => event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"])).subscribe(event => {
             const url = JSON.parse(JSON.stringify(event)).url;
             this.authService.checkUserInLocalStorage(this.http, this.router, url);
@@ -10490,9 +10491,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_OBJET_COMPLET", function() { return URL_OBJET_COMPLET; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_PERSONNAGE", function() { return URL_PERSONNAGE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_STATISTIQUE", function() { return URL_STATISTIQUE; });
-// export let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
+let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
 // Production url
-let BASE_URL = '../lootTablePHP/Rest/';
+// export let BASE_URL = '../lootTablePHP/Rest/';
 let URL_DROP_CHANCE = 'dropChanceRest.php';
 let URL_DROP_CHANCE_BIS = 'dropChanceBisRest.php';
 let URL_MONSTRES = 'monstresRest.php';
@@ -11463,15 +11464,19 @@ class UserLoginComponent {
             password: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].minLength(9)]),
         });
         console.log(this.router.url);
-        this.authService.checkUserInLocalStorage(this.http, this.router);
-        if (this.authService.isAuth) {
-            this.message = null;
-            // Usually you would use the redirect URL from the auth service.
-            // However to keep the example simple, we will always redirect to `/admin`.
-            const redirectUrl = '/testPersonnage';
-            // Redirect the user
-            console.log(this.router.url);
-            // this.router.navigate([this.router.url]);
+        console.log(localStorage.getItem('userSession'));
+        if (!this.authService.isAuth && localStorage.getItem('userSession')) {
+            this.authService.checkUserInLocalStorageAsPromise(this.http).then((data) => {
+                if (this.authService.isAuth) {
+                    this.message = null;
+                    // Usually you would use the redirect URL from the auth service.
+                    // However to keep the example simple, we will always redirect to `/admin`.
+                    const redirectUrl = '/testPersonnage';
+                    // Redirect the user
+                    console.log(this.router.url);
+                    // this.router.navigate([this.router.url]);
+                }
+            });
         }
     }
     get username() {
