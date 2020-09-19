@@ -22704,9 +22704,15 @@
 
                   var redirectUrl = '/testPersonnage'; // Redirect the user
 
-                  console.log(_this74.router.url); // this.router.navigate([this.router.url]);
+                  console.log(_this74.router.url);
+
+                  _this74.router.navigate([redirectUrl]);
                 }
               });
+            } else if (this.authService.isAuth) {
+              var redirectUrl = '/testPersonnage';
+              console.log(this.router.url);
+              this.router.navigate([redirectUrl]);
             }
           }
         }, {

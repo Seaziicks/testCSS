@@ -11474,9 +11474,14 @@ class UserLoginComponent {
                     const redirectUrl = '/testPersonnage';
                     // Redirect the user
                     console.log(this.router.url);
-                    // this.router.navigate([this.router.url]);
+                    this.router.navigate([redirectUrl]);
                 }
             });
+        }
+        else if (this.authService.isAuth) {
+            const redirectUrl = '/testPersonnage';
+            console.log(this.router.url);
+            this.router.navigate([redirectUrl]);
         }
     }
     get username() {
