@@ -11903,9 +11903,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_OBJET_COMPLET", function() { return URL_OBJET_COMPLET; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_PERSONNAGE", function() { return URL_PERSONNAGE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_STATISTIQUE", function() { return URL_STATISTIQUE; });
-// export let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
+let BASE_URL = 'http://192.168.1.73/lootTable/lootTablePHP/Rest/';
 // Production url
-let BASE_URL = '../lootTablePHP/Rest/';
+// export let BASE_URL = '../lootTablePHP/Rest/';
 let URL_DROP_CHANCE = 'dropChanceRest.php';
 let URL_DROP_CHANCE_BIS = 'dropChanceBisRest.php';
 let URL_MONSTRES = 'monstresRest.php';
