@@ -1,1 +1,3 @@
 ng build --base-href /lootTable/lootTableAngular/dist/lootTableAngular/
+
+ng build --base-href https://baichoo.fr/lootTable/lootTableAngular/ --prod=true
