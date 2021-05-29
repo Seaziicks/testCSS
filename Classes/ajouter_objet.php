@@ -93,7 +93,7 @@ if (isset($id_groupe) && $id_groupe == 0) {
 
 
  
-$sql = $bdd->query('INSERT INTO objets(Statistique_principale,Val,Val2,PropriétéMagique1,PropriétéMagique2,PropriétéMagique3,PropriétéMagique4,Valeur1,Valeur2,Valeur3,Valeur4,Nom,Image,Couleur,Rareté,Type,Niveau,Emplacement,Validé) 
+$sql = $bdd->query('INSERT INTO equipement(Statistique_principale,Val,Val2,PropriétéMagique1,PropriétéMagique2,PropriétéMagique3,PropriétéMagique4,Valeur1,Valeur2,Valeur3,Valeur4,Nom,Image,Couleur,Rareté,Type,Niveau,Emplacement,Validé) 
 					VALUES(
 						'.$_POST['statistique_principale'].',
 						'.$_POST['val'].',

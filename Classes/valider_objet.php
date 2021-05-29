@@ -17,7 +17,7 @@ session_start();
 
 
 if (isset($id_groupe) && $id_groupe == 0) {
-	$sql = $bdd->query('UPDATE objets
+	$sql = $bdd->query('UPDATE equipement
 						SET Validé=true
 						WHERE Id_Objet='.$_POST['id_objet'].'
 					')or die(print_r($bdd->errorInfo()));;

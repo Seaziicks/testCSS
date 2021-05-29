@@ -141,7 +141,7 @@ input[type="number"]{
 
 		include("BDD.php");
 
-		$recherche = $bdd->query('SELECT * FROM objets WHERE Validé=0 order by rareté') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
+		$recherche = $bdd->query('SELECT * FROM equipement WHERE Validé=FALSE order by rareté') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
 
 		
 		
