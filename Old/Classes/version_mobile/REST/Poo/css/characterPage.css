@@ -1,0 +1,67 @@
+body {
+    background-color: #F5F5F5;
+    /* Forced to do that for firefox. Otherwise, displaying CompetenceTree make the web page scrollable to the right,
+    by increasing largely its size. I don't know why ...  */
+    overflow-x: hidden;
+    /* For Safari, otherwise, bodu only take 100 vh, and everything is fucked up*/
+    height: -webkit-max-content;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    width : 100%;
+    /*min-height: 100vh;*/
+    transition: all 0.3s;
+    flex-grow: 1500; /* default 0 */
+    height: max-content;
+}
+
+.background-image {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    display: block;
+    background-image: url('images/the_elder_scrolls_v_skyrim_by_artfall-d4w0bgn.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(2.5px);
+    height: 100%;
+}
+
+#content.active {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    z-index: 1;
+}
+
+.container-fluid {
+    padding : 40px;
+    margin : 0;
+    width:auto;
+}
+
+/* ---------------------------------------------------
+    Tests
+----------------------------------------------------- */
+.global-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-flow: column;
+}
+.wrapper {
+    flex: 2;
+    display: flex;
+}
+
+

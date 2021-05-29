@@ -16,9 +16,11 @@ include('BDD.php');
 // and e.ID_Type_Effet = te.ID_Type_Effet
 
 
+$idPersonnage = array_key_exists('idPersonnage', $_GET) ? $_GET['idPersonnage'] : 6;
+
 $Objets = $bdd->query('SELECT distinct o.*
 FROM personnage p, objets o, type_effet te, type_objet ot, inventorie i, effectue e
-WHERE p.Libellé= \''.$personnage.'\'
+WHERE p.Id_Personnage = '.$idPersonnage.'
 AND p.Id_Personnage= i.ID_Personnage 
 and i.ID_Objet = o.ID_Objet
 and o.ID_Type_Objet = ot.ID_Type_Objet
@@ -38,13 +40,13 @@ $nbcases=$nblignes*$nbcolonnes;
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <link href='//fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="inventaire/inventaire.css">
+        <link rel="stylesheet" type="text/css" href="../inventaire/inventaire.css">
 
     </head>
 <body>
 <?php
 $tableau=[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]];
-$objetsatraiter=[];
+$objetsATraiter=[];
 
 // $objet['Longueur'] $objet['Largeur']
 
@@ -70,7 +72,7 @@ while($objet=$Objets->fetch()){
 			}
 		}
 	}
-	$objetsatraiter[''.$objet['ID_Objet'].'']='test';
+	$objetsATraiter[''.$objet['ID_Objet'].'']='test';
 	$nbObjets++;
 }
 
@@ -79,7 +81,7 @@ $Objets->closeCursor();
 
 $Objets = $bdd->query('SELECT distinct o.*
 FROM personnage p, objets o, type_effet te, type_objet ot, inventorie i, effectue e
-WHERE p.Libellé= \''.$personnage.'\'
+WHERE p.Id_Personnage = '.$idPersonnage.'
 AND p.Id_Personnage= i.ID_Personnage 
 and i.ID_Objet = o.ID_Objet
 and o.ID_Type_Objet = ot.ID_Type_Objet
@@ -89,13 +91,13 @@ order by o.longueur DESC,o.largeur DESC') or die(print_r($bdd->errorInfo()));
 
 ?>
 
-<div  id="sac_a_dos"><img src="../../images/Objets/JLwU1KoXyqQ.jpg" onclick="cacher_afficher_avec_class('inventaire','normal','cache')"></div>
+<div  id="sac_a_dos"><img src="../../../images/Objets/JLwU1KoXyqQ.jpg" onclick="cacher_afficher_avec_class('inventaire','normal','cache')"></div>
 <table id="inventaire" class="inventaire normal">
 
 <?php
 
 
-while(count($objetsatraiter)!=0){
+while(count($objetsATraiter)!=0){
 	
 	for($i=0;$i<$nblignes;$i++){
 		?><tr><?php
@@ -103,7 +105,7 @@ while(count($objetsatraiter)!=0){
 			if($tableau[$i][$j]==0){
 
 				?><td></td><?php
-			}elseif(isset($objetsatraiter[''.$tableau[$i][$j].''])){
+			}elseif(isset($objetsATraiter[''.$tableau[$i][$j].''])){
 
 				
 				?>
@@ -114,7 +116,7 @@ while(count($objetsatraiter)!=0){
 					
 				<?php
 
-			unset($objetsatraiter[''.$tableau[$i][$j].'']);
+			unset($objetsATraiter[''.$tableau[$i][$j].'']);
 
 			}
 			
@@ -240,7 +242,7 @@ function afficher_objet($id_Objet,$bdd){
 	?>
 	<td colspan="<?= $objetencourt['Longueur']?>" rowspan="<?= $objetencourt['Largeur']?>" class="emplacement_objet">
 		<div class="cadres">
-			<div class="div_image_objet"> <img src="../<?= $objetencourt['Image']?>"> </div>
+			<div class="div_image_objet"> <img src="../../<?= $objetencourt['Image']?>"> </div>
 			<span class="attributs_objet" style="left : <?= $objetencourt['Longueur']*2.9?>em">
 				<div class="<?= $objetencourt['Rareté_Objet']?> nom_objet"> <?= $objetencourt['Libellé']?></div>
 				<div class="type_objet"><?= $objetencourt['Libellé_Type_Objet']?>
@@ -270,7 +272,7 @@ function afficher_objet($id_Objet,$bdd){
 					</div>
 					
 				</div>
-				<div class="Cout_PO"> Coût en PO : <?= $prix?> <img class="Piece_Or" src="inventaire/PO.png"></div>
+				<div class="Cout_PO"> Coût en PO : <?= $prix?> <img class="Piece_Or" src="../inventaire/PO.png"></div>
 			</span>
 		</div>
 	</td>
@@ -314,7 +316,7 @@ function liste_ingredients($id_Objet,$bdd){
 										<?php
 											echo $ingredient['nb_Ingredient'].' '.$ingredient['Libellé'];
 											if(!empty($ingredient['Image'])){
-												?> <img src="../<?= $ingredient['Image']?>" ><?php
+												?> <img src="../../../<?= $ingredient['Image']?>" ><?php
 											}
 										?>
 									</li>

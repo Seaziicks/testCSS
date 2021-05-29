@@ -1,15 +1,7 @@
 <?php
 
 // On enregistre notre autoload.
-function chargerClasse($classname)
-{
-    if (is_file('Poo/Poo/'.$classname.'.php'))
-        require 'Poo/Poo/'.$classname.'.php';
-    elseif (is_file('Poo/Poo/Manager/'.$classname.'.php'))
-        require 'Poo/Poo/Manager/'.$classname.'.php';
-    elseif (is_file('Poo/Poo/Classes/'.$classname.'.php'))
-        require 'Poo/Poo/Classes/'.$classname.'.php';
-}
+include('autoLoad.php');
 
 spl_autoload_register('chargerClasse');
 

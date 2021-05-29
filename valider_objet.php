@@ -5,7 +5,7 @@
 session_start();
 		include("BDD.php");
 
-		$recherche = $bdd->query('SELECT * FROM membres WHERE pseudo="'.$_SESSION['pseudo'].'"') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
+		$recherche = $bdd->query('SELECT * FROM membres WHERE pseudo=\''.$_SESSION['pseudo'].'\'') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
 
 		$data = $recherche->fetch(); //On les mets sous forme string
 
@@ -17,7 +17,7 @@ session_start();
 
 
 if (isset($id_groupe) && $id_groupe == 0) {
-	$sql = $bdd->query('UPDATE objets
+	$sql = $bdd->query('UPDATE equipement
 						SET Validé=true
 						WHERE Id_Objet='.$_POST['id_objet'].'
 					')or die(print_r($bdd->errorInfo()));;
@@ -28,6 +28,6 @@ if (isset($id_groupe) && $id_groupe == 0) {
 }else{
 	echo "Vous n'avez pas les droits pour valider un objet !";
 }
-/echo '<SCRIPT>javascript:window.close()</SCRIPT>';	
+echo '<SCRIPT>javascript:window.close()</SCRIPT>';
 
 ?>

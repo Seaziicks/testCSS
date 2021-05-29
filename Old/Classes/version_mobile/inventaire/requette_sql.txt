@@ -1,0 +1,20 @@
+SELECT * FROM Personnage p, Objets o, type_effet te, type_objet ot, inventorie i, effectue e 
+WHERE p.Libellé=Magmaticien
+AND p.Id_Personnage= i.ID_Personnage 
+and i.ID_Objet = o.ID_Objet
+and o.ID_Type_Objet = ot.ID_Type_Objet
+and o.ID_Objet = e.ID_Objet
+and e.ID_Type_Effet = te.ID_Type_Effet
+
+
+
+SELECT o.*,te.*,ot.*,e.Puissance_effet FROM Personnage p, Objets o, type_effet te, type_objet ot, inventorie i, effectue e 
+WHERE p.Libellé= 'Magmaticien'
+AND p.Id_Personnage= i.ID_Personnage 
+and i.ID_Objet = o.ID_Objet
+and o.ID_Type_Objet = ot.ID_Type_Objet
+and o.ID_Objet = e.ID_Objet
+and e.ID_Type_Effet = te.ID_Type_Effet
+
+
+
