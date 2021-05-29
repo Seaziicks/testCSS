@@ -297,7 +297,7 @@ class EquipementPortes
 
             // On vérifie que ce paramètre existe, et on gère le cas d'une arme à deux mains.
             if (isset($this->$param)) {
-                if ($param != "_Offhand" || ($param == "_Offhand" && !$this->_Arme->_NombreMain == 2)) {
+                if ($param != "_Offhand" || ($param == "_Offhand" && !($this->_Arme->_NombreMain == 2))) {
                     // On fait en sorte de mette seulement la première lettre de la caracteristique en majuscule.
                     // $stat = ucfirst(strtolower($stat));
                     $bonus += $this->$param->getBonus($stat);
