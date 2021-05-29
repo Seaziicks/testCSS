@@ -2,12 +2,12 @@
 // On enregistre notre autoload.
 function chargerClasse($classname)
 {
-    if (is_file('Poo/'.$classname.'.php'))
-        require 'Poo/'.$classname.'.php';
-    elseif (is_file('Poo/Manager/'.$classname.'.php'))
-        require 'Poo/Manager/'.$classname.'.php';
-    elseif (is_file('Poo/Classes/'.$classname.'.php'))
-        require 'Poo/Classes/'.$classname.'.php';
+    if (is_file('../Poo/'.$classname.'.php'))
+        require '../Poo/'.$classname.'.php';
+    elseif (is_file('../Poo/Manager/'.$classname.'.php'))
+        require '../Poo/Manager/'.$classname.'.php';
+    elseif (is_file('../Poo/Classes/'.$classname.'.php'))
+        require '../Poo/Classes/'.$classname.'.php';
 }
 
 spl_autoload_register('chargerClasse');
@@ -20,12 +20,14 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une ale
 
 $manager = new EquipementManager($bdd);
 
-$equipements = $manager->getListForCharacter(4);
+$character = 2;
+
+$equipements = $manager->getListForCharacter($character);
  
 
 $EquipementManager = new EquipementPortesManager($bdd);
 
-$panoplie = $EquipementManager->getListForCharacter(4);
+$panoplie = $EquipementManager->getListForCharacter($character);
 
 echo 'Intelligence : '.$panoplie-> getBonus('Intelligence').'<br/>';
 echo 'Agilité : '.$panoplie-> getBonus('Agilité').'<br/>';

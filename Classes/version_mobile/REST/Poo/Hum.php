@@ -398,8 +398,11 @@ if (!isset($_POST['radio-choice']) and isset($_POST['Nombre_Gris']) and isset($_
 
 ?>
         </div>
+
+        <?php include("./footer.php") ?>
+
     </div>
-<?php include("./footer.php") ?>
+
 <?php include("./css/BootstrapJSImport.php") ?>
 </body>
 

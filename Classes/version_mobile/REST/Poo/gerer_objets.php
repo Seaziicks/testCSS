@@ -1,148 +1,188 @@
 <?php
+declare(strict_types=1);
+spl_autoload_register('chargerClasse');
 session_start();
+
+
+/**
+ * @param $classname
+ */
+function chargerClasse($classname)
+{
+    if (is_file('Poo/' . $classname . '.php'))
+        require 'Poo/' . $classname . '.php';
+    elseif (is_file('Poo/Manager/' . $classname . '.php'))
+        require 'Poo/Manager/' . $classname . '.php';
+    elseif (is_file('Poo/Classes/' . $classname . '.php'))
+        require 'Poo/Classes/' . $classname . '.php';
+}
+
+include ('BDD.php');
 
 ?>
 
-<html>
+<html lang="fr">
 
 <head>
-
-	<link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
-	<link rel="stylesheet" href="css/test.css" type="text/css" media="screen"/>
+    <!-- ===================    CSS    =================== -->
+    <?php include('css/BootstrapCSSImport.php'); ?>
+    <link rel="stylesheet" href="css/css.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/test.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/creation_item.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/navbar.css" type="text/css" media="screen"/>
-	<script type="text/javascript" src="js/inlinemod.js"></script>
-	<script type="text/javascript" src="js/inlinemod2.js"></script>
-	<script type="text/javascript" src="cooldown.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	
-	<style>
 
-	.alignement{
-		display: flex; 
-		flex-flow : row  wrap; 
-		width : 365px; <!--19%-->
-		color : white;
-		top : 0;
-		float : left;
-		margin-bottom : 50px;
+    <!-- ===================    Js    =================== -->
 
-	}
-	.mobile-item-wrapper{
-		margin-left : 0px;
-		margin : 0;
-	}
-	.caca{
-		width : 100%;
-		height : 100px;;
-		margin-left : 5px;
-		color : white;
-	}
-	.db-description{
-		width : 100%;
-	}
-	.niveauObj{
-		float : right;
-	}
-	form{
-		color : white;
-	}
+    <!-- ===================    Page    =================== -->
+    <title>Uncommitted Quest - Item creation</title>
+    <!-- https://game-icons.net/1x1/delapouite/scroll-quill.html -->
+    <link rel="icon" href="css/images/scroll-quill.png"/>
 
-	
-	
-	
-input[type="radio"]:checked+label img {
-  filter: saturate(250%);
-} 
-input[type="radio"] {
-     transform: scale(0, 0);
-	 
-}
-form img{
-	width : 7%;
-}
-label{
-	text-align : center;
-}
-label span{
-	width : 20%;
-}
-.limite{
-	width : 100%;
-	text-align : center;
-	background-color : white;
-	margin-top : 35px;
-}
+    <style>
 
-.personnages{
-	width:43.5%;
-	text-align : center;
-	margin : auto;
-	padding-left:1.3%;
-}
-.personnages div{
-	float : left;
-	width:20%;
-}
-input[type="number"]{
-	width : 11%;
-}
-.valeur{
-	color: #bda6db;
-}
-.personnagebis{
-	margin : auto;
-	color : white;
-}
-.boutton_valider{
-	background-image:url("../images/Boutton.png");
-}
-	
-.alignement{
-	margin-top : 35px;
-}
+        .global-wrapper {
+            display: flex;
+            min-height: 100vh;
+            flex-flow: column;
+        }
+        .wrapper {
+            flex: 2;
+            display: flex;
+            width: 100%;
+            z-index: 1;
+        }
 
-.button {
-	border: none;
-	color: #D6D3D2;
-	padding: 7px 10px;
-	text-align: center;
-	text-decoration: none;
-	cursor: pointer;
-}
-.button:hover{
-	color: white;
-}
-.button:active{
-     box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
-}
-.button1{
-	background-color: #3A863D;
-}
-.button1:hover{
-	background-color: #4CAF50;
-}
-.button1:active{
-	background-color: #3A863D;
-}
-.button2{
-	background-color: #B13127;
-}
-.button2:hover{
-	background-color: #f44336;
-}
-.button2:active{
-	background-color: #B13127
-}
-	</style>
+        .alignement{
+            /*display: flex;*/
+            flex-flow : row  wrap;
+            width : 365px;
+            color : white;
+            top : 0;
+            float : left;
+            margin-bottom : 50px;
+            height: fit-content;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid lightgrey;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .mobile-item-wrapper{
+            margin-left : 0px;
+            margin : 0;
+        }
+        .caca{
+            width : 100%;
+            height : 100px;;
+            margin-left : 5px;
+            color : white;
+        }
+        .db-description{
+            width : 100%;
+        }
+        .niveauObj{
+            float : right;
+        }
+        form{
+            color : white;
+        }
+
+
+
+
+        input[type="radio"]:checked+label img {
+            filter: saturate(250%);
+        }
+        input[type="radio"] {
+            transform: scale(0, 0);
+
+        }
+        form img{
+            width : 7%;
+        }
+        label{
+            text-align : center;
+        }
+        label span{
+            width : 20%;
+        }
+        .limite{
+            width : 100%;
+            text-align : center;
+            background-color : white;
+            margin-top : 35px;
+        }
+
+        .personnages{
+            width:43.5%;
+            text-align : center;
+            margin : auto;
+            padding-left:1.3%;
+        }
+        .personnages div{
+            float : left;
+            width:20%;
+        }
+        input[type="number"]{
+            width : 11%;
+        }
+        .valeur{
+            color: #bda6db;
+        }
+        .personnagebis{
+            margin : auto;
+            color : white;
+        }
+        .boutton_valider{
+            /*background-image:url("../images/Boutton.png");*/
+        }
+
+        .alignement{
+            margin-top : 35px;
+        }
+
+        .button {
+            border: none;
+            color: #D6D3D2;
+            padding: 7px 10px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button:hover{
+            color: white;
+        }
+        .button:active{
+            box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
+        }
+        .button1{
+            background-color: #3A863D;
+        }
+        .button1:hover{
+            background-color: #4CAF50;
+        }
+        .button1:active{
+            background-color: #3A863D;
+        }
+        .button2{
+            background-color: #B13127;
+        }
+        .button2:hover{
+            background-color: #f44336;
+        }
+        .button2:active{
+            background-color: #B13127
+        }
+    </style>
+
 </head>
 <body>
-<?php include("menu.php"); ?><?php
+<div class="background-image"></div>
+<div class="global-wrapper">
+    <?php include('navbar.php');?>
+    <div class="wrapper"><?php
 
 
-
-		include("BDD.php");
-
-		$recherche = $bdd->query('SELECT * FROM objets WHERE Validé=0 order by rareté') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
+		$recherche = $bdd->query('SELECT * FROM equipement WHERE Validé=0 order by rareté') or die(print_r($bdd->errorInfo())); //On va chercher l'id pour vérifier si le memebre est un admin.
 
 		
 		
@@ -295,7 +335,7 @@ for($l=1;$l<=$placement;$l++){
 				<a class="item-slot-container">
 					<div class="tooltip-hover" data-tooltip-href="//www.diablofans.com/items/5847-rathmas-skull-helm?build=49508" data-item-id="5847"></div>
 					<span class="item-container"><span class="item-effect"></span></span>
-					<span class="image"><img src="../images/items/<?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['image'];?>"></span>
+					<span class="image"><img src="../../../../images/items/<?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['image'];?>"></span>
 					<div class="touch-tip">
 
 						<div class="diablo-fans-tooltip item-tooltip">
@@ -306,7 +346,7 @@ for($l=1;$l<=$placement;$l++){
 									</li>
 								</ul>
 								<div class="db-image rarity-<?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['rareté'];?>">
-									<img src="../images/items/<?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['image'];?>">
+									<img src="../../../../images/items/<?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['image'];?>">
 								</div>
 								<div class="db-description" style="width : 100%;">
 									<small class="rarity-<?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['rareté'];?>"><?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['type'];?> <span class="niveauObj"> Niveau : <?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['niveau'];?></span></small>
@@ -422,7 +462,7 @@ for($l=1;$l<=$placement;$l++){
 												$panoplie=$set->fetch();
 												
 												$nombre =$bdd->query('SELECT count(*)
-																FROM equipements AS e, personnage AS p, objets as o 
+																FROM equiper AS e, personnage AS p, equipement as o 
 																WHERE e.Id_Personnage = p.Id_Personnage
 																AND p.Libellé = \'' . $personnage . '\'
 																AND o.id_panoplie='.$okok['Id_Panoplie'].'
@@ -469,11 +509,11 @@ for($l=1;$l<=$placement;$l++){
 									<br>
 									<form method="post" action="valider_objet.php" style="float : left;" target=_blank>
 										<input type="hidden" name="id_objet" value=<?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['id_objet']; ?> >
-										<input class="button button1" type="submit" value="Valider l'objet" />
+										<input class="button button1" type="submit" value="Valider" />
 									</form>
 									<form method="post" action="supprimer_objet.php" style="float : right;" target=_blank>
 										<input type="hidden" name="id_objet" value=<?php echo ${''.${'inventaire'.$l}[''.$actuel.''].''}['id_objet']; ?> >
-										<input class="button button2" type="submit" value="Supprimer l'objet" />
+										<input class="button button2" type="submit" value="Supprimer" />
 									</form>
 									
 									
@@ -497,10 +537,13 @@ for($l=1;$l<=$placement;$l++){
 </div></span><?php
 }
 ?>
+    </div>
 
-<?php
 
+    <?php include("./footer.php") ?>
+</div>
 
-?>
+<?php include("./css/BootstrapJSImport.php") ?>
 </body>
+
 </html>	
