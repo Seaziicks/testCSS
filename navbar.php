@@ -56,7 +56,8 @@ $personnages = $bdd->query('SELECT * FROM personnage');
                 <a class="nav-link" href="search_test.php">Auto-complétion</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" action="signIn.php" method="post">
+            <input type='hidden' name='previousUrl' value="<?php echo $_SERVER['REQUEST_URI'] ?>" id='previousUrlInput' />
             <button class="btn btn-outline-perso my-2 my-sm-0" type="submit">Connexion</button>
         </form>
     </div>

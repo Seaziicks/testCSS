@@ -1,0 +1,121 @@
+.background-image {
+    background-image: url(images/the_elder_scrolls_v_skyrim_by_artfall-d4w0bgn.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    filter: blur(2.5px);
+    transform: scale(1.01);
+    height: 100%;
+    position: fixed;
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.signInContainer {
+    z-index: 2;
+
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+    width: 36.1315vw;
+    height: 700px;
+    max-width: 400px;
+    max-height: 550px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 55px 55px 37px;
+    background: #9152f8;
+    background: linear-gradient(0deg, #17a2b8, #0c5460);
+    color: wheat;
+}
+
+.form-title {
+    z-index: 100;
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.logo {
+    width: 100px;
+    vertical-align: middle;
+}
+
+.singInForm {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.signInButton {
+    border-radius: 25px;
+    background-color: #fff;
+    width: 120px;
+    height: 50px;
+    border: unset;
+    margin-top: 25px;
+}
+
+input {
+    font: inherit;
+    background: transparent;
+    color: currentColor;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0 0 0 5px;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+    caret-color: wheat;
+}
+
+input::placeholder {
+    color: wheat;
+}
+
+label {
+    margin: 0;
+}
+
+.mat_input_logo {
+    border: 1px solid wheat;
+    border-radius: 5px;
+    margin: 5px 5px 25px;
+    width: 238px;
+    height: 59.5px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.input_logo img {
+    width: 35px;
+}
+
+.div_input {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+
+
